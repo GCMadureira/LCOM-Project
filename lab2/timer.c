@@ -12,7 +12,7 @@ int hook_id;
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   uint8_t status;
   if(timer_get_conf(timer, &status) != 0) return 1; //get config as not to change the first 4 bits
-  status &= 0x0F;
+  status &= 0x0F; //apply mask to status
 
   if(freq < 19) return 1; //prevent overflow
   uint16_t realFreq = TIMER_FREQ/freq;
@@ -22,19 +22,19 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   switch (timer){
     case 0:
     case TIMER_0:
-      sys_outb(TIMER_CTRL, 0x30 | status); //0b0011xxxx
+      sys_outb(TIMER_CTRL, TIMER_SEL0 | TIMER_LSB_MSB | status); //0b0011xxxx
       sys_outb(TIMER_0, LSB);
       sys_outb(TIMER_0, MSB);
       break;
     case 1:
     case TIMER_1:
-      sys_outb(TIMER_CTRL, 0x60 | status); //0b0111xxxx
+      sys_outb(TIMER_CTRL, TIMER_SEL1 | TIMER_LSB_MSB | status); //0b0111xxxx
       sys_outb(TIMER_1, LSB);
       sys_outb(TIMER_1, MSB);
       break;
     case 2:
     case TIMER_2:
-      sys_outb(TIMER_CTRL, 0xB0 | status); //0b1011xxxx
+      sys_outb(TIMER_CTRL, TIMER_SEL2 | TIMER_LSB_MSB | status); //0b1011xxxx
       sys_outb(TIMER_2, LSB);
       sys_outb(TIMER_2, MSB);
       break;
@@ -62,17 +62,17 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
     case 0:
     case TIMER_0:
       timer = TIMER_0; // convert to right port value for sys_inb use
-      sys_outb(TIMER_CTRL, 0xC2); //0b11000010
+      sys_outb(TIMER_CTRL, TIMER_RB_CMD | TIMER_RB_SEL(0)); //0b11000010
       break;
     case 1:
     case TIMER_1:
       timer = TIMER_1;
-      sys_outb(TIMER_CTRL, 0xC4); //0b11000100
+      sys_outb(TIMER_CTRL, TIMER_RB_CMD | TIMER_RB_SEL(1)); //0b11000100
       break;
     case 2:
     case TIMER_2:
       timer = TIMER_2;
-      sys_outb(TIMER_CTRL, 0xC8); //0b11001000
+      sys_outb(TIMER_CTRL, TIMER_RB_CMD | TIMER_RB_SEL(2)); //0b11001000
       break;
     default: //invalid timer
       return 1;
@@ -81,42 +81,36 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
 }
 
 
-// Work in progress !
-int (timer_display_conf)(uint8_t timer, uint8_t st,
-                        enum timer_status_field field) {
-  
+int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field) {
   union timer_status_field_val conf;
+  uint8_t initValue;
+  // This will check which field of the status byte we want to get to then display on timer_print_config
+  // On each case ___: , we rewrite our conf variable to hold whichever bit/bits we want 
+  switch (field) {
+      case tsf_all:
+          // Display entire status byte
+          conf.byte = st;
+          break;
+      case tsf_initial:
+          // Display initialization mode | Located on bits 4-5 | 3 different modes
+          initValue = (st >> 4) & 0x03;
+          if(initValue == 0) conf.in_mode = INVAL_val;
+          if(initValue == 1) conf.in_mode = LSB_only;
+          if(initValue == 2) conf.in_mode = MSB_only;
+          if(initValue == 3) conf.in_mode = MSB_after_LSB;
+          break;
+      case tsf_mode:
+          // Display the counting mode | Located on bits 1-3 | 
+          conf.count_mode = (st >> 1) & 0x07;
+          break;
+      case tsf_base:
+          // Display counting base | Located on bit 0 | Either "Binary" or "BCD"
+          conf.bcd = st & 0x01;
+          break;
+      default:
+          return 1; // Invalid, return error
+  }
 
-
-    // This will check which field of the status byte we want to get to then display on timer_print_config
-    // On each case ___: , we rewrite our conf variable to hold whichever bit/bits we want 
-    switch (field) {
-        case tsf_all:
-            // Display entire status byte
-            conf.byte = st;
-            break;
-
-        case tsf_initial:
-            // Display initialization mode | Located on bits 4-5 | 3 different modes
-            conf.in_mode = (st >> 4) & 0x03;
-            break;
-
-        case tsf_mode:
-            // Display the counting mode | Located on bits 1-3 | 
-            conf.count_mode = (st >> 1) & 0x07;
-            break;
-
-        case tsf_base:
-            // Display counting base | Located on bit 0 | Either "Binary" or "BCD"
-            conf.bcd = st & 0x01;
-            break;
-
-        default:
-            return 1; // Invalid, return error
-    }
-
-    // Call timer_print_config to display the configuration
-    return timer_print_config(timer, field, conf);
-
-  return 1;
+  // Call timer_print_config to display the configuration
+  return timer_print_config(timer, field, conf);
 }
