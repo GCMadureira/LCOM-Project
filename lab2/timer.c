@@ -79,10 +79,43 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   return util_sys_inb(timer, st);
 }
 
+
+// Work in progress !
 int (timer_display_conf)(uint8_t timer, uint8_t st,
                         enum timer_status_field field) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  
+  union timer_status_field_val conf;
+
+
+    // This will check which field of the status byte we want to get to then display on timer_print_config
+    // On each case ___: , we rewrite our conf variable to hold whichever bit/bits we want 
+    switch (field) {
+        case tsf_all:
+            // Display entire status byte
+            conf.byte = st;
+            break;
+
+        case tsf_initial:
+            // Display initialization mode | Located on bits 4-5 | 3 different modes
+            conf.in_mode = (st >> 4) & 0x03;
+            break;
+
+        case tsf_mode:
+            // Display the counting mode | Located on bits 1-3 | 
+            conf.count_mode = (st >> 1) & 0x07;
+            break;
+
+        case tsf_base:
+            // Display counting base | Located on bit 0 | Either "Binary" or "BCD"
+            conf.bcd = st & 0x01;
+            break;
+
+        default:
+            return 1; // Invalid, return error
+    }
+
+    // Call timer_print_config to display the configuration
+    return timer_print_config(timer, field, conf);
 
   return 1;
 }
