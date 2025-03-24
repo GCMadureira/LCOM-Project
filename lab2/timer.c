@@ -5,8 +5,9 @@
 
 #include "i8254.h"
 
-int hook_id;
 int counter = 0;
+int hook_id;
+
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   uint8_t status;
@@ -60,7 +61,7 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   switch (timer){
     case 0:
     case TIMER_0:
-      timer = TIMER_0;
+      timer = TIMER_0; // convert to right port value for sys_inb use
       sys_outb(TIMER_CTRL, 0xC2); //0b11000010
       break;
     case 1:
