@@ -5,6 +5,9 @@
 
 #include "i8254.h"
 
+int hook_id;
+int counter = 0;
+
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   uint8_t status;
   if(timer_get_conf(timer, &status) != 0) return 1; //get config as not to change the first 4 bits
@@ -41,36 +44,33 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
-    /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  hook_id = *bit_no;
+  return sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id);
 }
 
 int (timer_unsubscribe_int)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  return sys_irqrmpolicy(&hook_id);
 }
 
 void (timer_int_handler)() {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  ++counter;
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   switch (timer){
     case 0:
     case TIMER_0:
+      timer = TIMER_0;
       sys_outb(TIMER_CTRL, 0xC2); //0b11000010
       break;
     case 1:
     case TIMER_1:
+      timer = TIMER_1;
       sys_outb(TIMER_CTRL, 0xC4); //0b11000100
       break;
     case 2:
     case TIMER_2:
+      timer = TIMER_2;
       sys_outb(TIMER_CTRL, 0xC8); //0b11001000
       break;
     default: //invalid timer
