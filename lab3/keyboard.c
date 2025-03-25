@@ -3,7 +3,7 @@
 #include "keyboard.h"
 
 
-int hook_id;
+int kbd_hook_id;
 uint8_t scancode = 0;
 uint32_t sys_inb_calls = 0;
 
@@ -16,12 +16,16 @@ uint32_t (get_sys_inb_calls)(){
 }
 
 int (keyboard_subscribe_int_exclusive)(uint8_t *bit_no){
-  hook_id = *bit_no;
-  return sys_irqsetpolicy(KEYBOARD_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id);
+  kbd_hook_id = *bit_no;
+  return sys_irqsetpolicy(KEYBOARD_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &kbd_hook_id);
 }
 
 int (keyboard_unsubscribe_int)(){
-  return sys_irqrmpolicy(&hook_id);
+  return sys_irqrmpolicy(&kbd_hook_id);
+}
+
+bool (is_breakcode)(uint8_t scancode){
+  return (scancode & 0x80);
 }
 
 void (kbc_ih)() {
@@ -33,7 +37,7 @@ void (kbc_ih)() {
 
   if(util_sys_inb(KBC_STAT_REG, &status)) return; //error reading status register
   if(status & (KBC_PAR_ERR | KBC_TO_ERR)) return; //parity error or timeout error
-  if(status & KBC_OBF){
+  if(status & KBC_ST_OBF){
 
     #ifdef LAB3
     sys_inb_calls++;
@@ -42,4 +46,34 @@ void (kbc_ih)() {
     util_sys_inb(KBC_OUT_REG, &status);
     scancode = status;
   }
+}
+
+
+
+int (read_kbc_command)(uint8_t* command){
+  if(sys_outb(KBC_CMD_REG, RD_CMD_BYTE)) return 1;
+  return util_sys_inb(KBC_OUT_REG, command);
+}
+
+int (write_kbc_command)(uint8_t command){
+  return sys_outb(KBC_CMD_REG, command);
+}
+
+int (write_kbc_command_arg)(uint8_t command, uint8_t arg){
+  if(sys_outb(KBC_CMD_REG, command)) return 1;
+  return sys_outb(KBC_CMDARG_REG, arg);
+}
+
+int (keyboard_reenable_interrupts)(){
+  uint8_t status;
+  for(int i = 0; i < 5; ++i){ //wait for 100ms max
+    if(util_sys_inb(KBC_STAT_REG, &status)) continue;
+    if((status & KBC_ST_IBF) == 0){ //if input buffer is empty
+      read_kbc_command(&status); //read old command byte
+      write_kbc_command_arg(WR_CMD_BYTE, status | 0x01); //enable interrupts again
+      return 0;
+    }
+    tickdelay(micros_to_ticks(20000));
+  }
+  return 1;
 }
