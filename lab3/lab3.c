@@ -8,9 +8,6 @@
 #include "keyboard.h"
 
 
-extern uint8_t scancode;
-extern uint32_t sys_inb_calls;
-
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
   lcf_set_language("EN-US");
@@ -39,10 +36,11 @@ int(kbd_test_scan)() {
   int ipc_status, r;
   uint8_t bit_no = 0;
   message msg;
+  bool extended_flag = false;
  
   keyboard_subscribe_int_exclusive(&bit_no);
 
-  while(scancode != 0x81) {
+  while(get_scancode() != 0x81) {
     /* Get a request message. */
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
@@ -52,10 +50,17 @@ int(kbd_test_scan)() {
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE: /* hardware interrupt notification */				
           if (msg.m_notify.interrupts & BIT(bit_no)) { /* subscribed interrupt */
-            kbc_ih();
-            uint8_t bytes[] = {scancode};
-            kbd_print_scancode(!(scancode & 0x80), 1, bytes);
-            //printf("%d\n", scancode);
+            kbc_ih(); // handle interrupt
+
+            if(get_scancode() == 0xE0) //wait for next interrupt
+              extended_flag = true;
+            else if(extended_flag){ //received the second byte, therefore print
+              kbd_print_scancode(!(get_scancode() & 0x80), 2, ((uint8_t[]){0xE0, get_scancode()}));
+              extended_flag = false;
+            }
+            else //one byte scancode, can pritn directly
+              kbd_print_scancode(!(get_scancode() & 0x80), 1, ((uint8_t[]){get_scancode()}));
+
           }
           break;
         default:
@@ -67,7 +72,7 @@ int(kbd_test_scan)() {
   }
 
   keyboard_unsubscribe_int();
-  kbd_print_no_sysinb(sys_inb_calls);
+  kbd_print_no_sysinb(get_sys_inb_calls());
 
   return 0;
 }

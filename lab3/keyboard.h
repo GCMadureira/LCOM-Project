@@ -17,5 +17,7 @@
 int (keyboard_subscribe_int_exclusive)(uint8_t *bit_no);
 int (keyboard_unsubscribe_int)();
 
+u_int8_t (get_scancode)();
+uint32_t (get_sys_inb_calls)();
 
 #endif /* _LCOM_I8042_H_ */
