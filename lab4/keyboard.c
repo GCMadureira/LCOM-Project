@@ -31,19 +31,9 @@ bool (is_breakcode)(uint8_t scancode){
 
 void (kbc_ih)() {
   uint8_t status;
-
-  #ifdef LAB3
-  sys_inb_calls++;
-  #endif
-
   if(util_sys_inb(KBC_STAT_REG, &status)) return; //error reading status register
   if(status & (KBC_PAR_ERR | KBC_TO_ERR)) return; //parity error or timeout error
   if(status & KBC_ST_OBF){
-
-    #ifdef LAB3
-    sys_inb_calls++;
-    #endif
-
     util_sys_inb(KBC_OUT_REG, &status);
     scancode = status;
   }

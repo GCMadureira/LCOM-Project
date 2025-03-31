@@ -53,10 +53,10 @@ int(kbd_test_scan)() {
           if (msg.m_notify.interrupts & BIT(bit_no)) { /* subscribed interrupt */
             kbc_ih(); // handle interrupt
 
-            if(get_scancode() == 0xE0) //wait for next interrupt
+            if(get_scancode() == TWO_BYTES) //wait for next interrupt
               extended_flag = true;
             else if(extended_flag){ //received the second byte, therefore print
-              kbd_print_scancode(!is_breakcode(get_scancode()), 2, ((uint8_t[]){0xE0, get_scancode()}));
+              kbd_print_scancode(!is_breakcode(get_scancode()), 2, ((uint8_t[]){TWO_BYTES, get_scancode()}));
               extended_flag = false;
             }
             else //one byte scancode, can print directly
