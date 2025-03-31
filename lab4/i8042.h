@@ -4,6 +4,7 @@
 #include <lcom/lcf.h>
 
 #define KEYBOARD_IRQ 1 // keyboard IRQ line
+#define MOUSE_IRQ 12 // mouse IRQ line
 
 // KBC registers
 #define KBC_STAT_REG 0x64 // KBC status register (for reading)

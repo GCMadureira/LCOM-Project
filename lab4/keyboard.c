@@ -39,8 +39,6 @@ void (kbc_ih)() {
   }
 }
 
-
-
 int (read_kbc_command)(uint8_t* command){
   if(sys_outb(KBC_CMD_REG, RD_CMD_BYTE)) return 1;
   return util_sys_inb(KBC_OUT_REG, command);

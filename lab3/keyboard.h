@@ -1,5 +1,5 @@
-#ifndef _LCOM_I8042_H_
-#define _LCOM_I8042_H_
+#ifndef _KEYBOARD_H_
+#define _KEYBOARD_H_
 
 #include <lcom/lcf.h>
 #include <lcom/utils.h>
@@ -19,4 +19,4 @@ int (read_kbc_command)(uint8_t* command);
 int (keyboard_reenable_interrupts)();
 
 
-#endif /* _LCOM_I8042_H_ */
+#endif /* _KEYBOARD_H_ */
