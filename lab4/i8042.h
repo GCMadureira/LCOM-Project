@@ -27,7 +27,7 @@
 
 // KBC keyboard scancodes
 #define ESC_KEY_BREAKCODE 0x81 // ESC key scancode's breakcode
-#define TWO_BYTES 0xE0 // First of two bytes scancode
+#define EXTENDED_SCANCODE 0xE0 // First of two bytes scancode
 #define BREAKCODE BIT(7) // Breakcode bit
 
 #endif /*_I8042_H */

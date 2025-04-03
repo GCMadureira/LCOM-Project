@@ -53,10 +53,10 @@ int(kbd_test_scan)() {
           if (msg.m_notify.interrupts & BIT(bit_no)) { /* subscribed interrupt */
             kbc_ih(); // handle interrupt
 
-            if(get_scancode() == TWO_BYTES) //wait for next interrupt
+            if(get_scancode() == EXTENDED_SCANCODE) //wait for next interrupt
               extended_flag = true;
             else if(extended_flag){ //received the second byte, therefore print
-              kbd_print_scancode(!is_breakcode(get_scancode()), 2, ((uint8_t[]){TWO_BYTES, get_scancode()}));
+              kbd_print_scancode(!is_breakcode(get_scancode()), 2, ((uint8_t[]){EXTENDED_SCANCODE, get_scancode()}));
               extended_flag = false;
             }
             else //one byte scancode, can print directly
@@ -94,10 +94,10 @@ int(kbd_test_poll)() {
     sys_inb_calls++;
 
     util_sys_inb(KBC_OUT_REG, &status);
-    if(status == 0xE0) //wait for next scancode
+    if(status == EXTENDED_SCANCODE) //wait for next scancode
       extended_flag = true;
     else if(extended_flag){ //received the second byte, therefore print
-      kbd_print_scancode(!is_breakcode(status), 2, ((uint8_t[]){0xE0, status}));
+      kbd_print_scancode(!is_breakcode(status), 2, ((uint8_t[]){EXTENDED_SCANCODE, status}));
       extended_flag = false;
     }
     else //one byte scancode, can print directly
@@ -130,10 +130,10 @@ int(kbd_test_timed_scan)(uint8_t idle) {
           if (msg.m_notify.interrupts & BIT(keyboard_bit_no)) { /* subscribed interrupt */
             kbc_ih(); // handle interrupt
 
-            if(get_scancode() == 0xE0) //wait for next interrupt
+            if(get_scancode() == EXTENDED_SCANCODE) //wait for next interrupt
               extended_flag = true;
             else if(extended_flag){ //received the second byte, therefore print
-              kbd_print_scancode(!is_breakcode(get_scancode()), 2, ((uint8_t[]){0xE0, get_scancode()}));
+              kbd_print_scancode(!is_breakcode(get_scancode()), 2, ((uint8_t[]){EXTENDED_SCANCODE, get_scancode()}));
               extended_flag = false;
             }
             else //one byte scancode, can print directly

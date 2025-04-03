@@ -83,25 +83,26 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
 
 int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field field) {
   union timer_status_field_val conf;
-  uint8_t initValue;
-  // This will check which field of the status byte we want to get to then display on timer_print_config
-  // On each case ___: , we rewrite our conf variable to hold whichever bit/bits we want 
   switch (field) {
       case tsf_all:
           // Display entire status byte
           conf.byte = st;
           break;
       case tsf_initial:
-          // Display initialization mode | Located on bits 4-5 | 3 different modes
-          initValue = (st >> 4) & 0x03;
+          // Display initialization mode | Located on bits 4-5
+          uint8_t initValue = (st >> 4) & 0x03;
           if(initValue == 0) conf.in_mode = INVAL_val;
-          if(initValue == 1) conf.in_mode = LSB_only;
-          if(initValue == 2) conf.in_mode = MSB_only;
-          if(initValue == 3) conf.in_mode = MSB_after_LSB;
+          else if(initValue == 1) conf.in_mode = LSB_only;
+          else if(initValue == 2) conf.in_mode = MSB_only;
+          else if(initValue == 3) conf.in_mode = MSB_after_LSB;
           break;
       case tsf_mode:
-          // Display the counting mode | Located on bits 1-3 | 
-          conf.count_mode = (st >> 1) & 0x07;
+          // Display the counting mode | Located on bits 1-3
+          uint8_t count_mode = (st >> 1) & 0x07;
+          // since the third bit does not matter, 0b110 also means mode 2 and 0b111 means mode 3
+          if(count_mode == 6) conf.count_mode = 2;
+          else if(count_mode == 7) conf.count_mode = 3;
+          else conf.count_mode = (st >> 1) & 0x07;
           break;
       case tsf_base:
           // Display counting base | Located on bit 0 | Either "Binary" or "BCD"
@@ -110,7 +111,5 @@ int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field fiel
       default:
           return 1; // Invalid, return error
   }
-
-  // Call timer_print_config to display the configuration
   return timer_print_config(timer, field, conf);
 }

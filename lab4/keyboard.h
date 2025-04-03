@@ -11,7 +11,6 @@ int (keyboard_unsubscribe_int)();
 bool (is_breakcode)(uint8_t scancode);
 
 u_int8_t (get_scancode)();
-uint32_t (get_sys_inb_calls)();
 
 int (write_kbc_command)(uint8_t command);
 int (write_kbc_command_arg)(uint8_t command, uint8_t arg);
