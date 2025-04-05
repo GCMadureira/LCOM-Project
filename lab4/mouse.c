@@ -1,0 +1,71 @@
+#include "mouse.h"
+
+int mouse_hook_id;
+uint8_t mouse_packet_byte;
+
+uint8_t (get_mouse_packet_byte)(){
+  return mouse_packet_byte;
+}
+
+int (mouse_subscribe_int_exclusive)(uint8_t *bit_no){
+  mouse_hook_id = *bit_no;
+  return sys_irqsetpolicy(MOUSE_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &mouse_hook_id);
+}
+
+int (mouse_unsubscribe_int)(){
+  return sys_irqrmpolicy(&mouse_hook_id);
+}
+
+void (mouse_ih)(){
+  uint8_t status;
+  util_sys_inb(KBC_OUT_REG, &status);
+  mouse_packet_byte = status;
+}
+
+int (mouse_stream_enable_data_reporting)(){
+  write_kbc_command_arg(WR_MOUSE_BYTE, ENABLE_DATA_REPORTING); //try to enable data reporting
+
+  uint8_t status;
+  for(int i = 0; i < 5; ++i){ //wait for 100ms max
+    if(util_sys_inb(KBC_OUT_REG, &status)) continue;
+    if(status == MOUSE_BYTE_ACK) return 0;
+    else if(status == MOUSE_BYTE_NACK) write_kbc_command(ENABLE_DATA_REPORTING);
+    else return 1;
+    
+    tickdelay(micros_to_ticks(20000));
+  }
+  return 1;
+}
+
+int (mouse_stream_disable_data_reporting)(){
+  write_kbc_command_arg(WR_MOUSE_BYTE, DISABLE_DATA_REPORTING); // try to disable data reporting
+
+  uint8_t status;
+  for(int i = 0; i < 5; ++i){ //wait for 100ms max
+    if(util_sys_inb(KBC_OUT_REG, &status)) continue;
+    if(status == MOUSE_BYTE_ACK) return 0;
+    else if(status == MOUSE_BYTE_NACK) write_kbc_command(DISABLE_DATA_REPORTING);
+    else return 1;
+    
+    tickdelay(micros_to_ticks(20000));
+  }
+  return 1;
+}
+
+struct packet assemble_packet(uint8_t packet_bytes[3]){
+  struct packet packet;
+  memcpy(packet.bytes, packet_bytes, 3);
+
+  packet.rb = packet_bytes[0] & RIGHT_BUTTON_PRESSED;
+  packet.mb = packet_bytes[0] & MIDDLE_BUTTON_PRESSD;
+  packet.lb = packet_bytes[0] & LEFT_BUTTON_PRESSED;
+
+  // form a 2s complement number with the delta byte and the MSB bit
+  packet.delta_x = (int16_t)packet_bytes[1] | (packet_bytes[0] & MSB_X_DELTA ? 0xFF00 : 0);
+  packet.delta_y = (int16_t)packet_bytes[2] | (packet_bytes[0] & MSB_Y_DELTA ? 0xFF00 : 0);
+
+  packet.x_ov = packet_bytes[0] & X_OVERFLOW;
+  packet.y_ov = packet_bytes[0] & Y_OVERFLOW;
+
+  return packet;
+}

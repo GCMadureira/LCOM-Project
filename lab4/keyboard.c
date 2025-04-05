@@ -1,7 +1,4 @@
-#include <lcom/lcf.h>
-
 #include "keyboard.h"
-#include "i8042.h"
 
 
 int kbd_hook_id;
@@ -27,28 +24,8 @@ bool (is_breakcode)(uint8_t scancode){
 
 void (kbc_ih)() {
   uint8_t status;
-  if(util_sys_inb(KBC_STAT_REG, &status)) return; //error reading status register
-  if(status & (KBC_PAR_ERR | KBC_TO_ERR)) return; //parity error or timeout error
-  if(status & KBC_ST_OBF){
-    util_sys_inb(KBC_OUT_REG, &status);
-    scancode = status;
-  }
-}
-
-
-
-int (read_kbc_command)(uint8_t* command){
-  if(sys_outb(KBC_CMD_REG, RD_CMD_BYTE)) return 1;
-  return util_sys_inb(KBC_OUT_REG, command);
-}
-
-int (write_kbc_command)(uint8_t command){
-  return sys_outb(KBC_CMD_REG, command);
-}
-
-int (write_kbc_command_arg)(uint8_t command, uint8_t arg){
-  if(sys_outb(KBC_CMD_REG, command)) return 1;
-  return sys_outb(KBC_CMDARG_REG, arg);
+  util_sys_inb(KBC_OUT_REG, &status);
+  scancode = status;
 }
 
 int (keyboard_reenable_interrupts)(){
