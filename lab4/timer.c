@@ -88,7 +88,7 @@ int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field fiel
           // Display entire status byte
           conf.byte = st;
           break;
-      case tsf_initial:
+      case tsf_initial: {
           // Display initialization mode | Located on bits 4-5
           uint8_t initValue = (st >> 4) & 0x03;
           if(initValue == 0) conf.in_mode = INVAL_val;
@@ -96,7 +96,8 @@ int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field fiel
           else if(initValue == 2) conf.in_mode = MSB_only;
           else if(initValue == 3) conf.in_mode = MSB_after_LSB;
           break;
-      case tsf_mode:
+      }
+      case tsf_mode: {
           // Display the counting mode | Located on bits 1-3
           uint8_t count_mode = (st >> 1) & 0x07;
           // since the third bit does not matter, 0b110 also means mode 2 and 0b111 means mode 3
@@ -104,6 +105,7 @@ int (timer_display_conf)(uint8_t timer, uint8_t st, enum timer_status_field fiel
           else if(count_mode == 7) conf.count_mode = 3;
           else conf.count_mode = (st >> 1) & 0x07;
           break;
+      }
       case tsf_base:
           // Display counting base | Located on bit 0 | Either "Binary" or "BCD"
           conf.bcd = st & 0x01;
