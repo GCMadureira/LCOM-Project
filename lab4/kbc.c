@@ -10,8 +10,7 @@ int (write_kbc_command)(uint8_t command){
   return sys_outb(KBC_CMD_REG, command);
 }
 
-int (write_kbc_command_arg)(uint8_t command, uint8_t arg){
-  if(sys_outb(KBC_CMD_REG, command)) return 1;
+int (write_kbc_command_arg)(uint8_t arg){
   return sys_outb(KBC_CMDARG_REG, arg);
 }
 

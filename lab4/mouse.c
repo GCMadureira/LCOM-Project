@@ -23,36 +23,34 @@ void (mouse_ih)(){
 }
 
 int (mouse_stream_enable_data_reporting)(){
-  write_kbc_command_arg(WR_MOUSE_BYTE, ENABLE_DATA_REPORTING); //try to enable data reporting
-
   uint8_t status;
-  for(int i = 0; i < 5; ++i){ //wait for 100ms max
+  for(int i = 0; i < 5; ++i){ // wait for 100ms max
+    if(write_kbc_command(WR_MOUSE_BYTE)) return 1; //try to enable data reporting
+    if(write_kbc_command_arg(ENABLE_DATA_REPORTING)) return 1;
+
+    tickdelay(micros_to_ticks(20000));
+
     if(util_sys_inb(KBC_OUT_REG, &status)) continue;
     if(status == MOUSE_BYTE_ACK) return 0;
-    else if(status == MOUSE_BYTE_NACK) write_kbc_command(ENABLE_DATA_REPORTING);
-    else return 1;
-    
-    tickdelay(micros_to_ticks(20000));
   }
   return 1;
 }
 
 int (mouse_stream_disable_data_reporting)(){
-  write_kbc_command_arg(WR_MOUSE_BYTE, DISABLE_DATA_REPORTING); // try to disable data reporting
-
   uint8_t status;
-  for(int i = 0; i < 5; ++i){ //wait for 100ms max
-    if(util_sys_inb(KBC_OUT_REG, &status)) continue;
-    if(status == MOUSE_BYTE_ACK) return 0;
-    else if(status == MOUSE_BYTE_NACK) write_kbc_command(DISABLE_DATA_REPORTING);
-    else return 1;
-    
+  for(int i = 0; i < 5; ++i){ // wait for 100ms max
+    if(write_kbc_command(WR_MOUSE_BYTE)) return 1; // try to disable data reporting
+    if(write_kbc_command_arg(DISABLE_DATA_REPORTING)) return 1;
+
     tickdelay(micros_to_ticks(20000));
+
+    if(util_sys_inb(KBC_OUT_REG, &status)) continue;
+    if(status == MOUSE_BYTE_ACK) return 0; // command was acknowledged
   }
   return 1;
 }
 
-struct packet assemble_packet(uint8_t packet_bytes[3]){
+struct packet (assemble_packet)(uint8_t packet_bytes[3]){
   struct packet packet;
   memcpy(packet.bytes, packet_bytes, 3);
 
