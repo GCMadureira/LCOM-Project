@@ -6,6 +6,9 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#include "graphics.h"
+#include "keyboard.h"
+
 // Any header files included below this line should have been created by you
 
 int main(int argc, char *argv[]) {
@@ -14,11 +17,11 @@ int main(int argc, char *argv[]) {
 
   // enables to log function invocations that are being "wrapped" by LCF
   // [comment this out if you don't want/need it]
-  lcf_trace_calls("/home/lcom/labs/lab5/trace.txt");
+  //lcf_trace_calls("/home/lcom/labs/lab5/trace.txt");
 
   // enables to save the output of printf function calls on a file
   // [comment this out if you don't want/need it]
-  lcf_log_output("/home/lcom/labs/lab5/output.txt");
+  //lcf_log_output("/home/lcom/labs/lab5/output.txt");
 
   // handles control over to LCF
   // [LCF handles command line arguments and invokes the right function]
@@ -33,26 +36,57 @@ int main(int argc, char *argv[]) {
 }
 
 int(video_test_init)(uint16_t mode, uint8_t delay) {
-  /* To be completed */
-  printf("%s(0x%03x, %u): under construction\n", __func__, mode, delay);
+  if(set_VBE_mode(mode)) return 1;
 
-  return 1;
+  // lazy option
+  tickdelay(micros_to_ticks(delay * 1000000));
+
+  if(vg_exit()) return 1;
+
+  return 0;
 }
 
 int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
                           uint16_t width, uint16_t height, uint32_t color) {
-  /* To be completed */
-  printf("%s(0x%03X, %u, %u, %u, %u, 0x%08x): under construction\n",
-         __func__, mode, x, y, width, height, color);
+  int ipc_status, r;
+  uint8_t keyboard_bit_no = 0;
+  message msg;
+ 
+  if(keyboard_subscribe_int_exclusive(&keyboard_bit_no)) return 1;
+  if(graphics_init(mode)) return 1;
 
-  return 1;
+  if(vg_draw_rectangle(x, y, width, height, color))
+    printf("failed to draw rectangle");
+
+  while(get_scancode() != ESC_KEY_BREAKCODE) {
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:		
+          if (msg.m_notify.interrupts & BIT(keyboard_bit_no)) {
+            if(!valid_kbc_output(false)){ // check if the output buffer has valid data
+              discard_kbc_output(); // discard if not
+            }
+            else kbc_ih(); // handle interrupt if yes
+          }
+          break;
+      }
+    }
+  }
+
+  if(keyboard_unsubscribe_int()) return 1;
+  if(vg_exit()) return 1;
+
+  return 0;
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
   /* To be completed */
   printf("%s(0x%03x, %u, 0x%08x, %d): under construction\n", __func__,
          mode, no_rectangles, first, step);
-
   return 1;
 }
 
