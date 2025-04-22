@@ -89,8 +89,6 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
     message msg;
     vbe_mode_info_t mode_info;
 
-    // Get mode information
-    if(vbe_get_mode_info(mode, &mode_info)) return 1;
 
     // Subscribe keyboard
     if(keyboard_subscribe_int_exclusive(&keyboard_bit_no)) return 1;
@@ -98,53 +96,60 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
     // Initialize graphics
     if(graphics_init(mode)) return 1;
 
+    // Get mode information
+    mode_info = get_current_mode_info();
+
+
     // Calculate rectangle dimensions
     uint16_t rect_width = mode_info.XResolution / no_rectangles;
     uint16_t rect_height = mode_info.YResolution / no_rectangles;
 
-    // Draw the desired pattern
     for (uint8_t row = 0; row < no_rectangles; row++) {
-        for (uint8_t col = 0; col < no_rectangles; col++) {
-            uint32_t color;
-            
-            if (mode_info.MemoryModel == DIRECT_COLOR) {
-                // Direct color mode
-                uint8_t R = (((first >> 16) & 0xFF) + col * step) % (1 << mode_info.RedMaskSize);
-                uint8_t G = (((first >> 8) & 0xFF) + row * step) % (1 << mode_info.GreenMaskSize);
-                uint8_t B = ((first & 0xFF) + (col + row) * step) % (1 << mode_info.BlueMaskSize);
-                color = (R << mode_info.RedFieldPosition) | 
-                        (G << mode_info.GreenFieldPosition) | 
-                        (B << mode_info.BlueFieldPosition);
-            } else {
-                // Indexed color mode
-                color = (first + (row * no_rectangles + col) * step) % (1 << mode_info.BitsPerPixel);
-            }
+      for (uint8_t col = 0; col < no_rectangles; col++) {
+        uint32_t color;
+        
+        if (is_direct_color_model()) {
+          // Direct color mode
+          uint32_t R = 
+            (get_red_color_field(first) + col * step) % (1 << mode_info.RedMaskSize);
+          uint32_t G = 
+            (get_green_color_field(first) + row * step) % (1 << mode_info.GreenMaskSize);
+          uint32_t B = 
+            (get_blue_color_field(first) + (col + row) * step) % (1 << mode_info.BlueMaskSize);
 
-            if(vg_draw_rectangle(col * rect_width, row * rect_height, 
-                               rect_width, rect_height, color)) {
-                printf("Failed to draw rectangle at (%d,%d)\n", row, col);
-            }
+          color = (R << mode_info.RedFieldPosition) | 
+                  (G << mode_info.GreenFieldPosition) | 
+                  (B << mode_info.BlueFieldPosition);
+        } else {
+          // Indexed color mode
+          color = (first + (row * no_rectangles + col) * step) % (1 << get_bits_per_pixel());
         }
+
+        if(vg_draw_rectangle(col * rect_width, row * rect_height, 
+                            rect_width, rect_height, color)) {
+          printf("Failed to draw rectangle at (%d,%d)\n", row, col);
+        }
+      }
     }
 
     // Wait for ESC key to finalize
     while(get_scancode() != ESC_KEY_BREAKCODE) {
-        if ((r = driver_receive(ANY, &msg, &ipc_status)) != 0) { 
-            printf("driver_receive failed with: %d", r);
-            continue;
-        }
-        if (is_ipc_notify(ipc_status)) {
-            switch (_ENDPOINT_P(msg.m_source)) {
-                case HARDWARE:		
-                    if (msg.m_notify.interrupts & BIT(keyboard_bit_no)) {
-                        if(!valid_kbc_output(false)) {
-                            discard_kbc_output();
-                        }
-                        else kbc_ih();
-                    }
-                    break;
+      if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
+        printf("driver_receive failed with: %d", r);
+        continue;
+      }
+      if (is_ipc_notify(ipc_status)) {
+        switch (_ENDPOINT_P(msg.m_source)) {
+          case HARDWARE:		
+            if (msg.m_notify.interrupts & BIT(keyboard_bit_no)) {
+              if(!valid_kbc_output(false)){ // check if the output buffer has valid data
+                discard_kbc_output(); // discard if not
+              }
+              else kbc_ih(); // handle interrupt if yes
             }
+            break;
         }
+      }
     }
 
     // Cleanup before termination

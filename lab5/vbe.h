@@ -16,8 +16,7 @@
 // Set mode function
 #define LINEAR_FRAME_BUFFER BIT(14) // Sets the VRAM as a sucession of lines in memory
 
-// Set default colors
-#define DIRECT_COLOR 0x06
-#define INDEXED_COLOR 0x105
+// Color models
+#define DIRECT_COLOR 0x06 // Colors are represented as R:G:B, size varies
 
 #endif /*_VBE_H */

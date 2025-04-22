@@ -3,24 +3,42 @@
 
 
 static char* video_mem = NULL;
-static unsigned int h_res;
-static unsigned int v_res;
-static unsigned int bits_per_pixel;
+static vbe_mode_info_t mode_info;
 
 void* (get_video_mem)(){
   return video_mem;
 }
 
+vbe_mode_info_t (get_current_mode_info)(){
+  return mode_info;
+}
+
 unsigned int (get_hres)(){
-  return h_res;
+  return mode_info.XResolution;
 }
 
 unsigned int (get_vres)(){
-  return v_res;
+  return mode_info.YResolution;
 }
 
 unsigned int (get_bits_per_pixel)(){
-  return bits_per_pixel;
+  return mode_info.BitsPerPixel;
+}
+
+bool (is_direct_color_model)(){
+  return mode_info.MemoryModel == DIRECT_COLOR;
+}
+
+uint32_t (get_red_color_field)(const uint32_t color){
+  return (color >> mode_info.RedFieldPosition) & ((1 << mode_info.RedMaskSize) - 1);
+}
+
+uint32_t (get_green_color_field)(const uint32_t color){
+  return (color >> mode_info.GreenFieldPosition) & ((1 << mode_info.GreenMaskSize) - 1);
+}
+
+uint32_t (get_blue_color_field)(const uint32_t color){
+  return (color >> mode_info.BlueFieldPosition) & ((1 << mode_info.BlueMaskSize) - 1);
 }
 
 int (graphics_init)(uint16_t mode){
@@ -54,15 +72,11 @@ int (map_video_memory)(uint16_t mode){
 
   /* Use VBE function 0x01 to initialize vram_base and vram_size */
 
-  vbe_mode_info_t mode_info; // get the mode information
+  // get the mode information
   if(vbe_get_mode_info(mode, &mode_info)) return 1;
 
-  h_res = mode_info.XResolution; // horizontal pixel count
-  v_res = mode_info.YResolution; // vertical pixel count
-  bits_per_pixel = mode_info.BitsPerPixel;
-
   vram_base = mode_info.PhysBasePtr;
-  vram_size = h_res*v_res*bits_per_pixel/8;
+  vram_size = get_hres()*get_vres()*ceil((double)get_bits_per_pixel()/8);
 
   /* Allow memory mapping */
 
@@ -88,15 +102,15 @@ int (map_video_memory)(uint16_t mode){
 
 int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
   if(video_mem == NULL) return 1;
-  if(x < 0 || x >= h_res || y < 0 || y >= v_res) return 1;
+  if(x < 0 || x >= get_hres() || y < 0 || y >= get_vres()) return 1;
 
   // ceil accounts for bits per pixel like mode 0x110 (not multiple of 8)
-  int bytes_per_pixel = ceil((double)bits_per_pixel/8);
+  int bytes_per_pixel = ceil((double)get_bits_per_pixel()/8);
 
-  unsigned address = (y * h_res + x) * bytes_per_pixel;
-  for(unsigned int i = x; i < x + len && i < h_res; ++i){
-    memcpy(video_mem + address, &color, bytes_per_pixel);
-    address += bytes_per_pixel;
+  unsigned offset = (y * get_hres() + x) * bytes_per_pixel;
+  for(unsigned int i = x; i < x + len && i < get_hres(); ++i){
+    memcpy(video_mem + offset, &color, bytes_per_pixel);
+    offset += bytes_per_pixel;
   }
 
   return 0;
@@ -104,7 +118,7 @@ int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 
 int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
   if(video_mem == NULL) return 1;
-  if(x < 0 || x >= h_res || y < 0 || y >= v_res) return 1;
+  if(x < 0 || x >= get_hres() || y < 0 || y >= get_vres()) return 1;
 
   for(int i = y; i < y + height; ++i){
     vg_draw_hline(x, i, width, color);
