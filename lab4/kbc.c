@@ -2,16 +2,49 @@
 
 
 int (read_kbc_command)(uint8_t* command){
-  if(sys_outb(KBC_CMD_REG, RD_CMD_BYTE)) return 1;
-  return util_sys_inb(KBC_OUT_REG, command);
+  uint8_t status;
+  for(int i = 0; i < 15; ++i){
+    if(util_sys_inb(KBC_STAT_REG, &status)) continue;
+    
+    if(!(status & KBC_ST_IBF)){
+      if(sys_outb(KBC_CMD_REG, RD_CMD_BYTE)) continue;
+      return util_sys_inb(KBC_OUT_REG, command);
+    }
+
+    tickdelay(micros_to_ticks(20000));
+  }
+  return 1;
 }
 
 int (write_kbc_command)(uint8_t command){
-  return sys_outb(KBC_CMD_REG, command);
+  uint8_t status;
+  for(int i = 0; i < 15; ++i){
+    if(util_sys_inb(KBC_STAT_REG, &status)) continue;
+    
+    if(!(status & KBC_ST_IBF)){
+      if(sys_outb(KBC_CMD_REG, command)) continue;
+      return 0;
+    }
+
+    tickdelay(micros_to_ticks(20000));
+  }
+  return 1;
 }
 
 int (write_kbc_command_arg)(uint8_t arg){
-  return sys_outb(KBC_CMDARG_REG, arg);
+  uint8_t status;
+  for(int i = 0; i < 15; ++i){
+    if(util_sys_inb(KBC_STAT_REG, &status)) continue;
+    
+    if(!(status & KBC_ST_IBF)){
+      if(sys_outb(KBC_CMDARG_REG, arg)) continue;
+      return 0;
+    }
+
+    tickdelay(micros_to_ticks(20000));
+  }
+  return 1;
+
 }
 
 bool (valid_kbc_output)(bool aux){

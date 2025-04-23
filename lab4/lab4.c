@@ -118,9 +118,9 @@ int (mouse_test_packet)(uint32_t cnt) {
 
   uint8_t packet_bytes[3];
   int state = 0; //0 means first byte, 1 means second by, 2 means third byte
- 
-  if(mouse_subscribe_int_exclusive(&bit_no)) return 1;
+
   if(mouse_stream_enable_data_reporting()) return 1;
+  if(mouse_subscribe_int_exclusive(&bit_no)) return 1;
 
   while(cnt > 0) {
     /* Get a request message. */
@@ -139,7 +139,6 @@ int (mouse_test_packet)(uint32_t cnt) {
 
             mouse_ih();
             uint8_t packet_byte = get_mouse_packet_byte();
-            --cnt;
 
             // the first byte always has the bit 3 on, skip byte if it does not for synchronization
             if(state == 0 && !(packet_byte & BIT(3))) continue;
@@ -147,6 +146,7 @@ int (mouse_test_packet)(uint32_t cnt) {
             if(state == 2){
               struct packet packet = assemble_packet(packet_bytes);
               mouse_print_packet(&packet);
+              --cnt;
             }
             state = (state + 1) % 3;
           }
@@ -174,8 +174,8 @@ int (mouse_test_async)(uint8_t idle_time) {
   int state = 0; //0 means first byte, 1 means second by, 2 means third byte
  
   if(timer_subscribe_int(&timer_bit_no)) return 1;
-  if(mouse_subscribe_int_exclusive(&mouse_bit_no)) return 1;
   if(mouse_stream_enable_data_reporting()) return 1;
+  if(mouse_subscribe_int_exclusive(&mouse_bit_no)) return 1;
 
   while(counter < idle_time * 60) {
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
@@ -228,8 +228,8 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
   uint8_t packet_bytes[3];
   int state = 0; //0 means first byte, 1 means second by, 2 means third byte
  
-  if(mouse_subscribe_int_exclusive(&bit_no)) return 1;
   if(mouse_stream_enable_data_reporting()) return 1;
+  if(mouse_subscribe_int_exclusive(&bit_no)) return 1;
 
   while(machine_state != COMPLETE) {
     /* Get a request message. */

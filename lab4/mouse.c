@@ -24,7 +24,7 @@ void (mouse_ih)(){
 
 int (mouse_stream_enable_data_reporting)(){
   uint8_t status;
-  for(int i = 0; i < 5; ++i){ // wait for 100ms max
+  for(int i = 0; i < 1; ++i){ // wait for 300ms max
     if(write_kbc_command(WR_MOUSE_BYTE)) return 1; //try to enable data reporting
     if(write_kbc_command_arg(ENABLE_DATA_REPORTING)) return 1;
 
@@ -38,7 +38,7 @@ int (mouse_stream_enable_data_reporting)(){
 
 int (mouse_stream_disable_data_reporting)(){
   uint8_t status;
-  for(int i = 0; i < 5; ++i){ // wait for 100ms max
+  for(int i = 0; i < 1; ++i){ // wait for 300ms max
     if(write_kbc_command(WR_MOUSE_BYTE)) return 1; // try to disable data reporting
     if(write_kbc_command_arg(DISABLE_DATA_REPORTING)) return 1;
 
