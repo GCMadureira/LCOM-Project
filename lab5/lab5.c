@@ -160,10 +160,50 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+  int ipc_status, r;
+  uint8_t keyboard_bit_no = 0;
+  message msg;
+  //vbe_mode_info_t mode_info;
 
-  return 1;
+  if(keyboard_subscribe_int_exclusive(&keyboard_bit_no)) return 1;
+  if(graphics_init(0x105)) return 1;
+
+  xpm_image_t img_info;
+  uint8_t* img = xpm_load(xpm, XPM_INDEXED, &img_info);
+  if(img == NULL) return 1;
+
+  //uint16_t size = 10; // draw the image bigger
+
+  for(int y_off = 0; y_off < img_info.height; ++y_off){
+    for(int x_off = 0; x_off < img_info.width; ++x_off){
+      vg_draw_pixel(x + x_off, y + y_off, *(img + y_off * img_info.width + x_off));
+      //vg_draw_rectangle(x + x_off*size, y + y_off*size, size, size, *(img + y_off * img_info.width + x_off));
+    }
+  }
+
+  while(get_scancode() != ESC_KEY_BREAKCODE) {
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:		
+          if (msg.m_notify.interrupts & BIT(keyboard_bit_no)) {
+            if(!valid_kbc_output(false)){ // check if the output buffer has valid data
+              discard_kbc_output(); // discard if not
+            }
+            else kbc_ih(); // handle interrupt if yes
+          }
+          break;
+      }
+    }
+  }
+
+  if(keyboard_unsubscribe_int()) return 1;
+  if(vg_exit()) return 1;
+
+  return 0;
 }
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,

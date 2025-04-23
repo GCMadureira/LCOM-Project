@@ -5,8 +5,8 @@
 #include "vbe.h"
 
 int (set_VBE_mode)(uint16_t mode);
-
 int (graphics_init)(uint16_t mode);
+int (map_video_memory)(uint16_t mode);
 
 void* (get_video_mem)();
 vbe_mode_info_t (get_current_mode_info)();
@@ -19,6 +19,6 @@ uint32_t (get_red_color_field)(const uint32_t color);
 uint32_t (get_green_color_field)(const uint32_t color);
 uint32_t (get_blue_color_field)(const uint32_t color);
 
-int (map_video_memory)(uint16_t mode);
+int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color);
 
 #endif /*_GRAPHICS_H */

@@ -100,6 +100,20 @@ int (map_video_memory)(uint16_t mode){
   return 0;
 }
 
+
+int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
+  if(video_mem == NULL) return 1;
+  if(x < 0 || x >= get_hres() || y < 0 || y >= get_vres()) return 1;
+
+  // ceil accounts for bits per pixel like mode 0x110 (not multiple of 8)
+  int bytes_per_pixel = ceil((double)get_bits_per_pixel()/8);
+
+  unsigned offset = (y * get_hres() + x) * bytes_per_pixel;
+  memcpy(video_mem + offset, &color, bytes_per_pixel);
+
+  return 0;
+}
+
 int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
   if(video_mem == NULL) return 1;
   if(x < 0 || x >= get_hres() || y < 0 || y >= get_vres()) return 1;
