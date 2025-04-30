@@ -208,11 +208,119 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
                      int16_t speed, uint8_t fr_rate) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
-         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
+  int ipc_status, r;
+  uint8_t keyboard_bit_no = 0;
+  message msg;
 
-  return 1;
+  // Subscribe to keyboard interrupts
+  if(keyboard_subscribe_int_exclusive(&keyboard_bit_no)) return 1;
+  
+  // Initialize graphics mode 0x105
+  if(graphics_init(0x105)) return 1;
+
+  // Load XPM image
+  xpm_image_t img_info;
+  uint8_t* img = xpm_load(xpm, XPM_INDEXED, &img_info);
+  if(img == NULL) return 1;
+
+  // Calculate movement parameters
+  int16_t dx = xf - xi;  // horizontal movement
+  int16_t dy = yf - yi;  // vertical movement
+  
+  // Ensure only horizontal or vertical movement
+  if(dx != 0 && dy != 0) {
+    if(keyboard_unsubscribe_int()) return 1;
+    if(vg_exit()) return 1;
+    return 1;
+  }
+
+  // Calculate total distance and frames needed
+  int16_t total_distance = (dx != 0) ? abs(dx) : abs(dy);
+  int16_t frames_needed;
+  int16_t pixels_per_frame;
+  
+  if(speed > 0) {
+    // Speed is pixels per frame
+    pixels_per_frame = speed;
+    frames_needed = (total_distance + pixels_per_frame - 1) / pixels_per_frame; // Ceiling division
+  } else {
+    // Speed is frames per pixel
+    frames_needed = total_distance * (-speed);
+    pixels_per_frame = 1;
+  }
+
+  // Calculate frame delay in microseconds
+  uint32_t frame_delay = 1000000 / fr_rate; // Convert fps to microseconds per frame
+
+  // Current position
+  uint16_t current_x = xi;
+  uint16_t current_y = yi;
+
+  // Movement loop
+  for(int frame = 0; frame < frames_needed; frame++) {
+    // Clear previous position by drawing a black rectangle
+    vg_draw_rectangle(current_x, current_y, img_info.width, img_info.height, 0);
+
+    // Calculate new position
+    if(dx != 0) {
+      // Horizontal movement
+      if(dx > 0) {
+        current_x = xi + (frame + 1) * pixels_per_frame;
+        if(current_x > xf) current_x = xf;
+      } else {
+        current_x = xi - (frame + 1) * pixels_per_frame;
+        if(current_x < xf) current_x = xf;
+      }
+    } else {
+      // Vertical movement
+      if(dy > 0) {
+        current_y = yi + (frame + 1) * pixels_per_frame;
+        if(current_y > yf) current_y = yf;
+      } else {
+        current_y = yi - (frame + 1) * pixels_per_frame;
+        if(current_y < yf) current_y = yf;
+      }
+    }
+
+    // Draw sprite at new position
+    for(int y_off = 0; y_off < img_info.height; ++y_off) {
+      for(int x_off = 0; x_off < img_info.width; ++x_off) {
+        vg_draw_pixel(current_x + x_off, current_y + y_off, 
+                     *(img + y_off * img_info.width + x_off));
+      }
+    }
+
+    // Wait for next frame
+    tickdelay(micros_to_ticks(frame_delay));
+
+    // Check for ESC key
+    if(get_scancode() == ESC_KEY_BREAKCODE) break;
+
+    // Handle keyboard interrupts
+    if((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+      printf("driver_receive failed with: %d", r);
+      continue;
+    }
+    if(is_ipc_notify(ipc_status)) {
+      switch(_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if(msg.m_notify.interrupts & BIT(keyboard_bit_no)) {
+            if(!valid_kbc_output(false)) {
+              discard_kbc_output();
+            } else {
+              kbc_ih();
+            }
+          }
+          break;
+      }
+    }
+  }
+
+  // Cleanup
+  if(keyboard_unsubscribe_int()) return 1;
+  if(vg_exit()) return 1;
+
+  return 0;
 }
 
 int(video_test_controller)() {
