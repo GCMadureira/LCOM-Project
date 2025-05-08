@@ -9,7 +9,7 @@
 #include "graphics.h"
 #include "keyboard.h"
 
-// Any header files included below this line should have been created by you
+extern int counter;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -207,16 +207,11 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 }
 
 int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
-                     int16_t speed, uint8_t fr_rate) {
-  int ipc_status, r;
-  uint8_t keyboard_bit_no = 0;
-  message msg;
+  int16_t speed, uint8_t fr_rate) {
 
-  // Subscribe to keyboard interrupts
-  if(keyboard_subscribe_int_exclusive(&keyboard_bit_no)) return 1;
-  
-  // Initialize graphics mode 0x105
-  if(graphics_init(0x105)) return 1;
+  int ipc_status, r;
+  message msg;
+  uint8_t timer_bit_no = 0, keyboard_bit_no = 1;
 
   // Load XPM image
   xpm_image_t img_info;
@@ -226,89 +221,93 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
   // Calculate movement parameters
   int16_t dx = xf - xi;  // horizontal movement
   int16_t dy = yf - yi;  // vertical movement
-  
+
   // Ensure only horizontal or vertical movement
   if(dx != 0 && dy != 0) {
-    if(keyboard_unsubscribe_int()) return 1;
-    if(vg_exit()) return 1;
     return 1;
   }
+
+  // Subscribe to interrupts
+  if(timer_subscribe_int(&timer_bit_no)) return 1;
+  if(keyboard_subscribe_int_exclusive(&keyboard_bit_no)) return 1;
+
+  if(timer_set_frequency(0, fr_rate)) {
+    timer_unsubscribe_int();
+    keyboard_unsubscribe_int();
+    return 1;
+  }
+
+  // Initialize graphics mode 0x105
+  if(graphics_init(0x105)) return 1;
+
 
   // Calculate total distance and frames needed
   int16_t total_distance = (dx != 0) ? abs(dx) : abs(dy);
   int16_t frames_needed;
-  int16_t pixels_per_frame;
-  
+  int16_t x_speed = 0, y_speed = 0;
+
   if(speed > 0) {
     // Speed is pixels per frame
-    pixels_per_frame = speed;
-    frames_needed = (total_distance + pixels_per_frame - 1) / pixels_per_frame; // Ceiling division
+    x_speed = speed;
+    frames_needed = total_distance/speed + 1 + (total_distance%speed != 0);
+    // frames with movement + 1 initial frame + 1 frame for the remaining distance left < speed
   } else {
-    // Speed is frames per pixel
-    frames_needed = total_distance * (-speed);
-    pixels_per_frame = 1;
+  // Speed is frames per pixel
+    x_speed = 1;
+    frames_needed = (total_distance + 1) * (-speed);
   }
 
-  // Calculate frame delay in microseconds
-  uint32_t frame_delay = 1000000 / fr_rate; // Convert fps to microseconds per frame
+  if(dx < 0 || dy < 0) x_speed *= -1; // if movement is to the left
+  if(dy != 0) { // if movement is on the y axis instead of the x axis, invert speeds
+    y_speed = x_speed;
+    x_speed = 0;
+  }
 
   // Current position
   uint16_t current_x = xi;
   uint16_t current_y = yi;
+  int frame = 0;
 
-  // Movement loop
-  for(int frame = 0; frame < frames_needed; frame++) {
-    // Clear previous position by drawing a black rectangle
-    vg_draw_rectangle(current_x, current_y, img_info.width, img_info.height, 0);
-
-    // Calculate new position
-    if(dx != 0) {
-      // Horizontal movement
-      if(dx > 0) {
-        current_x = xi + (frame + 1) * pixels_per_frame;
-        if(current_x > xf) current_x = xf;
-      } else {
-        current_x = xi - (frame + 1) * pixels_per_frame;
-        if(current_x < xf) current_x = xf;
-      }
-    } else {
-      // Vertical movement
-      if(dy > 0) {
-        current_y = yi + (frame + 1) * pixels_per_frame;
-        if(current_y > yf) current_y = yf;
-      } else {
-        current_y = yi - (frame + 1) * pixels_per_frame;
-        if(current_y < yf) current_y = yf;
-      }
-    }
-
-    // Draw sprite at new position
-    for(int y_off = 0; y_off < img_info.height; ++y_off) {
-      for(int x_off = 0; x_off < img_info.width; ++x_off) {
-        vg_draw_pixel(current_x + x_off, current_y + y_off, 
-                     *(img + y_off * img_info.width + x_off));
-      }
-    }
-
-    // Wait for next frame
-    tickdelay(micros_to_ticks(frame_delay));
-
-    // Check for ESC key
-    if(get_scancode() == ESC_KEY_BREAKCODE) break;
-
-    // Handle keyboard interrupts
-    if((r = driver_receive(ANY, &msg, &ipc_status)) != 0) {
+  while(get_scancode() != ESC_KEY_BREAKCODE && frame < frames_needed) {
+    if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
       continue;
     }
-    if(is_ipc_notify(ipc_status)) {
-      switch(_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE:
-          if(msg.m_notify.interrupts & BIT(keyboard_bit_no)) {
-            if(!valid_kbc_output(false)) {
-              discard_kbc_output();
-            } else {
-              kbc_ih();
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:		
+          if (msg.m_notify.interrupts & BIT(keyboard_bit_no)) {
+            if(!valid_kbc_output(false)){ // check if the output buffer has valid data
+              discard_kbc_output(); // discard if not
+            }
+            else kbc_ih(); // handle interrupt if yes
+          }
+          if (msg.m_notify.interrupts & BIT(timer_bit_no)) {
+            timer_int_handler();
+
+            if(counter % (speed < 0 ? abs(speed) : 1) == 0) { // account for negative speed
+              ++frame;
+
+              // Clear previous position by drawing a black rectangle
+              vg_draw_rectangle(current_x - x_speed, current_y - y_speed, img_info.width, img_info.height, 0);
+
+              // Draw sprite at new position
+              for(int y_off = 0; y_off < img_info.height; ++y_off) {
+                for(int x_off = 0; x_off < img_info.width; ++x_off) {
+                  vg_draw_pixel(current_x + x_off, current_y + y_off, 
+                    *(img + y_off * img_info.width + x_off));
+                }
+              }
+
+              // Horizontal movement
+              current_x += x_speed;
+              if((dx > 0 && current_x > xf) || (dx < 0 && current_x < xf)) 
+                current_x = xf;
+
+              // Vertical movement
+              current_y += y_speed;
+              if((dy > 0 && current_y > yf) || (dy < 0 && current_y < yf)) 
+                current_y = yf;
             }
           }
           break;
@@ -317,6 +316,7 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
   }
 
   // Cleanup
+  if(timer_unsubscribe_int()) return 1;
   if(keyboard_unsubscribe_int()) return 1;
   if(vg_exit()) return 1;
 
@@ -329,3 +329,4 @@ int(video_test_controller)() {
 
   return 1;
 }
+
