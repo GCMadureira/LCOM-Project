@@ -10,31 +10,15 @@
 int (game_init)() {
   uint8_t timer_int_no = 0, keyboard_int_no = 1, mouse_int_no = 2;
   const int frame_rate = 60;
-  if(timer_set_frequency(TIMER_0, frame_rate)) return 1;
-  if(timer_subscribe_int(&timer_int_no)) return 1;
-  if(keyboard_subscribe_int_exclusive(&keyboard_int_no)) {
-    timer_unsubscribe_int();
-    return 1;
-  }
-  if(mouse_stream_enable_data_reporting()) {
-    timer_unsubscribe_int();
-    keyboard_unsubscribe_int();
-    return 1;
-  }
-  if(mouse_subscribe_int_exclusive(&mouse_int_no)) {
-    timer_unsubscribe_int();
-    keyboard_unsubscribe_int();
-    mouse_stream_disable_data_reporting();
-    return 1;
-  }
-  if(graphics_init(0x14C)) {
-    timer_unsubscribe_int();
-    keyboard_unsubscribe_int();
-    mouse_stream_disable_data_reporting();
-    mouse_unsubscribe_int();
-    vg_exit();
-    return 1;
-  }
+
+  if(timer_set_frequency(TIMER_0, frame_rate)) return 1; // set the frame rate on timer 0
+  if(timer_subscribe_int(&timer_int_no)) return 1; // subscribe the timer 0 interruptions
+  if(keyboard_subscribe_int_exclusive(&keyboard_int_no)) return 1; // subscribe keyboard ints
+  if(mouse_stream_enable_data_reporting()) return 1; // enable reporting on the mouse
+  if(mouse_subscribe_int_exclusive(&mouse_int_no)) return 1; // subscribe the interruptions reported
+  if(graphics_init(0x14C)) return 1; // set the graphics mode as 0x14C and map the vmem
+  if(loadAllXpm()) return 1; // at the end load all the xpm image assets
+
   return 0;
 }
 
@@ -49,6 +33,7 @@ int (game_clean)() {
 int (proj_main_loop)() {
   if(game_init()) {
     printf("Error: could not initialize the game\n");
+    if(game_clean()) printf("Warning: something went wrong while cleaning up\n");
     return 1;
   }
 
@@ -57,16 +42,7 @@ int (proj_main_loop)() {
 
   unsigned long frame = 0;
 
-  xpm_image_t img_info;
-  uint8_t* img = xpm_load(background_quit_xpm, XPM_8_8_8_8, &img_info);
-  if(img == NULL) {
-    if(game_clean()) {
-      printf("Warning: something went wrong while cleaning up\n");
-      return 1;
-    }
-  }
-
-  vg_draw_image32(100,100,img_info);
+  vg_draw_image32(100,100,start_img);
 
   while(get_scancode() != ESC_KEY_BREAKCODE) {
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 

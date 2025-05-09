@@ -1,0 +1,14 @@
+#include "xpm_files.h"
+
+int (loadAllXpm)() {
+  #include "xpm_files.txt"
+
+  if(xpm_load(background_quit_xpm, XPM_8_8_8_8, &background_quit_img) == NULL) return 1;
+  if(xpm_load(background_start_xpm, XPM_8_8_8_8, &background_start_img) == NULL) return 1;
+  if(xpm_load(background_xpm, XPM_8_8_8_8, &background_img) == NULL) return 1;
+  if(xpm_load(quit_selected_xpm, XPM_8_8_8_8, &quit_selected_img) == NULL) return 1;
+  if(xpm_load(start_selected_xpm, XPM_8_8_8_8, &start_selected_img) == NULL) return 1;
+  if(xpm_load(start_xpm, XPM_8_8_8_8, &start_img) == NULL) return 1;
+
+  return 0;
+}

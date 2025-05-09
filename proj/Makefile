@@ -3,13 +3,13 @@ PROG=proj
 
 # source code files to be compiled
 
-VPATH = drivers
-
-SRCS = game.c graphics.c keyboard.c timer.c utils.c mouse.c kbc.c
+SRCS := $(shell find src -type f -name '*.c')
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
 CFLAGS += -pedantic
+
+CFLAGS += -o $@
 
 # list of library dependencies
 DPADD += ${LIBLCF}
