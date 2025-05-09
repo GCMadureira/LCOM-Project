@@ -10,6 +10,7 @@ SRCS := $(shell find src -type f -name '*.c')
 CFLAGS += -pedantic
 
 CFLAGS += -o $@
+CFLAGS += -Wno-c11-extensions
 
 # list of library dependencies
 DPADD += ${LIBLCF}

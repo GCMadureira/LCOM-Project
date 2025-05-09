@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include "drivers/drivers.h"
+#include "events/events.h"
 #include "resources/xpm_files.h"
 
 
@@ -27,7 +28,7 @@ int (game_clean)() {
   keyboard_unsubscribe_int() |
   mouse_unsubscribe_int() |
   mouse_stream_disable_data_reporting() |
-  vg_exit();
+  vg_exit() | clear_events();
 }
 
 int (proj_main_loop)() {
@@ -42,8 +43,10 @@ int (proj_main_loop)() {
 
   unsigned long frame = 0;
 
-  vg_draw_image32(100,100,start_img);
+  int posX = 0, posY = 0;
+  vg_draw_image32(100, 100, background_img);
 
+  // main loop
   while(get_scancode() != ESC_KEY_BREAKCODE) {
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
@@ -53,20 +56,23 @@ int (proj_main_loop)() {
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE:		
           if (msg.m_notify.interrupts & BIT(0)) { // timer, execute one frame
-            ++frame;
+            ++frame; ++posX, ++posY;
 
+            input_event event;
+            while(get_next_event(&event) == 0) {
+              if(event.event_type == MOUSE_EVENT) 
+                mouse_print_packet(&(event.mouse_packet));
+              else if(event.scancode_nbytes == 1)
+                kbd_print_scancode(is_breakcode(event.scancode_byte1),1,((uint8_t[]){event.scancode_byte1}));
+              else 
+                kbd_print_scancode(is_breakcode(event.scancode_byte2),2,((uint8_t[]){event.scancode_byte1, event.scancode_byte2}));
+            }
           }
           if (msg.m_notify.interrupts & BIT(1)) { // keyboard
-            if(!valid_kbc_output(false)){ // check if the output buffer has valid data
-              discard_kbc_output(); // discard if not
-            }
-            else kbc_ih(); // handle interrupt if yes
+            handle_keyboard_event();
           }
           if (msg.m_notify.interrupts & BIT(2)) { // mouse
-            if(!valid_kbc_output(true)){ // check if the output buffer has valid data
-              discard_kbc_output(); // discard if not
-            }
-            else mouse_ih(); // handle interrupt if yes
+            handle_mouse_event();
           }
           break;
       }
