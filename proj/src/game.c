@@ -4,6 +4,8 @@
 #include <stdio.h>
 
 #include "drivers/drivers.h"
+#include "macros/colors.h"
+#include "macros/scancodes.h"
 #include "events/events.h"
 #include "resources/xpm_files.h"
 
@@ -43,8 +45,8 @@ int (proj_main_loop)() {
 
   unsigned long frame = 0;
 
-  int posX = 0, posY = 0;
-  vg_draw_image32(100, 100, background_img);
+  int posX = 100, posY = 100;
+  vg_draw_image32(posX, posY, background_img);
 
   // main loop
   while(get_scancode() != ESC_KEY_BREAKCODE) {
@@ -56,16 +58,30 @@ int (proj_main_loop)() {
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE:		
           if (msg.m_notify.interrupts & BIT(0)) { // timer, execute one frame
-            ++frame; ++posX, ++posY;
+            ++frame;
 
             input_event event;
             while(get_next_event(&event) == 0) {
-              if(event.event_type == MOUSE_EVENT) 
-                mouse_print_packet(&(event.mouse_packet));
-              else if(event.scancode_nbytes == 1)
-                kbd_print_scancode(is_breakcode(event.scancode_byte1),1,((uint8_t[]){event.scancode_byte1}));
-              else 
-                kbd_print_scancode(is_breakcode(event.scancode_byte2),2,((uint8_t[]){event.scancode_byte1, event.scancode_byte2}));
+              if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_W) {
+                vg_draw_rectangle(posX, posY, background_img.width, background_img.height, COLOR32_BLACK);
+                posY -= 5;
+                vg_draw_image32(posX, posY, background_img);
+              }
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_S) {
+                vg_draw_rectangle(posX, posY, background_img.width, background_img.height, COLOR32_BLACK);
+                posY += 5;
+                vg_draw_image32(posX, posY, background_img);
+              }
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_D) {
+                vg_draw_rectangle(posX, posY, background_img.width, background_img.height, COLOR32_BLACK);
+                posX += 5;
+                vg_draw_image32(posX, posY, background_img);
+              }
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_A) {
+                vg_draw_rectangle(posX, posY, background_img.width, background_img.height, COLOR32_BLACK);
+                posX -= 5;
+                vg_draw_image32(posX, posY, background_img);
+              }
             }
           }
           if (msg.m_notify.interrupts & BIT(1)) { // keyboard

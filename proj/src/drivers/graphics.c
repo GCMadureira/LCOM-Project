@@ -107,7 +107,7 @@ int (map_video_memory)(uint16_t mode){
 
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   if(video_mem == NULL) return 1;
-  if(x < 0 || x >= get_hres() || y < 0 || y >= get_vres()) return 1;
+  if(x >= get_hres() || y >= get_vres()) return 1;
 
   unsigned offset = (y * get_hres() + x) * bytes_per_pixel;
   memcpy(video_mem + offset, &color, bytes_per_pixel);
@@ -117,7 +117,7 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
 
 int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
   if(video_mem == NULL) return 1;
-  if(x < 0 || x >= get_hres() || y < 0 || y >= get_vres()) return 1;
+  if(x >= get_hres() || y >= get_vres()) return 1;
 
   unsigned offset = (y * get_hres() + x) * bytes_per_pixel;
   for(unsigned int i = x; i < x + len && i < get_hres(); ++i){
@@ -130,7 +130,7 @@ int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 
 int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
   if(video_mem == NULL) return 1;
-  if(x < 0 || x >= get_hres() || y < 0 || y >= get_vres()) return 1;
+  if(x >= get_hres() || y >= get_vres()) return 1;
 
   for(int i = y; i < y + height; ++i){
     vg_draw_hline(x, i, width, color);
@@ -141,13 +141,14 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
 
 int (vg_draw_image32)(uint16_t x, uint16_t y, xpm_image_t img_info) {
   if(video_mem == NULL) return 1;
-  if(x < 0 || x >= get_hres() || y < 0 || y >= get_vres()) return 1;
+  if(x >= get_hres() || y >= get_vres()) return 1;
 
-  uint32_t* img = (uint32_t *)img_info.bytes;
+  uint32_t* address = (uint32_t *)img_info.bytes;
 
   for(int y_off = 0; y_off < img_info.height; ++y_off){
     for(int x_off = 0; x_off < img_info.width; ++x_off){
-      vg_draw_pixel(x_off + x, y_off + y, *(img + y_off * img_info.width + x_off));
+      vg_draw_pixel(x_off + x, y_off + y, *(address));
+      ++address;
     }
   }
 
