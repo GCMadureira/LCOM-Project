@@ -147,7 +147,8 @@ int (vg_draw_image32)(uint16_t x, uint16_t y, xpm_image_t img_info) {
 
   for(int y_off = 0; y_off < img_info.height; ++y_off){
     for(int x_off = 0; x_off < img_info.width; ++x_off){
-      vg_draw_pixel(x_off + x, y_off + y, *(address));
+      if(*address != 0x01)
+        vg_draw_pixel(x_off + x, y_off + y, *(address));
       ++address;
     }
   }

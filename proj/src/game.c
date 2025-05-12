@@ -30,7 +30,8 @@ int (game_clean)() {
   keyboard_unsubscribe_int() |
   mouse_unsubscribe_int() |
   mouse_stream_disable_data_reporting() |
-  vg_exit() | clear_events();
+  vg_exit() | clear_events() |
+  timer_set_frequency(TIMER_0, 60);
 }
 
 int (proj_main_loop)() {
@@ -46,7 +47,8 @@ int (proj_main_loop)() {
   unsigned long frame = 0;
 
   int posX = 100, posY = 100;
-  vg_draw_image32(posX, posY, background_img);
+  vg_draw_image32(0, 0, background_img);
+  vg_draw_image32(posX, posY, sprite_img);
 
   // main loop
   while(get_scancode() != ESC_KEY_BREAKCODE) {
@@ -61,26 +63,30 @@ int (proj_main_loop)() {
             ++frame;
 
             input_event event;
-            while(get_next_event(&event) == 0) {
+            while(get_next_event(&event) == 0) {  
               if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_W) {
-                vg_draw_rectangle(posX, posY, background_img.width, background_img.height, COLOR32_BLACK);
+                vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
+                vg_draw_image32(0, 0, background_img);
                 posY -= 5;
-                vg_draw_image32(posX, posY, background_img);
+                vg_draw_image32(posX, posY, sprite_img);
               }
               else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_S) {
-                vg_draw_rectangle(posX, posY, background_img.width, background_img.height, COLOR32_BLACK);
+                vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
+                vg_draw_image32(0, 0, background_img);
                 posY += 5;
-                vg_draw_image32(posX, posY, background_img);
+                vg_draw_image32(posX, posY, sprite_img);
               }
               else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_D) {
-                vg_draw_rectangle(posX, posY, background_img.width, background_img.height, COLOR32_BLACK);
+                vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
+                vg_draw_image32(0, 0, background_img);
                 posX += 5;
-                vg_draw_image32(posX, posY, background_img);
+                vg_draw_image32(posX, posY, sprite_img);
               }
               else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_A) {
-                vg_draw_rectangle(posX, posY, background_img.width, background_img.height, COLOR32_BLACK);
+                vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
+                vg_draw_image32(0, 0, background_img);
                 posX -= 5;
-                vg_draw_image32(posX, posY, background_img);
+                vg_draw_image32(posX, posY, sprite_img);
               }
             }
           }
