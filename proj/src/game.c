@@ -8,6 +8,7 @@
 #include "macros/scancodes.h"
 #include "events/events.h"
 #include "resources/xpm_files.h"
+#include "model/sprites.h"
 
 
 int (game_init)() {
@@ -46,9 +47,9 @@ int (proj_main_loop)() {
 
   unsigned long frame = 0;
 
-  int posX = 100, posY = 100;
-  vg_draw_image32(0, 0, background_img);
-  vg_draw_image32(posX, posY, sprite_img);
+  entity* player = create_entity(1, (xpm_image_t*[]){&sprite_img});
+  vg_draw_image32(0, 0, &background_img);
+  draw_entity(player);
 
   // main loop
   while(get_scancode() != ESC_KEY_BREAKCODE) {
@@ -62,33 +63,30 @@ int (proj_main_loop)() {
           if (msg.m_notify.interrupts & BIT(0)) { // timer, execute one frame
             ++frame;
 
+            vg_draw_image_section32(0, 0, &background_img, player->position.x, player->position.y, sprite_img.width, sprite_img.height);
+
             input_event event;
             while(get_next_event(&event) == 0) {  
-              if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_W) {
-                vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
-                vg_draw_image_section32(0, 0, background_img, posX, posY, sprite_img.width, sprite_img.height);
-                posY -= 5;
-                vg_draw_image32(posX, posY, sprite_img);
-              }
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_S) {
-                vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
-                vg_draw_image_section32(0, 0, background_img, posX, posY, sprite_img.width, sprite_img.height);
-                posY += 5;
-                vg_draw_image32(posX, posY, sprite_img);
-              }
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_D) {
-                vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
-                vg_draw_image_section32(0, 0, background_img, posX, posY, sprite_img.width, sprite_img.height);
-                posX += 5;
-                vg_draw_image32(posX, posY, sprite_img);
-              }
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_A) {
-                vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
-                vg_draw_image_section32(0, 0, background_img, posX, posY, sprite_img.width, sprite_img.height);
-                posX -= 5;
-                vg_draw_image32(posX, posY, sprite_img);
-              }
+              if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_W) 
+                player->speed.y = -2;
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_S) 
+                player->speed.y = 2;
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_D) 
+                player->speed.x = 2;
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_A) 
+                player->speed.x = -2;
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_BK_W) 
+                player->speed.y = 0;
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_BK_S) 
+                player->speed.y = 0;
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_BK_D) 
+                player->speed.x = 0;
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_BK_A) 
+                player->speed.x = 0;
             }
+
+            move_entity(player);
+            draw_entity(player);
           }
           if (msg.m_notify.interrupts & BIT(1)) { // keyboard
             handle_keyboard_event();

@@ -2,6 +2,7 @@
 #define _COLORS_PROJ_H_
 
 // 32 bit colors for mode 0x14C
+#define COLOR32_TRANSPARENT 0x01
 #define COLOR32_BLACK 0
 #define COLOR32_WHITE 0xFFFFFF
 
