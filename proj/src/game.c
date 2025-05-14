@@ -66,25 +66,25 @@ int (proj_main_loop)() {
             while(get_next_event(&event) == 0) {  
               if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_W) {
                 vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
-                vg_draw_image32(0, 0, background_img);
+                vg_draw_image_section32(0, 0, background_img, posX, posY, sprite_img.width, sprite_img.height);
                 posY -= 5;
                 vg_draw_image32(posX, posY, sprite_img);
               }
               else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_S) {
                 vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
-                vg_draw_image32(0, 0, background_img);
+                vg_draw_image_section32(0, 0, background_img, posX, posY, sprite_img.width, sprite_img.height);
                 posY += 5;
                 vg_draw_image32(posX, posY, sprite_img);
               }
               else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_D) {
                 vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
-                vg_draw_image32(0, 0, background_img);
+                vg_draw_image_section32(0, 0, background_img, posX, posY, sprite_img.width, sprite_img.height);
                 posX += 5;
                 vg_draw_image32(posX, posY, sprite_img);
               }
               else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_A) {
                 vg_draw_rectangle(posX, posY, sprite_img.width, sprite_img.height, COLOR32_BLACK);
-                vg_draw_image32(0, 0, background_img);
+                vg_draw_image_section32(0, 0, background_img, posX, posY, sprite_img.width, sprite_img.height);
                 posX -= 5;
                 vg_draw_image32(posX, posY, sprite_img);
               }

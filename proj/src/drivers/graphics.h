@@ -21,5 +21,6 @@ uint32_t (get_blue_color_field)(const uint32_t color);
 
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color);
 int (vg_draw_image32)(uint16_t x, uint16_t y, xpm_image_t img_info);
+int (vg_draw_image_section32)(uint16_t x, uint16_t y, xpm_image_t img_info, uint16_t sectionX, uint16_t sectionY, uint16_t width, uint16_t height);
 
 #endif /*_GRAPHICS_H */
