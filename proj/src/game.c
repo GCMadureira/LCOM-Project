@@ -91,7 +91,6 @@ int (proj_main_loop)() {
           }
           if (msg.m_notify.interrupts & BIT(1)) { // keyboard
             handle_keyboard_event();
-            printf("player: (%d,%d)\narena: (%d,%d)\n\n", player->position.x, player->position.y, arena->position.x, arena->position.y);
           }
           if (msg.m_notify.interrupts & BIT(2)) { // mouse
             handle_mouse_event();

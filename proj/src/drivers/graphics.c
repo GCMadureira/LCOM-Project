@@ -194,9 +194,6 @@ int (vg_draw_image_section32)(int32_t x, int32_t y, xpm_image_t* img_info, uint1
   uint32_t x_start = MAX(0, x), x_end = MIN((int32_t)get_hres(), x + (int32_t)width);
   uint32_t y_start = MAX(0, y), y_end = MIN((int32_t)get_vres(), y + (int32_t)height);
 
-  //printf("args: x:%d | y: %d | x_section:%u | y_section:%u | width:%u | height:%u\n", x, y, x_section, y_section, width, height);
-  //printf("x(%u,%u) | y(%u,%u)\n", x_start, x_end, y_start, y_end);
-
   uint32_t* vmem_address = (uint32_t *)buffer + y_start*get_hres();
   uint32_t* img_address = (uint32_t *)img_info->bytes + y_section*img_info->width + x_section - x_start;
 
