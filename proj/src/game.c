@@ -8,7 +8,7 @@
 #include "macros/scancodes.h"
 #include "events/events.h"
 #include "resources/xpm_files.h"
-#include "model/sprites.h"
+#include "model/arena.h"
 
 
 int (game_init)() {
@@ -47,9 +47,8 @@ int (proj_main_loop)() {
 
   unsigned long frame = 0;
 
-  entity* player = create_entity(1, (xpm_image_t*[]){&sprite_img});
-  vg_draw_image32(0, 0, &background_img);
-  draw_entity(player);
+  arena* arena = create_arena();
+  entity* player = arena->player;
 
   // main loop
   while(get_scancode() != ESC_KEY_BREAKCODE) {
@@ -63,8 +62,7 @@ int (proj_main_loop)() {
           if (msg.m_notify.interrupts & BIT(0)) { // timer, execute one frame
             ++frame;
 
-            vg_draw_image_section32(0, 0, &background_img, player->position.x, player->position.y, sprite_img.width, sprite_img.height);
-
+            //needs to be moved to controller logic
             input_event event;
             while(get_next_event(&event) == 0) {  
               if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_W) 
@@ -85,11 +83,15 @@ int (proj_main_loop)() {
                 player->speed.x = 0;
             }
 
-            move_entity(player);
-            draw_entity(player);
+            move_entities(arena);
+
+            draw_arena(arena);
+
+            show_frame();
           }
           if (msg.m_notify.interrupts & BIT(1)) { // keyboard
             handle_keyboard_event();
+            printf("player: (%d,%d)\narena: (%d,%d)\n\n", player->position.x, player->position.y, arena->position.x, arena->position.y);
           }
           if (msg.m_notify.interrupts & BIT(2)) { // mouse
             handle_mouse_event();
@@ -98,6 +100,8 @@ int (proj_main_loop)() {
       }
     }
   }
+
+  destroy_arena(arena);
 
   if(game_clean()) {
     printf("Warning: something went wrong while cleaning up\n");

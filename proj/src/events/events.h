@@ -2,6 +2,7 @@
 #define _EVENTS_PROJ_H_
 
 #include <lcom/lcf.h>
+#include "../macros/scancodes.h"
 #include "../drivers/mouse.h"
 #include "../drivers/keyboard.h"
 

@@ -5,8 +5,8 @@
 
 xpm_image_t sprite_img;
 extern xpm_image_t sprite_img;
-//xpm_image_t background_start_img;
-//extern xpm_image_t background_start_img;
+xpm_image_t game_background_img;
+extern xpm_image_t game_background_img;
 xpm_image_t background_img;
 extern xpm_image_t background_img;
 //xpm_image_t quit_selected_img;

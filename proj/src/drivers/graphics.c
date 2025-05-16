@@ -2,12 +2,12 @@
 #include <math.h>
 
 
-static char* video_mem = NULL;
+static char* buffer = NULL, *video_mem = NULL;
 static vbe_mode_info_t mode_info;
 static int bytes_per_pixel;
 
-void* (get_video_mem)(){
-  return video_mem;
+void* (get_buffer)(){
+  return buffer;
 }
 
 vbe_mode_info_t (get_current_mode_info)(){
@@ -76,11 +76,11 @@ int (map_video_memory)(uint16_t mode){
   // get the mode information
   if(vbe_get_mode_info(mode, &mode_info)) return 1;
 
-  vram_base = mode_info.PhysBasePtr;
-  vram_size = get_hres()*get_vres()*ceil((double)get_bits_per_pixel()/8);
-
   // ceil accounts for bits per pixel like mode 0x110 (not multiple of 8)
   bytes_per_pixel = ceil((double)get_bits_per_pixel()/8);
+
+  vram_base = mode_info.PhysBasePtr;
+  vram_size = get_hres()*get_vres()*bytes_per_pixel;
 
   /* Allow memory mapping */
 
@@ -94,6 +94,7 @@ int (map_video_memory)(uint16_t mode){
 
   /* Map memory */
 
+  buffer = (char*)malloc(vram_size);
   video_mem = vm_map_phys(SELF, (void *)mr.mr_base, vram_size);
 
   if(video_mem == MAP_FAILED) {
@@ -106,22 +107,22 @@ int (map_video_memory)(uint16_t mode){
 
 
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
-  if(video_mem == NULL) return 1;
+  if(buffer == NULL) return 1;
   if(x >= get_hres() || y >= get_vres()) return 1;
 
   unsigned offset = (y * get_hres() + x) * bytes_per_pixel;
-  memcpy(video_mem + offset, &color, bytes_per_pixel);
+  memcpy(buffer + offset, &color, bytes_per_pixel);
 
   return 0;
 }
 
 int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
-  if(video_mem == NULL) return 1;
+  if(buffer == NULL) return 1;
   if(x >= get_hres() || y >= get_vres()) return 1;
 
   unsigned offset = (y * get_hres() + x) * bytes_per_pixel;
   for(unsigned int i = x; i < x + len && i < get_hres(); ++i){
-    memcpy(video_mem + offset, &color, bytes_per_pixel);
+    memcpy(buffer + offset, &color, bytes_per_pixel);
     offset += bytes_per_pixel;
   }
 
@@ -129,7 +130,7 @@ int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 }
 
 int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
-  if(video_mem == NULL) return 1;
+  if(buffer == NULL) return 1;
   if(x >= get_hres() || y >= get_vres()) return 1;
 
   for(int i = y; i < y + height; ++i){
@@ -140,7 +141,7 @@ int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height,
 }
 
 int (vg_draw_rectangle32)(int32_t x, int32_t y, uint16_t width, uint16_t height, uint32_t color) {
-  if(video_mem == NULL) return 1;
+  if(buffer == NULL) return 1;
   if(x >= (int32_t)get_hres() || x + (int32_t)width < 0 ||
      y >= (int32_t)get_vres() || y + (int32_t)height < 0 ) return 1;
 
@@ -149,7 +150,7 @@ int (vg_draw_rectangle32)(int32_t x, int32_t y, uint16_t width, uint16_t height,
   uint32_t x_start = MAX(0, x), x_end = MIN((int32_t)get_hres(), x + (int32_t)width);
   uint32_t y_start = MAX(0, y), y_end = MIN((int32_t)get_vres(), y + (int32_t)height);
 
-  uint32_t* vmem_address = (uint32_t *)video_mem + y_start * get_hres();
+  uint32_t* vmem_address = (uint32_t *)buffer + y_start * get_hres();
 
   for(uint32_t y_off = y_start; y_off < y_end; ++y_off){
     for(uint32_t x_off = x_start; x_off < x_end; ++x_off){
@@ -162,14 +163,14 @@ int (vg_draw_rectangle32)(int32_t x, int32_t y, uint16_t width, uint16_t height,
 }
 
 int (vg_draw_image32)(int32_t x, int32_t y, xpm_image_t* img_info) {
-  if(video_mem == NULL) return 1;
+  if(buffer == NULL) return 1;
   if(x >= (int32_t)get_hres() || x + (int32_t)img_info->width < 0 ||
      y >= (int32_t)get_vres() || y + (int32_t)img_info->height < 0 ) return 1;
 
   uint32_t x_start = MAX(0, x), x_end = MIN((int32_t)get_hres(), x + (int32_t)img_info->width);
   uint32_t y_start = MAX(0, y), y_end = MIN((int32_t)get_vres(), y + (int32_t)img_info->height);
 
-  uint32_t* vmem_address = (uint32_t *)video_mem + y_start*get_hres();
+  uint32_t* vmem_address = (uint32_t *)buffer + y_start*get_hres();
   uint32_t* img_address = (uint32_t *)img_info->bytes + (y_start - y)*img_info->width;
 
   for(uint32_t y_off = y_start; y_off < y_end; ++y_off){
@@ -184,25 +185,35 @@ int (vg_draw_image32)(int32_t x, int32_t y, xpm_image_t* img_info) {
   return 0;
 }
 
-int (vg_draw_image_section32)(int32_t x, int32_t y, xpm_image_t* img_info, int32_t x_section,  int32_t y_section, uint16_t width, uint16_t height) {
-  if(video_mem == NULL) return 1;
-  if(x_section >= (int32_t)get_hres() || x_section + (int32_t)width < 0 ||
-     y_section >= (int32_t)get_vres() || y_section + (int32_t)height < 0 ) return 1;
+int (vg_draw_image_section32)(int32_t x, int32_t y, xpm_image_t* img_info, uint16_t x_section,  uint16_t y_section, uint16_t width, uint16_t height) {
+  if(buffer == NULL) return 1;
+  if(x >= (int32_t)get_hres() || x + (int32_t)width < 0 ||
+     y >= (int32_t)get_vres() || y + (int32_t)height < 0 ||
+     x_section >= img_info->width || y_section >= img_info->height) return 1;
 
-  uint32_t x_start = MAX(0, x_section), x_end = MIN((int32_t)get_hres(), x_section+(int32_t)width);
-  uint32_t y_start = MAX(0, y_section), y_end = MIN((int32_t)get_vres(), y_section+(int32_t)height);
+  uint32_t x_start = MAX(0, x), x_end = MIN((int32_t)get_hres(), x + (int32_t)width);
+  uint32_t y_start = MAX(0, y), y_end = MIN((int32_t)get_vres(), y + (int32_t)height);
 
-  uint32_t* vmem_address = (uint32_t *)video_mem + y_start * get_hres();
-  uint32_t* img_address = (uint32_t *)img_info->bytes + (y_start - y)*img_info->width;
+  //printf("args: x:%d | y: %d | x_section:%u | y_section:%u | width:%u | height:%u\n", x, y, x_section, y_section, width, height);
+  //printf("x(%u,%u) | y(%u,%u)\n", x_start, x_end, y_start, y_end);
+
+  uint32_t* vmem_address = (uint32_t *)buffer + y_start*get_hres();
+  uint32_t* img_address = (uint32_t *)img_info->bytes + y_section*img_info->width + x_section - x_start;
 
   for(uint32_t y_off = y_start; y_off < y_end; ++y_off){
     for(uint32_t x_off = x_start; x_off < x_end; ++x_off){
-      if(*(img_address + x_off - x) != COLOR32_TRANSPARENT)
-        memcpy(vmem_address + x_off, img_address + x_off - x, 4);
+      if(*(img_address + x_off) != COLOR32_TRANSPARENT)
+        memcpy(vmem_address + x_off, img_address + x_off, 4);
     }
     vmem_address += get_hres(); // move to next vmem line
     img_address += img_info->width; // move to next image line
   }
 
+  return 0;
+}
+
+int (show_frame)() {
+  if(video_mem == NULL) return 1;
+  memcpy(video_mem, buffer, get_hres()*get_vres()*bytes_per_pixel);
   return 0;
 }
