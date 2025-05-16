@@ -47,12 +47,18 @@ int (proj_main_loop)() {
 
   unsigned long frame = 0;
 
-  entity* player = create_entity(1, (xpm_image_t*[]){&sprite_img});
-  vg_draw_image32(0, 0, &background_img);
-  draw_entity(player);
+  // 1 -> Start selected | 0 -> Quit selected
+  int menuStatus = 1;
+
+  // Bool to know if game is running (enables emulation of ESC)
+  bool running = true;
+
+
+  // entity* player = create_entity(1, (xpm_image_t*[]){&sprite_img});
+  vg_draw_image32(0, 0, &start_selected_img);
 
   // main loop
-  while(get_scancode() != ESC_KEY_BREAKCODE) {
+  while(running && get_scancode() != ESC_KEY_BREAKCODE) {
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
       continue;
@@ -62,31 +68,31 @@ int (proj_main_loop)() {
         case HARDWARE:		
           if (msg.m_notify.interrupts & BIT(0)) { // timer, execute one frame
             ++frame;
-
-            vg_draw_image_section32(0, 0, &background_img, player->position.x, player->position.y, sprite_img.width, sprite_img.height);
-
             input_event event;
-            while(get_next_event(&event) == 0) {  
-              if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_W) 
-                player->speed.y = -2;
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_S) 
-                player->speed.y = 2;
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_D) 
-                player->speed.x = 2;
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_A) 
-                player->speed.x = -2;
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_BK_W) 
-                player->speed.y = 0;
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_BK_S) 
-                player->speed.y = 0;
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_BK_D) 
-                player->speed.x = 0;
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_BK_A) 
-                player->speed.x = 0;
-            }
 
-            move_entity(player);
-            draw_entity(player);
+            while(get_next_event(&event) == 0) {  
+
+              if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_W) 
+                // This will make menuStatus 0 if it was 1 and 1 if it was 0
+                menuStatus = 1 - menuStatus;
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_S) 
+                menuStatus = 1 - menuStatus;
+              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_ENTER) {
+                if (menuStatus) {
+                  // startGame();
+                } else {
+                  running = false;
+                }
+              }
+
+              if (menuStatus) {
+                vg_draw_image32(0, 0, &start_selected_img);
+              } else {
+                vg_draw_image32(0, 0, &quit_selected_img);
+              }
+            }
+            
+
           }
           if (msg.m_notify.interrupts & BIT(1)) { // keyboard
             handle_keyboard_event();

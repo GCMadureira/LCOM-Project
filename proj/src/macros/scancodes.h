@@ -11,4 +11,11 @@
 #define KEY_MK_D 0x20
 #define KEY_BK_D 0xA0
 
+// Arrow keys
+
+
+// Enter key (main Enter)
+#define KEY_MK_ENTER  0x1C
+#define KEY_BK_ENTER  0x9C
+
 #endif /*_SCANCODES_PROJ_H_ */
