@@ -14,6 +14,15 @@ extern xpm_image_t start_selected_img;
 xpm_image_t quit_selected_img;
 extern xpm_image_t quit_selected_img;
 
+// Player idle animation frames
+xpm_image_t pharaoh_idle_frame0_img;
+extern xpm_image_t pharaoh_idle_frame0_img;
+xpm_image_t pharaoh_idle_frame1_img;
+extern xpm_image_t pharaoh_idle_frame1_img;
+xpm_image_t pharaoh_idle_frame2_img;
+xpm_image_t pharaoh_idle_frame3_img;
+extern xpm_image_t pharaoh_idle_frame3_img;
+
 int (loadAllXpm)();
 
 #endif /*_XPM_FILES_PROJ_H */
