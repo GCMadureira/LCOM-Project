@@ -9,6 +9,7 @@
 #include "events/events.h"
 #include "resources/xpm_files.h"
 #include "model/sprites.h"
+#include "controller/main_controller.h"
 
 
 int (game_init)() {
@@ -45,20 +46,10 @@ int (proj_main_loop)() {
   int ipc_status, r;
   message msg;
 
-  unsigned long frame = 0;
-
-  // 1 -> Start selected | 0 -> Quit selected
-  int menuStatus = 1;
-
-  // Bool to know if game is running (enables emulation of ESC)
-  bool running = true;
-
-
-  // entity* player = create_entity(1, (xpm_image_t*[]){&sprite_img});
-  vg_draw_image32(0, 0, &start_selected_img);
+  setup_game();
 
   // main loop
-  while(running && get_scancode() != ESC_KEY_BREAKCODE) {
+  while(get_scancode() != ESC_KEY_BREAKCODE && get_game_state() != QUIT) {
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
       continue;
@@ -67,32 +58,7 @@ int (proj_main_loop)() {
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE:		
           if (msg.m_notify.interrupts & BIT(0)) { // timer, execute one frame
-            ++frame;
-            input_event event;
-
-            while(get_next_event(&event) == 0) {  
-
-              if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_W) 
-                // This will make menuStatus 0 if it was 1 and 1 if it was 0
-                menuStatus = 1 - menuStatus;
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_S) 
-                menuStatus = 1 - menuStatus;
-              else if(event.event_type == KEYBOARD_EVENT && event.scancode_byte1 == KEY_MK_ENTER) {
-                if (menuStatus) {
-                  // startGame();
-                } else {
-                  running = false;
-                }
-              }
-
-              if (menuStatus) {
-                vg_draw_image32(0, 0, &start_selected_img);
-              } else {
-                vg_draw_image32(0, 0, &quit_selected_img);
-              }
-            }
-            
-
+            process_frame();
           }
           if (msg.m_notify.interrupts & BIT(1)) { // keyboard
             handle_keyboard_event();
@@ -104,6 +70,8 @@ int (proj_main_loop)() {
       }
     }
   }
+
+  clean_game();
 
   if(game_clean()) {
     printf("Warning: something went wrong while cleaning up\n");
