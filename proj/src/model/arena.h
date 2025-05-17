@@ -9,7 +9,7 @@
 
 typedef struct {
   entity* player;
-  vec2d position;
+  double pos_x, pos_y;
   xpm_image_t* background_image;
 } arena;
 
