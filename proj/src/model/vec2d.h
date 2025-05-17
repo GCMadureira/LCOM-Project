@@ -4,7 +4,7 @@
 #include <lcom/lcf.h>
 
 typedef struct {
-  uint32_t x, y;
+  int32_t x, y;
 } vec2d;
 
 vec2d (vec2d_add)(vec2d left, vec2d right);

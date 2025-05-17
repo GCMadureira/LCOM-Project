@@ -23,6 +23,8 @@ uint32_t (get_blue_color_field)(const uint32_t color);
 int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color);
 int (vg_draw_rectangle32)(int32_t x, int32_t y, uint16_t width, uint16_t height, uint32_t color);
 int (vg_draw_image32)(int32_t x, int32_t y, xpm_image_t* img_info);
-int (vg_draw_image_section32)(int32_t x, int32_t y, xpm_image_t* img_info, int32_t x_section,  int32_t y_section, uint16_t width, uint16_t height);
+int (vg_draw_image_section32)(int32_t x, int32_t y, xpm_image_t* img_info, uint16_t x_section,  uint16_t y_section, uint16_t width, uint16_t height);
+
+int (show_frame)();
 
 #endif /*_GRAPHICS_H */

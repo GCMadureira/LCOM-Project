@@ -3,6 +3,7 @@
 
 #include <lcom/lcf.h>
 #include "../model/menu.h"
+#include "../model/arena.h"
 #include "../events/events.h"
 #include "../macros/scancodes.h"
 

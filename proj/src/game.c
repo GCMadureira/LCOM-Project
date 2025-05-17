@@ -4,11 +4,7 @@
 #include <stdio.h>
 
 #include "drivers/drivers.h"
-#include "macros/colors.h"
 #include "macros/scancodes.h"
-#include "events/events.h"
-#include "resources/xpm_files.h"
-#include "model/sprites.h"
 #include "controller/main_controller.h"
 
 
