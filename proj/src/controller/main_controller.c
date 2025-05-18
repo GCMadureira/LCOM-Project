@@ -48,9 +48,11 @@ static int (process_game)(){
     if(event.event_type == KEYBOARD_EVENT) {
       switch (event.scancode_byte1) {
         case KEY_MK_W: //moving up
+          player->idle_front = false;
           player->speed_y = -3;
           break;
         case KEY_MK_S: //moving down
+          player->idle_front = true;
           player->speed_y = 3;
           break;
         case KEY_MK_D: //moving right
@@ -89,16 +91,23 @@ int (process_frame)() {
     draw_arena(active_arena);
   }
 
-  return show_frame();
+  show_frame();
+  ++frame;
+
+  return 0;
 }
 
 int (setup_game)() {
+  load_static_images();
+  load_animations();
   active_menu = create_main_menu();
   game_state = MAIN_MENU;
   return 0;
 }
 
 int (clean_game)() {
+  clear_events();
+  clean_animations();
   if(active_menu != NULL) destroy_menu(active_menu);
   if(active_arena != NULL) destroy_arena(active_arena);
   return 0;

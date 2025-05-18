@@ -2,16 +2,13 @@
 #define _ARENA_PROJ_H_
 
 #include <lcom/lcf.h>
+
 #include "entity.h"
+#include "structs.h"
 #include "../events/events.h"
 #include "../drivers/graphics.h"
-#include "../resources/xpm_files.h"
+#include "../controller/main_controller.h"
 
-typedef struct {
-  entity* player;
-  double pos_x, pos_y;
-  xpm_image_t* background_image;
-} arena;
 
 int (draw_arena)(arena* arena);
 arena* (create_arena)();

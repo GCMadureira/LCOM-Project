@@ -2,10 +2,12 @@
 #define _MAIN_CONTROLLER_PROJ_H_
 
 #include <lcom/lcf.h>
+
 #include "../model/menu.h"
 #include "../model/arena.h"
 #include "../events/events.h"
 #include "../macros/scancodes.h"
+#include "../viewer/static_images.h"
 
 enum game_state {
   QUIT,
