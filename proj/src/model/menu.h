@@ -2,15 +2,10 @@
 #define _MENU_PROJ_H_
 
 #include <lcom/lcf.h>
-#include "../resources/xpm_files.h"
+
 #include "../drivers/graphics.h"
-
-
-typedef struct {
-  int menu_status; // indicates which option is selected
-  int num_options; // total num of options
-  xpm_image_t** sprites;
-} menu;
+#include "../viewer/static_images.h"
+#include "structs.h"
 
 
 int (menu_select_option_up)(menu* menu);

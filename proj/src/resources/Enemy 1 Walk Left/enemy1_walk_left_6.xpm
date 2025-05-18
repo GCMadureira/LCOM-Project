@@ -1,16 +1,16 @@
 /* XPM */
-static const char *enemy1_walk_left_6[] = {
+static xpm_row_t enemy1_walk_left_6[] = {
 /* columns rows colors chars-per-pixel */
 "54 87 9 1 ",
-"  c black",
+"  c #000000",
 ". c #9E9E9D",
 "X c #B39F88",
 "o c #B3A088",
 "O c #D9B88F",
 "+ c #F2CDA0",
 "@ c #DDD6C4",
-"# c white",
-"$ c None",
+"# c #FFFFFF",
+"$ c #000001",
 /* pixels */
 "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",
 "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",

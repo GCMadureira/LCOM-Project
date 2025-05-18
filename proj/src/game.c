@@ -1,5 +1,4 @@
 #include <lcom/lcf.h>
-
 #include <stdint.h>
 #include <stdio.h>
 
@@ -18,31 +17,29 @@ int (game_init)() {
   if(mouse_stream_enable_data_reporting()) return 1; // enable reporting on the mouse
   if(mouse_subscribe_int_exclusive(&mouse_int_no)) return 1; // subscribe the interruptions reported
   if(graphics_init(0x14C)) return 1; // set the graphics mode as 0x14C and map the vmem
-  if(loadAllXpm()) return 1; // at the end load all the xpm image assets
+
+  if(setup_game()) return 1;
 
   return 0;
 }
 
-int (game_clean)() {
+int (game_exit)() {
   return timer_unsubscribe_int() |
   keyboard_unsubscribe_int() |
   mouse_unsubscribe_int() |
   mouse_stream_disable_data_reporting() |
-  vg_exit() | clear_events() |
-  timer_set_frequency(TIMER_0, 60);
+  vg_exit() | timer_set_frequency(TIMER_0, 60);
 }
 
 int (proj_main_loop)() {
   if(game_init()) {
     printf("Error: could not initialize the game\n");
-    if(game_clean()) printf("Warning: something went wrong while cleaning up\n");
+    if(game_exit()) printf("Warning: something went wrong while cleaning up\n");
     return 1;
   }
 
   int ipc_status, r;
   message msg;
-
-  setup_game();
 
   // main loop
   while(get_scancode() != ESC_KEY_BREAKCODE && get_game_state() != QUIT) {
@@ -69,7 +66,7 @@ int (proj_main_loop)() {
 
   clean_game();
 
-  if(game_clean()) {
+  if(game_exit()) {
     printf("Warning: something went wrong while cleaning up\n");
     return 1;
   }

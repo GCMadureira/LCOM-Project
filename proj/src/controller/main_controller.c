@@ -29,6 +29,7 @@ static int (process_menu)(){
             game_state = GAME;
             active_arena = create_arena();
             destroy_menu(active_menu);
+            return 0;
           }
           else if (active_menu->menu_status == 1) game_state = QUIT;
           break;
@@ -46,25 +47,31 @@ static int (process_game)(){
   while(get_next_event(&event) == 0) {
     if(event.event_type == KEYBOARD_EVENT) {
       switch (event.scancode_byte1) {
-        case KEY_MK_W:
-          player->speed.y = -2;
+        case KEY_MK_W: //moving up
+          player->idle_front = false;
+          player->speed_y = -3;
           break;
-        case KEY_MK_S:
-          player->speed.y = 2;
+        case KEY_MK_S: //moving down
+          player->idle_front = true;
+          player->speed_y = 3;
           break;
-        case KEY_MK_D:
-          player->speed.x = 2;
+        case KEY_MK_D: //moving right
+          player->speed_x = 3;
           break;
-        case KEY_MK_A:
-          player->speed.x = -2;
+        case KEY_MK_A: //moving left
+          player->speed_x = -3;
           break;
         case KEY_BK_W:
+          if(player->speed_y < 0) player->speed_y = 0;
+          break;
         case KEY_BK_S:
-          player->speed.y = 0;
+          if(player->speed_y > 0) player->speed_y = 0;
           break;
         case KEY_BK_D:
+          if(player->speed_x > 0) player->speed_x = 0;
+          break;
         case KEY_BK_A:
-          player->speed.x = 0;
+          if(player->speed_x < 0) player->speed_x = 0;
           break;
       }
     }
@@ -84,16 +91,23 @@ int (process_frame)() {
     draw_arena(active_arena);
   }
 
-  return show_frame();
+  show_frame();
+  ++frame;
+
+  return 0;
 }
 
 int (setup_game)() {
+  if(load_static_images()) return 1;
+  if(load_animations()) return 1;
   active_menu = create_main_menu();
   game_state = MAIN_MENU;
   return 0;
 }
 
 int (clean_game)() {
+  clear_events();
+  clean_animations();
   if(active_menu != NULL) destroy_menu(active_menu);
   if(active_arena != NULL) destroy_arena(active_arena);
   return 0;
