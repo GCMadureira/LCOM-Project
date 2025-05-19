@@ -44,37 +44,57 @@ static int (load_pharaoh_animations)() {
   xpm_image_t* current_image;
 
   pharaoh_animations = (animation*)malloc(sizeof(animation) * 10); //one for each direction
-
   //pharaoh idle up
-  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 2);
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(pharaoh_idle_up_0, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[0] = current_image;
+  sprites[1] = current_image;
+  sprites[2] = current_image;
+  sprites[3] = current_image;
+
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(pharaoh_idle_up_1, XPM_8_8_8_8, current_image) == NULL) return 1;
-  sprites[1] = current_image;
+  sprites[4] = current_image;
+  sprites[5] = current_image;
+  sprites[6] = current_image;
+  sprites[7] = current_image;
 
-  pharaoh_animations[UP] = (animation){2, sprites};
-  pharaoh_animations[IDLE_UP] = (animation){2, sprites};
+  pharaoh_animations[UP] = (animation){8, sprites};
+  pharaoh_animations[IDLE_UP] = (animation){8, sprites};
   
-
   //pharaoh idle down
-  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 4);
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 16);
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(pharaoh_idle_down_0, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[0] = current_image;
-  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
-  if(xpm_load(pharaoh_idle_down_1, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[1] = current_image;
-  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
-  if(xpm_load(pharaoh_idle_down_2, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[2] = current_image;
-  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
-  if(xpm_load(pharaoh_idle_down_3, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[3] = current_image;
 
-  pharaoh_animations[DOWN] = (animation){4, sprites};
-  pharaoh_animations[IDLE_DOWN] = (animation){4, sprites};
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(pharaoh_idle_down_1, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[4] = current_image;
+  sprites[5] = current_image;
+  sprites[6] = current_image;
+  sprites[7] = current_image;
+
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(pharaoh_idle_down_2, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[8] = current_image;
+  sprites[9] = current_image;
+  sprites[10] = current_image;
+  sprites[11] = current_image;
+
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(pharaoh_idle_down_3, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[12] = current_image;
+  sprites[13] = current_image;
+  sprites[14] = current_image;
+  sprites[15] = current_image;
+
+  pharaoh_animations[DOWN] = (animation){16, sprites};
+  pharaoh_animations[IDLE_DOWN] = (animation){16, sprites};
 
 
   //pharaoh walk left
@@ -91,6 +111,7 @@ static int (load_pharaoh_animations)() {
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(pharaoh_walk_left_3, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[3] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(pharaoh_walk_left_4, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[4] = current_image;
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
@@ -103,9 +124,9 @@ static int (load_pharaoh_animations)() {
   if(xpm_load(pharaoh_walk_left_7, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[7] = current_image;
 
-  pharaoh_animations[LEFT] = (animation){4, sprites};
-  pharaoh_animations[DOWN_LEFT] = (animation){4, sprites};
-  pharaoh_animations[UP_LEFT] = (animation){4, sprites};
+  pharaoh_animations[LEFT] = (animation){8, sprites};
+  pharaoh_animations[DOWN_LEFT] = (animation){8, sprites};
+  pharaoh_animations[UP_LEFT] = (animation){8, sprites};
 
 
   //pharaoh walk right
@@ -122,6 +143,7 @@ static int (load_pharaoh_animations)() {
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(pharaoh_walk_right_3, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[3] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(pharaoh_walk_right_4, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[4] = current_image;
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
@@ -134,9 +156,9 @@ static int (load_pharaoh_animations)() {
   if(xpm_load(pharaoh_walk_right_7, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[7] = current_image;
 
-  pharaoh_animations[RIGHT] = (animation){4, sprites};
-  pharaoh_animations[DOWN_RIGHT] = (animation){4, sprites};
-  pharaoh_animations[UP_RIGHT] = (animation){4, sprites};
+  pharaoh_animations[RIGHT] = (animation){8, sprites};
+  pharaoh_animations[DOWN_RIGHT] = (animation){8, sprites};
+  pharaoh_animations[UP_RIGHT] = (animation){8, sprites};
 
 
   return 0;

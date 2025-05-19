@@ -4,7 +4,7 @@ int (draw_arena)(arena* arena) {
   animation animation = arena->player->animations[get_entity_direction(arena->player)];
 
   vg_draw_image_section32(0, 0, arena->background_image, arena->pos_x, arena->pos_y, get_hres(), get_vres()); //draw the visible section of the arena
-  vg_draw_image32(arena->player->pos_x - arena->pos_x, arena->player->pos_y - arena->pos_y, animation.sprites[(get_current_frame()%(animation.n_frames * 30))/30]); //draw the player
+  vg_draw_image32(arena->player->pos_x - arena->pos_x, arena->player->pos_y - arena->pos_y, animation.sprites[(get_current_frame()%(animation.n_frames * 8))/8]); //draw the player
   return 0;
 }
 
