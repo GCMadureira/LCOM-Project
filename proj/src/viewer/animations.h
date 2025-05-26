@@ -23,6 +23,7 @@ int (destroy_animation)(animation animation);
 
 //the animations themselves
 extern animation* pharaoh_animations;
+extern animation* enemy_animations;
 
 
 #endif /* _ANIMATIONS_PROJ_H_ */

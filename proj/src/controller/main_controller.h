@@ -5,6 +5,7 @@
 
 #include "../model/menu.h"
 #include "../model/arena.h"
+#include "../model/enemy.h"
 #include "../events/events.h"
 #include "../macros/scancodes.h"
 #include "../viewer/static_images.h"
@@ -15,11 +16,18 @@ enum game_state {
   GAME
 };
 
+// Declare external variables
+extern arena* active_arena;
+extern enum game_state game_state;
+
 int (process_frame)();
 enum game_state (get_game_state)();
 unsigned long (get_current_frame)();
 
 int (setup_game)();
 int (clean_game)();
+
+// Function to handle enemy spawning
+void (handle_enemy_spawning)();
 
 #endif /*_MAIN_CONTROLLER_PROJ_H_ */
