@@ -11,7 +11,7 @@ int (menu_select_option_down)(menu* menu){
   return 0;
 }
 
-menu* (create_main_menu)() {
+menu* (menu_create_main)() {
   menu* main_menu = (menu*)malloc(sizeof(menu));
 
   main_menu->menu_status = 0;
@@ -23,13 +23,8 @@ menu* (create_main_menu)() {
   return main_menu;
 }
 
-int (destroy_menu)(menu* menu){
+int (menu_destroy)(menu* menu){
   free(menu->sprites);
   free(menu);
-  return 0;
-}
-
-int (draw_menu)(menu* menu){
-  vg_draw_image32(0, 0, menu->sprites[menu->menu_status]);
   return 0;
 }

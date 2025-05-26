@@ -4,7 +4,7 @@ animation* pharaoh_animations;
 animation* enemy_animations;
 
 
-enum animation_direction (get_entity_direction)(entity* entity) {
+enum animation_direction (entity_get_direction)(entity* entity) {
   if(entity->speed_x > 0 && entity->speed_y > 0) return DOWN_RIGHT;
   if(entity->speed_x > 0 && entity->speed_y < 0) return UP_RIGHT;
   if(entity->speed_x > 0 && entity->speed_y == 0) return RIGHT;
@@ -17,16 +17,19 @@ enum animation_direction (get_entity_direction)(entity* entity) {
 }
 
 
-int (clean_animations)() {
-  for(int i = 0; i < 10; ++i)
-    destroy_animation(pharaoh_animations[i]);
+int (animations_clean)() {
+  for(int i = 0; i < 10; ++i) {
+    animation_destroy(pharaoh_animations[i]);
+    animation_destroy(enemy_animations[i]);
+  }
 
   free(pharaoh_animations);
+  free(enemy_animations);
 
   return 0;
 }
 
-int (destroy_animation)(animation animation) {
+int (animation_destroy)(animation animation) {
   for(uint32_t i = 0; i < animation.n_frames; ++i){
     free(animation.sprites[i]);
   }
@@ -245,7 +248,7 @@ static int (load_enemy_animations)() {
   return 0;
 }
 
-int (load_animations)() {
+int (animations_load)() {
   // Load pharaoh & enemy animations
   if(load_pharaoh_animations()) return 1;
   if(load_enemy_animations()) return 1;

@@ -10,10 +10,8 @@
 #include "../controller/main_controller.h"
 
 
-int (draw_arena)(arena* arena);
-arena* (create_arena)();
-int (destroy_arena)(arena* arena);
-int (move_entities)(arena* arena);
+arena* (arena_create)();
+int (arena_destroy)(arena* arena);
 
 
 #endif /*_ARENA_PROJ_H_*/

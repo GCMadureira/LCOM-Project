@@ -33,15 +33,28 @@ typedef struct {
 
 typedef struct {
   double pos_x, pos_y;
-  double speed_x, speed_y;
+  double speed_x, speed_y; // this vector gets normalized
+  double speed_multiplier; //this is the real speed
   bool idle_front;
   uint32_t health;
   uint32_t n_sprites;
   animation* animations;
 } entity;
 
+typedef struct _entity_node entity_node;
+struct _entity_node{
+  entity* entity;
+  entity_node* next_entity;
+};
+
+typedef struct {
+  uint32_t size;
+  entity_node* first_entity;
+} entity_list;
+
 typedef struct {
   entity* player;
+  entity_list* enemies;
   double pos_x, pos_y;
   xpm_image_t* background_image;
 } arena;

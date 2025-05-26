@@ -3,7 +3,7 @@
 static int mouse_hook_id;
 static uint8_t mouse_packet_byte;
 
-uint8_t (get_mouse_packet_byte)(){
+uint8_t (mouse_get_packet_byte)(){
   return mouse_packet_byte;
 }
 
@@ -25,8 +25,8 @@ void (mouse_ih)(){
 int (mouse_stream_enable_data_reporting)(){
   uint8_t status;
   for(int i = 0; i < 5; ++i){ // wait for 100ms max
-    if(write_kbc_command(WR_MOUSE_BYTE)) return 1; //try to enable data reporting
-    if(write_kbc_command_arg(ENABLE_DATA_REPORTING)) return 1;
+    if(kbc_write_command(WR_MOUSE_BYTE)) return 1; //try to enable data reporting
+    if(kbc_write_command_arg(ENABLE_DATA_REPORTING)) return 1;
 
     tickdelay(micros_to_ticks(20000));
 
@@ -39,8 +39,8 @@ int (mouse_stream_enable_data_reporting)(){
 int (mouse_stream_disable_data_reporting)(){
   uint8_t status;
   for(int i = 0; i < 5; ++i){ // wait for 100ms max
-    if(write_kbc_command(WR_MOUSE_BYTE)) return 1; // try to disable data reporting
-    if(write_kbc_command_arg(DISABLE_DATA_REPORTING)) return 1;
+    if(kbc_write_command(WR_MOUSE_BYTE)) return 1; // try to disable data reporting
+    if(kbc_write_command_arg(DISABLE_DATA_REPORTING)) return 1;
 
     tickdelay(micros_to_ticks(20000));
 
@@ -50,7 +50,7 @@ int (mouse_stream_disable_data_reporting)(){
   return 1;
 }
 
-struct packet (assemble_packet)(uint8_t packet_bytes[3]){
+struct packet (mouse_assemble_packet)(uint8_t packet_bytes[3]){
   struct packet packet;
   memcpy(packet.bytes, packet_bytes, 3);
 

@@ -8,9 +8,9 @@
 #include "../drivers/keyboard.h"
 #include "../model/structs.h"
 
-void (handle_mouse_event)();
-void (handle_keyboard_event)();
-int (get_next_event)(input_event* next_event);
-int (clear_events)();
+void (event_handle_mouse)();
+void (event_handle_keyboard)();
+int (events_get_next)(input_event* next_event);
+int (events_clear)();
 
 #endif /*_EVENTS_PROJ_H_ */

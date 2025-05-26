@@ -11,8 +11,7 @@
 int (menu_select_option_up)(menu* menu);
 int (menu_select_option_down)(menu* menu);
 
-menu* (create_main_menu)();
-int (destroy_menu)(menu* menu);
-int (draw_menu)(menu* menu);
+menu* (menu_create_main)();
+int (menu_destroy)(menu* menu);
 
 #endif /*_MENU_PROJ_H_ */

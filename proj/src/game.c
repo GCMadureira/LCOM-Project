@@ -16,7 +16,7 @@ int (game_init)() {
   if(keyboard_subscribe_int_exclusive(&keyboard_int_no)) return 1; // subscribe keyboard ints
   if(mouse_stream_enable_data_reporting()) return 1; // enable reporting on the mouse
   if(mouse_subscribe_int_exclusive(&mouse_int_no)) return 1; // subscribe the interruptions reported
-  if(graphics_init(0x14C)) return 1; // set the graphics mode as 0x14C and map the vmem
+  if(vg_graphics_init(0x14C)) return 1; // set the graphics mode as 0x14C and map the vmem
 
   if(setup_game()) return 1;
 
@@ -42,7 +42,7 @@ int (proj_main_loop)() {
   message msg;
 
   // main loop
-  while(get_scancode() != ESC_KEY_BREAKCODE && get_game_state() != QUIT) {
+  while(keyboard_get_scancode() != ESC_KEY_BREAKCODE && get_game_state() != QUIT) {
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
       continue;
@@ -54,10 +54,10 @@ int (proj_main_loop)() {
             process_frame();
           }
           if (msg.m_notify.interrupts & BIT(1)) { // keyboard
-            handle_keyboard_event();
+            event_handle_keyboard();
           }
           if (msg.m_notify.interrupts & BIT(2)) { // mouse
-            handle_mouse_event();
+            event_handle_mouse();
           }
           break;
       }

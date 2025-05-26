@@ -4,7 +4,7 @@ xpm_image_t game_background_img;
 xpm_image_t start_selected_img;
 xpm_image_t quit_selected_img;
 
-int (load_static_images)() {
+int (static_images_load)() {
   #include "../resources/Static Images/static_images.h"
 
   if(xpm_load(game_background_xpm, XPM_8_8_8_8, &game_background_img) == NULL) return 1;

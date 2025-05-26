@@ -15,10 +15,10 @@ enum animation_direction {
   IDLE_DOWN, IDLE_UP
 };
 
-enum animation_direction (get_entity_direction)(entity* entity);
-int (load_animations)();
-int (clean_animations)();
-int (destroy_animation)(animation animation);
+enum animation_direction (entity_get_direction)(entity* entity);
+int (animations_load)();
+int (animations_clean)();
+int (animation_destroy)(animation animation);
 
 
 //the animations themselves

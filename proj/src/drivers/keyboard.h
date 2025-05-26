@@ -10,9 +10,9 @@
 
 int (keyboard_subscribe_int_exclusive)(uint8_t *bit_no);
 int (keyboard_unsubscribe_int)();
-bool (is_breakcode)(uint8_t scancode);
+bool (keyboard_is_breakcode)(uint8_t scancode);
 
-u_int8_t (get_scancode)();
+u_int8_t (keyboard_get_scancode)();
 
 int (keyboard_reenable_interrupts)();
 
