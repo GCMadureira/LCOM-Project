@@ -25,7 +25,7 @@ int spawn_enemy() {
             int side = rand() % 4;  // 0: top, 1: right, 2: bottom, 3: left
             
             double pos_x, pos_y;
-            const int SPAWN_OFFSET = 20;  // Distance from arena edge
+            const int SPAWN_OFFSET = 10;  // Distance from arena edge
             
             // Position the enemy offscreen based on the chosen side
             switch (side) {
@@ -96,7 +96,7 @@ bool update_enemies() {
             }
 
             // Set enemy speed towards player
-            const double ENEMY_SPEED = 3.0;
+            const double ENEMY_SPEED = 2;
             enemy->speed_x = dx * ENEMY_SPEED;
             enemy->speed_y = dy * ENEMY_SPEED;
 

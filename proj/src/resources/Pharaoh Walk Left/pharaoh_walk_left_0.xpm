@@ -1,5 +1,5 @@
 /* XPM */
-static xpm_row_t pharaoh_walk_left_0[] = {
+static const char *pharaoh_walk_left_0[] = {
 /* columns rows colors chars-per-pixel */
 "72 96 14 1 ",
 "  c #000000",
