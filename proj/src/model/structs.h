@@ -54,6 +54,7 @@ typedef struct {
 
 typedef struct {
   entity* player;
+  entity* mouse;
   entity_list* enemies;
   double pos_x, pos_y;
   xpm_image_t* background_image;

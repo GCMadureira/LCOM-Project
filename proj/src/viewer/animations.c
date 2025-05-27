@@ -168,6 +168,7 @@ static int (load_pharaoh_animations)() {
   return 0;
 }
 
+
 static int (load_enemy_animations)() {
   #include "../resources/Enemy 1 Walk Right/enemy1_walk_right.h"
   #include "../resources/Enemy 1 Walk Left/enemy1_walk_left.h"

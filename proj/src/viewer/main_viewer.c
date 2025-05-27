@@ -12,6 +12,8 @@ int (draw_arena)(arena* arena) {
 
   // Draw all active enemies
   draw_enemies(arena);
+
+  vg_draw_image32(arena->mouse->pos_x, arena->mouse->pos_y, &cursor_img);
   
   return 0;
 }

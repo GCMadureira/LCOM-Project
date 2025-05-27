@@ -4,5 +4,6 @@
 #include "game_background.xpm"
 #include "start_selected.xpm"
 #include "quit_selected.xpm"
+#include "cursor.xpm"
 
 #endif /* _STATIC_IMAGES_RESOURCES_PROJ_H_ */

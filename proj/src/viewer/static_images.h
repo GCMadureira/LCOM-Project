@@ -7,6 +7,7 @@
 extern xpm_image_t game_background_img;
 extern xpm_image_t start_selected_img;
 extern xpm_image_t quit_selected_img;
+extern xpm_image_t cursor_img;
 
 int (static_images_load)();
 

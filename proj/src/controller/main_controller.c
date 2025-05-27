@@ -12,6 +12,10 @@ enum game_state (get_game_state)(){
   return game_state;
 }
 
+void (set_game_state)(enum game_state state) {
+  game_state = state;
+}
+
 unsigned long (get_current_frame)() {
   return frame;
 }
@@ -45,6 +49,7 @@ static int (process_menu)(){
 
 static int (process_game)(){
   entity* player = active_arena->player;
+  entity* mouse = active_arena->mouse;
   input_event event;
 
   while(events_get_next(&event) == 0) {
@@ -77,6 +82,14 @@ static int (process_game)(){
           if(player->speed_x < 0) player->speed_x = 0;
           break;
       }
+    }
+    else if(event.event_type == MOUSE_EVENT) {
+      mouse->pos_x += (double)event.mouse_packet.delta_x/5;
+      mouse->pos_y += -(double)event.mouse_packet.delta_y/5;
+
+      // bound the position inside the screen
+      mouse->pos_x = MIN(MAX(0, mouse->pos_x), vg_get_hres() - cursor_img.width);
+      mouse->pos_y = MIN(MAX(0, mouse->pos_y), vg_get_vres() - cursor_img.height);
     }
   }
   

@@ -20,6 +20,7 @@ enum game_state {
 
 int (process_frame)();
 enum game_state (get_game_state)();
+void (set_game_state)(enum game_state state);
 unsigned long (get_current_frame)();
 
 int (setup_game)();
