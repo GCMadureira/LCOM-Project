@@ -21,10 +21,12 @@ static void (handle_enemy_spawning)(arena* arena) {
 static void (handle_auto_attack)(arena* arena) {
   if (get_current_frame() - last_auto_attack >= 120) {
     double attack_x = arena->player->speed_x > 0 ? 
-    arena->player->pos_x + arena->player->animations->sprites[0]->width :
-    arena->player->pos_x - khopesh_attack_animation.sprites[0]->width;
+    arena->player->pos_x + arena->player->animations->sprites[0]->width + 5 :
+    arena->player->pos_x - khopesh_attack_animation.sprites[0]->width - 5;
 
-    attack* new_attack = attack_create_full(attack_x, arena->player->pos_y, 0, 0, 50, 16, khopesh_attack_animation);
+    double attack_y = arena->player->pos_y + arena->player->animations->sprites[0]->height/2 -  khopesh_attack_animation.sprites[0]->height/2;
+
+    attack* new_attack = attack_create_full(attack_x, attack_y, 0, 0, 50, 24, khopesh_attack_animation);
 
     attack_list_add(&(arena->player_attacks), new_attack);
 

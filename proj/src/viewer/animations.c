@@ -24,6 +24,7 @@ int (animations_clean)() {
     animation_destroy(pharaoh_animations[i]);
     animation_destroy(enemy_animations[i]);
   }
+  animation_destroy(khopesh_attack_animation);
 
   free(pharaoh_animations);
   free(enemy_animations);
@@ -257,15 +258,16 @@ static int (load_khopesh_attack_animations)() {
   xpm_image_t** sprites;
   xpm_image_t* current_image;
 
-  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 2);
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 3);
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(khopesh_attack_0, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[0] = current_image;
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(khopesh_attack_1, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[1] = current_image;
+  sprites[2] = current_image;
 
-  khopesh_attack_animation = (animation){2, sprites};
+  khopesh_attack_animation = (animation){3, sprites};
 
   return 0;
 }

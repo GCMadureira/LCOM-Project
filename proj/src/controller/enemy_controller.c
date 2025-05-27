@@ -60,13 +60,13 @@ static bool (check_player_collision)(entity* enemy, entity* player) {
 static bool (check_attack_collision)(entity* enemy, attack* attack) {
   const double ENEMY_WIDTH = enemy->animations->sprites[0]->width;
   const double ENEMY_HEIGHT = enemy->animations->sprites[0]->height;
-  const double ATTACK_WIDTH = attack->animation.sprites[0]->width + 20;
-  const double ATTACK_HEIGHT = attack->animation.sprites[0]->height  + 20;
+  const double ATTACK_WIDTH = attack->animation.sprites[0]->width + 5;
+  const double ATTACK_HEIGHT = attack->animation.sprites[0]->height  + 5;
 
   return (enemy->pos_x < attack->pos_x + ATTACK_WIDTH &&
-          enemy->pos_x + ENEMY_WIDTH > attack->pos_x - 20 &&
+          enemy->pos_x + ENEMY_WIDTH > attack->pos_x - 5 &&
           enemy->pos_y < attack->pos_y + ATTACK_HEIGHT &&
-          enemy->pos_y + ENEMY_HEIGHT > attack->pos_y - 20);
+          enemy->pos_y + ENEMY_HEIGHT > attack->pos_y - 5);
 }
 
 // Update all active enemies, move them towards the player and check for collisions
