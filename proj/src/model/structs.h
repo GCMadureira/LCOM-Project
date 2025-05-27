@@ -48,14 +48,25 @@ struct _entity_node{
 };
 
 typedef struct {
-  uint32_t size;
-  entity_node* first_entity;
-} entity_list;
+  double pos_x, pos_y;
+  double speed_x, speed_y;
+  uint32_t frames; // the number of frames the attack is present
+  uint32_t damage;
+  animation animation;
+} attack;
+
+// useful when there are many attacks
+typedef struct _attack_node attack_node;
+struct _attack_node{
+  attack* attack;
+  attack_node* next_attack;
+};
 
 typedef struct {
   entity* player;
   entity* mouse;
-  entity_list* enemies;
+  entity_node* enemies;
+  attack_node* player_attacks;
   double pos_x, pos_y;
   xpm_image_t* background_image;
 } arena;

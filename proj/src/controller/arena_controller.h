@@ -5,6 +5,7 @@
 #include "../model/structs.h"
 #include "../model/entity.h"
 #include "../model/arena.h"
+#include "../model/attack.h"
 #include "main_controller.h"
 #include "enemy_controller.h"
 

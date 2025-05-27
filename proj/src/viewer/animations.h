@@ -25,5 +25,7 @@ int (animation_destroy)(animation animation);
 extern animation* pharaoh_animations;
 extern animation* enemy_animations;
 
+extern animation khopesh_attack_animation;
+
 
 #endif /* _ANIMATIONS_PROJ_H_ */

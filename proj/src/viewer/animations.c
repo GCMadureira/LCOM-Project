@@ -3,6 +3,8 @@
 animation* pharaoh_animations;
 animation* enemy_animations;
 
+animation khopesh_attack_animation;
+
 
 enum animation_direction (entity_get_direction)(entity* entity) {
   if(entity->speed_x > 0 && entity->speed_y > 0) return DOWN_RIGHT;
@@ -249,9 +251,30 @@ static int (load_enemy_animations)() {
   return 0;
 }
 
+static int (load_khopesh_attack_animations)() {
+  #include "../resources/Khopesh Attack/khopesh_attack.h"
+
+  xpm_image_t** sprites;
+  xpm_image_t* current_image;
+
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 2);
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(khopesh_attack_0, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[0] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(khopesh_attack_1, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[1] = current_image;
+
+  khopesh_attack_animation = (animation){2, sprites};
+
+  return 0;
+}
+
+
 int (animations_load)() {
   // Load pharaoh & enemy animations
   if(load_pharaoh_animations()) return 1;
   if(load_enemy_animations()) return 1;
+  if(load_khopesh_attack_animations()) return 1;
   return 0;
 }

@@ -1,5 +1,5 @@
 /* XPM */
-static const char *khopesh_attack_0[] = {
+static xpm_row_t khopesh_attack_0[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 6 1 ",
 "  c #000000",

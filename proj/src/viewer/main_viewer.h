@@ -10,6 +10,7 @@ int (draw_arena)(arena* arena);
 int (draw_menu)(menu* menu);
 //to draw an entity inside the arena
 int (draw_enemies)(arena* arena);
+int (draw_attacks)(arena* arena);
 
 
 #endif /* _MAIN_VIEWER_PROJ_H_ */

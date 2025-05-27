@@ -55,28 +55,24 @@ void (entity_move)(entity* entity){
   entity->pos_y = MIN(MAX(0, entity->pos_y), game_background_img.height - entity->animations[0].sprites[0]->height);
 }
 
-entity_list* (entity_list_create)() {
-  entity_list* new_list = (entity_list*)malloc(sizeof(entity_list));
-  new_list->first_entity = NULL;
-  new_list->size = 0;
-  return new_list;
+void (entity_node_destroy)(entity_node* node) {
+  free(node->entity);
+  free(node);
 }
 
-void (entity_list_add)(entity_list* list, entity* entity) {
+void (entity_list_add)(entity_node** list, entity* entity) {
   entity_node* new_node = (entity_node*)malloc(sizeof(entity_node));
   new_node->entity = entity;
-  new_node->next_entity = list->first_entity;
-  list->first_entity = new_node;
-  list->size++;
+  new_node->next_entity = *list;
+  *list = new_node;
 }
 
-void (entity_list_destroy)(entity_list* list){
-  entity_node* current = list->first_entity;
+void (entity_list_destroy)(entity_node* list){
+  entity_node* current = list;
   while(current != NULL) {
     entity_node* victim = current;
     current = current->next_entity;
     free(victim->entity);
     free(victim);
   }
-  free(list);
 }
