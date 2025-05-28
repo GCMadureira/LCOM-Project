@@ -1,24 +1,33 @@
 #include "arena_controller.h"
 
-// Maximum number of enemies that can exist at once
-#define MAX_ENEMIES 50
 
-//static uint32_t enemy_count = 0;
-static unsigned long last_enemy_spawn = 0;  // Track when we last spawned an enemy
 static unsigned long last_auto_attack = 0;
+static unsigned long last_ranged_attack = 0;
 
-// Handle enemy spawning with a cooldown
-static void (handle_enemy_spawning)(arena* arena) {
-  // Spawn a new enemy every 120 frames (2 seconds at 60 FPS)
-  if (get_current_frame() - last_enemy_spawn >= 1  /*&& enemy_count < MAX_ENEMIES */) {
-    spawn_enemy(arena);
-    last_enemy_spawn = get_current_frame();
-    //enemy_count++;
+void (setup_arena_controller)() {
+  last_auto_attack = 0;
+  last_ranged_attack = 0;
+}
+
+void (handle_ranged_attack)(arena* arena) {
+  if (get_current_frame() - last_ranged_attack >= 180) {
+    double speed_x = arena->mouse->pos_x - arena->player->pos_x + arena->pos_x;
+    double speed_y = arena->mouse->pos_y - arena->player->pos_y + arena->pos_y;
+
+    double lenght = sqrt(speed_x * speed_x + speed_y * speed_y); 
+    if(lenght == 0) return ;
+    double scale = 5/lenght;
+
+    attack* new_attack = attack_create_full(arena->player->pos_x, arena->player->pos_y, -scale*speed_x, -scale*speed_y, 50, 240, khopesh_attack_animation);
+
+    attack_list_add(&(arena->player_attacks), new_attack);
+
+    last_ranged_attack = get_current_frame();
   }
 }
 
 // Handle the auto attack with a cooldown
-static void (handle_auto_attack)(arena* arena) {
+void (handle_auto_attack)(arena* arena) {
   if (get_current_frame() - last_auto_attack >= 120) {
     double attack_x = arena->player->speed_x > 0 ? 
     arena->player->pos_x + arena->player->animations->sprites[0]->width + 5 :

@@ -1,5 +1,29 @@
 #include "enemy_controller.h"
 
+// Maximum number of enemies that can exist at once, every two seconds goes up by one
+#define MAX_ENEMIES 50 + (get_current_frame() - starting_frame)/120
+// Spawn rate starts at 2 each second, goes down to 6 per second over time
+#define SPAWN_RATE 120 - MIN((get_current_frame() - starting_frame)/60, 110)
+
+static uint32_t enemy_count = 0;
+static uint32_t starting_frame = 0;
+static unsigned long last_enemy_spawn = 0;  // Track when we last spawned an enemy
+
+void (setup_enemy_controller)() {
+  enemy_count = 0;
+  last_enemy_spawn = 0;
+  starting_frame = get_current_frame();
+}
+
+// Handle enemy spawning with a cooldown
+void (handle_enemy_spawning)(arena* arena) {
+  // Spawn a new enemy every 120 frames (2 seconds at 60 FPS) when starting
+  if (get_current_frame() - last_enemy_spawn >= SPAWN_RATE  && enemy_count < MAX_ENEMIES) {
+    spawn_enemy(arena);
+    last_enemy_spawn = get_current_frame();
+    enemy_count++;
+  }
+}
 
 // Spawn a new enemy offscreen
 int (spawn_enemy)(arena* arena) {
@@ -88,6 +112,7 @@ bool (enemies_check_collisions)(arena* arena) {
           current_enemy = current_enemy->next_entity;
           arena->enemies = current_enemy;
           entity_node_destroy(victim);
+          --enemy_count;
           goto outer1;
         }
         else current_enemy->entity->health -= current_attack->attack->damage;
@@ -119,6 +144,7 @@ bool (enemies_check_collisions)(arena* arena) {
           current_enemy = current_enemy->next_entity;
           previous_enemy->next_entity = current_enemy;
           entity_node_destroy(victim);
+          --enemy_count;
           goto outer2;
         }
         else current_enemy->entity->health -= current_attack->attack->damage;

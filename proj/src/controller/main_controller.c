@@ -35,6 +35,8 @@ static int (process_menu)(){
           if (active_menu->menu_status == 0) {
             game_state = GAME;
             active_arena = arena_create();
+            setup_arena_controller(); // setup the controllers for a new game
+            setup_enemy_controller();
             menu_destroy(active_menu);
             active_menu = NULL;
             return 0;
@@ -48,7 +50,7 @@ static int (process_menu)(){
   return 0;
 }
 
-static bool clicked = false;
+
 static int (process_game)(){
   entity* player = active_arena->player;
   entity* mouse = active_arena->mouse;
@@ -93,20 +95,8 @@ static int (process_game)(){
       mouse->pos_x = MIN(MAX(0, mouse->pos_x), vg_get_hres() - cursor_img.width);
       mouse->pos_y = MIN(MAX(0, mouse->pos_y), vg_get_vres() - cursor_img.height);
 
-      if(event.mouse_packet.lb && !clicked) {
-        clicked = true;
-        double speed_x = active_arena->mouse->pos_x - player->pos_x + active_arena->pos_x;
-        double speed_y = active_arena->mouse->pos_y - player->pos_y + active_arena->pos_y;
-
-        double lenght = sqrt(speed_x * speed_x + speed_y * speed_y); 
-        if(lenght == 0) continue;
-        double scale = 4/lenght;
-
-        attack* new_attack = attack_create_full(player->pos_x, player->pos_y, -scale*speed_x, -scale*speed_y, 50, 240, khopesh_attack_animation);
-
-        attack_list_add(&(active_arena->player_attacks), new_attack);
-      }
-      if(!event.mouse_packet.lb) clicked = false;
+      if(event.mouse_packet.lb)
+        handle_ranged_attack(active_arena);
     }
   }
   
