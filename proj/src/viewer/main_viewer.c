@@ -17,7 +17,7 @@ int (draw_arena)(arena* arena) {
   draw_attacks(arena);
 
   //draw the mouse
-  //vg_draw_image32(arena->mouse->pos_x, arena->mouse->pos_y, &cursor_img);
+  vg_draw_image32(arena->mouse->pos_x, arena->mouse->pos_y, &cursor_img);
   
   return 0;
 }
@@ -52,7 +52,7 @@ int (draw_attacks)(arena* arena) {
     vg_draw_image32(
         attack->pos_x - arena->pos_x,
         attack->pos_y - arena->pos_y,
-        animation.sprites[animation.n_frames - 1 - (attack->frames  / ANIMATION_SPEED)]
+        animation.sprites[animation.n_frames - 1 - ((attack->frames % (animation.n_frames * ANIMATION_SPEED))  / ANIMATION_SPEED)]
     );
 
     current_attack = current_attack->next_attack;

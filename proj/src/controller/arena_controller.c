@@ -39,10 +39,11 @@ int (arena_process_frame)(arena* arena) {
   if (enemies_check_collisions(arena)) {
     return 1;
   }
+
   // spawn the enemies
   handle_enemy_spawning(arena);
-
   handle_auto_attack(arena);
+  
   // move everything
   arena_move_entities(arena);
   return 0;
