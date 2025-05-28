@@ -103,12 +103,15 @@ int (process_frame)() {
 
   if(game_state == MAIN_MENU) draw_menu(active_menu);
   else if(game_state == GAME) {
+    // If arena_process_frame == 1 it means check_collisions == 1
     if(arena_process_frame(active_arena) == 1) {
-      // Return to main menu
-      game_state = MAIN_MENU;
-      active_menu = menu_create_main();
-      arena_destroy(active_arena);
-      active_arena = NULL;
+      // If player Health == 0 return to menu
+      if (active_arena->player->health == 0) {
+        game_state = MAIN_MENU;
+        active_menu = menu_create_main();
+        arena_destroy(active_arena);
+        active_arena = NULL;
+      }
     }
     else draw_arena(active_arena);
   }

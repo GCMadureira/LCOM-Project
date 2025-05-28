@@ -1,6 +1,7 @@
 #include "main_viewer.h"
 
 static const uint8_t ANIMATION_SPEED = 8;
+static xpm_image_t* health_bars[] = {&health_0_img, &health_1_img, &health_2_img, &health_3_img, &health_4_img};
 
 int (draw_arena)(arena* arena) {
   //draw the visible section of the arena
@@ -14,6 +15,11 @@ int (draw_arena)(arena* arena) {
   draw_enemies(arena);
 
   vg_draw_image32(arena->mouse->pos_x, arena->mouse->pos_y, &cursor_img);
+  
+  // Get health bar image based on player's health (0-4)
+  int health_status = arena->player->health;
+
+  vg_draw_image32(10, vg_get_vres() - health_bars[health_status]->height - 10, health_bars[health_status]);
   
   return 0;
 }

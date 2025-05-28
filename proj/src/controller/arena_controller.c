@@ -4,6 +4,7 @@
 #define MAX_ENEMIES 50
 
 static unsigned long last_enemy_spawn = 0;  // Track when we last spawned an enemy
+static unsigned long last_damage_time = 0;  // Track when we last damaged the player
 
 // Handle enemy spawning with a cooldown
 static void (handle_enemy_spawning)(arena* arena) {
@@ -18,7 +19,14 @@ static void (handle_enemy_spawning)(arena* arena) {
 int (arena_process_frame)(arena* arena) {
   // If enemies_check_collisions() returns true, the player has collided with an enemy
   if (enemies_check_collisions(arena)) {
-    return 1;
+    // Add a damage cooldown of 60 frames (1 second at 60 FPS)
+    if (get_current_frame() - last_damage_time >= 60) {
+      if (arena->player->health > 0) {
+        arena->player->health--;
+        last_damage_time = get_current_frame();
+      }
+      return 1;
+    }
   }
 
   // spawn the enemies

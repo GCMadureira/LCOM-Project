@@ -5,6 +5,7 @@
 #include "animations.h"
 #include "../controller/main_controller.h"
 #include "../model/structs.h"
+#include "static_images.h"
 
 int (draw_arena)(arena* arena);
 int (draw_menu)(menu* menu);

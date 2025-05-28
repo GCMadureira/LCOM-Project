@@ -33,7 +33,7 @@ int (spawn_enemy)(arena* arena) {
   }
   
   // Create the enemy entity with its animations
-  entity* new_enemy = entity_create_full(pos_x, pos_y, 0, 0, 2, 100, 8, enemy_animations);
+  entity* new_enemy = entity_create_full(pos_x, pos_y, 0, 0, 2, 1, 8, enemy_animations);
   entity_list_add(arena->enemies, new_enemy);
 
   return 0;
@@ -74,7 +74,7 @@ void (enemies_move)(arena* arena) {
   while(enemy_node != NULL) {
     entity* enemy = enemy_node->entity;
 
-    // Calculate direction to player, will be normalized on the move function
+    // Calculate direction to player
     enemy->speed_x = arena->player->pos_x - enemy->pos_x;
     enemy->speed_y = arena->player->pos_y - enemy->pos_y;
 
