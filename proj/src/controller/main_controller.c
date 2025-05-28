@@ -36,6 +36,7 @@ static int (process_menu)(){
             game_state = GAME;
             active_arena = arena_create();
             menu_destroy(active_menu);
+            active_menu = NULL;
             return 0;
           }
           else if (active_menu->menu_status == 1) game_state = QUIT;
@@ -101,7 +102,7 @@ static int (process_game)(){
         if(lenght == 0) continue;
         double scale = 4/lenght;
 
-        attack* new_attack = attack_create_full(player->pos_x, player->pos_y, -scale*speed_x, -scale*speed_y, 50, 240, enemy_animations[0]);
+        attack* new_attack = attack_create_full(player->pos_x, player->pos_y, -scale*speed_x, -scale*speed_y, 50, 240, khopesh_attack_animation);
 
         attack_list_add(&(active_arena->player_attacks), new_attack);
       }

@@ -73,6 +73,8 @@ static bool (check_attack_collision)(entity* enemy, attack* attack) {
 bool (enemies_check_collisions)(arena* arena) {
   entity_node* current_enemy = arena->enemies;
   entity_node* previous_enemy = NULL;
+
+  outer1:
   while(current_enemy != NULL) {
     entity* enemy = current_enemy->entity;
     attack_node* current_attack = arena->player_attacks;
@@ -86,7 +88,7 @@ bool (enemies_check_collisions)(arena* arena) {
           current_enemy = current_enemy->next_entity;
           arena->enemies = current_enemy;
           entity_node_destroy(victim);
-          continue;
+          goto outer1;
         }
         else current_enemy->entity->health -= current_attack->attack->damage;
       }
@@ -98,12 +100,13 @@ bool (enemies_check_collisions)(arena* arena) {
       return true;  // Collision detected
     }
 
+
     previous_enemy = current_enemy;
     current_enemy = current_enemy->next_entity;
     break;
   }
 
-  outer:
+  outer2:
   while(current_enemy != NULL) {
     entity* enemy = current_enemy->entity;
     attack_node* current_attack = arena->player_attacks;
@@ -116,7 +119,7 @@ bool (enemies_check_collisions)(arena* arena) {
           current_enemy = current_enemy->next_entity;
           previous_enemy->next_entity = current_enemy;
           entity_node_destroy(victim);
-          goto outer;
+          goto outer2;
         }
         else current_enemy->entity->health -= current_attack->attack->damage;
       }

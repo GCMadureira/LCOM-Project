@@ -3,17 +3,17 @@
 // Maximum number of enemies that can exist at once
 #define MAX_ENEMIES 50
 
-static uint32_t enemy_count = 0;
+//static uint32_t enemy_count = 0;
 static unsigned long last_enemy_spawn = 0;  // Track when we last spawned an enemy
 static unsigned long last_auto_attack = 0;
 
 // Handle enemy spawning with a cooldown
 static void (handle_enemy_spawning)(arena* arena) {
   // Spawn a new enemy every 120 frames (2 seconds at 60 FPS)
-  if (get_current_frame() - last_enemy_spawn >= 120 && enemy_count < MAX_ENEMIES) {
+  if (get_current_frame() - last_enemy_spawn >= 1  /*&& enemy_count < MAX_ENEMIES */) {
     spawn_enemy(arena);
     last_enemy_spawn = get_current_frame();
-    enemy_count++;
+    //enemy_count++;
   }
 }
 
