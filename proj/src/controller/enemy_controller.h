@@ -11,6 +11,8 @@
 // Spawn a new enemy offscreen
 int (spawn_enemy)(arena* arena);
 
+void (handle_enemy_spawning)(arena* arena);
+void (setup_enemy_controller)();
 
 // Returns true if a collision with player occurred
 bool (enemies_check_collisions)(arena* arena);

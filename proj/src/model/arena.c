@@ -11,9 +11,9 @@ arena* (arena_create)() {
   new_arena->mouse = entity_create(0, NULL);
   new_arena->mouse->pos_x = vg_get_hres()/2;
   new_arena->mouse->pos_y = vg_get_vres()/2;
-  new_arena->enemies = entity_list_create();
+  new_arena->enemies = NULL;
+  new_arena->player_attacks = NULL;
   new_arena->background_image = &game_background_img;
-
 
   return new_arena;
 }

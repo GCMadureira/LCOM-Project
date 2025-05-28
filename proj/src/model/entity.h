@@ -1,5 +1,5 @@
-#ifndef _SPRITES_PROJ_H_
-#define _SPRITES_PROJ_H_
+#ifndef _ENTITY_PROJ_H_
+#define _ENTITY_PROJ_H_
 
 #include <lcom/lcf.h>
 #include <math.h>
@@ -18,8 +18,8 @@ int (entity_destroy)(entity* entity);
 
 void (entity_move)(entity* entity);
 
-entity_list* (entity_list_create)();
-void (entity_list_add)(entity_list* list, entity* entity);
-void (entity_list_destroy)(entity_list* list);
+void (entity_node_destroy)(entity_node* node);
+void (entity_list_add)(entity_node** list, entity* entity);
+void (entity_list_destroy)(entity_node* list);
 
-#endif /*_SPRITES_PROJ_H_ */
+#endif /*_ENTITY_PROJ_H_ */

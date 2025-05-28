@@ -35,7 +35,10 @@ static int (process_menu)(){
           if (active_menu->menu_status == 0) {
             game_state = GAME;
             active_arena = arena_create();
+            setup_arena_controller(); // setup the controllers for a new game
+            setup_enemy_controller();
             menu_destroy(active_menu);
+            active_menu = NULL;
             return 0;
           }
           else if (active_menu->menu_status == 1) game_state = QUIT;
@@ -46,6 +49,7 @@ static int (process_menu)(){
 
   return 0;
 }
+
 
 static int (process_game)(){
   entity* player = active_arena->player;
@@ -90,6 +94,9 @@ static int (process_game)(){
       // bound the position inside the screen
       mouse->pos_x = MIN(MAX(0, mouse->pos_x), vg_get_hres() - cursor_img.width);
       mouse->pos_y = MIN(MAX(0, mouse->pos_y), vg_get_vres() - cursor_img.height);
+
+      if(event.mouse_packet.lb)
+        handle_ranged_attack(active_arena);
     }
   }
   

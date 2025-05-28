@@ -1,5 +1,30 @@
 #include "enemy_controller.h"
 
+// Maximum number of enemies that can exist at once, every two seconds goes up by one
+#define MAX_ENEMIES 50 + (get_current_frame() - starting_frame)/120
+// Spawn rate starts at 2 each second, goes down to 6 per second over time
+#define SPAWN_RATE 120 - MIN((get_current_frame() - starting_frame)/60, 110)
+
+static uint32_t enemy_count = 0;
+static uint32_t starting_frame = 0;
+static unsigned long last_enemy_spawn = 0;  // Track when we last spawned an enemy
+
+void (setup_enemy_controller)() {
+  enemy_count = 0;
+  last_enemy_spawn = 0;
+  starting_frame = get_current_frame();
+}
+
+// Handle enemy spawning with a cooldown
+void (handle_enemy_spawning)(arena* arena) {
+  // Spawn a new enemy every 120 frames (2 seconds at 60 FPS) when starting
+  if (get_current_frame() - last_enemy_spawn >= SPAWN_RATE  && enemy_count < MAX_ENEMIES) {
+    spawn_enemy(arena);
+    last_enemy_spawn = get_current_frame();
+    enemy_count++;
+  }
+}
+
 // Spawn a new enemy offscreen
 int (spawn_enemy)(arena* arena) {
   // Randomly choose which side of the screen to spawn from
@@ -34,13 +59,13 @@ int (spawn_enemy)(arena* arena) {
   
   // Create the enemy entity with its animations
   entity* new_enemy = entity_create_full(pos_x, pos_y, 0, 0, 2, 1, 8, enemy_animations);
-  entity_list_add(arena->enemies, new_enemy);
+  entity_list_add(&(arena->enemies), new_enemy);
 
   return 0;
 }
 
 // Check if an enemy collides with the player
-static bool (check_collision)(entity* enemy, entity* player) {
+static bool (check_player_collision)(entity* enemy, entity* player) {
   // reduce the hitboxes by 5 pixels to make the collisions more accurate
   // Simple box collision detection | Using correct sprite dimensions
   const double ENEMY_WIDTH = enemy->animations->sprites[0]->width - 5;
@@ -55,22 +80,91 @@ static bool (check_collision)(entity* enemy, entity* player) {
           enemy->pos_y + ENEMY_HEIGHT > player->pos_y + 5);
 }
 
+// Check if an enemy collides with an attack
+static bool (check_attack_collision)(entity* enemy, attack* attack) {
+  const double ENEMY_WIDTH = enemy->animations->sprites[0]->width;
+  const double ENEMY_HEIGHT = enemy->animations->sprites[0]->height;
+  const double ATTACK_WIDTH = attack->animation.sprites[0]->width + 5;
+  const double ATTACK_HEIGHT = attack->animation.sprites[0]->height  + 5;
+
+  return (enemy->pos_x < attack->pos_x + ATTACK_WIDTH &&
+          enemy->pos_x + ENEMY_WIDTH > attack->pos_x - 5 &&
+          enemy->pos_y < attack->pos_y + ATTACK_HEIGHT &&
+          enemy->pos_y + ENEMY_HEIGHT > attack->pos_y - 5);
+}
+
 // Update all active enemies, move them towards the player and check for collisions
 bool (enemies_check_collisions)(arena* arena) {
-  entity_node* enemy_node = arena->enemies->first_entity;
-  while(enemy_node != NULL) {
+  entity_node* current_enemy = arena->enemies;
+  entity_node* previous_enemy = NULL;
+
+  outer1:
+  while(current_enemy != NULL) {
+    entity* enemy = current_enemy->entity;
+    attack_node* current_attack = arena->player_attacks;
+
+    //check collisions with the attacks of the player, remove the enemy if health = 0
+    while(current_attack != NULL) {
+      attack* attack = current_attack->attack;
+      if(check_attack_collision(enemy, attack)) {
+        if(enemy->health <= attack->damage) {
+          entity_node* victim = current_enemy;
+          current_enemy = current_enemy->next_entity;
+          arena->enemies = current_enemy;
+          entity_node_destroy(victim);
+          --enemy_count;
+          goto outer1;
+        }
+        else current_enemy->entity->health -= current_attack->attack->damage;
+      }
+      current_attack = current_attack->next_attack;
+    }
+
     // Check for collision with player
-    if (check_collision(enemy_node->entity, arena->player)) {
+    if (check_player_collision(enemy, arena->player)) {
       return true;  // Collision detected
     }
 
-    enemy_node = enemy_node->next_entity;
+
+    previous_enemy = current_enemy;
+    current_enemy = current_enemy->next_entity;
+    break;
+  }
+
+  outer2:
+  while(current_enemy != NULL) {
+    entity* enemy = current_enemy->entity;
+    attack_node* current_attack = arena->player_attacks;
+
+    while(current_attack != NULL) {
+      attack* attack = current_attack->attack;
+      if(check_attack_collision(enemy, attack)) {
+        if(enemy->health <= attack->damage) {
+          entity_node* victim = current_enemy;
+          current_enemy = current_enemy->next_entity;
+          previous_enemy->next_entity = current_enemy;
+          entity_node_destroy(victim);
+          --enemy_count;
+          goto outer2;
+        }
+        else current_enemy->entity->health -= current_attack->attack->damage;
+      }
+      current_attack = current_attack->next_attack;
+    }
+
+    // Check for collision with player
+    if (check_player_collision(enemy, arena->player)) {
+      return true;  // Collision detected
+    }
+
+    previous_enemy = current_enemy;
+    current_enemy = current_enemy->next_entity;
   }
   return false;  // No collision
 }
 
 void (enemies_move)(arena* arena) {
-  entity_node* enemy_node = arena->enemies->first_entity;
+  entity_node* enemy_node = arena->enemies;
   while(enemy_node != NULL) {
     entity* enemy = enemy_node->entity;
 

@@ -5,12 +5,14 @@
 #include "../model/structs.h"
 #include "../model/entity.h"
 #include "../model/arena.h"
+#include "../model/attack.h"
 #include "main_controller.h"
 #include "enemy_controller.h"
 
-
+void (handle_ranged_attack)(arena* arena);
+void (handle_auto_attack)(arena* arena);
 int (arena_move_entities)(arena* arena);
 int (arena_process_frame)(arena* arena);
-
+void (setup_arena_controller)();
 
 #endif /*_ARENA_CONTROLLER_PROJ_H_ */

@@ -3,6 +3,9 @@
 animation* pharaoh_animations;
 animation* enemy_animations;
 
+animation khopesh_attack_right_animation;
+animation khopesh_attack_left_animation;
+
 
 enum animation_direction (entity_get_direction)(entity* entity) {
   if(entity->speed_x > 0 && entity->speed_y > 0) return DOWN_RIGHT;
@@ -22,6 +25,9 @@ int (animations_clean)() {
     animation_destroy(pharaoh_animations[i]);
     animation_destroy(enemy_animations[i]);
   }
+
+  animation_destroy(khopesh_attack_right_animation);
+  animation_destroy(khopesh_attack_left_animation);
 
   free(pharaoh_animations);
   free(enemy_animations);
@@ -249,9 +255,48 @@ static int (load_enemy_animations)() {
   return 0;
 }
 
+static int (load_khopesh_attack_animations)() {
+  #include "../resources/Khopesh Attack Right/khopesh_attack_right.h"
+  #include "../resources/Khopesh Attack Left/khopesh_attack_left.h"
+
+  xpm_image_t** sprites;
+  xpm_image_t* current_image;
+
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 3);
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(khopesh_attack_right_0, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[0] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(khopesh_attack_right_1, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[1] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(khopesh_attack_right_2, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[2] = current_image;
+
+  khopesh_attack_right_animation = (animation){3, sprites};
+
+
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 3);
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(khopesh_attack_left_0, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[0] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(khopesh_attack_left_1, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[1] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(khopesh_attack_left_2, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[2] = current_image;
+
+  khopesh_attack_left_animation = (animation){3, sprites};
+
+  return 0;
+}
+
+
 int (animations_load)() {
   // Load pharaoh & enemy animations
   if(load_pharaoh_animations()) return 1;
   if(load_enemy_animations()) return 1;
+  if(load_khopesh_attack_animations()) return 1;
   return 0;
 }

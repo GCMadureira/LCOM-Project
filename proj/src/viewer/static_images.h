@@ -8,11 +8,8 @@ extern xpm_image_t game_background_img;
 extern xpm_image_t start_selected_img;
 extern xpm_image_t quit_selected_img;
 extern xpm_image_t cursor_img;
-extern xpm_image_t health_4_img;
-extern xpm_image_t health_3_img;
-extern xpm_image_t health_2_img;
-extern xpm_image_t health_1_img;
-extern xpm_image_t health_0_img;
+extern xpm_image_t health_bars[5];
+
 int (static_images_load)();
 
 
