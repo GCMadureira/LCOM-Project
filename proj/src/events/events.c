@@ -29,10 +29,8 @@ void (event_handle_mouse)() {
     
     input_event_node* new_event_node = (input_event_node*)malloc(sizeof(input_event_node));
     new_event_node->event = new_event;
-    new_event_node->next_event = NULL;
-
-    if(input_event_list == NULL) input_event_list = new_event_node;
-    else input_event_list->next_event = new_event_node;
+    new_event_node->next_event = input_event_list;
+    input_event_list = new_event_node;
   }
   state = (state + 1) % 3;
 }
@@ -72,10 +70,8 @@ void (event_handle_keyboard)() {
 
   input_event_node* new_event_node = (input_event_node*)malloc(sizeof(input_event_node));
   new_event_node->event = new_event;
-  new_event_node->next_event = NULL;
-
-  if(input_event_list == NULL) input_event_list = new_event_node;
-  else input_event_list->next_event = new_event_node;
+  new_event_node->next_event = input_event_list;
+  input_event_list = new_event_node;
 }
 
 int (events_get_next)(input_event* next_event) {
