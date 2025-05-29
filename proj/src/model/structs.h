@@ -75,6 +75,7 @@ typedef struct {
   int menu_status; // indicates which option is selected
   int num_options; // total num of options
   xpm_image_t** sprites;
+  xpm_image_t* background_image;
 } menu;
 
 #endif /*_STRUCTS_PROJ_H_ */

@@ -29,7 +29,7 @@ int (draw_arena)(arena* arena) {
   vg_draw_image32(arena->mouse->pos_x, arena->mouse->pos_y, &cursor_img);
 
   // Draw timer in mins:seconds format
-  unsigned long time = (get_current_frame() - get_arena_starting_frame())/60;
+  unsigned long time = get_arena_game_time();
   int minutes = time / 60;
   int seconds = time % 60;
   
@@ -90,6 +90,7 @@ int (draw_attacks)(arena* arena) {
 }
 
 int (draw_menu)(menu* menu){
+  if(menu->background_image != NULL) vg_draw_image32(0, 0, menu->background_image);
   vg_draw_image32(0, 0, menu->sprites[menu->menu_status]);
   return 0;
 }

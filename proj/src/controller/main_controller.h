@@ -15,7 +15,8 @@
 enum game_state {
   QUIT,
   MAIN_MENU,
-  GAME
+  GAME,
+  GAME_OVER_MENU
 };
 
 extern arena* active_arena;

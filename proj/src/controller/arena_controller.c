@@ -1,5 +1,6 @@
 #include "arena_controller.h"
 
+static uint32_t arena_game_time = 0; // Time the arena was active in seconds
 static uint32_t arena_starting_frame = 0; // Track the frame when the arena was created
 static unsigned long last_damage_time = 0; // Track when we last damaged the player
 static unsigned long last_auto_attack = 0; // Track when the player last auto attacked
@@ -9,10 +10,15 @@ uint32_t (get_arena_starting_frame)() {
   return arena_starting_frame;
 }
 
+uint32_t (get_arena_game_time)() {
+  return arena_game_time;
+}
+
 void (setup_arena_controller)() {
   last_auto_attack = 0;
   last_ranged_attack = 0;
   arena_starting_frame = get_current_frame();
+  arena_game_time = 0;
 }
 
 void (handle_ranged_attack)(arena* arena) {
@@ -67,6 +73,10 @@ int (arena_process_frame)(arena* arena) {
         return 1;
     }
   }
+
+  // update the active time
+  if ((get_current_frame() - arena_starting_frame) % 60 == 0)
+    ++arena_game_time;
 
   // spawn the enemies
   handle_enemy_spawning(arena);

@@ -19,8 +19,22 @@ menu* (menu_create_main)() {
   main_menu->sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 2);
   main_menu->sprites[0] = &start_selected_img;
   main_menu->sprites[1] = &quit_selected_img;
+  main_menu->background_image = &start_background_img;
 
   return main_menu;
+}
+
+menu* (menu_create_game_over)() {
+  menu* game_over_menu = (menu*)malloc(sizeof(menu));
+
+  game_over_menu->menu_status = 0;
+  game_over_menu->num_options = 2;
+  game_over_menu->sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 2);
+  game_over_menu->sprites[0] = &start_selected_img;
+  game_over_menu->sprites[1] = &quit_selected_img;
+  game_over_menu->background_image = &game_over_background_img;
+
+  return game_over_menu;
 }
 
 int (menu_destroy)(menu* menu){

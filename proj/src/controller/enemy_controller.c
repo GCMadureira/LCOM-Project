@@ -170,6 +170,8 @@ void (enemies_move)(arena* arena) {
     enemy->speed_x = arena->player->pos_x - enemy->pos_x;
     enemy->speed_y = arena->player->pos_y - enemy->pos_y;
 
+    enemy->last_horizontal_direction = enemy->speed_x > 0 ? true : false;
+
     // Move the enemy
     entity_move(enemy);
 

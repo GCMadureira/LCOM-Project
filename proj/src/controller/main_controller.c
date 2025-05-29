@@ -31,18 +31,42 @@ static int (process_menu)(){
         case KEY_MK_S:
           menu_select_option_down(active_menu);
           break;
-        case KEY_MK_ENTER:
-          if (active_menu->menu_status == 0) {
-            game_state = GAME;
-            active_arena = arena_create();
-            setup_arena_controller(); // setup the controllers for a new game
-            setup_enemy_controller();
-            menu_destroy(active_menu);
-            active_menu = NULL;
-            return 0;
+        case KEY_MK_ENTER: {
+          // main menu processing
+          if(game_state == MAIN_MENU) {
+            if (active_menu->menu_status == 0) {
+              game_state = GAME;
+              active_arena = arena_create();
+              setup_arena_controller(); // setup the controllers for a new game
+              setup_enemy_controller();
+              menu_destroy(active_menu);
+              active_menu = NULL;
+              return 0;
+            }
+            else if (active_menu->menu_status == 1) game_state = QUIT;
           }
-          else if (active_menu->menu_status == 1) game_state = QUIT;
+          else if(game_state == GAME_OVER_MENU) {
+            if (active_menu->menu_status == 0) {
+              game_state = GAME;
+              if(active_arena != NULL) arena_destroy(active_arena);
+              active_arena = arena_create();
+              setup_arena_controller(); // setup the controllers for a new game
+              setup_enemy_controller();
+              menu_destroy(active_menu);
+              active_menu = NULL;
+              return 0;
+            }
+            else if (active_menu->menu_status == 1) {
+              game_state = MAIN_MENU;
+              if(active_arena != NULL) arena_destroy(active_arena);
+              active_arena = NULL;
+              menu_destroy(active_menu);
+              active_menu = menu_create_main();
+              return 0;
+            }
+          }
           break;
+        }
       }
     }
   }
@@ -105,7 +129,7 @@ static int (process_game)(){
 
 int (process_frame)() {
   // The game state can change on the process part, need to separate it
-  if(game_state == MAIN_MENU) process_menu();
+  if(game_state == MAIN_MENU || game_state == GAME_OVER_MENU) process_menu();
   else if(game_state == GAME) process_game();
   
 
@@ -116,13 +140,15 @@ int (process_frame)() {
       // If player Health == 0 return to menu
       // We are doing the entire "changing health bar sprite" on the viewers
       if (active_arena->player->health == 0) {
-        game_state = MAIN_MENU;
-        active_menu = menu_create_main();
-        arena_destroy(active_arena);
-        active_arena = NULL;
+        game_state = GAME_OVER_MENU;
+        active_menu = menu_create_game_over();
       }
     }
     else draw_arena(active_arena);
+  }
+  else if(game_state == GAME_OVER_MENU) {
+    draw_arena(active_arena);
+    draw_menu(active_menu);
   }
 
   vg_show_frame();

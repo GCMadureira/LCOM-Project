@@ -28,7 +28,7 @@ entity* (entity_create_full)(double pos_x, double pos_y, double speed_x, double 
   new_entity->speed_x = speed_x;
   new_entity->speed_y = speed_y;
   new_entity->speed_multiplier = speed_multiplier;
-  new_entity->last_horizontal_direction = true;
+  new_entity->last_horizontal_direction = false;
   new_entity->health = health;
   new_entity->n_sprites = n_sprites;
   new_entity->animations = animations;
