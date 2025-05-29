@@ -1,18 +1,16 @@
 #include "enemy_controller.h"
 
 // Maximum number of enemies that can exist at once, every two seconds goes up by one
-#define MAX_ENEMIES 50 + (get_current_frame() - starting_frame)/120
+#define MAX_ENEMIES 50 + (get_current_frame() - get_arena_starting_frame())/120
 // Spawn rate starts at 2 each second, goes down to 6 per second over time
-#define SPAWN_RATE 120 - MIN((get_current_frame() - starting_frame)/60, 110)
+#define SPAWN_RATE 120 - MIN((get_current_frame() - get_arena_starting_frame())/60, 110)
 
 static uint32_t enemy_count = 0;
-static uint32_t starting_frame = 0;
 static unsigned long last_enemy_spawn = 0;  // Track when we last spawned an enemy
 
 void (setup_enemy_controller)() {
   enemy_count = 0;
   last_enemy_spawn = 0;
-  starting_frame = get_current_frame();
 }
 
 // Handle enemy spawning with a cooldown

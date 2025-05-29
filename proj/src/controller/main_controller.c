@@ -1,11 +1,10 @@
 #include "main_controller.h"
 
 static menu* active_menu = NULL;
-static arena* active_arena = NULL;
+arena* active_arena = NULL;
 
 static enum game_state game_state = MAIN_MENU;
 static unsigned long frame = 0;
-static unsigned long game_time = 0;
 
 const double COS45 = 0.70710678118;
 
@@ -19,14 +18,6 @@ void (set_game_state)(enum game_state state) {
 
 unsigned long (get_current_frame)() {
   return frame;
-}
-
-unsigned long (get_game_time)() {
-  return game_time;
-}
-
-void (reset_game_time)() {
-  game_time = 0;
 }
 
 static int (process_menu)(){
@@ -115,13 +106,8 @@ static int (process_game)(){
 int (process_frame)() {
   // The game state can change on the process part, need to separate it
   if(game_state == MAIN_MENU) process_menu();
-  else if(game_state == GAME) {
-    process_game();
-    // Update game time every 1 second (since our game runs at 60 FPS)
-    if (frame % 60 == 0) {
-      game_time++;
-    }
-  }
+  else if(game_state == GAME) process_game();
+  
 
   if(game_state == MAIN_MENU) draw_menu(active_menu);
   else if(game_state == GAME) {
@@ -134,7 +120,6 @@ int (process_frame)() {
         active_menu = menu_create_main();
         arena_destroy(active_arena);
         active_arena = NULL;
-        reset_game_time();
       }
     }
     else draw_arena(active_arena);
@@ -151,7 +136,6 @@ int (setup_game)() {
   if(animations_load()) return 1;
   active_menu = menu_create_main();
   game_state = MAIN_MENU;
-  reset_game_time();
   return 0;
 }
 

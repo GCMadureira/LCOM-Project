@@ -29,7 +29,7 @@ int (draw_arena)(arena* arena) {
   vg_draw_image32(arena->mouse->pos_x, arena->mouse->pos_y, &cursor_img);
 
   // Draw timer in mins:seconds format
-  unsigned long time = get_game_time();
+  unsigned long time = (get_current_frame() - get_arena_starting_frame())/60;
   int minutes = time / 60;
   int seconds = time % 60;
   
@@ -40,7 +40,7 @@ int (draw_arena)(arena* arena) {
   vg_draw_image32(10 + number_sprites[0].width, 10, &number_sprites[minutes % 10]);
   
   // Draw the ":" | Pos (150, 10)
-  vg_draw_image32(150, 10, &two_points); 
+  vg_draw_image32(10 + number_sprites[0].width * 2, 10, &two_points); 
   
   // Draw seconds
   // Pos (10 + sprite width*3, 10)

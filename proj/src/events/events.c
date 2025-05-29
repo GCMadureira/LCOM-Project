@@ -1,7 +1,7 @@
 #include "events.h"
 
 static input_event_node* input_event_list = NULL;
-
+static input_event_node* input_event_list_tail = NULL;
 
 
 static uint8_t packet_bytes[3];
@@ -29,13 +29,21 @@ void (event_handle_mouse)() {
     
     input_event_node* new_event_node = (input_event_node*)malloc(sizeof(input_event_node));
     new_event_node->event = new_event;
-    new_event_node->next_event = input_event_list;
-    input_event_list = new_event_node;
+    new_event_node->next_event = NULL;
+
+    if(input_event_list == NULL) {
+      input_event_list = new_event_node;
+      input_event_list_tail = new_event_node;
+    }
+    else {
+      input_event_list_tail->next_event = new_event_node;
+      input_event_list_tail = new_event_node;
+    }
   }
   state = (state + 1) % 3;
 }
 
-
+#include "../controller/main_controller.h"
 static bool extended_flag = false;
 void (event_handle_keyboard)() {
   if(!kbc_valid_output(false)){ //check if the output buffer has valid data
@@ -70,8 +78,16 @@ void (event_handle_keyboard)() {
 
   input_event_node* new_event_node = (input_event_node*)malloc(sizeof(input_event_node));
   new_event_node->event = new_event;
-  new_event_node->next_event = input_event_list;
-  input_event_list = new_event_node;
+  new_event_node->next_event = NULL;
+
+  if(input_event_list == NULL) {
+    input_event_list = new_event_node;
+    input_event_list_tail = new_event_node;
+  }
+  else {
+    input_event_list_tail->next_event = new_event_node;
+    input_event_list_tail = new_event_node;
+  }
 }
 
 int (events_get_next)(input_event* next_event) {

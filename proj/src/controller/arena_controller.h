@@ -9,6 +9,7 @@
 #include "main_controller.h"
 #include "enemy_controller.h"
 
+uint32_t (get_arena_starting_frame)();
 void (handle_ranged_attack)(arena* arena);
 void (handle_auto_attack)(arena* arena);
 int (arena_move_entities)(arena* arena);
