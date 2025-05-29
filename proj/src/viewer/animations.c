@@ -5,6 +5,7 @@ animation* enemy_animations;
 
 animation khopesh_attack_right_animation;
 animation khopesh_attack_left_animation;
+animation lightning_attack_animation;
 
 
 enum animation_direction (entity_get_direction)(entity* entity) {
@@ -274,11 +275,46 @@ static int (load_khopesh_attack_animations)() {
   return 0;
 }
 
+static int (load_lightning_attack_animations)() {
+  #include "../resources/Lightning Attack/lightning_attack.h"
+
+  xpm_image_t** sprites;
+  xpm_image_t* current_image;
+
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 7);
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(lightning_attack_0, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[0] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(lightning_attack_1, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[1] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(lightning_attack_2, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[2] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(lightning_attack_3, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[3] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(lightning_attack_4, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[4] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(lightning_attack_5, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[5] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(lightning_attack_6, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[6] = current_image;
+
+  lightning_attack_animation = (animation){7, sprites};
+
+  return 0;
+}
+
 
 int (animations_load)() {
   // Load pharaoh & enemy animations
   if(load_pharaoh_animations()) return 1;
   if(load_enemy_animations()) return 1;
   if(load_khopesh_attack_animations()) return 1;
+  if(load_lightning_attack_animations()) return 1;
   return 0;
 }
