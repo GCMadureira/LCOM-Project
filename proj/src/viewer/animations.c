@@ -8,20 +8,14 @@ animation khopesh_attack_left_animation;
 
 
 enum animation_direction (entity_get_direction)(entity* entity) {
-  if(entity->speed_x > 0 && entity->speed_y > 0) return DOWN_RIGHT;
-  if(entity->speed_x > 0 && entity->speed_y < 0) return UP_RIGHT;
-  if(entity->speed_x > 0 && entity->speed_y == 0) return RIGHT;
-  if(entity->speed_x < 0 && entity->speed_y > 0) return DOWN_LEFT;
-  if(entity->speed_x < 0 && entity->speed_y < 0) return UP_LEFT;
-  if(entity->speed_x < 0 && entity->speed_y == 0) return LEFT;
-  if(entity->speed_x == 0 && entity->speed_y > 0) return DOWN;
-  if(entity->speed_x == 0 && entity->speed_y < 0) return UP;
-  return entity->idle_front ? IDLE_DOWN : IDLE_UP;
+  if(entity->speed_x == 0 && entity->speed_y == 0) return IDLE_;
+  if(entity->speed_x > 0 || entity->last_horizontal_direction) return RIGHT;
+  return LEFT;
 }
 
 
 int (animations_clean)() {
-  for(int i = 0; i < 10; ++i) {
+  for(int i = 0; i < 3; ++i) {
     animation_destroy(pharaoh_animations[i]);
     animation_destroy(enemy_animations[i]);
   }
@@ -45,7 +39,7 @@ int (animation_destroy)(animation animation) {
 }
 
 static int (load_pharaoh_animations)() {
-  #include "../resources/Pharaoh Idle Up/pharaoh_idle_up.h"
+  //#include "../resources/Pharaoh Idle Up/pharaoh_idle_up.h"
   #include "../resources/Pharaoh Idle Down/pharaoh_idle_down.h"
   #include "../resources/Pharaoh Walk Left/pharaoh_walk_left.h"
   #include "../resources/Pharaoh Walk Right/pharaoh_walk_right.h"
@@ -53,8 +47,9 @@ static int (load_pharaoh_animations)() {
   xpm_image_t** sprites;
   xpm_image_t* current_image;
 
-  pharaoh_animations = (animation*)malloc(sizeof(animation) * 10); //one for each direction
+  pharaoh_animations = (animation*)malloc(sizeof(animation) * 3); //one for each direction
   //pharaoh idle up
+  /*
   sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(pharaoh_idle_up_0, XPM_8_8_8_8, current_image) == NULL) return 1;
@@ -71,7 +66,8 @@ static int (load_pharaoh_animations)() {
   sprites[7] = current_image;
 
   pharaoh_animations[UP] = (animation){8, sprites};
-  pharaoh_animations[IDLE_UP] = (animation){8, sprites};
+  */
+
   
   //pharaoh idle down
   sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 16);
@@ -103,8 +99,7 @@ static int (load_pharaoh_animations)() {
   sprites[14] = current_image;
   sprites[15] = current_image;
 
-  pharaoh_animations[DOWN] = (animation){16, sprites};
-  pharaoh_animations[IDLE_DOWN] = (animation){16, sprites};
+  pharaoh_animations[IDLE_] = (animation){16, sprites};
 
 
   //pharaoh walk left
@@ -135,8 +130,6 @@ static int (load_pharaoh_animations)() {
   sprites[7] = current_image;
 
   pharaoh_animations[LEFT] = (animation){8, sprites};
-  pharaoh_animations[DOWN_LEFT] = (animation){8, sprites};
-  pharaoh_animations[UP_LEFT] = (animation){8, sprites};
 
 
   //pharaoh walk right
@@ -167,8 +160,6 @@ static int (load_pharaoh_animations)() {
   sprites[7] = current_image;
 
   pharaoh_animations[RIGHT] = (animation){8, sprites};
-  pharaoh_animations[DOWN_RIGHT] = (animation){8, sprites};
-  pharaoh_animations[UP_RIGHT] = (animation){8, sprites};
 
 
   return 0;
@@ -182,7 +173,7 @@ static int (load_enemy_animations)() {
   xpm_image_t** sprites;
   xpm_image_t* current_image;
 
-  enemy_animations = (animation*)malloc(sizeof(animation) * 10); //one for each direction
+  enemy_animations = (animation*)malloc(sizeof(animation) * 3); //one for each direction
 
   //enemy walk left
   sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
@@ -212,8 +203,6 @@ static int (load_enemy_animations)() {
   sprites[7] = current_image;
 
   enemy_animations[LEFT] = (animation){8, sprites};
-  enemy_animations[DOWN_LEFT] = (animation){8, sprites};
-  enemy_animations[UP_LEFT] = (animation){8, sprites};
 
   //enemy walk right
   sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
@@ -243,14 +232,7 @@ static int (load_enemy_animations)() {
   sprites[7] = current_image;
 
   enemy_animations[RIGHT] = (animation){8, sprites};
-  enemy_animations[DOWN_RIGHT] = (animation){8, sprites};
-  enemy_animations[UP_RIGHT] = (animation){8, sprites};
-
-  // For now, use the same animations for the rest of the directions
-  enemy_animations[UP] = enemy_animations[RIGHT];
-  enemy_animations[DOWN] = enemy_animations[RIGHT];
-  enemy_animations[IDLE_DOWN] = enemy_animations[RIGHT];
-  enemy_animations[IDLE_UP] = enemy_animations[RIGHT];
+  enemy_animations[IDLE_] = enemy_animations[RIGHT];
 
   return 0;
 }

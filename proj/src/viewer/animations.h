@@ -6,13 +6,11 @@
 #include "../model/entity.h"
 #include "../model/structs.h"
 
-
+// add the others again if needed
 enum animation_direction {
-  UP, UP_RIGHT,
-  RIGHT, DOWN_RIGHT,
-  DOWN, DOWN_LEFT,
-  LEFT, UP_LEFT,
-  IDLE_DOWN, IDLE_UP
+  LEFT, 
+  RIGHT,
+  IDLE_
 };
 
 enum animation_direction (entity_get_direction)(entity* entity);

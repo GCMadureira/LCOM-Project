@@ -36,13 +36,14 @@ void (handle_ranged_attack)(arena* arena) {
 // Handle the auto attack with a cooldown
 void (handle_auto_attack)(arena* arena) {
   if (get_current_frame() - last_auto_attack >= 120) {
-    double attack_x = arena->player->speed_x > 0 ? 
+    // if the player is moving right or last moved right, attack on the right, else left
+    double attack_x = arena->player->speed_x > 0 || arena->player->last_horizontal_direction ? 
     arena->player->pos_x + arena->player->animations->sprites[0]->width + 5 :
     arena->player->pos_x - khopesh_attack_right_animation.sprites[0]->width - 5;
 
     double attack_y = arena->player->pos_y + arena->player->animations->sprites[0]->height/2 -  khopesh_attack_right_animation.sprites[0]->height/2;
 
-    animation animation = arena->player->speed_x > 0 ? 
+    animation animation = arena->player->speed_x > 0 || arena->player->last_horizontal_direction ? 
     khopesh_attack_right_animation : 
     khopesh_attack_left_animation;
 

@@ -60,17 +60,17 @@ static int (process_game)(){
     if(event.event_type == KEYBOARD_EVENT) {
       switch (event.scancode_byte1) {
         case KEY_MK_W: //moving up
-          player->idle_front = false;
           player->speed_y = -3;
           break;
         case KEY_MK_S: //moving down
-          player->idle_front = true;
           player->speed_y = 3;
           break;
         case KEY_MK_D: //moving right
+          player->last_horizontal_direction = true;
           player->speed_x = 3;
           break;
         case KEY_MK_A: //moving left
+          player->last_horizontal_direction = false;
           player->speed_x = -3;
           break;
         case KEY_BK_W:

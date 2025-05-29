@@ -35,7 +35,7 @@ typedef struct {
   double pos_x, pos_y;
   double speed_x, speed_y; // this vector gets normalized
   double speed_multiplier; //this is the real speed
-  bool idle_front;
+  bool last_horizontal_direction; // right is true, left is false
   uint32_t health;
   uint32_t n_sprites;
   animation* animations;
