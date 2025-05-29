@@ -3,28 +3,36 @@
 // Maximum number of enemies that can exist at once, every two seconds goes up by one
 #define MAX_ENEMIES 50 + (get_current_frame() - get_arena_starting_frame())/120
 // Spawn rate starts at 2 each second, goes down to 6 per second over time
-#define SPAWN_RATE 120 - MIN((get_current_frame() - get_arena_starting_frame())/60, 110)
+#define NORMAL_SPAWN_RATE 120 - MIN((get_current_frame() - get_arena_starting_frame())/120, 110)
+#define MUMMY_SPAWN_RATE ((get_current_frame() - get_arena_starting_frame()) < 7200 ? INFINITY : 120 - MIN((get_current_frame() - get_arena_starting_frame() - 7200)/60, 110))
 
 static uint32_t enemy_count = 0;
-static unsigned long last_enemy_spawn = 0;  // Track when we last spawned an enemy
+static unsigned long last_normal_enemy_spawn = 0;  // Track when we last spawned an enemy
+static unsigned long last_mummy_spawn = 0;
 
 void (setup_enemy_controller)() {
   enemy_count = 0;
-  last_enemy_spawn = 0;
+  last_normal_enemy_spawn = 0;
+  last_mummy_spawn = 0;
 }
 
 // Handle enemy spawning with a cooldown
 void (handle_enemy_spawning)(arena* arena) {
   // Spawn a new enemy every 120 frames (2 seconds at 60 FPS) when starting
-  if (get_current_frame() - last_enemy_spawn >= SPAWN_RATE  && enemy_count < MAX_ENEMIES) {
-    spawn_enemy(arena);
-    last_enemy_spawn = get_current_frame();
+  if (get_current_frame() - last_normal_enemy_spawn >= NORMAL_SPAWN_RATE  && enemy_count < MAX_ENEMIES) {
+    spawn_enemy(arena, 2, 1, rand()%2 == 0 ? enemy1_animations : enemy2_animations);
+    last_normal_enemy_spawn = get_current_frame();
+    enemy_count++;
+  }
+  if (get_current_frame() - last_mummy_spawn >= MUMMY_SPAWN_RATE  && enemy_count < MAX_ENEMIES) {
+    spawn_enemy(arena, 1, 25, mummy_animations);
+    last_mummy_spawn = get_current_frame();
     enemy_count++;
   }
 }
 
 // Spawn a new enemy offscreen
-int (spawn_enemy)(arena* arena) {
+int (spawn_enemy)(arena* arena, double speed_multiplier, uint32_t health, animation* animations) {
   // Randomly choose which side of the screen to spawn from
   int side = rand() % 4;  // 0: top, 1: right, 2: bottom, 3: left
   
@@ -56,7 +64,7 @@ int (spawn_enemy)(arena* arena) {
   }
   
   // Create the enemy entity with its animations
-  entity* new_enemy = entity_create_full(pos_x, pos_y, 0, 0, 2, 1, 8, enemy_animations);
+  entity* new_enemy = entity_create_full(pos_x, pos_y, 0, 0, speed_multiplier, health, animations);
   entity_list_add(&(arena->enemies), new_enemy);
 
   return 0;

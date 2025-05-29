@@ -1,7 +1,9 @@
 #include "animations.h"
 
 animation* pharaoh_animations;
-animation* enemy_animations;
+animation* enemy1_animations;
+animation* enemy2_animations;
+animation* mummy_animations;
 
 animation khopesh_attack_right_animation;
 animation khopesh_attack_left_animation;
@@ -18,14 +20,15 @@ enum animation_direction (entity_get_direction)(entity* entity) {
 int (animations_clean)() {
   for(int i = 0; i < 3; ++i) {
     animation_destroy(pharaoh_animations[i]);
-    animation_destroy(enemy_animations[i]);
+    animation_destroy(enemy1_animations[i]);
   }
 
   animation_destroy(khopesh_attack_right_animation);
   animation_destroy(khopesh_attack_left_animation);
+  animation_destroy(lightning_attack_animation);
 
   free(pharaoh_animations);
-  free(enemy_animations);
+  free(enemy1_animations);
 
   return 0;
 }
@@ -167,16 +170,16 @@ static int (load_pharaoh_animations)() {
 }
 
 
-static int (load_enemy_animations)() {
+static int (load_enemy1_animations)() {
   #include "../resources/Enemy 1 Walk Right/enemy1_walk_right.h"
   #include "../resources/Enemy 1 Walk Left/enemy1_walk_left.h"
 
   xpm_image_t** sprites;
   xpm_image_t* current_image;
 
-  enemy_animations = (animation*)malloc(sizeof(animation) * 3); //one for each direction
+  enemy1_animations = (animation*)malloc(sizeof(animation) * 3); //one for each direction
 
-  //enemy walk left
+  //enemy1 walk left
   sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(enemy1_walk_left_0, XPM_8_8_8_8, current_image) == NULL) return 1;
@@ -203,9 +206,9 @@ static int (load_enemy_animations)() {
   if(xpm_load(enemy1_walk_left_7, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[7] = current_image;
 
-  enemy_animations[LEFT] = (animation){8, sprites};
+  enemy1_animations[LEFT] = (animation){8, sprites};
 
-  //enemy walk right
+  //enemy1 walk right
   sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(enemy1_walk_right_0, XPM_8_8_8_8, current_image) == NULL) return 1;
@@ -232,8 +235,150 @@ static int (load_enemy_animations)() {
   if(xpm_load(enemy1_walk_right_7, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[7] = current_image;
 
-  enemy_animations[RIGHT] = (animation){8, sprites};
-  enemy_animations[IDLE_] = enemy_animations[RIGHT];
+  enemy1_animations[RIGHT] = (animation){8, sprites};
+  enemy1_animations[IDLE_] = enemy1_animations[RIGHT];
+
+  return 0;
+}
+
+static int (load_enemy2_animations)() {
+  #include "../resources/Enemy 2 Walk Right/enemy2_walk_right.h"
+  #include "../resources/Enemy 2 Walk Left/enemy2_walk_left.h"
+
+  xpm_image_t** sprites;
+  xpm_image_t* current_image;
+
+  enemy2_animations = (animation*)malloc(sizeof(animation) * 3); //one for each direction
+
+  //enemy2 walk left
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_left_0, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[0] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_left_1, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[1] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_left_2, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[2] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_left_3, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[3] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_left_4, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[4] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_left_5, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[5] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_left_6, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[6] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_left_7, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[7] = current_image;
+
+  enemy2_animations[LEFT] = (animation){8, sprites};
+
+  //enemy2 walk right
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_right_0, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[0] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_right_1, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[1] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_right_2, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[2] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_right_3, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[3] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_right_4, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[4] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_right_5, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[5] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_right_6, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[6] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(enemy2_walk_right_7, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[7] = current_image;
+
+  enemy2_animations[RIGHT] = (animation){8, sprites};
+  enemy2_animations[IDLE_] = enemy2_animations[RIGHT];
+
+  return 0;
+}
+
+static int (load_mummy_animations)() {
+  #include "../resources/Mummy Walk Right/mummy_walk_right.h"
+  #include "../resources/Mummy Walk Left/mummy_walk_left.h"
+
+  xpm_image_t** sprites;
+  xpm_image_t* current_image;
+
+  mummy_animations = (animation*)malloc(sizeof(animation) * 3); //one for each direction
+
+  //mummy walk left
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_left_0, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[0] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_left_1, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[1] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_left_2, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[2] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_left_3, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[3] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_left_4, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[4] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_left_5, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[5] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_left_6, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[6] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_left_7, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[7] = current_image;
+
+  mummy_animations[LEFT] = (animation){8, sprites};
+
+  //mummy walk right
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_right_0, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[0] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_right_1, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[1] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_right_2, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[2] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_right_3, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[3] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_right_4, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[4] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_right_5, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[5] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_right_6, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[6] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(mummy_right_7, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[7] = current_image;
+
+  mummy_animations[RIGHT] = (animation){8, sprites};
+  mummy_animations[IDLE_] = mummy_animations[RIGHT];
 
   return 0;
 }
@@ -311,9 +456,11 @@ static int (load_lightning_attack_animations)() {
 
 
 int (animations_load)() {
-  // Load pharaoh & enemy animations
+  // Load pharaoh & enemy1 animations
   if(load_pharaoh_animations()) return 1;
-  if(load_enemy_animations()) return 1;
+  if(load_enemy1_animations()) return 1;
+  if(load_enemy2_animations()) return 1;
+  if(load_mummy_animations()) return 1;
   if(load_khopesh_attack_animations()) return 1;
   if(load_lightning_attack_animations()) return 1;
   return 0;

@@ -21,7 +21,9 @@ int (animation_destroy)(animation animation);
 
 //the animations themselves
 extern animation* pharaoh_animations;
-extern animation* enemy_animations;
+extern animation* enemy1_animations;
+extern animation* enemy2_animations;
+extern animation* mummy_animations;
 
 extern animation khopesh_attack_right_animation;
 extern animation khopesh_attack_left_animation;

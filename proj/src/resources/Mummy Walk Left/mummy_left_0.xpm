@@ -1,5 +1,5 @@
 /* XPM */
-static const char *mummy_left_0[] = {
+static xpm_row_t mummy_left_0[] = {
 /* columns rows colors chars-per-pixel */
 "54 87 9 1 ",
 "  c #000000",

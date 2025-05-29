@@ -9,7 +9,7 @@
 
 
 // Spawn a new enemy offscreen
-int (spawn_enemy)(arena* arena);
+int (spawn_enemy)(arena* arena, double speed_multiplier, uint32_t health, animation* animations);
 
 void (handle_enemy_spawning)(arena* arena);
 void (setup_enemy_controller)();

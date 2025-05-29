@@ -5,7 +5,7 @@ bool (entity_is_idle)(entity* entity) {
   return entity->speed_x == 0 && entity->speed_y == 0;
 }
 
-entity* (entity_create)(uint32_t n_sprites, animation* animations) {
+entity* (entity_create)(animation* animations) {
   entity* new_entity = (entity*)malloc(sizeof(entity));
 
   new_entity->pos_x = 0;
@@ -14,13 +14,12 @@ entity* (entity_create)(uint32_t n_sprites, animation* animations) {
   new_entity->speed_y = 0;
   new_entity->health = 0;
   new_entity->last_horizontal_direction = true;
-  new_entity->n_sprites = n_sprites;
   new_entity->animations = animations;
 
   return new_entity;
 }
 
-entity* (entity_create_full)(double pos_x, double pos_y, double speed_x, double speed_y, double speed_multiplier, uint32_t health, uint32_t n_sprites, animation* animations) {
+entity* (entity_create_full)(double pos_x, double pos_y, double speed_x, double speed_y, double speed_multiplier, uint32_t health, animation* animations) {
   entity* new_entity = (entity*)malloc(sizeof(entity));
 
   new_entity->pos_x = pos_x;
@@ -30,7 +29,6 @@ entity* (entity_create_full)(double pos_x, double pos_y, double speed_x, double 
   new_entity->speed_multiplier = speed_multiplier;
   new_entity->last_horizontal_direction = false;
   new_entity->health = health;
-  new_entity->n_sprites = n_sprites;
   new_entity->animations = animations;
 
   return new_entity;

@@ -37,7 +37,6 @@ typedef struct {
   double speed_multiplier; //this is the real speed
   bool last_horizontal_direction; // right is true, left is false
   uint32_t health;
-  uint32_t n_sprites;
   animation* animations;
 } entity;
 

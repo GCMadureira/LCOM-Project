@@ -112,8 +112,8 @@ static int (process_game)(){
       }
     }
     else if(event.event_type == MOUSE_EVENT) {
-      mouse->pos_x += (double)event.mouse_packet.delta_x/5;
-      mouse->pos_y += -(double)event.mouse_packet.delta_y/5;
+      mouse->pos_x += (double)event.mouse_packet.delta_x/2;
+      mouse->pos_y += -(double)event.mouse_packet.delta_y/2;
 
       // bound the position inside the screen
       mouse->pos_x = MIN(MAX(0, mouse->pos_x), vg_get_hres() - cursor_img.width);
