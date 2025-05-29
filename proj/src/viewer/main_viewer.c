@@ -1,4 +1,5 @@
 #include "main_viewer.h"
+#include <stdio.h>
 
 static const uint8_t ANIMATION_SPEED = 8;
 
@@ -26,6 +27,26 @@ int (draw_arena)(arena* arena) {
 
   //draw the mouse
   vg_draw_image32(arena->mouse->pos_x, arena->mouse->pos_y, &cursor_img);
+
+  // Draw timer in mins:seconds format
+  unsigned long time = get_game_time();
+  int minutes = time / 60;
+  int seconds = time % 60;
+  
+  // Draw minutes
+  // Pos (10,10)
+  vg_draw_image32(10, 10, &number_sprites[minutes / 10]);
+  // Pos (10 + sprite width, 10)
+  vg_draw_image32(10 + number_sprites[0].width, 10, &number_sprites[minutes % 10]);
+  
+  // Draw the ":" | Pos (150, 10)
+  vg_draw_image32(150, 10, &two_points); 
+  
+  // Draw seconds
+  // Pos (10 + sprite width*3, 10)
+  vg_draw_image32(10 + number_sprites[0].width * 3, 10, &number_sprites[seconds / 10]);
+  // Pos (10 + sprite width*4, 10)
+  vg_draw_image32(10 + number_sprites[0].width * 4, 10, &number_sprites[seconds % 10]);
   
   return 0;
 }

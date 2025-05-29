@@ -5,6 +5,8 @@ xpm_image_t start_selected_img;
 xpm_image_t quit_selected_img;
 xpm_image_t cursor_img;
 xpm_image_t health_bars[5];
+xpm_image_t number_sprites[10];
+xpm_image_t two_points;
 
 int (static_images_load)() {
   #include "../resources/Static Images/static_images.h"
@@ -26,6 +28,20 @@ int (static_images_load)() {
   health_bars[2] = health_2_img;
   health_bars[3] = health_3_img;
   health_bars[4] = health_4_img;
+
+
+  if(xpm_load(zero_xpm, XPM_8_8_8_8, &number_sprites[0]) == NULL) return 1;
+  if(xpm_load(one_xpm, XPM_8_8_8_8, &number_sprites[1]) == NULL) return 1;
+  if(xpm_load(two_xpm, XPM_8_8_8_8, &number_sprites[2]) == NULL) return 1;
+  if(xpm_load(three_xpm, XPM_8_8_8_8, &number_sprites[3]) == NULL) return 1;
+  if(xpm_load(four_xpm, XPM_8_8_8_8, &number_sprites[4]) == NULL) return 1;
+  if(xpm_load(five_xpm, XPM_8_8_8_8, &number_sprites[5]) == NULL) return 1;
+  if(xpm_load(six_xpm, XPM_8_8_8_8, &number_sprites[6]) == NULL) return 1;
+  if(xpm_load(seven_xpm, XPM_8_8_8_8, &number_sprites[7]) == NULL) return 1;
+  if(xpm_load(eight_xpm, XPM_8_8_8_8, &number_sprites[8]) == NULL) return 1;
+  if(xpm_load(nine_xpm, XPM_8_8_8_8, &number_sprites[9]) == NULL) return 1;
+
+  if(xpm_load(two_points_xpm, XPM_8_8_8_8, &two_points) == NULL) return 1;
 
   return 0;
 }

@@ -22,6 +22,8 @@ int (process_frame)();
 enum game_state (get_game_state)();
 void (set_game_state)(enum game_state state);
 unsigned long (get_current_frame)();
+unsigned long (get_game_time)();
+void (reset_game_time)();
 
 int (setup_game)();
 int (clean_game)();
