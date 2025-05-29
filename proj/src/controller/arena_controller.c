@@ -23,15 +23,12 @@ void (setup_arena_controller)() {
 
 void (handle_ranged_attack)(arena* arena) {
   if (get_current_frame() - last_ranged_attack >= 180) {
-    double speed_x = arena->mouse->pos_x - arena->player->pos_x + arena->pos_x;
-    double speed_y = arena->mouse->pos_y - arena->player->pos_y + arena->pos_y;
-
-    double lenght = sqrt(speed_x * speed_x + speed_y * speed_y); 
-    if(lenght == 0) return ;
-    double scale = 5/lenght;
-
-    // the animation is temporary
-    attack* new_attack = attack_create_full(arena->player->pos_x, arena->player->pos_y, -scale*speed_x, -scale*speed_y, 1, 240, khopesh_attack_right_animation);
+    attack* new_attack = attack_create_full(
+      arena->pos_x + arena->mouse->pos_x - lightning_attack_animation.sprites[0]->width/2, 
+      arena->pos_y + arena->mouse->pos_y - lightning_attack_animation.sprites[0]->height/2, 
+      0, 0, 1, 56, 
+      lightning_attack_animation
+    );
 
     attack_list_add(&(arena->player_attacks), new_attack);
 
