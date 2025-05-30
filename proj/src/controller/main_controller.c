@@ -1,7 +1,9 @@
+/// @file main_controller.c
+
 #include "main_controller.h"
 
 static menu* active_menu = NULL;
-arena* active_arena = NULL;
+static arena* active_arena = NULL;
 
 static enum game_state game_state = MAIN_MENU;
 static unsigned long frame = 0;

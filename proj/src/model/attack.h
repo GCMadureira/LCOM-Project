@@ -4,7 +4,7 @@
 #include <lcom/lcf.h>
 #include <math.h>
 
-#include "../drivers/graphics.h"
+#include "../drivers/drivers.h"
 #include "../viewer/animations.h"
 #include "../viewer/static_images.h"
 #include "structs.h"

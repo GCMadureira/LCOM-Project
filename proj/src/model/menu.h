@@ -3,7 +3,7 @@
 
 #include <lcom/lcf.h>
 
-#include "../drivers/graphics.h"
+#include "../drivers/drivers.h"
 #include "../viewer/static_images.h"
 #include "structs.h"
 

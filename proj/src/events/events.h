@@ -4,8 +4,7 @@
 #include <lcom/lcf.h>
 
 #include "../macros/scancodes.h"
-#include "../drivers/mouse.h"
-#include "../drivers/keyboard.h"
+#include "../drivers/drivers.h"
 #include "../model/structs.h"
 
 void (event_handle_mouse)();

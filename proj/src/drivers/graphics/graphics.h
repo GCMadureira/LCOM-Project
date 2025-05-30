@@ -3,7 +3,7 @@
 
 #include <lcom/lcf.h>
 #include "vbe.h"
-#include "../macros/colors.h"
+#include "../../macros/colors.h"
 
 int (vg_set_VBE_mode)(uint16_t mode);
 int (vg_graphics_init)(uint16_t mode);

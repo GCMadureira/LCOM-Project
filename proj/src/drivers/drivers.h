@@ -3,12 +3,12 @@
 
 #include <lcom/lcf.h>
 
-#include "graphics.h"
-#include "i8042.h"
-#include "i8254.h"
-#include "keyboard.h"
-#include "mouse.h"
-#include "vbe.h"
+#include "graphics/graphics.h"
+#include "kbc/i8042.h"
+#include "timer/i8254.h"
+#include "kbc/keyboard.h"
+#include "kbc/mouse.h"
+#include "graphics/vbe.h"
 
 
 #endif /*_DRIVERS_PROJ_H_ */

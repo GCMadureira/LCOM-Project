@@ -1,14 +1,34 @@
+/// @file enemy_controller.c
+
 #include "enemy_controller.h"
 
-// Maximum number of enemies that can exist at once, every two seconds goes up by one
+/**
+ * @def MAX_ENEMIES
+ * @brief Maximum number of enemies that can exist at once.
+ *
+ * Increases by 1 every two seconds (every 120 frames).
+ */
 #define MAX_ENEMIES 50 + (get_current_frame() - get_arena_starting_frame())/120
-// Spawn rate starts at 2 each second, goes down to 6 per second over time
+
+/**
+ * @def NORMAL_SPAWN_RATE
+ * @brief Base enemy spawn rate, starts at 2 per second and increases over time.
+ *
+ * Starts at 120 frames per enemy (2/sec), down to 10 frames per enemy (6/sec) as time progresses.
+ */
 #define NORMAL_SPAWN_RATE 120 - MIN((get_current_frame() - get_arena_starting_frame())/120, 110)
+
+/**
+ * @def MUMMY_SPAWN_RATE
+ * @brief Mummy enemies spawn rate.
+ *
+ * No mummy spawns for the first 2 minutes (7200 frames). After that, spawn rate follows the normal spawn rate formula with a 2-minute delay.
+ */
 #define MUMMY_SPAWN_RATE ((get_current_frame() - get_arena_starting_frame()) < 7200 ? INFINITY : 120 - MIN((get_current_frame() - get_arena_starting_frame() - 7200)/60, 110))
 
-static uint32_t enemy_count = 0;
-static unsigned long last_normal_enemy_spawn = 0;  // Track when we last spawned an enemy
-static unsigned long last_mummy_spawn = 0;
+static uint32_t enemy_count = 0;                  ///< Track the active enemy count
+static unsigned long last_normal_enemy_spawn = 0; ///< Track when we last spawned a normal enemy
+static unsigned long last_mummy_spawn = 0;        ///< Track when we last spawned a mummy enenmy
 
 void (setup_enemy_controller)() {
   enemy_count = 0;
@@ -16,7 +36,6 @@ void (setup_enemy_controller)() {
   last_mummy_spawn = 0;
 }
 
-// Handle enemy spawning with a cooldown
 void (handle_enemy_spawning)(arena* arena) {
   // Spawn a new enemy every 120 frames (2 seconds at 60 FPS) when starting
   if (get_current_frame() - last_normal_enemy_spawn >= NORMAL_SPAWN_RATE  && enemy_count < MAX_ENEMIES) {
@@ -31,8 +50,7 @@ void (handle_enemy_spawning)(arena* arena) {
   }
 }
 
-// Spawn a new enemy offscreen
-int (spawn_enemy)(arena* arena, double speed_multiplier, uint32_t health, animation* animations) {
+void (spawn_enemy)(arena* arena, double speed_multiplier, uint32_t health, animation* animations) {
   // Randomly choose which side of the screen to spawn from
   int side = rand() % 4;  // 0: top, 1: right, 2: bottom, 3: left
   
@@ -66,12 +84,9 @@ int (spawn_enemy)(arena* arena, double speed_multiplier, uint32_t health, animat
   // Create the enemy entity with its animations
   entity* new_enemy = entity_create_full(pos_x, pos_y, 0, 0, speed_multiplier, health, animations);
   entity_list_add(&(arena->enemies), new_enemy);
-
-  return 0;
 }
 
-// Check if an enemy collides with the player
-static bool (check_player_collision)(entity* enemy, entity* player) {
+bool (check_player_collision)(entity* enemy, entity* player) {
   // reduce the hitboxes by 5 pixels to make the collisions more accurate
   // Simple box collision detection | Using correct sprite dimensions
   const double ENEMY_WIDTH = enemy->animations->sprites[0]->width - 5;
@@ -86,8 +101,8 @@ static bool (check_player_collision)(entity* enemy, entity* player) {
           enemy->pos_y + ENEMY_HEIGHT > player->pos_y + 5);
 }
 
-// Check if an enemy collides with an attack
-static bool (check_attack_collision)(entity* enemy, attack* attack) {
+
+bool (check_attack_collision)(entity* enemy, attack* attack) {
   const double ENEMY_WIDTH = enemy->animations->sprites[0]->width;
   const double ENEMY_HEIGHT = enemy->animations->sprites[0]->height;
   const double ATTACK_WIDTH = attack->animation.sprites[0]->width + 5;
@@ -99,12 +114,12 @@ static bool (check_attack_collision)(entity* enemy, attack* attack) {
           enemy->pos_y + ENEMY_HEIGHT > attack->pos_y - 5);
 }
 
-// Update all active enemies, move them towards the player and check for collisions
-bool (enemies_check_collisions)(arena* arena) {
+
+bool (handle_enemy_collisions)(arena* arena) {
   entity_node* current_enemy = arena->enemies;
   entity_node* previous_enemy = NULL;
 
-  outer1:
+  outer:
   while(current_enemy != NULL) {
     entity* enemy = current_enemy->entity;
     attack_node* current_attack = arena->player_attacks;
@@ -114,44 +129,16 @@ bool (enemies_check_collisions)(arena* arena) {
       attack* attack = current_attack->attack;
       if(check_attack_collision(enemy, attack)) {
         if(enemy->health <= attack->damage) {
+          // Remove the enemy
           entity_node* victim = current_enemy;
           current_enemy = current_enemy->next_entity;
-          arena->enemies = current_enemy;
+          if(previous_enemy == NULL) 
+            arena->enemies = current_enemy;
+          else
+            previous_enemy->next_entity = current_enemy;
           entity_node_destroy(victim);
           --enemy_count;
-          goto outer1;
-        }
-        else current_enemy->entity->health -= current_attack->attack->damage;
-      }
-      current_attack = current_attack->next_attack;
-    }
-
-    // Check for collision with player
-    if (check_player_collision(enemy, arena->player)) {
-      return true;  // Collision detected
-    }
-
-
-    previous_enemy = current_enemy;
-    current_enemy = current_enemy->next_entity;
-    break;
-  }
-
-  outer2:
-  while(current_enemy != NULL) {
-    entity* enemy = current_enemy->entity;
-    attack_node* current_attack = arena->player_attacks;
-
-    while(current_attack != NULL) {
-      attack* attack = current_attack->attack;
-      if(check_attack_collision(enemy, attack)) {
-        if(enemy->health <= attack->damage) {
-          entity_node* victim = current_enemy;
-          current_enemy = current_enemy->next_entity;
-          previous_enemy->next_entity = current_enemy;
-          entity_node_destroy(victim);
-          --enemy_count;
-          goto outer2;
+          goto outer;
         }
         else current_enemy->entity->health -= current_attack->attack->damage;
       }
@@ -166,6 +153,7 @@ bool (enemies_check_collisions)(arena* arena) {
     previous_enemy = current_enemy;
     current_enemy = current_enemy->next_entity;
   }
+
   return false;  // No collision
 }
 
