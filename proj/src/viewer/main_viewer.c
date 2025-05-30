@@ -1,11 +1,10 @@
-#define MENU_SCROLL_SPEED 1
-
-static int menu_scroll_offset = 0;
-
 #include "main_viewer.h"
 #include <stdio.h>
 
-static const uint8_t ANIMATION_SPEED = 8;
+#define MENU_SCROLL_SPEED 1
+#define ANIMATION_SPEED 8
+
+static int menu_scroll_offset = 0;
 
 int (draw_arena)(arena* arena) {
   //draw the visible section of the arena
@@ -116,19 +115,18 @@ int (draw_hearts)(arena* arena) {
 int (draw_menu)(menu* menu){
   if (menu->background_image != NULL) {
     int bg_width = menu->background_image->width;
-    int screen_width = vg_get_hres();
 
     // horizontal endless scrolling
     menu_scroll_offset = (menu_scroll_offset + MENU_SCROLL_SPEED) % bg_width;
 
-    int remaining_width = bg_width - menu_scroll_offset;
+    uint32_t remaining_width = bg_width - menu_scroll_offset;
 
-    if (remaining_width >= screen_width) {
-      vg_draw_image_section32(0, 0, menu->background_image, menu_scroll_offset, 0, screen_width, vg_get_vres());
+    if (remaining_width >= vg_get_hres()) {
+      vg_draw_image_section32(0, 0, menu->background_image, menu_scroll_offset, 0, vg_get_hres(), vg_get_vres());
     } else {
       // final + start (wrap-around)
       vg_draw_image_section32(0, 0, menu->background_image, menu_scroll_offset, 0, remaining_width, vg_get_vres());
-      vg_draw_image_section32(remaining_width, 0, menu->background_image, 0, 0, screen_width - remaining_width, vg_get_vres());
+      vg_draw_image_section32(remaining_width, 0, menu->background_image, 0, 0, vg_get_hres() - remaining_width, vg_get_vres());
     }
   }
   vg_draw_image32(0, 0, menu->sprites[menu->menu_status]);
