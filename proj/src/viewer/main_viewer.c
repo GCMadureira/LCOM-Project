@@ -1,3 +1,7 @@
+#define MENU_SCROLL_SPEED 1
+
+static int menu_scroll_offset = 0;
+
 #include "main_viewer.h"
 #include <stdio.h>
 
@@ -110,7 +114,24 @@ int (draw_hearts)(arena* arena) {
 }
 
 int (draw_menu)(menu* menu){
-  if(menu->background_image != NULL) vg_draw_image32(0, 0, menu->background_image);
+  if (menu->background_image != NULL) {
+    int bg_width = menu->background_image->width;
+    int screen_width = vg_get_hres();
+
+    // horizontal endless scrolling
+    menu_scroll_offset = (menu_scroll_offset + MENU_SCROLL_SPEED) % bg_width;
+
+    int remaining_width = bg_width - menu_scroll_offset;
+
+    if (remaining_width >= screen_width) {
+      vg_draw_image_section32(0, 0, menu->background_image, menu_scroll_offset, 0, screen_width, vg_get_vres());
+    } else {
+      // final + start (wrap-around)
+      vg_draw_image_section32(0, 0, menu->background_image, menu_scroll_offset, 0, remaining_width, vg_get_vres());
+      vg_draw_image_section32(remaining_width, 0, menu->background_image, 0, 0, screen_width - remaining_width, vg_get_vres());
+    }
+  }
+
   vg_draw_image32(0, 0, menu->sprites[menu->menu_status]);
   return 0;
 }
