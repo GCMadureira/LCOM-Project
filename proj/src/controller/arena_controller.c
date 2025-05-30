@@ -6,6 +6,7 @@ static unsigned long last_damage_time = 0; // Track when we last damaged the pla
 static unsigned long last_auto_attack = 0; // Track when the player last auto attacked
 static unsigned long last_ranged_attack = 0; // Track when the player last used a ranged attack
 static unsigned long last_heart_spawn = 0; // Track when we last spawned a heart
+static bool secret_spawned = false; // Track if the secret enemy has been spawned
 
 uint32_t (get_arena_starting_frame)() {
   return arena_starting_frame;
@@ -76,6 +77,40 @@ static void (handle_heart_spawning)(arena* arena) {
   }
 }
 
+static void (handle_secret_spawning)(arena* arena) {
+  // Spawn the secret enemy at 3 minutes (180 seconds) if not already spawned
+  if (!secret_spawned && arena_game_time >= 180) {
+    // Choose one corner of the arena at random
+    int corner = rand() % 4;  // 0: top-left, 1: top-right, 2: bottom-left, 3: bottom-right
+    double pos_x, pos_y;
+    
+    switch(corner) {
+      case 0: // top-left
+        pos_x = 50;
+        pos_y = 50;
+        break;
+      case 1: // top-right
+        pos_x = arena->background_image->width - 50;
+        pos_y = 50;
+        break;
+      case 2: // bottom-left
+        pos_x = 50;
+        pos_y = arena->background_image->height - 50;
+        break;
+      case 3: // bottom-right
+        pos_x = arena->background_image->width - 50;
+        pos_y = arena->background_image->height - 50;
+        break;
+    }
+    
+    // Create the secret entity (with 0 speed so it doesn't move)
+    entity* secret = entity_create_full(pos_x, pos_y, 0, 0, 0, 9, &secret_animation);
+    entity_list_add(&(arena->enemies), secret);
+    
+    secret_spawned = true;
+  }
+}
+
 static bool (check_heart_collision)(entity* heart, entity* player) {
   // Simple box collision detection
   return (heart->pos_x < player->pos_x + player->animations[0].sprites[0]->width &&
@@ -132,9 +167,10 @@ int (arena_process_frame)(arena* arena) {
   if ((get_current_frame() - arena_starting_frame) % 60 == 0)
     ++arena_game_time;
 
-  // spawn the enemies and hearts
+  // spawn the enemies, hearts, and secret
   handle_enemy_spawning(arena);
   handle_heart_spawning(arena);
+  handle_secret_spawning(arena);
   handle_auto_attack(arena);
   
   // handle heart collisions

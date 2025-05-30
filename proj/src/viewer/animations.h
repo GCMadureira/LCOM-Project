@@ -29,6 +29,7 @@ extern animation khopesh_attack_right_animation;
 extern animation khopesh_attack_left_animation;
 extern animation lightning_attack_animation;
 extern animation heart_animation;
+extern animation secret_animation;
 
 
 #endif /* _ANIMATIONS_PROJ_H_ */
