@@ -7,6 +7,7 @@ static unsigned long last_auto_attack = 0; // Track when the player last auto at
 static unsigned long last_ranged_attack = 0; // Track when the player last used a ranged attack
 static unsigned long last_heart_spawn = 0; // Track when we last spawned a heart
 static bool secret_spawned = false; // Track if the secret enemy has been spawned
+static uint32_t high_score = 0; // Track the highest achieved time
 
 uint32_t (get_arena_starting_frame)() {
   return arena_starting_frame;
@@ -14,6 +15,16 @@ uint32_t (get_arena_starting_frame)() {
 
 uint32_t (get_arena_game_time)() {
   return arena_game_time;
+}
+
+uint32_t (get_high_score)() {
+  return high_score;
+}
+
+void (update_high_score)(uint32_t new_time) {
+  if (new_time > high_score) {
+    high_score = new_time;
+  }
 }
 
 void (setup_arena_controller)() {
@@ -158,8 +169,11 @@ int (arena_process_frame)(arena* arena) {
       arena->player->health--;
       if (arena->player->health > 0)
         last_damage_time = get_current_frame();
-      else
+      else {
+        // Update high score when player dies
+        update_high_score(arena_game_time);
         return 1;
+      }
     }
   }
 

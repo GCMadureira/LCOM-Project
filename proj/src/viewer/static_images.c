@@ -11,6 +11,7 @@ xpm_image_t cursor_img;
 xpm_image_t health_bars[5];
 xpm_image_t number_sprites[10];
 xpm_image_t two_points;
+xpm_image_t pr;
 
 int (static_images_load)() {
   #include "../resources/Static Images/static_images.h"
@@ -50,6 +51,7 @@ int (static_images_load)() {
   if(xpm_load(nine_xpm, XPM_8_8_8_8, &number_sprites[9]) == NULL) return 1;
 
   if(xpm_load(two_points_xpm, XPM_8_8_8_8, &two_points) == NULL) return 1;
+  if(xpm_load(pr_xpm, XPM_8_8_8_8, &pr) == NULL) return 1;
 
   return 0;
 }

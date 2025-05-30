@@ -30,5 +30,6 @@
 #include "numbers/nine.xpm"
 
 #include "two_points.xpm"
+#include "pr.xpm"
 
 #endif /* _STATIC_IMAGES_RESOURCES_PROJ_H_ */

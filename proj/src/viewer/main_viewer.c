@@ -46,7 +46,7 @@ int (draw_arena)(arena* arena) {
   // Pos (10 + sprite width, 10)
   vg_draw_image32(10 + number_sprites[0].width, 10, &number_sprites[minutes % 10]);
   
-  // Draw the ":" | Pos (150, 10)
+  // Draw the ":" | Pos (10 + numberSpriteWidth*2, 10)
   vg_draw_image32(10 + number_sprites[0].width * 2, 10, &two_points); 
   
   // Draw seconds
@@ -131,7 +131,30 @@ int (draw_menu)(menu* menu){
       vg_draw_image_section32(remaining_width, 0, menu->background_image, 0, 0, screen_width - remaining_width, vg_get_vres());
     }
   }
-
   vg_draw_image32(0, 0, menu->sprites[menu->menu_status]);
+
+  // Draw high score in top right corner
+  unsigned long high_score = get_high_score();
+  int minutes = high_score / 60;
+  int seconds = high_score % 60;
+  
+  // Calculate total width of the PR display
+  int total_width = pr.width + number_sprites[0].width * 4 + two_points.width;
+  int start_x = vg_get_hres() - total_width + 15; // 10 pixels padding from right edge
+  
+  // Draw "PR-" text
+  vg_draw_image32(start_x, 10, &pr);
+  
+  // Draw minutes
+  vg_draw_image32(start_x + pr.width, 10, &number_sprites[minutes / 10]);
+  vg_draw_image32(start_x + pr.width + number_sprites[0].width - 10, 10, &number_sprites[minutes % 10]);
+  
+  // Draw the ":"
+  vg_draw_image32(start_x + pr.width + number_sprites[0].width * 2 - 13, 10, &two_points);
+  
+  // Draw seconds
+  vg_draw_image32(start_x + pr.width + number_sprites[0].width * 3 - 28, 10, &number_sprites[seconds / 10]);
+  vg_draw_image32(start_x + pr.width + number_sprites[0].width * 4 - 38, 10, &number_sprites[seconds % 10]);
+
   return 0;
 }
