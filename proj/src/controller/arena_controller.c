@@ -22,7 +22,7 @@ void (setup_arena_controller)() {
 }
 
 void (handle_ranged_attack)(arena* arena) {
-  if (get_current_frame() - last_ranged_attack >= 180) {
+  if (get_current_frame() - last_ranged_attack >= 300) {
     attack* new_attack = attack_create_full(
       arena->pos_x + arena->mouse->pos_x - lightning_attack_animation.sprites[0]->width/2, 
       arena->pos_y + arena->mouse->pos_y - lightning_attack_animation.sprites[0]->height/2, 
