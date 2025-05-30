@@ -1,4 +1,5 @@
 #include "arena_controller.h"
+#include <stdio.h>
 
 static uint32_t arena_game_time = 0; // Time the arena was active in seconds
 static uint32_t arena_starting_frame = 0; // Track the frame when the arena was created
@@ -18,12 +19,30 @@ uint32_t (get_arena_game_time)() {
 }
 
 uint32_t (get_high_score)() {
+  FILE* file = fopen("highscore.txt", "r");
+  if (file == NULL) {
+    // File doesn't exist, create it with default value 0
+    file = fopen("highscore.txt", "w");
+    if (file != NULL) {
+      fprintf(file, "0");
+      fclose(file);
+      high_score = 0;
+    }
+  } else {
+    fscanf(file, "%u", &high_score);
+    fclose(file);
+  }
   return high_score;
 }
 
 void (update_high_score)(uint32_t new_time) {
   if (new_time > high_score) {
     high_score = new_time;
+    FILE* file = fopen("highscore.txt", "w");
+    if (file != NULL) {
+      fprintf(file, "%u", high_score);
+      fclose(file);
+    }
   }
 }
 
@@ -178,8 +197,11 @@ int (arena_process_frame)(arena* arena) {
   }
 
   // update the active time
-  if ((get_current_frame() - arena_starting_frame) % 60 == 0)
+  if ((get_current_frame() - arena_starting_frame) % 60 == 0) {
     ++arena_game_time;
+    // Update high score if current time exceeds it
+    update_high_score(arena_game_time);
+  }
 
   // spawn the enemies, hearts, and secret
   handle_enemy_spawning(arena);
