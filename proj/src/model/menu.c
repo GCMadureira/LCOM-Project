@@ -30,8 +30,8 @@ menu* (menu_create_game_over)() {
   game_over_menu->menu_status = 0;
   game_over_menu->num_options = 2;
   game_over_menu->sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 2);
-  game_over_menu->sprites[0] = &start_selected_img;
-  game_over_menu->sprites[1] = &quit_selected_img;
+  game_over_menu->sprites[0] = &play_again_selected_img;
+  game_over_menu->sprites[1] = &back_to_menu_selected_img;
   game_over_menu->background_image = &game_over_background_img;
 
   return game_over_menu;

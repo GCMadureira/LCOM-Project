@@ -8,6 +8,8 @@ extern xpm_image_t game_background_img;
 extern xpm_image_t game_over_background_img;
 extern xpm_image_t start_selected_img;
 extern xpm_image_t quit_selected_img;
+extern xpm_image_t play_again_selected_img;
+extern xpm_image_t back_to_menu_selected_img;
 extern xpm_image_t cursor_img;
 extern xpm_image_t health_bars[5];     // Array for the health bar sprites
 extern xpm_image_t number_sprites[10]; // Array for number sprites 0-9

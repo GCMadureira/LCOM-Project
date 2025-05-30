@@ -6,6 +6,8 @@
 #include "game_over_background.xpm"
 #include "start_selected.xpm"
 #include "quit_selected.xpm"
+#include "play_again_selected.xpm"
+#include "back_to_menu_selected.xpm"
 #include "cursor.xpm"
 
 // Health Bar Sprites
