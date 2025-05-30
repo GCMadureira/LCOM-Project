@@ -1,7 +1,13 @@
+/** 
+ * @file mouse.c
+ * @brief Source code file for all the logic to interact with the kbc's mouse
+ */
+
+
 #include "mouse.h"
 
-static int mouse_hook_id;
-static uint8_t mouse_packet_byte;
+static int mouse_hook_id; ///< The hook id to unsubscribe the mouse interruptions
+static uint8_t mouse_packet_byte; ///< The lastest packet byte read
 
 uint8_t (mouse_get_packet_byte)(){
   return mouse_packet_byte;

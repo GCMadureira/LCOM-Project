@@ -1,7 +1,14 @@
-#include "main_viewer.h"
-#include <stdio.h>
+/** 
+ * @file main_viewer.c
+ * @brief Source code file for all the logic related to the viewer
+ * 
+ * This file has all the functions to draw and show all the game sprites to the screen
+ */
 
-static const uint8_t ANIMATION_SPEED = 8;
+
+#include "main_viewer.h"
+
+static const uint8_t ANIMATION_SPEED = 8; ///< The number of game frames per animation frame
 
 int (draw_arena)(arena* arena) {
   //draw the visible section of the arena

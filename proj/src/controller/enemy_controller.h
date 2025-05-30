@@ -1,4 +1,9 @@
-/// @file enemy_controller.h
+/** 
+ * @file enemy_controller.h
+ * @brief Header file for @ref enemy_controller.c
+ * 
+ * This file declares all the functions to be used on the enemies's logic.
+ */
 
 #ifndef _ENEMY_CONTROLLER_PROJ_H_
 #define _ENEMY_CONTROLLER_PROJ_H_

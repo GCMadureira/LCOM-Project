@@ -1,4 +1,9 @@
-/// @file arena_controller.h
+/** 
+ * @file arena_controller.h
+ * @brief Header file for @ref arena_controller.c
+ * 
+ * This file declares all the functions to be used on the arena's logic.
+ */
 
 #ifndef _ARENA_CONTROLLER_PROJ_H_
 #define _ARENA_CONTROLLER_PROJ_H_

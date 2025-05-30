@@ -1,3 +1,9 @@
+/** 
+ * @file animations.c
+ * @brief Source code file for all the logic related to the animations, including the loading and destroying
+ */
+
+
 #include "animations.h"
 
 animation* pharaoh_animations;

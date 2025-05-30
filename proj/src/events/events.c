@@ -1,10 +1,18 @@
+/** 
+ * @file events.c
+ * @brief Source code file for all input event related logic.
+ * 
+ * This file implements all the functions for the input events' logic.
+ */
+
+
 #include "events.h"
 
-static input_event_node* input_event_list = NULL;
-static input_event_node* input_event_list_tail = NULL;
+static input_event_node* input_event_list = NULL;     ///< A pointer to the start of the linked list
+static input_event_node* input_event_list_tail = NULL; ///< A pointer to the tail of the linked list
 
 
-static uint8_t packet_bytes[3];
+static uint8_t packet_bytes[3]; ///< The mouse packet vector
 static int state = 0; //0 means first byte, 1 means second by, 2 means third byte
 void (event_handle_mouse)() {
   if(!kbc_valid_output(true)){ // check if the output buffer has valid data
@@ -43,8 +51,7 @@ void (event_handle_mouse)() {
   state = (state + 1) % 3;
 }
 
-#include "../controller/main_controller.h"
-static bool extended_flag = false;
+static bool extended_flag = false; ///< The flag to identify multiple byte scancodes
 void (event_handle_keyboard)() {
   if(!kbc_valid_output(false)){ //check if the output buffer has valid data
     kbc_discard_output(); //discard if not

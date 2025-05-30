@@ -1,4 +1,9 @@
-/// @file arena_controller.c
+/** 
+ * @file arena_controller.c
+ * @brief Source code to control the arena
+ * 
+ * This file handles the logic behind the operation of the arena, including the player and the enemies using the functions in @ref enemy_controller.c.
+ */
 
 #include "arena_controller.h"
 

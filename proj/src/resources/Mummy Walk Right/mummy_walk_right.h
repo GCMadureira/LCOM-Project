@@ -1,3 +1,9 @@
+/** 
+ * @file mummy_walk_right.h
+ * @brief Includes all the xpm files for the mummy walk right animation
+ */
+
+
 #ifndef _MUMMY_WALK_RIGHT_H_
 #define _MUMMY_WALK_RIGHT_H_
 

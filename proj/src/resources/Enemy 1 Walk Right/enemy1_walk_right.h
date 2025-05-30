@@ -1,3 +1,9 @@
+/** 
+ * @file enemy1_walk_right.h
+ * @brief Includes all the xpm files for the enemy 1 walk right animation
+ */
+
+
 #ifndef _ENEMY1_WALK_RIGHT_H_
 #define _ENEMY1_WALK_RIGHT_H_
 

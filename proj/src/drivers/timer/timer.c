@@ -5,8 +5,8 @@
 
 #include "i8254.h"
 
-int counter = 0;
-int timer_hook_id;
+int counter = 0; ///< The interruption counter
+int timer_hook_id; ///< The id to unsubscribe the timer interruptions
 
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {

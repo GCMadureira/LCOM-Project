@@ -1,10 +1,17 @@
+/** 
+ * @file graphics.c
+ * @brief Source code file for all the logic related to the graphics and vbe
+ */
+
+
+
 #include "graphics.h"
-#include <math.h>
 
 
-static char* buffer = NULL, *video_mem = NULL;
-static vbe_mode_info_t mode_info;
-static int bytes_per_pixel;
+static char* buffer = NULL; ///< Secondary buffer for the video memory
+static char* video_mem = NULL; ///< Pointer to the real video memory
+static vbe_mode_info_t mode_info; ///< Stores the current mode info
+static int bytes_per_pixel; ///< Stores the number of bytes per pixel to avoid repetitive divisions
 
 void* (vg_get_video_mem)(){
   return buffer;

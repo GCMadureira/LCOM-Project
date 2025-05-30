@@ -1,14 +1,39 @@
-/// @file main_controller.c
+/** 
+ * @file main_controller.c
+ * @brief Source code to control the program
+ * 
+ * This file handles the logic for the whole program, controlling the menus and the arena by calling the functions in @ref arena_controller.c. It also calls the drawing functions.
+ */
 
+
+ 
 #include "main_controller.h"
 
-static menu* active_menu = NULL;
-static arena* active_arena = NULL;
+/**
+ * @brief Processes the inputs events for the @ref active_menu.
+ * 
+ * Moves the menu option and handles what happens when the user selects one of them. <br>
+ * Changes the @ref game_state accordingly and sets up the new one.
+ * 
+ * @return 0 in case of success, 1 otherwise
+ */
+static int (process_menu)();
 
-static enum game_state game_state = MAIN_MENU;
-static unsigned long frame = 0;
+/**
+ * @brief Processes the inputs events for the @ref active_arena.
+ * 
+ * Sets the player speed based on the inputs, handles the ranged attack and controls the mouse movement.
+ * 
+ * @return 0 in case of success, 1 otherwise
+ */
+static int (process_game)();
 
-const double COS45 = 0.70710678118;
+static menu* active_menu = NULL;               ///< The pointer to the active arena, if one exists
+static arena* active_arena = NULL;             ///< The pointer to the active menu, if one exists
+
+static enum game_state game_state = MAIN_MENU; ///< The state of the program
+static unsigned long frame = 0;                ///< The frame count of the program
+
 
 enum game_state (get_game_state)(){
   return game_state;

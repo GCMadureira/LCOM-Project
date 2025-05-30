@@ -1,3 +1,9 @@
+/** 
+ * @file drivers.h
+ * @brief File to include all the driver functions in a cleaner way.
+ */
+
+
 #ifndef _DRIVERS_PROJ_H_
 #define _DRIVERS_PROJ_H_
 

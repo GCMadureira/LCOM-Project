@@ -1,8 +1,14 @@
+/** 
+ * @file keyboard.c
+ * @brief Source code file for all the logic to interact with the kbc's keyboard 
+ */
+
+
 #include "keyboard.h"
 
 
-static int kbd_hook_id;
-static uint8_t scancode = 0;
+static int kbd_hook_id; ///< The hook id to unsubscribe the keyboard interruptions
+static uint8_t scancode = 0; ///< The lastest scancode read
 
 u_int8_t (keyboard_get_scancode)(){
   return scancode;

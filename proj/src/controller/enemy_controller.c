@@ -1,4 +1,9 @@
-/// @file enemy_controller.c
+/** 
+ * @file enemy_controller.c
+ * @brief Source code to control the enemies
+ * 
+ * This file handles the logic for the enemies, including the their spawn mechanics and collisions.
+ */
 
 #include "enemy_controller.h"
 

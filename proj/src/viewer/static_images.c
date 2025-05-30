@@ -1,3 +1,9 @@
+/** 
+ * @file static_images.c
+ * @brief Source code file for all the logic related to the static images
+ */
+
+
 #include "static_images.h"
 
 xpm_image_t start_background_img;

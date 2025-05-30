@@ -1,3 +1,11 @@
+/** 
+ * @file arena.c
+ * @brief Source code file for all the logic related to the arena struct
+ * 
+ * This file implements all the functions for the arena struct.
+ */
+
+
 #include "arena.h"
 
 
@@ -22,6 +30,8 @@ arena* (arena_create)() {
 int (arena_destroy)(arena* arena) {
   entity_destroy(arena->player);
   entity_list_destroy(arena->enemies);
+  entity_list_destroy(arena->player_attacks);
+  entity_list_destroy(arena->hearts);
   free(arena);
   return 0;
 }

@@ -1,3 +1,9 @@
+/** 
+ * @file kbc.c
+ * @brief Source code file for all the logic related to the kbc
+ */
+
+
 #include "kbc.h"
 
 

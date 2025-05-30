@@ -1,3 +1,9 @@
+/** 
+ * @file i8254.h
+ * @brief This file defines several useful macros to use with the timer
+ */
+
+
 #ifndef _LCOM_I8254_H_
 #define _LCOM_I8254_H_
 
@@ -6,7 +12,7 @@
 /** @defgroup i8254 i8254
  * @{
  *
- * Constants for programming the i8254 Timer. Needs to be completed.
+ * Constants for programming the i8254 Timer.
  */
 
 #define TIMER_FREQ 1193182 /**< @brief clock frequency for timer in PC and AT */

@@ -1,3 +1,9 @@
+/** 
+ * @file enemy2_walk_left.h
+ * @brief Includes all the xpm files for the enemy 2 walk left animation
+ */
+
+
 #ifndef _ENEMY2_WALK_LEFT_H_
 #define _ENEMY2_WALK_LEFT_H_
 
