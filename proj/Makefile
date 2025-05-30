@@ -11,6 +11,7 @@ CFLAGS += -pedantic
 
 CFLAGS += -o $@
 CFLAGS += -Wno-c11-extensions
+CFLAGS += -Wno-overlength-strings
 
 # list of library dependencies
 DPADD += ${LIBLCF}

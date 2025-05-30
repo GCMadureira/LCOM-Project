@@ -11,8 +11,6 @@
 
 uint32_t (get_arena_game_time)();
 uint32_t (get_arena_starting_frame)();
-uint32_t (get_high_score)();
-void (update_high_score)(uint32_t new_time);
 void (handle_ranged_attack)(arena* arena);
 void (handle_auto_attack)(arena* arena);
 int (arena_move_entities)(arena* arena);

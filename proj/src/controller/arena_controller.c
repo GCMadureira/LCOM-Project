@@ -8,7 +8,6 @@ static unsigned long last_auto_attack = 0; // Track when the player last auto at
 static unsigned long last_ranged_attack = 0; // Track when the player last used a ranged attack
 static unsigned long last_heart_spawn = 0; // Track when we last spawned a heart
 static bool secret_spawned = false; // Track if the secret enemy has been spawned
-static uint32_t high_score = 0; // Track the highest achieved time
 
 uint32_t (get_arena_starting_frame)() {
   return arena_starting_frame;
@@ -16,34 +15,6 @@ uint32_t (get_arena_starting_frame)() {
 
 uint32_t (get_arena_game_time)() {
   return arena_game_time;
-}
-
-uint32_t (get_high_score)() {
-  FILE* file = fopen("highscore.txt", "r");
-  if (file == NULL) {
-    // File doesn't exist, create it with default value 0
-    file = fopen("highscore.txt", "w");
-    if (file != NULL) {
-      fprintf(file, "0");
-      fclose(file);
-      high_score = 0;
-    }
-  } else {
-    fscanf(file, "%u", &high_score);
-    fclose(file);
-  }
-  return high_score;
-}
-
-void (update_high_score)(uint32_t new_time) {
-  if (new_time > high_score) {
-    high_score = new_time;
-    FILE* file = fopen("highscore.txt", "w");
-    if (file != NULL) {
-      fprintf(file, "%u", high_score);
-      fclose(file);
-    }
-  }
 }
 
 void (setup_arena_controller)() {
@@ -189,8 +160,6 @@ int (arena_process_frame)(arena* arena) {
       if (arena->player->health > 0)
         last_damage_time = get_current_frame();
       else {
-        // Update high score when player dies
-        update_high_score(arena_game_time);
         return 1;
       }
     }
@@ -199,8 +168,6 @@ int (arena_process_frame)(arena* arena) {
   // update the active time
   if ((get_current_frame() - arena_starting_frame) % 60 == 0) {
     ++arena_game_time;
-    // Update high score if current time exceeds it
-    update_high_score(arena_game_time);
   }
 
   // spawn the enemies, hearts, and secret

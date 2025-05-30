@@ -6,6 +6,8 @@ arena* active_arena = NULL;
 static enum game_state game_state = MAIN_MENU;
 static unsigned long frame = 0;
 
+static uint32_t high_score = 0; // Track the highest achieved time
+
 const double COS45 = 0.70710678118;
 
 enum game_state (get_game_state)(){
@@ -18,6 +20,36 @@ void (set_game_state)(enum game_state state) {
 
 unsigned long (get_current_frame)() {
   return frame;
+}
+
+int (load_highscore)() {
+  FILE* file = fopen("highscore.txt", "r");
+  if (file == NULL) return 1;
+
+  fscanf(file, "%u", &high_score);
+  fclose(file);
+  
+  return 0;
+}
+
+int (save_highscore)() {
+  FILE* file = fopen("highscore.txt", "w");
+  if (file == NULL) return 1;
+
+  fprintf(file, "%u", high_score);
+  fclose(file);
+
+  return 0;
+}
+
+uint32_t (get_high_score)() {
+  return high_score;
+}
+
+void (update_high_score)(uint32_t new_time) {
+  if (new_time > high_score) {
+    high_score = new_time;
+  }
 }
 
 static int (process_menu)(){
@@ -140,6 +172,7 @@ int (process_frame)() {
       // If player Health == 0 return to menu
       // We are doing the entire "changing health bar sprite" on the viewers
       if (active_arena->player->health == 0) {
+        update_high_score(get_arena_game_time());
         game_state = GAME_OVER_MENU;
         active_menu = menu_create_game_over();
       }
@@ -160,12 +193,14 @@ int (process_frame)() {
 int (setup_game)() {
   if(static_images_load()) return 1;
   if(animations_load()) return 1;
+  load_highscore();
   active_menu = menu_create_main();
   game_state = MAIN_MENU;
   return 0;
 }
 
 int (clean_game)() {
+  save_highscore();
   events_clear();
   animations_clean();
   if(active_menu != NULL) menu_destroy(active_menu);
