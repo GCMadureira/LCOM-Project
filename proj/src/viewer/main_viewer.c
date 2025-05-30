@@ -46,10 +46,10 @@ int (draw_arena)(arena* arena) {
   vg_draw_image32(10 + number_sprites[0].width * 2, 10, &two_points); 
   
   // Draw seconds
-  // Pos (10 + sprite width*3, 10)
-  vg_draw_image32(10 + number_sprites[0].width * 3, 10, &number_sprites[seconds / 10]);
-  // Pos (10 + sprite width*4, 10)
-  vg_draw_image32(10 + number_sprites[0].width * 4, 10, &number_sprites[seconds % 10]);
+  // Pos (sprite width*3, 10)
+  vg_draw_image32(number_sprites[0].width * 3, 10, &number_sprites[seconds / 10]);
+  // Pos (sprite width*4, 10)
+  vg_draw_image32(number_sprites[0].width * 4, 10, &number_sprites[seconds % 10]);
   
   return 0;
 }

@@ -62,7 +62,7 @@ void (handle_auto_attack)(arena* arena) {
 
 static void (handle_heart_spawning)(arena* arena) {
   // Spawn a heart every 3600 frames (1 minute at 60 FPS)
-  if (get_current_frame() - last_heart_spawn >= 60) {
+  if (get_current_frame() - last_heart_spawn >= 3600) {
     // Randomly choose a position within the arena bounds
     double pos_x = rand() % (arena->background_image->width - 40);  // 40 is the heart's width
     double pos_y = rand() % (arena->background_image->height - 40); // 40 is the heart's height
