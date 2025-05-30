@@ -72,7 +72,7 @@ int (proj_main_loop)() {
   message msg;
 
   // main loop
-  while(keyboard_get_scancode() != ESC_KEY_BREAKCODE && get_game_state() != QUIT) {
+  while(get_game_state() != QUIT) {
     if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
       printf("driver_receive failed with: %d", r);
       continue;

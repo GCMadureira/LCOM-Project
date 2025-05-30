@@ -178,9 +178,8 @@ static void (handle_secret_spawning)(arena* arena) {
     
     // Create the secret entity (with 0 speed so it doesn't move)
     entity* secret = entity_create_full(pos_x, pos_y, 0, 0, 0, 0xFFFFFFFF, secret_animations);
-
     entity_list_add(&(arena->enemies), secret);
-    
+  
     secret_spawned = true;
   }
 }
