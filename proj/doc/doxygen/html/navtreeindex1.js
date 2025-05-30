@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"graphics_8h.html":[2,0,1,0,1],
 "graphics_8h.html#a037327fc6c4a94f1a9d2f0ea127616f4":[2,0,1,0,1,15],
 "graphics_8h.html#a10539afab671110c5e3e31ec73b8ec2a":[2,0,1,0,1,6],
 "graphics_8h.html#a230d881a4d6cb3aea470ce89777ff13e":[2,0,1,0,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "structanimation.html":[1,0,3],
 "structanimation.html#a031ba2d5ce93d4fff165c7dece0b56c3":[1,0,3,0],
 "structanimation.html#a502f1077adb8d0ca4a8023ff2377f797":[1,0,3,1],
-"structarena.html":[1,0,4],
-"structarena.html#a3a65af53fd8ed22c0c0f410d278a7698":[1,0,4,2]
+"structarena.html":[1,0,4]
 };

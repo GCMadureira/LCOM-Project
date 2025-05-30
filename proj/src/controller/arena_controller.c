@@ -20,6 +20,15 @@
 static void (handle_heart_spawning)(arena* arena);
 
 /**
+ * @brief Spawns a secret entity once
+ * 
+ * Secret shhhhhhhh
+ * 
+ * @param arena A pointer to the arena where the secret will be spawned
+ */
+static void (handle_secret_spawning)(arena* arena);
+
+/**
  * @brief Checks if the player is colliding with the heart.
  * 
  * Uses a simple box collision detection utilizing the image sizes of the sprites.
@@ -83,6 +92,9 @@ void (setup_arena_controller)() {
   last_ranged_attack = 0;
   arena_starting_frame = get_current_frame();
   arena_game_time = 0;
+  last_damage_time = 0;
+  last_heart_spawn = 0;
+  secret_spawned = false;
 }
 
 void (handle_ranged_attack)(arena* arena) {
@@ -165,7 +177,8 @@ static void (handle_secret_spawning)(arena* arena) {
     }
     
     // Create the secret entity (with 0 speed so it doesn't move)
-    entity* secret = entity_create_full(pos_x, pos_y, 0, 0, 0, 9, &secret_animation);
+    entity* secret = entity_create_full(pos_x, pos_y, 0, 0, 0, 0xFFFFFFFF, secret_animations);
+
     entity_list_add(&(arena->enemies), secret);
     
     secret_spawned = true;

@@ -12,6 +12,8 @@ Source code to control the arena.
 \item 
 static void \mbox{\hyperlink{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}{handle\+\_\+heart\+\_\+spawning}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
 \begin{DoxyCompactList}\small\item\em Spawns a heart to regenerate the player with a cooldown. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{arena__controller_8c_a6010cc0aefe7891b4a1fb12c3f673647}{handle\+\_\+secret\+\_\+spawning}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Spawns a secret entity once. \end{DoxyCompactList}\item 
 static bool \mbox{\hyperlink{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}{check\+\_\+heart\+\_\+collision}} (\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}heart, \mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}player)
 \begin{DoxyCompactList}\small\item\em Checks if the player is colliding with the heart. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}{handle\+\_\+heart\+\_\+collisions}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
@@ -30,8 +32,6 @@ void \mbox{\hyperlink{arena__controller_8c_a4233e345dd45a72fa6b7d3dba0a19379}{ha
 \begin{DoxyCompactList}\small\item\em Executes a ranged attack with a cooldown. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{arena__controller_8c_a63dac5d250ad059af842c4b6292260f1}{handle\+\_\+auto\+\_\+attack}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
 \begin{DoxyCompactList}\small\item\em Executes the auto attack with a cooldown. \end{DoxyCompactList}\item 
-static void \mbox{\hyperlink{arena__controller_8c_a6010cc0aefe7891b4a1fb12c3f673647}{handle\+\_\+secret\+\_\+spawning}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
-\item 
 int \mbox{\hyperlink{arena__controller_8c_a65fc1548128ab4fb70d7e1aeddd65537}{arena\+\_\+process\+\_\+frame}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
 \begin{DoxyCompactList}\small\item\em Processes a frame on the passed arena. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
@@ -82,7 +82,7 @@ Calls \doxylink{enemy__controller_8c_a0eacbbffc80e6ed032e27eef7bd25c55}{enemies\
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00237}{237}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00250}{250}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a65fc1548128ab4fb70d7e1aeddd65537}\index{arena\_controller.c@{arena\_controller.c}!arena\_process\_frame@{arena\_process\_frame}}
 \index{arena\_process\_frame@{arena\_process\_frame}!arena\_controller.c@{arena\_controller.c}}
@@ -108,7 +108,7 @@ This function is called once every frame on the main controller to process one f
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00250}{250}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00263}{263}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a32481e4dd17dd8915d3c4cdfdd2d2fc4}\index{arena\_controller.c@{arena\_controller.c}!attacks\_move@{attacks\_move}}
 \index{attacks\_move@{attacks\_move}!arena\_controller.c@{arena\_controller.c}}
@@ -129,7 +129,7 @@ Iterates through the list of active attacks and calls \doxylink{attack_8c_a2c5f8
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00213}{213}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00226}{226}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}\index{arena\_controller.c@{arena\_controller.c}!check\_heart\_collision@{check\_heart\_collision}}
 \index{check\_heart\_collision@{check\_heart\_collision}!arena\_controller.c@{arena\_controller.c}}
@@ -155,7 +155,7 @@ true if the entities are colliding, false otherwise
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00175}{175}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00188}{188}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a7320cd4f275ec44ece5cbaf1204b381f}\index{arena\_controller.c@{arena\_controller.c}!get\_arena\_game\_time@{get\_arena\_game\_time}}
 \index{get\_arena\_game\_time@{get\_arena\_game\_time}!arena\_controller.c@{arena\_controller.c}}
@@ -172,7 +172,7 @@ The time in seconds the arena was active.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00077}{77}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00086}{86}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}\index{arena\_controller.c@{arena\_controller.c}!get\_arena\_starting\_frame@{get\_arena\_starting\_frame}}
 \index{get\_arena\_starting\_frame@{get\_arena\_starting\_frame}!arena\_controller.c@{arena\_controller.c}}
@@ -189,7 +189,7 @@ The frame when the arena was initialized.
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00073}{73}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00082}{82}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a63dac5d250ad059af842c4b6292260f1}\index{arena\_controller.c@{arena\_controller.c}!handle\_auto\_attack@{handle\_auto\_attack}}
 \index{handle\_auto\_attack@{handle\_auto\_attack}!arena\_controller.c@{arena\_controller.c}}
@@ -210,7 +210,7 @@ If the cooldown has passed, it executes the auto attack in the direction the pla
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00104}{104}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00116}{116}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}\index{arena\_controller.c@{arena\_controller.c}!handle\_heart\_collisions@{handle\_heart\_collisions}}
 \index{handle\_heart\_collisions@{handle\_heart\_collisions}!arena\_controller.c@{arena\_controller.c}}
@@ -231,7 +231,7 @@ Iterates through the list of active hearts and checks if the player is colliding
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00183}{183}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00196}{196}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}\index{arena\_controller.c@{arena\_controller.c}!handle\_heart\_spawning@{handle\_heart\_spawning}}
 \index{handle\_heart\_spawning@{handle\_heart\_spawning}!arena\_controller.c@{arena\_controller.c}}
@@ -252,7 +252,7 @@ If the cooldown has passed, it spawns a heart in a random position inside the ar
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00125}{125}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00137}{137}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a4233e345dd45a72fa6b7d3dba0a19379}\index{arena\_controller.c@{arena\_controller.c}!handle\_ranged\_attack@{handle\_ranged\_attack}}
 \index{handle\_ranged\_attack@{handle\_ranged\_attack}!arena\_controller.c@{arena\_controller.c}}
@@ -273,7 +273,7 @@ If the cooldown has passed, it executes a lightning attack in the position of th
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00088}{88}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00100}{100}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a6010cc0aefe7891b4a1fb12c3f673647}\index{arena\_controller.c@{arena\_controller.c}!handle\_secret\_spawning@{handle\_secret\_spawning}}
 \index{handle\_secret\_spawning@{handle\_secret\_spawning}!arena\_controller.c@{arena\_controller.c}}
@@ -283,7 +283,18 @@ static void handle\+\_\+secret\+\_\+spawning (\begin{DoxyParamCaption}\item[{\mb
 
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00141}{141}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Spawns a secret entity once. 
+
+Secret shhhhhhhh
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the arena where the secret will be spawned \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00153}{153}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a9189679ee0e5aadead4c613784f76164}\index{arena\_controller.c@{arena\_controller.c}!setup\_arena\_controller@{setup\_arena\_controller}}
 \index{setup\_arena\_controller@{setup\_arena\_controller}!arena\_controller.c@{arena\_controller.c}}
@@ -297,7 +308,7 @@ Sets up the arena controller for a new game by resetting all the static variable
 
 Resets \doxylink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\+\_\+auto\+\_\+attack}, last\+\_\+range\+\_\+attack, \doxylink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\+\_\+starting\+\_\+frame} and \doxylink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\+\_\+game\+\_\+time}. 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00081}{81}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00090}{90}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 
 
@@ -314,7 +325,7 @@ Time the arena was active in seconds.
 
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00064}{64}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00073}{73}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a23074493553252f07b67549346a9b153}\index{arena\_controller.c@{arena\_controller.c}!arena\_starting\_frame@{arena\_starting\_frame}}
 \index{arena\_starting\_frame@{arena\_starting\_frame}!arena\_controller.c@{arena\_controller.c}}
@@ -328,7 +339,7 @@ Track the frame when the arena was created.
 
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00065}{65}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00074}{74}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}\index{arena\_controller.c@{arena\_controller.c}!last\_auto\_attack@{last\_auto\_attack}}
 \index{last\_auto\_attack@{last\_auto\_attack}!arena\_controller.c@{arena\_controller.c}}
@@ -342,7 +353,7 @@ Track when the player last auto attacked.
 
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00067}{67}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00076}{76}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}\index{arena\_controller.c@{arena\_controller.c}!last\_damage\_time@{last\_damage\_time}}
 \index{last\_damage\_time@{last\_damage\_time}!arena\_controller.c@{arena\_controller.c}}
@@ -356,7 +367,7 @@ Track when we last damaged the player.
 
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00066}{66}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00075}{75}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}\index{arena\_controller.c@{arena\_controller.c}!last\_heart\_spawn@{last\_heart\_spawn}}
 \index{last\_heart\_spawn@{last\_heart\_spawn}!arena\_controller.c@{arena\_controller.c}}
@@ -370,7 +381,7 @@ Track when we last spawned a heart.
 
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00069}{69}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00078}{78}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}\index{arena\_controller.c@{arena\_controller.c}!last\_ranged\_attack@{last\_ranged\_attack}}
 \index{last\_ranged\_attack@{last\_ranged\_attack}!arena\_controller.c@{arena\_controller.c}}
@@ -384,7 +395,7 @@ Track when the player last used a ranged attack.
 
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00068}{68}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00077}{77}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 
 \Hypertarget{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}\index{arena\_controller.c@{arena\_controller.c}!secret\_spawned@{secret\_spawned}}
 \index{secret\_spawned@{secret\_spawned}!arena\_controller.c@{arena\_controller.c}}
@@ -398,5 +409,5 @@ Track if the secret enemy has been spawned.
 
 
 
-Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00070}{70}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00079}{79}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
 

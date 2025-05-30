@@ -11,228 +11,234 @@
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00012}00012\ }
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00020}00020\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}{handle\_heart\_spawning}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}});}
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00021}00021\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00032}00032\ \textcolor{keyword}{static}\ bool\ (\mbox{\hyperlink{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}{check\_heart\_collision}})(\mbox{\hyperlink{structentity}{entity}}*\ heart,\ \mbox{\hyperlink{structentity}{entity}}*\ player);}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00033}00033\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00042}00042\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}{handle\_heart\_collisions}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00043}00043\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00051}00051\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a32481e4dd17dd8915d3c4cdfdd2d2fc4}{attacks\_move}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00029}00029\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a6010cc0aefe7891b4a1fb12c3f673647}{handle\_secret\_spawning}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00041}00041\ \textcolor{keyword}{static}\ bool\ (\mbox{\hyperlink{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}{check\_heart\_collision}})(\mbox{\hyperlink{structentity}{entity}}*\ heart,\ \mbox{\hyperlink{structentity}{entity}}*\ player);}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00051}00051\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}{handle\_heart\_collisions}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}});}
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00052}00052\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00061}00061\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a2fcd7bed1ee21149f594ab5663588ec2}{arena\_move\_entities}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00062}00062\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00063}00063\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00064}\mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{00064}}\ \textcolor{keyword}{static}\ uint32\_t\ \mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}}\ =\ 0;\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00065}\mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{00065}}\ \textcolor{keyword}{static}\ uint32\_t\ \mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\_starting\_frame}}\ =\ 0;\ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00066}\mbox{\hyperlink{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}{00066}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}{last\_damage\_time}}\ =\ 0;\ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00067}\mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{00067}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\_auto\_attack}}\ =\ 0;\ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00068}\mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{00068}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{last\_ranged\_attack}}\ =\ 0;\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00069}\mbox{\hyperlink{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}{00069}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}{last\_heart\_spawn}}\ =\ 0;\ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00070}\mbox{\hyperlink{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}{00070}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}{secret\_spawned}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00060}00060\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a32481e4dd17dd8915d3c4cdfdd2d2fc4}{attacks\_move}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00070}00070\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a2fcd7bed1ee21149f594ab5663588ec2}{arena\_move\_entities}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}});}
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00071}00071\ }
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00072}00072\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00073}\mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{00073}}\ uint32\_t\ (\mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\_arena\_starting\_frame}})()\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00074}00074\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\_starting\_frame}};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00075}00075\ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00076}00076\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00077}\mbox{\hyperlink{arena__controller_8c_a7320cd4f275ec44ece5cbaf1204b381f}{00077}}\ uint32\_t\ (\mbox{\hyperlink{arena__controller_8c_a7320cd4f275ec44ece5cbaf1204b381f}{get\_arena\_game\_time}})()\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00078}00078\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00073}\mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{00073}}\ \textcolor{keyword}{static}\ uint32\_t\ \mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}}\ =\ 0;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00074}\mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{00074}}\ \textcolor{keyword}{static}\ uint32\_t\ \mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\_starting\_frame}}\ =\ 0;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00075}\mbox{\hyperlink{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}{00075}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}{last\_damage\_time}}\ =\ 0;\ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00076}\mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{00076}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\_auto\_attack}}\ =\ 0;\ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00077}\mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{00077}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{last\_ranged\_attack}}\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00078}\mbox{\hyperlink{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}{00078}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}{last\_heart\_spawn}}\ =\ 0;\ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00079}\mbox{\hyperlink{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}{00079}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}{secret\_spawned}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00080}00080\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00081}\mbox{\hyperlink{arena__controller_8c_a9189679ee0e5aadead4c613784f76164}{00081}}\ void\ (\mbox{\hyperlink{arena__controller_8c_a9189679ee0e5aadead4c613784f76164}{setup\_arena\_controller}})()\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00082}00082\ \ \ \mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\_auto\_attack}}\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00083}00083\ \ \ \mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{last\_ranged\_attack}}\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00084}00084\ \ \ \mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\_starting\_frame}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00085}00085\ \ \ \mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}}\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00086}00086\ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00087}00087\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00088}\mbox{\hyperlink{arena__controller_8c_a4233e345dd45a72fa6b7d3dba0a19379}{00088}}\ void\ (\mbox{\hyperlink{arena__controller_8c_a4233e345dd45a72fa6b7d3dba0a19379}{handle\_ranged\_attack}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00089}00089\ \ \ \textcolor{comment}{//\ Cooldown\ of\ 5\ seconds\ (300/60fps\ =\ 5)}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00090}00090\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{last\_ranged\_attack}}\ >=\ 300)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00091}00091\ \ \ \ \ \mbox{\hyperlink{structattack}{attack}}*\ new\_attack\ =\ \mbox{\hyperlink{attack_8c_a99f72c038afa964f74c748b2f20c644b}{attack\_create\_full}}(}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00092}00092\ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ab92e02356cd036a7927f70cf5f79261c}{mouse}}-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ -\/\ \mbox{\hyperlink{animations_8c_aced52fc5ad13515f67bab9692acb6a2c}{lightning\_attack\_animation}}.sprites[0]-\/>width/2,\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00093}00093\ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ab92e02356cd036a7927f70cf5f79261c}{mouse}}-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ -\/\ \mbox{\hyperlink{animations_8c_aced52fc5ad13515f67bab9692acb6a2c}{lightning\_attack\_animation}}.sprites[0]-\/>height/2,\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00094}00094\ \ \ \ \ \ \ 0,\ 0,\ 1,\ 56,\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00095}00095\ \ \ \ \ \ \ \mbox{\hyperlink{animations_8c_aced52fc5ad13515f67bab9692acb6a2c}{lightning\_attack\_animation}}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00096}00096\ \ \ \ \ );}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00097}00097\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00098}00098\ \ \ \ \ \mbox{\hyperlink{attack_8c_a2fc649c5bcb73726bd31ed5a745dfe89}{attack\_list\_add}}(\&(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}}),\ new\_attack);}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00082}\mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{00082}}\ uint32\_t\ (\mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\_arena\_starting\_frame}})()\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00083}00083\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\_starting\_frame}};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00086}\mbox{\hyperlink{arena__controller_8c_a7320cd4f275ec44ece5cbaf1204b381f}{00086}}\ uint32\_t\ (\mbox{\hyperlink{arena__controller_8c_a7320cd4f275ec44ece5cbaf1204b381f}{get\_arena\_game\_time}})()\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00087}00087\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00090}\mbox{\hyperlink{arena__controller_8c_a9189679ee0e5aadead4c613784f76164}{00090}}\ void\ (\mbox{\hyperlink{arena__controller_8c_a9189679ee0e5aadead4c613784f76164}{setup\_arena\_controller}})()\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00091}00091\ \ \ \mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\_auto\_attack}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00092}00092\ \ \ \mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{last\_ranged\_attack}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00093}00093\ \ \ \mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\_starting\_frame}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00094}00094\ \ \ \mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00095}00095\ \ \ \mbox{\hyperlink{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}{last\_damage\_time}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00096}00096\ \ \ \mbox{\hyperlink{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}{last\_heart\_spawn}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00097}00097\ \ \ \mbox{\hyperlink{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}{secret\_spawned}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00098}00098\ \}}
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00099}00099\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00100}00100\ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{last\_ranged\_attack}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00101}00101\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00102}00102\ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00103}00103\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00104}\mbox{\hyperlink{arena__controller_8c_a63dac5d250ad059af842c4b6292260f1}{00104}}\ void\ (\mbox{\hyperlink{arena__controller_8c_a63dac5d250ad059af842c4b6292260f1}{handle\_auto\_attack}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00105}00105\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\_auto\_attack}}\ >=\ 120)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00106}00106\ \ \ \ \ \textcolor{comment}{//\ if\ the\ player\ is\ moving\ right\ or\ last\ moved\ right,\ attack\ on\ the\ right,\ else\ left}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00107}00107\ \ \ \ \ \textcolor{keywordtype}{double}\ attack\_x\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aebb2c694aa0ece3f9bb10e4f0261cadc}{speed\_x}}\ >\ 0\ ||\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ad824c070cb07a1c200a17d608766b7e2}{last\_horizontal\_direction}}\ ?\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00108}00108\ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}-\/>\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>width\ +\ 5\ :}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00109}00109\ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ -\/\ \mbox{\hyperlink{animations_8c_a3ea36af53f25b56741a364c3cd6021e6}{khopesh\_attack\_right\_animation}}.sprites[0]-\/>width\ -\/\ 5;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00110}00110\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{double}\ attack\_y\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}-\/>\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>height/2\ -\/\ \ \mbox{\hyperlink{animations_8c_a3ea36af53f25b56741a364c3cd6021e6}{khopesh\_attack\_right\_animation}}.sprites[0]-\/>height/2;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00112}00112\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00113}00113\ \ \ \ \ \mbox{\hyperlink{structanimation}{animation}}\ \mbox{\hyperlink{structanimation}{animation}}\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aebb2c694aa0ece3f9bb10e4f0261cadc}{speed\_x}}\ >\ 0\ ||\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ad824c070cb07a1c200a17d608766b7e2}{last\_horizontal\_direction}}\ ?\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00114}00114\ \ \ \ \ \mbox{\hyperlink{animations_8c_a3ea36af53f25b56741a364c3cd6021e6}{khopesh\_attack\_right\_animation}}\ :\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00115}00115\ \ \ \ \ \mbox{\hyperlink{animations_8c_a3d71208df5925526b81e8e880995c17a}{khopesh\_attack\_left\_animation}};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00116}00116\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00117}00117\ \ \ \ \ \mbox{\hyperlink{structattack}{attack}}*\ new\_attack\ =\ \mbox{\hyperlink{attack_8c_a99f72c038afa964f74c748b2f20c644b}{attack\_create\_full}}(attack\_x,\ attack\_y,\ 0,\ 0,\ 1,\ 24,\ \mbox{\hyperlink{structanimation}{animation}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00118}00118\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00119}00119\ \ \ \ \ \mbox{\hyperlink{attack_8c_a2fc649c5bcb73726bd31ed5a745dfe89}{attack\_list\_add}}(\&(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}}),\ new\_attack);}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00120}00120\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\_auto\_attack}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00122}00122\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00100}\mbox{\hyperlink{arena__controller_8c_a4233e345dd45a72fa6b7d3dba0a19379}{00100}}\ void\ (\mbox{\hyperlink{arena__controller_8c_a4233e345dd45a72fa6b7d3dba0a19379}{handle\_ranged\_attack}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00101}00101\ \ \ \textcolor{comment}{//\ Cooldown\ of\ 5\ seconds\ (300/60fps\ =\ 5)}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00102}00102\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{last\_ranged\_attack}}\ >=\ 300)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00103}00103\ \ \ \ \ \mbox{\hyperlink{structattack}{attack}}*\ new\_attack\ =\ \mbox{\hyperlink{attack_8c_a99f72c038afa964f74c748b2f20c644b}{attack\_create\_full}}(}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00104}00104\ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ab92e02356cd036a7927f70cf5f79261c}{mouse}}-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ -\/\ \mbox{\hyperlink{animations_8c_aced52fc5ad13515f67bab9692acb6a2c}{lightning\_attack\_animation}}.sprites[0]-\/>width/2,\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00105}00105\ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ab92e02356cd036a7927f70cf5f79261c}{mouse}}-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ -\/\ \mbox{\hyperlink{animations_8c_aced52fc5ad13515f67bab9692acb6a2c}{lightning\_attack\_animation}}.sprites[0]-\/>height/2,\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00106}00106\ \ \ \ \ \ \ 0,\ 0,\ 1,\ 56,\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00107}00107\ \ \ \ \ \ \ \mbox{\hyperlink{animations_8c_aced52fc5ad13515f67bab9692acb6a2c}{lightning\_attack\_animation}}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00108}00108\ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00110}00110\ \ \ \ \ \mbox{\hyperlink{attack_8c_a2fc649c5bcb73726bd31ed5a745dfe89}{attack\_list\_add}}(\&(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}}),\ new\_attack);}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00112}00112\ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a8bfb9b316009d3d310d1e710084e726e}{last\_ranged\_attack}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00113}00113\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00116}\mbox{\hyperlink{arena__controller_8c_a63dac5d250ad059af842c4b6292260f1}{00116}}\ void\ (\mbox{\hyperlink{arena__controller_8c_a63dac5d250ad059af842c4b6292260f1}{handle\_auto\_attack}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00117}00117\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\_auto\_attack}}\ >=\ 120)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ if\ the\ player\ is\ moving\ right\ or\ last\ moved\ right,\ attack\ on\ the\ right,\ else\ left}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00119}00119\ \ \ \ \ \textcolor{keywordtype}{double}\ attack\_x\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aebb2c694aa0ece3f9bb10e4f0261cadc}{speed\_x}}\ >\ 0\ ||\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ad824c070cb07a1c200a17d608766b7e2}{last\_horizontal\_direction}}\ ?\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00120}00120\ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}-\/>\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>width\ +\ 5\ :}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ -\/\ \mbox{\hyperlink{animations_8c_a3ea36af53f25b56741a364c3cd6021e6}{khopesh\_attack\_right\_animation}}.sprites[0]-\/>width\ -\/\ 5;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00123}00123\ \ \ \ \ \textcolor{keywordtype}{double}\ attack\_y\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}-\/>\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>height/2\ -\/\ \ \mbox{\hyperlink{animations_8c_a3ea36af53f25b56741a364c3cd6021e6}{khopesh\_attack\_right\_animation}}.sprites[0]-\/>height/2;}
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00124}00124\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00125}\mbox{\hyperlink{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}{00125}}\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}{handle\_heart\_spawning}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00126}00126\ \ \ \textcolor{comment}{//\ Spawn\ a\ heart\ every\ 3600\ frames\ (1\ minute\ at\ 60\ FPS)}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00127}00127\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}{last\_heart\_spawn}}\ >=\ 3600)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00128}00128\ \ \ \ \ \textcolor{comment}{//\ Randomly\ choose\ a\ position\ within\ the\ arena\ bounds}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00129}00129\ \ \ \ \ \textcolor{keywordtype}{double}\ pos\_x\ =\ rand()\ \%\ (\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>width\ -\/\ 40);\ \ \textcolor{comment}{//\ 40\ is\ the\ heart's\ width}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00130}00130\ \ \ \ \ \textcolor{keywordtype}{double}\ pos\_y\ =\ rand()\ \%\ (\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>height\ -\/\ 40);\ \textcolor{comment}{//\ 40\ is\ the\ heart's\ height}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00131}00131\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00132}00132\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00133}00133\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ heart\ entity}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00134}00134\ \ \ \ \ \mbox{\hyperlink{structentity}{entity}}*\ new\_heart\ =\ \mbox{\hyperlink{entity_8c_ad0018de7fcd73cfc668b5f96f0b08377}{entity\_create\_full}}(pos\_x,\ pos\_y,\ 0,\ 0,\ 0,\ 1,\ \&\mbox{\hyperlink{animations_8c_a4b22c2d14f1e31a34c82e0bdfbaa13bf}{heart\_animation}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00135}00135\ \ \ \ \ \mbox{\hyperlink{entity_8c_a91f6ff9b2f9c62e4c189651f46655436}{entity\_list\_add}}(\&(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a3a65af53fd8ed22c0c0f410d278a7698}{hearts}}),\ new\_heart);}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00136}00136\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00137}00137\ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}{last\_heart\_spawn}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00138}00138\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00139}00139\ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00140}00140\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00141}00141\ \textcolor{keyword}{static}\ void\ (handle\_secret\_spawning)(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00142}00142\ \ \ \textcolor{comment}{//\ Spawn\ the\ secret\ enemy\ at\ 3\ minutes\ (180\ seconds)\ if\ not\ already\ spawned}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00143}00143\ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}{secret\_spawned}}\ \&\&\ \mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}}\ >=\ 180)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00144}00144\ \ \ \ \ \textcolor{comment}{//\ Choose\ one\ corner\ of\ the\ arena\ at\ random}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00145}00145\ \ \ \ \ \textcolor{keywordtype}{int}\ corner\ =\ rand()\ \%\ 4;\ \ \textcolor{comment}{//\ 0:\ top-\/left,\ 1:\ top-\/right,\ 2:\ bottom-\/left,\ 3:\ bottom-\/right}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00146}00146\ \ \ \ \ \textcolor{keywordtype}{double}\ pos\_x,\ pos\_y;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00147}00147\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{switch}(corner)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00149}00149\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:\ \textcolor{comment}{//\ top-\/left}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00150}00150\ \ \ \ \ \ \ \ \ pos\_x\ =\ 50;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00151}00151\ \ \ \ \ \ \ \ \ pos\_y\ =\ 50;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00153}00153\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \textcolor{comment}{//\ top-\/right}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00154}00154\ \ \ \ \ \ \ \ \ pos\_x\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>width\ -\/\ 50;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00155}00155\ \ \ \ \ \ \ \ \ pos\_y\ =\ 50;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00157}00157\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:\ \textcolor{comment}{//\ bottom-\/left}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00158}00158\ \ \ \ \ \ \ \ \ pos\_x\ =\ 50;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00159}00159\ \ \ \ \ \ \ \ \ pos\_y\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>height\ -\/\ 50;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00161}00161\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:\ \textcolor{comment}{//\ bottom-\/right}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00162}00162\ \ \ \ \ \ \ \ \ pos\_x\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>width\ -\/\ 50;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00163}00163\ \ \ \ \ \ \ \ \ pos\_y\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>height\ -\/\ 50;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00125}00125\ \ \ \ \ \mbox{\hyperlink{structanimation}{animation}}\ \mbox{\hyperlink{structanimation}{animation}}\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aebb2c694aa0ece3f9bb10e4f0261cadc}{speed\_x}}\ >\ 0\ ||\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ad824c070cb07a1c200a17d608766b7e2}{last\_horizontal\_direction}}\ ?\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00126}00126\ \ \ \ \ \mbox{\hyperlink{animations_8c_a3ea36af53f25b56741a364c3cd6021e6}{khopesh\_attack\_right\_animation}}\ :\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00127}00127\ \ \ \ \ \mbox{\hyperlink{animations_8c_a3d71208df5925526b81e8e880995c17a}{khopesh\_attack\_left\_animation}};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00129}00129\ \ \ \ \ \mbox{\hyperlink{structattack}{attack}}*\ new\_attack\ =\ \mbox{\hyperlink{attack_8c_a99f72c038afa964f74c748b2f20c644b}{attack\_create\_full}}(attack\_x,\ attack\_y,\ 0,\ 0,\ 1,\ 24,\ \mbox{\hyperlink{structanimation}{animation}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00131}00131\ \ \ \ \ \mbox{\hyperlink{attack_8c_a2fc649c5bcb73726bd31ed5a745dfe89}{attack\_list\_add}}(\&(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}}),\ new\_attack);}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00133}00133\ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\_auto\_attack}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00134}00134\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00137}\mbox{\hyperlink{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}{00137}}\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}{handle\_heart\_spawning}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00138}00138\ \ \ \textcolor{comment}{//\ Spawn\ a\ heart\ every\ 3600\ frames\ (1\ minute\ at\ 60\ FPS)}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00139}00139\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}{last\_heart\_spawn}}\ >=\ 3600)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00140}00140\ \ \ \ \ \textcolor{comment}{//\ Randomly\ choose\ a\ position\ within\ the\ arena\ bounds}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00141}00141\ \ \ \ \ \textcolor{keywordtype}{double}\ pos\_x\ =\ rand()\ \%\ (\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>width\ -\/\ 40);\ \ \textcolor{comment}{//\ 40\ is\ the\ heart's\ width}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00142}00142\ \ \ \ \ \textcolor{keywordtype}{double}\ pos\_y\ =\ rand()\ \%\ (\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>height\ -\/\ 40);\ \textcolor{comment}{//\ 40\ is\ the\ heart's\ height}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00144}00144\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00145}00145\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ heart\ entity}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00146}00146\ \ \ \ \ \mbox{\hyperlink{structentity}{entity}}*\ new\_heart\ =\ \mbox{\hyperlink{entity_8c_ad0018de7fcd73cfc668b5f96f0b08377}{entity\_create\_full}}(pos\_x,\ pos\_y,\ 0,\ 0,\ 0,\ 1,\ \&\mbox{\hyperlink{animations_8c_a4b22c2d14f1e31a34c82e0bdfbaa13bf}{heart\_animation}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00147}00147\ \ \ \ \ \mbox{\hyperlink{entity_8c_a91f6ff9b2f9c62e4c189651f46655436}{entity\_list\_add}}(\&(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a3a65af53fd8ed22c0c0f410d278a7698}{hearts}}),\ new\_heart);}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00148}00148\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00149}00149\ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a0a4a87685a2e34eba35e97b978de9517}{last\_heart\_spawn}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00150}00150\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00151}00151\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00153}\mbox{\hyperlink{arena__controller_8c_a6010cc0aefe7891b4a1fb12c3f673647}{00153}}\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a6010cc0aefe7891b4a1fb12c3f673647}{handle\_secret\_spawning}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00154}00154\ \ \ \textcolor{comment}{//\ Spawn\ the\ secret\ enemy\ at\ 3\ minutes\ (180\ seconds)\ if\ not\ already\ spawned}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00155}00155\ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}{secret\_spawned}}\ \&\&\ \mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}}\ >=\ 180)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//\ Choose\ one\ corner\ of\ the\ arena\ at\ random}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00157}00157\ \ \ \ \ \textcolor{keywordtype}{int}\ corner\ =\ rand()\ \%\ 4;\ \ \textcolor{comment}{//\ 0:\ top-\/left,\ 1:\ top-\/right,\ 2:\ bottom-\/left,\ 3:\ bottom-\/right}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00158}00158\ \ \ \ \ \textcolor{keywordtype}{double}\ pos\_x,\ pos\_y;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00159}00159\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00160}00160\ \ \ \ \ \textcolor{keywordflow}{switch}(corner)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00161}00161\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:\ \textcolor{comment}{//\ top-\/left}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00162}00162\ \ \ \ \ \ \ \ \ pos\_x\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00163}00163\ \ \ \ \ \ \ \ \ pos\_y\ =\ 50;}
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00165}00165\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00166}00166\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00167}00167\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ secret\ entity\ (with\ 0\ speed\ so\ it\ doesn't\ move)}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00168}00168\ \ \ \ \ \mbox{\hyperlink{structentity}{entity}}*\ secret\ =\ \mbox{\hyperlink{entity_8c_ad0018de7fcd73cfc668b5f96f0b08377}{entity\_create\_full}}(pos\_x,\ pos\_y,\ 0,\ 0,\ 0,\ 9,\ \&\mbox{\hyperlink{animations_8c_af67814c18ed1bd54a537567c6cb29fe2}{secret\_animation}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00169}00169\ \ \ \ \ \mbox{\hyperlink{entity_8c_a91f6ff9b2f9c62e4c189651f46655436}{entity\_list\_add}}(\&(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_adb8106abeff3aa4425d8044b5cfab5ce}{enemies}}),\ secret);}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00170}00170\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00171}00171\ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}{secret\_spawned}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00172}00172\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00173}00173\ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00174}00174\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00175}\mbox{\hyperlink{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}{00175}}\ \textcolor{keyword}{static}\ bool\ (\mbox{\hyperlink{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}{check\_heart\_collision}})(\mbox{\hyperlink{structentity}{entity}}*\ heart,\ \mbox{\hyperlink{structentity}{entity}}*\ player)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00176}00176\ \ \ \textcolor{comment}{//\ Simple\ box\ collision\ detection}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00177}00177\ \ \ \textcolor{keywordflow}{return}\ (heart-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ <\ player-\/>pos\_x\ +\ player-\/>animations[0].sprites[0]-\/>width\ \&\&}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ heart-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ +\ heart-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}[0].\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>width\ >\ player-\/>pos\_x\ \&\&}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ heart-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ <\ player-\/>pos\_y\ +\ player-\/>animations[0].sprites[0]-\/>height\ \&\&}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ heart-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ +\ heart-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}[0].\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>height\ >\ player-\/>pos\_y);}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00181}00181\ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00182}00182\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00183}\mbox{\hyperlink{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}{00183}}\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}{handle\_heart\_collisions}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00184}00184\ \ \ \mbox{\hyperlink{structentity__node}{entity\_node}}*\ current\_heart\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a3a65af53fd8ed22c0c0f410d278a7698}{hearts}};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00185}00185\ \ \ \mbox{\hyperlink{structentity__node}{entity\_node}}*\ previous\_heart\ =\ NULL;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00186}00186\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00187}00187\ \ \ \textcolor{keywordflow}{while}(current\_heart\ !=\ NULL)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00188}00188\ \ \ \ \ \mbox{\hyperlink{structentity}{entity}}*\ heart\ =\ current\_heart-\/>entity;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00189}00189\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00190}00190\ \ \ \ \ \textcolor{comment}{//\ Check\ for\ collision\ with\ player}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00191}00191\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}{check\_heart\_collision}}(heart,\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}))\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00192}00192\ \ \ \ \ \ \ \textcolor{comment}{//\ Increase\ player\ health\ if\ not\ at\ max}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00193}00193\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ae0d82ac801c5f9f53bcdc1e4c95896ef}{health}}\ <\ 4)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00194}00194\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ae0d82ac801c5f9f53bcdc1e4c95896ef}{health}}++;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00195}00195\ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00196}00196\ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00197}00197\ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ the\ heart}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00198}00198\ \ \ \ \ \ \ \mbox{\hyperlink{structentity__node}{entity\_node}}*\ victim\ =\ current\_heart;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00199}00199\ \ \ \ \ \ \ current\_heart\ =\ current\_heart-\/>next\_entity;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00200}00200\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (previous\_heart\ ==\ NULL)\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00201}00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a3a65af53fd8ed22c0c0f410d278a7698}{hearts}}\ =\ current\_heart;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00202}00202\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00203}00203\ \ \ \ \ \ \ \ \ previous\_heart-\/>next\_entity\ =\ current\_heart;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00204}00204\ \ \ \ \ \ \ \mbox{\hyperlink{entity_8c_aa3644209480802c93bc4317e0b5e1061}{entity\_node\_destroy}}(victim);}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00205}00205\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00206}00206\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00207}00207\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00208}00208\ \ \ \ \ previous\_heart\ =\ current\_heart;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00209}00209\ \ \ \ \ current\_heart\ =\ current\_heart-\/>next\_entity;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00210}00210\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00211}00211\ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00212}00212\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00213}\mbox{\hyperlink{arena__controller_8c_a32481e4dd17dd8915d3c4cdfdd2d2fc4}{00213}}\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a32481e4dd17dd8915d3c4cdfdd2d2fc4}{attacks\_move}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00214}00214\ \ \ \mbox{\hyperlink{structattack__node}{attack\_node}}*\ current\_attack\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00215}00215\ \ \ \mbox{\hyperlink{structattack__node}{attack\_node}}*\ previous\_attack\ =\ NULL;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00216}00216\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00217}00217\ \ \ \textcolor{keywordflow}{while}(current\_attack\ !=\ NULL)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00218}00218\ \ \ \ \ \mbox{\hyperlink{structattack}{attack}}*\ \mbox{\hyperlink{structattack}{attack}}\ =\ current\_attack-\/>attack;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00219}00219\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structattack}{attack}}-\/>\mbox{\hyperlink{structattack_a40463b645a8340db77d51cbbacf2a9ee}{frames}}\ ==\ 0)\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00220}00220\ \ \ \ \ \ \ \mbox{\hyperlink{structattack__node}{attack\_node}}*\ victim\ =\ current\_attack;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00221}00221\ \ \ \ \ \ \ current\_attack\ =\ current\_attack-\/>next\_attack;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00222}00222\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(previous\_attack\ ==\ NULL)}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00223}00223\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}}\ =\ current\_attack;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00224}00224\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00225}00225\ \ \ \ \ \ \ \ \ previous\_attack-\/>next\_attack\ =\ current\_attack;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00226}00226\ \ \ \ \ \ \ \mbox{\hyperlink{attack_8c_a22a8560626b75fb93b2a5eb9efad0987}{attack\_node\_destroy}}(victim);}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00227}00227\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00228}00228\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00229}00229\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00230}00230\ \ \ \ \ \ \ \mbox{\hyperlink{attack_8c_a2c5f8a0019ba4cbc5f0a3d10a948f62f}{attack\_move}}(\mbox{\hyperlink{structattack}{attack}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00231}00231\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00232}00232\ \ \ \ \ previous\_attack\ =\ current\_attack;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00233}00233\ \ \ \ \ current\_attack\ =\ current\_attack-\/>next\_attack;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00234}00234\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00235}00235\ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00236}00236\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00237}\mbox{\hyperlink{arena__controller_8c_a2fcd7bed1ee21149f594ab5663588ec2}{00237}}\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a2fcd7bed1ee21149f594ab5663588ec2}{arena\_move\_entities}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00238}00238\ \ \ \mbox{\hyperlink{enemy__controller_8c_a0eacbbffc80e6ed032e27eef7bd25c55}{enemies\_move}}(\mbox{\hyperlink{structarena}{arena}});\ \textcolor{comment}{//move\ all\ the\ enemies}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00239}00239\ \ \ \mbox{\hyperlink{entity_8c_a68ea0fd019b7a423d9bdead69705b4be}{entity\_move}}(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}});\ \textcolor{comment}{//move\ the\ player}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00240}00240\ \ \ \mbox{\hyperlink{arena__controller_8c_a32481e4dd17dd8915d3c4cdfdd2d2fc4}{attacks\_move}}(\mbox{\hyperlink{structarena}{arena}});\ \textcolor{comment}{//move\ all\ the\ attacks}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00241}00241\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00242}00242\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00243}00243\ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ -\/\ \mbox{\hyperlink{graphics_8c_aa4a211ebfc5c87a0072eaf9bd03e3a56}{vg\_get\_hres}}()/2\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}[0].\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>width/2;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00244}00244\ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ -\/\ \mbox{\hyperlink{graphics_8c_a4633499e0f197ac855f56473fc9fb291}{vg\_get\_vres}}()/2\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}[0].\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>height/2;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00245}00245\ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00246}00246\ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ =\ MIN(MAX(0,\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}),\ \mbox{\hyperlink{static__images_8c_a174cae25c733d45db94019d45ded3f44}{game\_background\_img}}.width\ -\/\ \mbox{\hyperlink{graphics_8c_aa4a211ebfc5c87a0072eaf9bd03e3a56}{vg\_get\_hres}}());}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00247}00247\ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ =\ MIN(MAX(0,\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}),\ \mbox{\hyperlink{static__images_8c_a174cae25c733d45db94019d45ded3f44}{game\_background\_img}}.height\ -\/\ \mbox{\hyperlink{graphics_8c_a4633499e0f197ac855f56473fc9fb291}{vg\_get\_vres}}());}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00165}00165\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \textcolor{comment}{//\ top-\/right}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00166}00166\ \ \ \ \ \ \ \ \ pos\_x\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>width\ -\/\ 50;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00167}00167\ \ \ \ \ \ \ \ \ pos\_y\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00169}00169\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:\ \textcolor{comment}{//\ bottom-\/left}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00170}00170\ \ \ \ \ \ \ \ \ pos\_x\ =\ 50;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00171}00171\ \ \ \ \ \ \ \ \ pos\_y\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>height\ -\/\ 50;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00173}00173\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:\ \textcolor{comment}{//\ bottom-\/right}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00174}00174\ \ \ \ \ \ \ \ \ pos\_x\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>width\ -\/\ 50;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00175}00175\ \ \ \ \ \ \ \ \ pos\_y\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}-\/>height\ -\/\ 50;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00176}00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00177}00177\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00178}00178\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00179}00179\ \ \ \ \ \textcolor{comment}{//\ Create\ the\ secret\ entity\ (with\ 0\ speed\ so\ it\ doesn't\ move)}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00180}00180\ \ \ \ \ \mbox{\hyperlink{structentity}{entity}}*\ secret\ =\ \mbox{\hyperlink{entity_8c_ad0018de7fcd73cfc668b5f96f0b08377}{entity\_create\_full}}(pos\_x,\ pos\_y,\ 0,\ 0,\ 0,\ 0xFFFFFFFF,\ \mbox{\hyperlink{animations_8c_a2cff29b2da58739177cff63119029a8b}{secret\_animations}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00182}00182\ \ \ \ \ \mbox{\hyperlink{entity_8c_a91f6ff9b2f9c62e4c189651f46655436}{entity\_list\_add}}(\&(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_adb8106abeff3aa4425d8044b5cfab5ce}{enemies}}),\ secret);}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00183}00183\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00184}00184\ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a07cff7d1896b2f4e13332f49d06e83e6}{secret\_spawned}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00185}00185\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00186}00186\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00188}\mbox{\hyperlink{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}{00188}}\ \textcolor{keyword}{static}\ bool\ (\mbox{\hyperlink{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}{check\_heart\_collision}})(\mbox{\hyperlink{structentity}{entity}}*\ heart,\ \mbox{\hyperlink{structentity}{entity}}*\ player)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00189}00189\ \ \ \textcolor{comment}{//\ Simple\ box\ collision\ detection}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00190}00190\ \ \ \textcolor{keywordflow}{return}\ (heart-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ <\ player-\/>pos\_x\ +\ player-\/>animations[0].sprites[0]-\/>width\ \&\&}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ heart-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ +\ heart-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}[0].\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>width\ >\ player-\/>pos\_x\ \&\&}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ heart-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ <\ player-\/>pos\_y\ +\ player-\/>animations[0].sprites[0]-\/>height\ \&\&}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ heart-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ +\ heart-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}[0].\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>height\ >\ player-\/>pos\_y);}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00194}00194\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00196}\mbox{\hyperlink{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}{00196}}\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}{handle\_heart\_collisions}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00197}00197\ \ \ \mbox{\hyperlink{structentity__node}{entity\_node}}*\ current\_heart\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a3a65af53fd8ed22c0c0f410d278a7698}{hearts}};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00198}00198\ \ \ \mbox{\hyperlink{structentity__node}{entity\_node}}*\ previous\_heart\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00200}00200\ \ \ \textcolor{keywordflow}{while}(current\_heart\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00201}00201\ \ \ \ \ \mbox{\hyperlink{structentity}{entity}}*\ heart\ =\ current\_heart-\/>entity;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00202}00202\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00203}00203\ \ \ \ \ \textcolor{comment}{//\ Check\ for\ collision\ with\ player}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00204}00204\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{arena__controller_8c_a2ee8f343d0d3cf3beea9e3653de9d9d8}{check\_heart\_collision}}(heart,\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}))\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00205}00205\ \ \ \ \ \ \ \textcolor{comment}{//\ Increase\ player\ health\ if\ not\ at\ max}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00206}00206\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ae0d82ac801c5f9f53bcdc1e4c95896ef}{health}}\ <\ 4)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ae0d82ac801c5f9f53bcdc1e4c95896ef}{health}}++;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00208}00208\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00209}00209\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00210}00210\ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ the\ heart}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00211}00211\ \ \ \ \ \ \ \mbox{\hyperlink{structentity__node}{entity\_node}}*\ victim\ =\ current\_heart;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00212}00212\ \ \ \ \ \ \ current\_heart\ =\ current\_heart-\/>next\_entity;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00213}00213\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (previous\_heart\ ==\ NULL)\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00214}00214\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a3a65af53fd8ed22c0c0f410d278a7698}{hearts}}\ =\ current\_heart;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00215}00215\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00216}00216\ \ \ \ \ \ \ \ \ previous\_heart-\/>next\_entity\ =\ current\_heart;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00217}00217\ \ \ \ \ \ \ \mbox{\hyperlink{entity_8c_aa3644209480802c93bc4317e0b5e1061}{entity\_node\_destroy}}(victim);}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00218}00218\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00219}00219\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00220}00220\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00221}00221\ \ \ \ \ previous\_heart\ =\ current\_heart;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00222}00222\ \ \ \ \ current\_heart\ =\ current\_heart-\/>next\_entity;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00223}00223\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00224}00224\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00226}\mbox{\hyperlink{arena__controller_8c_a32481e4dd17dd8915d3c4cdfdd2d2fc4}{00226}}\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a32481e4dd17dd8915d3c4cdfdd2d2fc4}{attacks\_move}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00227}00227\ \ \ \mbox{\hyperlink{structattack__node}{attack\_node}}*\ current\_attack\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00228}00228\ \ \ \mbox{\hyperlink{structattack__node}{attack\_node}}*\ previous\_attack\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00230}00230\ \ \ \textcolor{keywordflow}{while}(current\_attack\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00231}00231\ \ \ \ \ \mbox{\hyperlink{structattack}{attack}}*\ \mbox{\hyperlink{structattack}{attack}}\ =\ current\_attack-\/>attack;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00232}00232\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{structattack}{attack}}-\/>\mbox{\hyperlink{structattack_a40463b645a8340db77d51cbbacf2a9ee}{frames}}\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00233}00233\ \ \ \ \ \ \ \mbox{\hyperlink{structattack__node}{attack\_node}}*\ victim\ =\ current\_attack;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00234}00234\ \ \ \ \ \ \ current\_attack\ =\ current\_attack-\/>next\_attack;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00235}00235\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(previous\_attack\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00236}00236\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}}\ =\ current\_attack;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00237}00237\ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00238}00238\ \ \ \ \ \ \ \ \ previous\_attack-\/>next\_attack\ =\ current\_attack;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00239}00239\ \ \ \ \ \ \ \mbox{\hyperlink{attack_8c_a22a8560626b75fb93b2a5eb9efad0987}{attack\_node\_destroy}}(victim);}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00240}00240\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00241}00241\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00242}00242\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00243}00243\ \ \ \ \ \ \ \mbox{\hyperlink{attack_8c_a2c5f8a0019ba4cbc5f0a3d10a948f62f}{attack\_move}}(\mbox{\hyperlink{structattack}{attack}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00245}00245\ \ \ \ \ previous\_attack\ =\ current\_attack;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00246}00246\ \ \ \ \ current\_attack\ =\ current\_attack-\/>next\_attack;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00247}00247\ \ \ \}}
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00248}00248\ \}}
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00249}00249\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00250}\mbox{\hyperlink{arena__controller_8c_a65fc1548128ab4fb70d7e1aeddd65537}{00250}}\ int\ (\mbox{\hyperlink{arena__controller_8c_a65fc1548128ab4fb70d7e1aeddd65537}{arena\_process\_frame}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00251}00251\ \ \ \textcolor{comment}{//\ If\ handle\_enemy\_collisions()\ returns\ true,\ the\ player\ has\ collided\ with\ an\ enemy}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00252}00252\ \ \ \textcolor{comment}{//\ Add\ a\ damage\ cooldown\ of\ 60\ frames\ (1\ second\ at\ 60\ FPS)}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00253}00253\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{enemy__controller_8c_a3b595a26d7d21fae057f774ec77b3e0c}{handle\_enemy\_collisions}}(\mbox{\hyperlink{structarena}{arena}})\ \&\&\ (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}{last\_damage\_time}}\ >=\ 60))\ \{}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00254}00254\ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ae0d82ac801c5f9f53bcdc1e4c95896ef}{health}}-\/-\/;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ae0d82ac801c5f9f53bcdc1e4c95896ef}{health}}\ >\ 0)}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00256}00256\ \ \ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}{last\_damage\_time}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00257}00257\ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00258}00258\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00259}00259\ \ \ \}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00260}00260\ \ \ \textcolor{comment}{//\ handle\ heart\ collisions}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00261}00261\ \ \ \mbox{\hyperlink{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}{handle\_heart\_collisions}}(\mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00250}\mbox{\hyperlink{arena__controller_8c_a2fcd7bed1ee21149f594ab5663588ec2}{00250}}\ \textcolor{keyword}{static}\ void\ (\mbox{\hyperlink{arena__controller_8c_a2fcd7bed1ee21149f594ab5663588ec2}{arena\_move\_entities}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00251}00251\ \ \ \mbox{\hyperlink{enemy__controller_8c_a0eacbbffc80e6ed032e27eef7bd25c55}{enemies\_move}}(\mbox{\hyperlink{structarena}{arena}});\ \textcolor{comment}{//move\ all\ the\ enemies}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00252}00252\ \ \ \mbox{\hyperlink{entity_8c_a68ea0fd019b7a423d9bdead69705b4be}{entity\_move}}(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}});\ \textcolor{comment}{//move\ the\ player}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00253}00253\ \ \ \mbox{\hyperlink{arena__controller_8c_a32481e4dd17dd8915d3c4cdfdd2d2fc4}{attacks\_move}}(\mbox{\hyperlink{structarena}{arena}});\ \textcolor{comment}{//move\ all\ the\ attacks}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00256}00256\ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ -\/\ \mbox{\hyperlink{graphics_8c_aa4a211ebfc5c87a0072eaf9bd03e3a56}{vg\_get\_hres}}()/2\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}[0].\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>width/2;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00257}00257\ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ =\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ -\/\ \mbox{\hyperlink{graphics_8c_a4633499e0f197ac855f56473fc9fb291}{vg\_get\_vres}}()/2\ +\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_aeca0a50f0dc020316ed983d8f1eb2c07}{animations}}[0].\mbox{\hyperlink{structanimation_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]-\/>height/2;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00258}00258\ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00259}00259\ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ =\ MIN(MAX(0,\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}),\ \mbox{\hyperlink{static__images_8c_a174cae25c733d45db94019d45ded3f44}{game\_background\_img}}.width\ -\/\ \mbox{\hyperlink{graphics_8c_aa4a211ebfc5c87a0072eaf9bd03e3a56}{vg\_get\_hres}}());}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00260}00260\ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ =\ MIN(MAX(0,\ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}),\ \mbox{\hyperlink{static__images_8c_a174cae25c733d45db94019d45ded3f44}{game\_background\_img}}.height\ -\/\ \mbox{\hyperlink{graphics_8c_a4633499e0f197ac855f56473fc9fb291}{vg\_get\_vres}}());}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00261}00261\ \}}
 \DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00262}00262\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00263}00263\ \ \ \textcolor{comment}{//\ spawn\ the\ enemies\ and\ hearts}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00264}00264\ \ \ \mbox{\hyperlink{enemy__controller_8c_a60b46083beb9a9caca98687b50a23847}{handle\_enemy\_spawning}}(\mbox{\hyperlink{structarena}{arena}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00265}00265\ \ \ \mbox{\hyperlink{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}{handle\_heart\_spawning}}(\mbox{\hyperlink{structarena}{arena}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00266}00266\ \ \ handle\_secret\_spawning(\mbox{\hyperlink{structarena}{arena}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00267}00267\ \ \ \mbox{\hyperlink{arena__controller_8c_a63dac5d250ad059af842c4b6292260f1}{handle\_auto\_attack}}(\mbox{\hyperlink{structarena}{arena}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00268}00268\ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00269}00269\ \ \ \textcolor{comment}{//\ move\ everything}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00270}00270\ \ \ \mbox{\hyperlink{arena__controller_8c_a2fcd7bed1ee21149f594ab5663588ec2}{arena\_move\_entities}}(\mbox{\hyperlink{structarena}{arena}});}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00271}00271\ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00272}00272\ \ \ \textcolor{comment}{//\ update\ the\ active\ time}}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00273}00273\ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\_starting\_frame}})\ \%\ 60\ ==\ 0)}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00274}00274\ \ \ \ \ ++\mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}};}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00275}00275\ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00276}00276\ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00277}00277\ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00263}\mbox{\hyperlink{arena__controller_8c_a65fc1548128ab4fb70d7e1aeddd65537}{00263}}\ int\ (\mbox{\hyperlink{arena__controller_8c_a65fc1548128ab4fb70d7e1aeddd65537}{arena\_process\_frame}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00264}00264\ \ \ \textcolor{comment}{//\ If\ handle\_enemy\_collisions()\ returns\ true,\ the\ player\ has\ collided\ with\ an\ enemy}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00265}00265\ \ \ \textcolor{comment}{//\ Add\ a\ damage\ cooldown\ of\ 60\ frames\ (1\ second\ at\ 60\ FPS)}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00266}00266\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{enemy__controller_8c_a3b595a26d7d21fae057f774ec77b3e0c}{handle\_enemy\_collisions}}(\mbox{\hyperlink{structarena}{arena}})\ \&\&\ (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}{last\_damage\_time}}\ >=\ 60))\ \{}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00267}00267\ \ \ \ \ \mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ae0d82ac801c5f9f53bcdc1e4c95896ef}{health}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00268}00268\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}-\/>\mbox{\hyperlink{structentity_ae0d82ac801c5f9f53bcdc1e4c95896ef}{health}}\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00269}00269\ \ \ \ \ \ \ \mbox{\hyperlink{arena__controller_8c_a4694ff2f8732268d936e7c077f8c3137}{last\_damage\_time}}\ =\ \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}();}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00270}00270\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00271}00271\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00272}00272\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00273}00273\ \ \ \textcolor{comment}{//\ handle\ heart\ collisions}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00274}00274\ \ \ \mbox{\hyperlink{arena__controller_8c_ae67e873a87302f00bac7bf2e4129f8d8}{handle\_heart\_collisions}}(\mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00276}00276\ \ \ \textcolor{comment}{//\ spawn\ the\ enemies\ and\ hearts}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00277}00277\ \ \ \mbox{\hyperlink{enemy__controller_8c_a60b46083beb9a9caca98687b50a23847}{handle\_enemy\_spawning}}(\mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00278}00278\ \ \ \mbox{\hyperlink{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}{handle\_heart\_spawning}}(\mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00279}00279\ \ \ \mbox{\hyperlink{arena__controller_8c_a6010cc0aefe7891b4a1fb12c3f673647}{handle\_secret\_spawning}}(\mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00280}00280\ \ \ \mbox{\hyperlink{arena__controller_8c_a63dac5d250ad059af842c4b6292260f1}{handle\_auto\_attack}}(\mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00281}00281\ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00282}00282\ \ \ \textcolor{comment}{//\ move\ everything}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00283}00283\ \ \ \mbox{\hyperlink{arena__controller_8c_a2fcd7bed1ee21149f594ab5663588ec2}{arena\_move\_entities}}(\mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00285}00285\ \ \ \textcolor{comment}{//\ update\ the\ active\ time}}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00286}00286\ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}}()\ -\/\ \mbox{\hyperlink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\_starting\_frame}})\ \%\ 60\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00287}00287\ \ \ \ \ ++\mbox{\hyperlink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\_game\_time}};}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00288}00288\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00289}00289\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{arena__controller_8c_source_l00290}00290\ \}}
 
 \end{DoxyCode}

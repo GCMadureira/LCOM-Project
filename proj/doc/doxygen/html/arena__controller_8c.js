@@ -10,6 +10,7 @@ var arena__controller_8c =
     [ "handle_heart_collisions", "arena__controller_8c.html#ae67e873a87302f00bac7bf2e4129f8d8", null ],
     [ "handle_heart_spawning", "arena__controller_8c.html#aa5a4d603090c9ce2c25707be8bdaf9e5", null ],
     [ "handle_ranged_attack", "arena__controller_8c.html#a4233e345dd45a72fa6b7d3dba0a19379", null ],
+    [ "handle_secret_spawning", "arena__controller_8c.html#a6010cc0aefe7891b4a1fb12c3f673647", null ],
     [ "setup_arena_controller", "arena__controller_8c.html#a9189679ee0e5aadead4c613784f76164", null ],
     [ "arena_game_time", "arena__controller_8c.html#a2caa2c2469060cc23dce125c0096b627", null ],
     [ "arena_starting_frame", "arena__controller_8c.html#a23074493553252f07b67549346a9b153", null ],

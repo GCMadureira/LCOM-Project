@@ -6,7 +6,7 @@ var searchData=
   ['scancode_5fbyte2_3',['scancode_byte2',['../structinput__event.html#a39c923b06f795aeb27cd6eea555692b9',1,'input_event']]],
   ['scancode_5fnbytes_4',['scancode_nbytes',['../structinput__event.html#a354070f2ab0287a88f8a5e983c56272e',1,'input_event']]],
   ['scancodes_2eh_5',['scancodes.h',['../scancodes_8h.html',1,'']]],
-  ['secret_5fanimation_6',['secret_animation',['../animations_8c.html#af67814c18ed1bd54a537567c6cb29fe2',1,'secret_animation:&#160;animations.c'],['../animations_8h.html#af67814c18ed1bd54a537567c6cb29fe2',1,'secret_animation:&#160;animations.c']]],
+  ['secret_5fanimations_6',['secret_animations',['../animations_8c.html#a2cff29b2da58739177cff63119029a8b',1,'secret_animations:&#160;animations.c'],['../animations_8h.html#a2cff29b2da58739177cff63119029a8b',1,'secret_animations:&#160;animations.c']]],
   ['secret_5fspawned_7',['secret_spawned',['../arena__controller_8c.html#a07cff7d1896b2f4e13332f49d06e83e6',1,'arena_controller.c']]],
   ['set_5fgame_5fstate_8',['set_game_state',['../main__controller_8c.html#a16074cead64739f51a64c2618848b537',1,'set_game_state(enum game_state state):&#160;main_controller.c'],['../main__controller_8h.html#a16074cead64739f51a64c2618848b537',1,'set_game_state(enum game_state state):&#160;main_controller.c']]],
   ['setup_5farena_5fcontroller_9',['setup_arena_controller',['../arena__controller_8c.html#a9189679ee0e5aadead4c613784f76164',1,'setup_arena_controller():&#160;arena_controller.c'],['../arena__controller_8h.html#a9189679ee0e5aadead4c613784f76164',1,'setup_arena_controller():&#160;arena_controller.c']]],

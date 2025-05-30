@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"structarena.html#a3a65af53fd8ed22c0c0f410d278a7698":[1,0,4,2],
 "structarena.html#a71b5aa321c1ab05450cb75adcc73b7be":[1,0,4,6],
 "structarena.html#a76f2cb533432223bcf4343888b95ace9":[1,0,4,0],
 "structarena.html#a7b9192833509ce7b56005e2cf3eb65d5":[1,0,4,5],

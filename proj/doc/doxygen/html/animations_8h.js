@@ -17,5 +17,5 @@ var animations_8h =
     [ "lightning_attack_animation", "animations_8h.html#aced52fc5ad13515f67bab9692acb6a2c", null ],
     [ "mummy_animations", "animations_8h.html#a5324051fe80fcceaee40e135ea1bc694", null ],
     [ "pharaoh_animations", "animations_8h.html#affae80d1f9f9146ba5d4d1923642e8df", null ],
-    [ "secret_animation", "animations_8h.html#af67814c18ed1bd54a537567c6cb29fe2", null ]
+    [ "secret_animations", "animations_8h.html#a2cff29b2da58739177cff63119029a8b", null ]
 ];

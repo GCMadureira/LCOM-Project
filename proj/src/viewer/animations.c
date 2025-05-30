@@ -10,12 +10,12 @@ animation* pharaoh_animations;
 animation* enemy1_animations;
 animation* enemy2_animations;
 animation* mummy_animations;
+animation* secret_animations;
 
 animation khopesh_attack_right_animation;
 animation khopesh_attack_left_animation;
 animation lightning_attack_animation;
 animation heart_animation;
-animation secret_animation;
 
 
 enum animation_direction (entity_get_direction)(entity* entity) {
@@ -37,12 +37,13 @@ int (animations_clean)() {
   animation_destroy(khopesh_attack_left_animation);
   animation_destroy(lightning_attack_animation);
   animation_destroy(heart_animation);
-  animation_destroy(secret_animation);
+  animation_destroy(secret_animations[0]);
 
   free(pharaoh_animations);
   free(enemy1_animations);
   free(enemy2_animations);
   free(mummy_animations);
+  free(secret_animations);
 
   return 0;
 }
@@ -472,6 +473,8 @@ static int (load_secret_animation)() {
   xpm_image_t** sprites;
   xpm_image_t* current_image;
 
+  secret_animations = (animation*)malloc(sizeof(animation) * 3); //one for each direction
+
   sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 2);
   current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
   if(xpm_load(secret_0_xpm, XPM_8_8_8_8, current_image) == NULL) return 1;
@@ -481,7 +484,9 @@ static int (load_secret_animation)() {
   if(xpm_load(secret_1_xpm, XPM_8_8_8_8, current_image) == NULL) return 1;
   sprites[1] = current_image;
 
-  secret_animation = (animation){2, sprites};
+  secret_animations[RIGHT] = (animation){2, sprites};
+  secret_animations[LEFT] = (animation){2, sprites};
+  secret_animations[IDLE_] = (animation){2, sprites};
 
   return 0;
 }

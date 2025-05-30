@@ -67,13 +67,13 @@ extern animation* pharaoh_animations;            ///< The animations for the pha
 extern animation* enemy1_animations;             ///< The animations for the carequinha 1
 extern animation* enemy2_animations;             ///< The animations for the carequinha 2
 extern animation* mummy_animations;              ///< The animations for the mummy
+extern animation* secret_animations;             ///< It's a secret shhhhhhh
 
 
 extern animation khopesh_attack_right_animation; ///< The animation for the auto attack right
 extern animation khopesh_attack_left_animation;  ///< The animation for the auto attack left
 extern animation lightning_attack_animation;     ///< The animation for the lightning attack
 extern animation heart_animation;                ///< The animation for the heart
-extern animation secret_animation;               ///< It's a secret shhhhhhh
 
 
 #endif /* _ANIMATIONS_PROJ_H_ */
