@@ -227,8 +227,8 @@ int (setup_game)() {
 }
 
 int (clean_game)() {
-  //save_highscore();
-  //events_clear();
+  save_highscore();
+  events_clear();
   animations_clean();
   if(active_menu != NULL) menu_destroy(active_menu);
   if(active_arena != NULL) arena_destroy(active_arena);
