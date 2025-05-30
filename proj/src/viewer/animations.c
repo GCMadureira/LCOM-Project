@@ -8,6 +8,7 @@ animation* mummy_animations;
 animation khopesh_attack_right_animation;
 animation khopesh_attack_left_animation;
 animation lightning_attack_animation;
+animation heart_animation;
 
 
 enum animation_direction (entity_get_direction)(entity* entity) {
@@ -454,6 +455,24 @@ static int (load_lightning_attack_animations)() {
   return 0;
 }
 
+static int (load_heart_animation)() {
+  #include "../resources/Heart/heart.h"
+
+  xpm_image_t** sprites;
+  xpm_image_t* current_image;
+
+  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 2);
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(heart_0_xpm, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[0] = current_image;
+  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
+  if(xpm_load(heart_1_xpm, XPM_8_8_8_8, current_image) == NULL) return 1;
+  sprites[1] = current_image;
+
+  heart_animation = (animation){2, sprites};
+
+  return 0;
+}
 
 int (animations_load)() {
   // Load pharaoh & enemy1 animations
@@ -463,5 +482,6 @@ int (animations_load)() {
   if(load_mummy_animations()) return 1;
   if(load_khopesh_attack_animations()) return 1;
   if(load_lightning_attack_animations()) return 1;
+  if(load_heart_animation()) return 1;
   return 0;
 }

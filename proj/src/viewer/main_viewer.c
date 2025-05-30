@@ -17,6 +17,9 @@ int (draw_arena)(arena* arena) {
   // Draw all active attacks
   draw_attacks(arena);
 
+  // Draw all active hearts
+  draw_hearts(arena);
+
   //draw the mouse
   vg_draw_image32(arena->mouse->pos_x, arena->mouse->pos_y, &cursor_img);
   
@@ -85,6 +88,23 @@ int (draw_attacks)(arena* arena) {
     );
 
     current_attack = current_attack->next_attack;
+  }
+  return 0;
+}
+
+int (draw_hearts)(arena* arena) {
+  entity_node* current_heart = arena->hearts;
+  while(current_heart != NULL) {
+    entity* heart = current_heart->entity;
+    
+    // Draw the heart relative to the arena's position
+    vg_draw_image32(
+        heart->pos_x - arena->pos_x,
+        heart->pos_y - arena->pos_y,
+        heart->animations[0].sprites[(get_current_frame() % (heart->animations[0].n_frames * ANIMATION_SPEED)) / ANIMATION_SPEED]
+    );
+
+    current_heart = current_heart->next_entity;
   }
   return 0;
 }

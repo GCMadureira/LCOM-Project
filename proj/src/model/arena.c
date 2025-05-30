@@ -13,6 +13,7 @@ arena* (arena_create)() {
   new_arena->mouse->pos_y = vg_get_vres()/2;
   new_arena->enemies = NULL;
   new_arena->player_attacks = NULL;
+  new_arena->hearts = NULL;
   new_arena->background_image = &game_background_img;
 
   return new_arena;

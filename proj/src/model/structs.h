@@ -66,6 +66,7 @@ typedef struct {
   entity* mouse;
   entity_node* enemies;
   attack_node* player_attacks;
+  entity_node* hearts; 
   double pos_x, pos_y;
   xpm_image_t* background_image;
 } arena;
