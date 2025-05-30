@@ -1,0 +1,70 @@
+\doxysection{model/arena.h File Reference}
+\hypertarget{arena_8h}{}\label{arena_8h}\index{model/arena.h@{model/arena.h}}
+
+
+Header file for \doxylink{arena_8c}{arena.\+c}.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}entity.\+h"{}}\newline
+{\ttfamily \#include "{}structs.\+h"{}}\newline
+{\ttfamily \#include "{}../events/events.\+h"{}}\newline
+{\ttfamily \#include "{}../drivers/drivers.\+h"{}}\newline
+{\ttfamily \#include "{}../controller/main\+\_\+controller.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{arena_8h_af16ece5e6b2f3c56a70dbb0617a6ce79}{arena\+\_\+create}} ()
+\begin{DoxyCompactList}\small\item\em Creates an arena by dynamically allocating space. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{arena_8h_a6dd09035730833e7d30641acf5368070}{arena\+\_\+destroy}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Destroys an arena by freeing its memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{arena_8c}{arena.\+c}. 
+
+This file declares all the functions to be used for the arena struct. 
+
+Definition in file \mbox{\hyperlink{arena_8h_source}{arena.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{arena_8h_af16ece5e6b2f3c56a70dbb0617a6ce79}\index{arena.h@{arena.h}!arena\_create@{arena\_create}}
+\index{arena\_create@{arena\_create}!arena.h@{arena.h}}
+\doxysubsubsection{\texorpdfstring{arena\_create()}{arena\_create()}}
+{\footnotesize\ttfamily \label{arena_8h_af16ece5e6b2f3c56a70dbb0617a6ce79} 
+\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*} arena\+\_\+create (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Creates an arena by dynamically allocating space. 
+
+Creates an arena with the starting parameters\+: all the lists empty and the player in the middle.
+
+\begin{DoxyReturn}{Returns}
+The pointer to the new arena 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{arena_8c_source_l00012}{12}} of file \mbox{\hyperlink{arena_8c_source}{arena.\+c}}.
+
+\Hypertarget{arena_8h_a6dd09035730833e7d30641acf5368070}\index{arena.h@{arena.h}!arena\_destroy@{arena\_destroy}}
+\index{arena\_destroy@{arena\_destroy}!arena.h@{arena.h}}
+\doxysubsubsection{\texorpdfstring{arena\_destroy()}{arena\_destroy()}}
+{\footnotesize\ttfamily \label{arena_8h_a6dd09035730833e7d30641acf5368070} 
+int arena\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an arena by freeing its memory. 
+
+Calls \doxylink{entity_8c_ac1c698b3de75178c6e6a8b4d196cbe09}{entity\+\_\+destroy()} to destroy the player and \doxylink{entity_8c_a4036b56b3d9bd1ce723cdb731a95040d}{entity\+\_\+list\+\_\+destroy()} to destroy the enemies, the player\+\_\+attacks and the hearts. Finally frees the memory of the arena itself.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{arena_8c_source_l00029}{29}} of file \mbox{\hyperlink{arena_8c_source}{arena.\+c}}.
+

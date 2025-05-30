@@ -1,0 +1,531 @@
+\doxysection{drivers/graphics/graphics.c File Reference}
+\hypertarget{graphics_8c}{}\label{graphics_8c}\index{drivers/graphics/graphics.c@{drivers/graphics/graphics.c}}
+
+
+Source code file for all the logic related to the graphics and vbe.  
+
+
+{\ttfamily \#include "{}graphics.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graphics_8c_a70759d4cf5d82b17b534aadb7962408d}{vg\+\_\+get\+\_\+video\+\_\+mem}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{graphics_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\+\_\+mem} static variable. \end{DoxyCompactList}\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{graphics_8c_a10539afab671110c5e3e31ec73b8ec2a}{vg\+\_\+get\+\_\+current\+\_\+mode\+\_\+info}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{graphics_8c_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info} static variable. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{graphics_8c_aa4a211ebfc5c87a0072eaf9bd03e3a56}{vg\+\_\+get\+\_\+hres}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the horizontal resolution. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{graphics_8c_a4633499e0f197ac855f56473fc9fb291}{vg\+\_\+get\+\_\+vres}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the vertical resolution. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{graphics_8c_abf8596bd7f05ddc026293ede927299e4}{vg\+\_\+get\+\_\+bits\+\_\+per\+\_\+pixel}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the bites per pixel. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{graphics_8c_ada5b96e84bb6293464f44bd084f75d3a}{vg\+\_\+is\+\_\+direct\+\_\+color\+\_\+model}} ()
+\begin{DoxyCompactList}\small\item\em Check if the current mode is a direct color one. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{graphics_8c_aabe4f772ac01ca518bb60019c6a45b7a}{vg\+\_\+get\+\_\+red\+\_\+color\+\_\+field}} (const uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Extracts the red color field of the provided color. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{graphics_8c_a3da424b290a093206410ebdee057bdf7}{vg\+\_\+get\+\_\+green\+\_\+color\+\_\+field}} (const uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Extracts the green color field of the provided color. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{graphics_8c_a2a789c96a107bb15e3461ba3b3614cf5}{vg\+\_\+get\+\_\+blue\+\_\+color\+\_\+field}} (const uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Extracts the blue color field of the provided color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a753099f01951b1f0f00ab0524e43fe2c}{vg\+\_\+graphics\+\_\+init}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Initializes the graphics with a mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a037327fc6c4a94f1a9d2f0ea127616f4}{vg\+\_\+set\+\_\+\+VBE\+\_\+mode}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Sets a new vbe mode for the graphics. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a2fd3995002ae2c7ca6994ec92df6bd29}{vg\+\_\+map\+\_\+video\+\_\+memory}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Maps the video memory into the program\textquotesingle{}s memory space. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a6f895de9725f9f231f9a7f74b6087f60}{vg\+\_\+draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel on the secondary \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_adb08b276272848bc7f3bccc0f5e770c8}{vg\+\_\+draw\+\_\+hline}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\item 
+int \mbox{\hyperlink{graphics_8c_a4d53728322f948683b768482bf4906e8}{vg\+\_\+draw\+\_\+rectangle}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, uint32\+\_\+t color)
+\item 
+int \mbox{\hyperlink{graphics_8c_a230d881a4d6cb3aea470ce89777ff13e}{vg\+\_\+draw\+\_\+rectangle32}} (int32\+\_\+t x, int32\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a rectangle on the secondary \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer} for a 32 bit color mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a75992379c4d2d7db98670d5fd3cee7aa}{vg\+\_\+draw\+\_\+image32}} (int32\+\_\+t x, int32\+\_\+t y, xpm\+\_\+image\+\_\+t \texorpdfstring{$\ast$}{*}img\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Draws an image on the secondary \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer} for a 32 bit color mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_a348a68eba0696f535bad8d8cf3ea5219}{vg\+\_\+draw\+\_\+image\+\_\+section32}} (int32\+\_\+t x, int32\+\_\+t y, xpm\+\_\+image\+\_\+t \texorpdfstring{$\ast$}{*}img\+\_\+info, uint16\+\_\+t x\+\_\+section, uint16\+\_\+t y\+\_\+section, uint16\+\_\+t width, uint16\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em Draws a section of an image on the secondary \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer} for a 32 bit color mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{graphics_8c_adec0f8a8b5a66e038a1d3906d4bc4280}{vg\+\_\+show\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Draws the information on the \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer} to the \doxylink{graphics_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\+\_\+mem}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer}} = NULL
+\begin{DoxyCompactList}\small\item\em Secondary buffer for the video memory. \end{DoxyCompactList}\item 
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{graphics_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\+\_\+mem}} = NULL
+\begin{DoxyCompactList}\small\item\em Pointer to the real video memory. \end{DoxyCompactList}\item 
+static vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{graphics_8c_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info}}
+\begin{DoxyCompactList}\small\item\em Stores the current mode info. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{graphics_8c_ad1fad3c6fec2bf6f7d7933e68b4b0de5}{bytes\+\_\+per\+\_\+pixel}}
+\begin{DoxyCompactList}\small\item\em Stores the number of bytes per pixel to avoid repetitive divisions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code file for all the logic related to the graphics and vbe. 
+
+
+
+Definition in file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{graphics_8c_adb08b276272848bc7f3bccc0f5e770c8}\index{graphics.c@{graphics.c}!vg\_draw\_hline@{vg\_draw\_hline}}
+\index{vg\_draw\_hline@{vg\_draw\_hline}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_hline()}{vg\_draw\_hline()}}
+{\footnotesize\ttfamily \label{graphics_8c_adb08b276272848bc7f3bccc0f5e770c8} 
+int vg\+\_\+draw\+\_\+hline (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{len}{, }\item[{uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00126}{126}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a75992379c4d2d7db98670d5fd3cee7aa}\index{graphics.c@{graphics.c}!vg\_draw\_image32@{vg\_draw\_image32}}
+\index{vg\_draw\_image32@{vg\_draw\_image32}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_image32()}{vg\_draw\_image32()}}
+{\footnotesize\ttfamily \label{graphics_8c_a75992379c4d2d7db98670d5fd3cee7aa} 
+int vg\+\_\+draw\+\_\+image32 (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{x}{, }\item[{int32\+\_\+t}]{y}{, }\item[{xpm\+\_\+image\+\_\+t \texorpdfstring{$\ast$}{*}}]{img\+\_\+info}{}\end{DoxyParamCaption})}
+
+
+
+Draws an image on the secondary \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer} for a 32 bit color mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x coordinate on the screen \\
+\hline
+{\em y} & The y coordinate on the screen \\
+\hline
+{\em img\+\_\+info} & The information of the image to be drawn \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00172}{172}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a348a68eba0696f535bad8d8cf3ea5219}\index{graphics.c@{graphics.c}!vg\_draw\_image\_section32@{vg\_draw\_image\_section32}}
+\index{vg\_draw\_image\_section32@{vg\_draw\_image\_section32}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_image\_section32()}{vg\_draw\_image\_section32()}}
+{\footnotesize\ttfamily \label{graphics_8c_a348a68eba0696f535bad8d8cf3ea5219} 
+int vg\+\_\+draw\+\_\+image\+\_\+section32 (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{x}{, }\item[{int32\+\_\+t}]{y}{, }\item[{xpm\+\_\+image\+\_\+t \texorpdfstring{$\ast$}{*}}]{img\+\_\+info}{, }\item[{uint16\+\_\+t}]{x\+\_\+section}{, }\item[{uint16\+\_\+t}]{y\+\_\+section}{, }\item[{uint16\+\_\+t}]{width}{, }\item[{uint16\+\_\+t}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Draws a section of an image on the secondary \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer} for a 32 bit color mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x coordinate on the screen \\
+\hline
+{\em y} & The y coordinate on the screen \\
+\hline
+{\em img\+\_\+info} & The information of the image to be drawn \\
+\hline
+{\em x\+\_\+section} & The x coordinate of the section of the image \\
+\hline
+{\em y\+\_\+section} & The y coordinate of the section of the image \\
+\hline
+{\em width} & The width of the section \\
+\hline
+{\em height} & The height of the section \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00195}{195}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a6f895de9725f9f231f9a7f74b6087f60}\index{graphics.c@{graphics.c}!vg\_draw\_pixel@{vg\_draw\_pixel}}
+\index{vg\_draw\_pixel@{vg\_draw\_pixel}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_pixel()}{vg\_draw\_pixel()}}
+{\footnotesize\ttfamily \label{graphics_8c_a6f895de9725f9f231f9a7f74b6087f60} 
+int vg\+\_\+draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Draws a pixel on the secondary \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x coordinate on the screen \\
+\hline
+{\em y} & The y coordinate on the screen \\
+\hline
+{\em color} & The color of the drawn pixel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00116}{116}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a4d53728322f948683b768482bf4906e8}\index{graphics.c@{graphics.c}!vg\_draw\_rectangle@{vg\_draw\_rectangle}}
+\index{vg\_draw\_rectangle@{vg\_draw\_rectangle}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_rectangle()}{vg\_draw\_rectangle()}}
+{\footnotesize\ttfamily \label{graphics_8c_a4d53728322f948683b768482bf4906e8} 
+int vg\+\_\+draw\+\_\+rectangle (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x}{, }\item[{uint16\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{width}{, }\item[{uint16\+\_\+t}]{height}{, }\item[{uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00139}{139}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a230d881a4d6cb3aea470ce89777ff13e}\index{graphics.c@{graphics.c}!vg\_draw\_rectangle32@{vg\_draw\_rectangle32}}
+\index{vg\_draw\_rectangle32@{vg\_draw\_rectangle32}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_rectangle32()}{vg\_draw\_rectangle32()}}
+{\footnotesize\ttfamily \label{graphics_8c_a230d881a4d6cb3aea470ce89777ff13e} 
+int vg\+\_\+draw\+\_\+rectangle32 (\begin{DoxyParamCaption}\item[{int32\+\_\+t}]{x}{, }\item[{int32\+\_\+t}]{y}{, }\item[{uint16\+\_\+t}]{width}{, }\item[{uint16\+\_\+t}]{height}{, }\item[{uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Draws a rectangle on the secondary \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer} for a 32 bit color mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x coordinate on the screen \\
+\hline
+{\em y} & The y coordinate on the screen \\
+\hline
+{\em width} & The width of the resulting rectangle \\
+\hline
+{\em height} & The height of the resulting rectangle \\
+\hline
+{\em color} & The color of the resulting rectangle \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00150}{150}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_abf8596bd7f05ddc026293ede927299e4}\index{graphics.c@{graphics.c}!vg\_get\_bits\_per\_pixel@{vg\_get\_bits\_per\_pixel}}
+\index{vg\_get\_bits\_per\_pixel@{vg\_get\_bits\_per\_pixel}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_get\_bits\_per\_pixel()}{vg\_get\_bits\_per\_pixel()}}
+{\footnotesize\ttfamily \label{graphics_8c_abf8596bd7f05ddc026293ede927299e4} 
+unsigned int vg\+\_\+get\+\_\+bits\+\_\+per\+\_\+pixel (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the bites per pixel. 
+
+\begin{DoxyReturn}{Returns}
+The bites per pixel from \doxylink{graphics_8c_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00032}{32}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a2a789c96a107bb15e3461ba3b3614cf5}\index{graphics.c@{graphics.c}!vg\_get\_blue\_color\_field@{vg\_get\_blue\_color\_field}}
+\index{vg\_get\_blue\_color\_field@{vg\_get\_blue\_color\_field}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_get\_blue\_color\_field()}{vg\_get\_blue\_color\_field()}}
+{\footnotesize\ttfamily \label{graphics_8c_a2a789c96a107bb15e3461ba3b3614cf5} 
+uint32\+\_\+t vg\+\_\+get\+\_\+blue\+\_\+color\+\_\+field (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Extracts the blue color field of the provided color. 
+
+Assumes the size of the fields as the ones from the current mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color to extract from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The blue field of the color 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00048}{48}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a10539afab671110c5e3e31ec73b8ec2a}\index{graphics.c@{graphics.c}!vg\_get\_current\_mode\_info@{vg\_get\_current\_mode\_info}}
+\index{vg\_get\_current\_mode\_info@{vg\_get\_current\_mode\_info}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_get\_current\_mode\_info()}{vg\_get\_current\_mode\_info()}}
+{\footnotesize\ttfamily \label{graphics_8c_a10539afab671110c5e3e31ec73b8ec2a} 
+vbe\+\_\+mode\+\_\+info\+\_\+t vg\+\_\+get\+\_\+current\+\_\+mode\+\_\+info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the \doxylink{graphics_8c_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info} static variable. 
+
+\begin{DoxyReturn}{Returns}
+The mode\+\_\+info variable 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00020}{20}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a3da424b290a093206410ebdee057bdf7}\index{graphics.c@{graphics.c}!vg\_get\_green\_color\_field@{vg\_get\_green\_color\_field}}
+\index{vg\_get\_green\_color\_field@{vg\_get\_green\_color\_field}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_get\_green\_color\_field()}{vg\_get\_green\_color\_field()}}
+{\footnotesize\ttfamily \label{graphics_8c_a3da424b290a093206410ebdee057bdf7} 
+uint32\+\_\+t vg\+\_\+get\+\_\+green\+\_\+color\+\_\+field (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Extracts the green color field of the provided color. 
+
+Assumes the size of the fields as the ones from the current mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color to extract from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The green field of the color 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00044}{44}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_aa4a211ebfc5c87a0072eaf9bd03e3a56}\index{graphics.c@{graphics.c}!vg\_get\_hres@{vg\_get\_hres}}
+\index{vg\_get\_hres@{vg\_get\_hres}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_get\_hres()}{vg\_get\_hres()}}
+{\footnotesize\ttfamily \label{graphics_8c_aa4a211ebfc5c87a0072eaf9bd03e3a56} 
+unsigned int vg\+\_\+get\+\_\+hres (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the horizontal resolution. 
+
+\begin{DoxyReturn}{Returns}
+The horizontal resolution from \doxylink{graphics_8c_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00024}{24}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_aabe4f772ac01ca518bb60019c6a45b7a}\index{graphics.c@{graphics.c}!vg\_get\_red\_color\_field@{vg\_get\_red\_color\_field}}
+\index{vg\_get\_red\_color\_field@{vg\_get\_red\_color\_field}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_get\_red\_color\_field()}{vg\_get\_red\_color\_field()}}
+{\footnotesize\ttfamily \label{graphics_8c_aabe4f772ac01ca518bb60019c6a45b7a} 
+uint32\+\_\+t vg\+\_\+get\+\_\+red\+\_\+color\+\_\+field (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{color}{}\end{DoxyParamCaption})}
+
+
+
+Extracts the red color field of the provided color. 
+
+Assumes the size of the fields as the ones from the current mode.
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color to extract from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The red field of the color 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00040}{40}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a70759d4cf5d82b17b534aadb7962408d}\index{graphics.c@{graphics.c}!vg\_get\_video\_mem@{vg\_get\_video\_mem}}
+\index{vg\_get\_video\_mem@{vg\_get\_video\_mem}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_get\_video\_mem()}{vg\_get\_video\_mem()}}
+{\footnotesize\ttfamily \label{graphics_8c_a70759d4cf5d82b17b534aadb7962408d} 
+void \texorpdfstring{$\ast$}{*} vg\+\_\+get\+\_\+video\+\_\+mem (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the \doxylink{graphics_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\+\_\+mem} static variable. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the video\+\_\+mem 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00016}{16}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a4633499e0f197ac855f56473fc9fb291}\index{graphics.c@{graphics.c}!vg\_get\_vres@{vg\_get\_vres}}
+\index{vg\_get\_vres@{vg\_get\_vres}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_get\_vres()}{vg\_get\_vres()}}
+{\footnotesize\ttfamily \label{graphics_8c_a4633499e0f197ac855f56473fc9fb291} 
+unsigned int vg\+\_\+get\+\_\+vres (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the vertical resolution. 
+
+\begin{DoxyReturn}{Returns}
+The vertical resolution from \doxylink{graphics_8c_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00028}{28}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a753099f01951b1f0f00ab0524e43fe2c}\index{graphics.c@{graphics.c}!vg\_graphics\_init@{vg\_graphics\_init}}
+\index{vg\_graphics\_init@{vg\_graphics\_init}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_graphics\_init()}{vg\_graphics\_init()}}
+{\footnotesize\ttfamily \label{graphics_8c_a753099f01951b1f0f00ab0524e43fe2c} 
+int vg\+\_\+graphics\+\_\+init (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the graphics with a mode. 
+
+Calls \doxylink{graphics_8h_a2fd3995002ae2c7ca6994ec92df6bd29}{vg\+\_\+map\+\_\+video\+\_\+memory()} and \doxylink{graphics_8h_a037327fc6c4a94f1a9d2f0ea127616f4}{vg\+\_\+set\+\_\+\+VBE\+\_\+mode()} with the mode as a parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The new mode to initialize \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00052}{52}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_ada5b96e84bb6293464f44bd084f75d3a}\index{graphics.c@{graphics.c}!vg\_is\_direct\_color\_model@{vg\_is\_direct\_color\_model}}
+\index{vg\_is\_direct\_color\_model@{vg\_is\_direct\_color\_model}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_is\_direct\_color\_model()}{vg\_is\_direct\_color\_model()}}
+{\footnotesize\ttfamily \label{graphics_8c_ada5b96e84bb6293464f44bd084f75d3a} 
+bool vg\+\_\+is\+\_\+direct\+\_\+color\+\_\+model (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Check if the current mode is a direct color one. 
+
+\begin{DoxyReturn}{Returns}
+true if the mode is direct color, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00036}{36}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a2fd3995002ae2c7ca6994ec92df6bd29}\index{graphics.c@{graphics.c}!vg\_map\_video\_memory@{vg\_map\_video\_memory}}
+\index{vg\_map\_video\_memory@{vg\_map\_video\_memory}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_map\_video\_memory()}{vg\_map\_video\_memory()}}
+{\footnotesize\ttfamily \label{graphics_8c_a2fd3995002ae2c7ca6994ec92df6bd29} 
+int vg\+\_\+map\+\_\+video\+\_\+memory (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Maps the video memory into the program\textquotesingle{}s memory space. 
+
+Gets the mode info to obtain the necessary memory to map, then calls vm\+\_\+map\+\_\+phys to map it. ~\newline
+ Also sets the \doxylink{graphics_8c_ad1fad3c6fec2bf6f7d7933e68b4b0de5}{bytes\+\_\+per\+\_\+pixel}, \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer} and \doxylink{graphics_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\+\_\+mem} static variables.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The new mode to initialize \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00074}{74}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a037327fc6c4a94f1a9d2f0ea127616f4}\index{graphics.c@{graphics.c}!vg\_set\_VBE\_mode@{vg\_set\_VBE\_mode}}
+\index{vg\_set\_VBE\_mode@{vg\_set\_VBE\_mode}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_set\_VBE\_mode()}{vg\_set\_VBE\_mode()}}
+{\footnotesize\ttfamily \label{graphics_8c_a037327fc6c4a94f1a9d2f0ea127616f4} 
+int vg\+\_\+set\+\_\+\+VBE\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode}{}\end{DoxyParamCaption})}
+
+
+
+Sets a new vbe mode for the graphics. 
+
+Uses the reg86\+\_\+t struct and calls sys\+\_\+int86().
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The new mode to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00057}{57}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_adec0f8a8b5a66e038a1d3906d4bc4280}\index{graphics.c@{graphics.c}!vg\_show\_frame@{vg\_show\_frame}}
+\index{vg\_show\_frame@{vg\_show\_frame}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{vg\_show\_frame()}{vg\_show\_frame()}}
+{\footnotesize\ttfamily \label{graphics_8c_adec0f8a8b5a66e038a1d3906d4bc4280} 
+int vg\+\_\+show\+\_\+frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Draws the information on the \doxylink{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}{buffer} to the \doxylink{graphics_8c_a93a24e067b9083bed6fb5c0336fd7a01}{video\+\_\+mem}. 
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00219}{219}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e}\index{graphics.c@{graphics.c}!buffer@{buffer}}
+\index{buffer@{buffer}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{buffer}{buffer}}
+{\footnotesize\ttfamily \label{graphics_8c_aff2566f4c366b48d73479bef43ee4d2e} 
+char\texorpdfstring{$\ast$}{*} buffer = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Secondary buffer for the video memory. 
+
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00011}{11}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_ad1fad3c6fec2bf6f7d7933e68b4b0de5}\index{graphics.c@{graphics.c}!bytes\_per\_pixel@{bytes\_per\_pixel}}
+\index{bytes\_per\_pixel@{bytes\_per\_pixel}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{bytes\_per\_pixel}{bytes\_per\_pixel}}
+{\footnotesize\ttfamily \label{graphics_8c_ad1fad3c6fec2bf6f7d7933e68b4b0de5} 
+int bytes\+\_\+per\+\_\+pixel\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Stores the number of bytes per pixel to avoid repetitive divisions. 
+
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00014}{14}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a9fcc2243068f8e628648febc0909c509}\index{graphics.c@{graphics.c}!mode\_info@{mode\_info}}
+\index{mode\_info@{mode\_info}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{mode\_info}{mode\_info}}
+{\footnotesize\ttfamily \label{graphics_8c_a9fcc2243068f8e628648febc0909c509} 
+vbe\+\_\+mode\+\_\+info\+\_\+t mode\+\_\+info\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Stores the current mode info. 
+
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00013}{13}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+
+\Hypertarget{graphics_8c_a93a24e067b9083bed6fb5c0336fd7a01}\index{graphics.c@{graphics.c}!video\_mem@{video\_mem}}
+\index{video\_mem@{video\_mem}!graphics.c@{graphics.c}}
+\doxysubsubsection{\texorpdfstring{video\_mem}{video\_mem}}
+{\footnotesize\ttfamily \label{graphics_8c_a93a24e067b9083bed6fb5c0336fd7a01} 
+char\texorpdfstring{$\ast$}{*} video\+\_\+mem = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Pointer to the real video memory. 
+
+
+
+Definition at line \mbox{\hyperlink{graphics_8c_source_l00012}{12}} of file \mbox{\hyperlink{graphics_8c_source}{graphics.\+c}}.
+

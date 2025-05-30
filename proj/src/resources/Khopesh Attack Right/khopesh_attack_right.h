@@ -1,3 +1,9 @@
+/** 
+ * @file khopesh_attack_right.h
+ * @brief Includes all the xpm files for the khopesh attack right animation
+ */
+
+
 #ifndef _KHOPESH_ATTACK_RIGHT_H_
 #define _KHOPESH_ATTACK_RIGHT_H_
 

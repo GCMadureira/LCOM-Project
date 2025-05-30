@@ -1,3 +1,11 @@
+/** 
+ * @file entity.c
+ * @brief Source code file for all the logic related to the entity and entity_node structs
+ * 
+ * This file implements all the functions for the entity and entity_node structs.
+ */
+
+
 #include "entity.h"
 
 

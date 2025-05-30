@@ -1,0 +1,157 @@
+\doxysection{controller/arena\+\_\+controller.h File Reference}
+\hypertarget{arena__controller_8h}{}\label{arena__controller_8h}\index{controller/arena\_controller.h@{controller/arena\_controller.h}}
+
+
+Header file for \doxylink{arena__controller_8c}{arena\+\_\+controller.\+c}.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}../model/structs.\+h"{}}\newline
+{\ttfamily \#include "{}../model/entity.\+h"{}}\newline
+{\ttfamily \#include "{}../model/arena.\+h"{}}\newline
+{\ttfamily \#include "{}../model/attack.\+h"{}}\newline
+{\ttfamily \#include "{}main\+\_\+controller.\+h"{}}\newline
+{\ttfamily \#include "{}enemy\+\_\+controller.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{arena__controller_8h_a7320cd4f275ec44ece5cbaf1204b381f}{get\+\_\+arena\+\_\+game\+\_\+time}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\+\_\+game\+\_\+time} static member. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{arena__controller_8h_a1fbac95d897cdd6d73418d49d79f43eb}{get\+\_\+arena\+\_\+starting\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\+\_\+starting\+\_\+frame} static member. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arena__controller_8h_a4233e345dd45a72fa6b7d3dba0a19379}{handle\+\_\+ranged\+\_\+attack}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Executes a ranged attack with a cooldown. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arena__controller_8h_a63dac5d250ad059af842c4b6292260f1}{handle\+\_\+auto\+\_\+attack}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Executes the auto attack with a cooldown. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{arena__controller_8h_a65fc1548128ab4fb70d7e1aeddd65537}{arena\+\_\+process\+\_\+frame}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Processes a frame on the passed arena. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{arena__controller_8h_a9189679ee0e5aadead4c613784f76164}{setup\+\_\+arena\+\_\+controller}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the arena controller for a new game by resetting all the static variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{arena__controller_8c}{arena\+\_\+controller.\+c}. 
+
+This file declares all the functions to be used on the arena\textquotesingle{}s logic. 
+
+Definition in file \mbox{\hyperlink{arena__controller_8h_source}{arena\+\_\+controller.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{arena__controller_8h_a65fc1548128ab4fb70d7e1aeddd65537}\index{arena\_controller.h@{arena\_controller.h}!arena\_process\_frame@{arena\_process\_frame}}
+\index{arena\_process\_frame@{arena\_process\_frame}!arena\_controller.h@{arena\_controller.h}}
+\doxysubsubsection{\texorpdfstring{arena\_process\_frame()}{arena\_process\_frame()}}
+{\footnotesize\ttfamily \label{arena__controller_8h_a65fc1548128ab4fb70d7e1aeddd65537} 
+int arena\+\_\+process\+\_\+frame (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Processes a frame on the passed arena. 
+
+This function is called once every frame on the main controller to process one frame on the arena. First checks collisions with the enemies, reducing the health of the player with a cooldown of one second. Also handles the collisions with the heart power-\/ups that recover the player\textquotesingle{}s missing health. ~\newline
+ It then handles the enemy and heart spawning by calling the functions \doxylink{enemy__controller_8c_a60b46083beb9a9caca98687b50a23847}{handle\+\_\+enemy\+\_\+spawning()} and \doxylink{arena__controller_8c_aa5a4d603090c9ce2c25707be8bdaf9e5}{handle\+\_\+heart\+\_\+spawning()}, while also calling the \doxylink{arena__controller_8h_a63dac5d250ad059af842c4b6292260f1}{handle\+\_\+auto\+\_\+attack()} function to execute the normal attack on cooldown. ~\newline
+ At the end, it moves all the entities associated with the arena by calling \doxylink{arena__controller_8c_a2fcd7bed1ee21149f594ab5663588ec2}{arena\+\_\+move\+\_\+entities()}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the arena where the frame will be processed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the player died and thus the game ended, 0 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00250}{250}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+
+\Hypertarget{arena__controller_8h_a7320cd4f275ec44ece5cbaf1204b381f}\index{arena\_controller.h@{arena\_controller.h}!get\_arena\_game\_time@{get\_arena\_game\_time}}
+\index{get\_arena\_game\_time@{get\_arena\_game\_time}!arena\_controller.h@{arena\_controller.h}}
+\doxysubsubsection{\texorpdfstring{get\_arena\_game\_time()}{get\_arena\_game\_time()}}
+{\footnotesize\ttfamily \label{arena__controller_8h_a7320cd4f275ec44ece5cbaf1204b381f} 
+uint32\+\_\+t get\+\_\+arena\+\_\+game\+\_\+time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the \doxylink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\+\_\+game\+\_\+time} static member. 
+
+\begin{DoxyReturn}{Returns}
+The time in seconds the arena was active. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00077}{77}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+
+\Hypertarget{arena__controller_8h_a1fbac95d897cdd6d73418d49d79f43eb}\index{arena\_controller.h@{arena\_controller.h}!get\_arena\_starting\_frame@{get\_arena\_starting\_frame}}
+\index{get\_arena\_starting\_frame@{get\_arena\_starting\_frame}!arena\_controller.h@{arena\_controller.h}}
+\doxysubsubsection{\texorpdfstring{get\_arena\_starting\_frame()}{get\_arena\_starting\_frame()}}
+{\footnotesize\ttfamily \label{arena__controller_8h_a1fbac95d897cdd6d73418d49d79f43eb} 
+uint32\+\_\+t get\+\_\+arena\+\_\+starting\+\_\+frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the \doxylink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\+\_\+starting\+\_\+frame} static member. 
+
+\begin{DoxyReturn}{Returns}
+The frame when the arena was initialized. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00073}{73}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+
+\Hypertarget{arena__controller_8h_a63dac5d250ad059af842c4b6292260f1}\index{arena\_controller.h@{arena\_controller.h}!handle\_auto\_attack@{handle\_auto\_attack}}
+\index{handle\_auto\_attack@{handle\_auto\_attack}!arena\_controller.h@{arena\_controller.h}}
+\doxysubsubsection{\texorpdfstring{handle\_auto\_attack()}{handle\_auto\_attack()}}
+{\footnotesize\ttfamily \label{arena__controller_8h_a63dac5d250ad059af842c4b6292260f1} 
+void handle\+\_\+auto\+\_\+attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Executes the auto attack with a cooldown. 
+
+If the cooldown has passed, it executes the auto attack in the direction the player is facing and adds it to the arena\textquotesingle{}s active attack list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the arena where the attack will be executed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00104}{104}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+
+\Hypertarget{arena__controller_8h_a4233e345dd45a72fa6b7d3dba0a19379}\index{arena\_controller.h@{arena\_controller.h}!handle\_ranged\_attack@{handle\_ranged\_attack}}
+\index{handle\_ranged\_attack@{handle\_ranged\_attack}!arena\_controller.h@{arena\_controller.h}}
+\doxysubsubsection{\texorpdfstring{handle\_ranged\_attack()}{handle\_ranged\_attack()}}
+{\footnotesize\ttfamily \label{arena__controller_8h_a4233e345dd45a72fa6b7d3dba0a19379} 
+void handle\+\_\+ranged\+\_\+attack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Executes a ranged attack with a cooldown. 
+
+If the cooldown has passed, it executes a lightning attack in the position of the mouse and adds it to the arena\textquotesingle{}s active attack list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the arena where the attack will be executed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00088}{88}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+
+\Hypertarget{arena__controller_8h_a9189679ee0e5aadead4c613784f76164}\index{arena\_controller.h@{arena\_controller.h}!setup\_arena\_controller@{setup\_arena\_controller}}
+\index{setup\_arena\_controller@{setup\_arena\_controller}!arena\_controller.h@{arena\_controller.h}}
+\doxysubsubsection{\texorpdfstring{setup\_arena\_controller()}{setup\_arena\_controller()}}
+{\footnotesize\ttfamily \label{arena__controller_8h_a9189679ee0e5aadead4c613784f76164} 
+void setup\+\_\+arena\+\_\+controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sets up the arena controller for a new game by resetting all the static variables. 
+
+Resets \doxylink{arena__controller_8c_a8cc3dc29c94aed014bbd6d02f6a4d259}{last\+\_\+auto\+\_\+attack}, last\+\_\+range\+\_\+attack, \doxylink{arena__controller_8c_a23074493553252f07b67549346a9b153}{arena\+\_\+starting\+\_\+frame} and \doxylink{arena__controller_8c_a2caa2c2469060cc23dce125c0096b627}{arena\+\_\+game\+\_\+time}. 
+
+Definition at line \mbox{\hyperlink{arena__controller_8c_source_l00081}{81}} of file \mbox{\hyperlink{arena__controller_8c_source}{arena\+\_\+controller.\+c}}.
+

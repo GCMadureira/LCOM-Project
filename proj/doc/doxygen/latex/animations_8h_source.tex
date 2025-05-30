@@ -1,0 +1,47 @@
+\doxysection{animations.\+h}
+\hypertarget{animations_8h_source}{}\label{animations_8h_source}\index{viewer/animations.h@{viewer/animations.h}}
+\mbox{\hyperlink{animations_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00009}00009\ \textcolor{preprocessor}{\#ifndef\ \_ANIMATIONS\_PROJ\_H\_}}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00010}00010\ \textcolor{preprocessor}{\#define\ \_ANIMATIONS\_PROJ\_H\_}}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{entity_8h}{../model/entity.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{structs_8h}{../model/structs.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00021}\mbox{\hyperlink{animations_8h_af686669afb5a72abecc9c6a0959e0d06}{00021}}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{animations_8h_af686669afb5a72abecc9c6a0959e0d06}{animation\_direction}}\ \{}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00022}00022\ \ \ LEFT,\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00023}00023\ \ \ RIGHT,}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00024}00024\ \ \ IDLE\_}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00025}00025\ \};}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00035}00035\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{animations_8h_af686669afb5a72abecc9c6a0959e0d06}{animation\_direction}}\ (\mbox{\hyperlink{animations_8c_abaaf2b3c11b75d1f92a8133dbe74b5eb}{entity\_get\_direction}})(\mbox{\hyperlink{structentity}{entity}}*\ \mbox{\hyperlink{structentity}{entity}});}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00044}00044\ int\ (\mbox{\hyperlink{animations_8c_adc95abfcdfad9d7893d1607e2bb2344c}{animations\_load}})();}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00053}00053\ int\ (\mbox{\hyperlink{animations_8c_a2d1e8bdd17409181b1f34a25eedd46ff}{animations\_clean}})();}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00062}00062\ int\ (\mbox{\hyperlink{animations_8c_a2df03d38124b550a757aa384adcb1a6c}{animation\_destroy}})(\mbox{\hyperlink{structanimation}{animation}}\ \mbox{\hyperlink{structanimation}{animation}});}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00065}00065\ \textcolor{comment}{//the\ animations\ themselves}}
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00066}00066\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structanimation}{animation}}*\ \mbox{\hyperlink{animations_8c_affae80d1f9f9146ba5d4d1923642e8df}{pharaoh\_animations}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00067}00067\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structanimation}{animation}}*\ \mbox{\hyperlink{animations_8c_a07ac190d6bf439822263cf6f34ad64c0}{enemy1\_animations}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00068}00068\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structanimation}{animation}}*\ \mbox{\hyperlink{animations_8c_a21cf37ea16dbd6b297c2fdf7f25bedca}{enemy2\_animations}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00069}00069\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structanimation}{animation}}*\ \mbox{\hyperlink{animations_8c_a5324051fe80fcceaee40e135ea1bc694}{mummy\_animations}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00072}00072\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structanimation}{animation}}\ \mbox{\hyperlink{animations_8c_a3ea36af53f25b56741a364c3cd6021e6}{khopesh\_attack\_right\_animation}};\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00073}00073\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structanimation}{animation}}\ \mbox{\hyperlink{animations_8c_a3d71208df5925526b81e8e880995c17a}{khopesh\_attack\_left\_animation}};\ \ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00074}00074\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structanimation}{animation}}\ \mbox{\hyperlink{animations_8c_aced52fc5ad13515f67bab9692acb6a2c}{lightning\_attack\_animation}};\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00075}00075\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structanimation}{animation}}\ \mbox{\hyperlink{animations_8c_a4b22c2d14f1e31a34c82e0bdfbaa13bf}{heart\_animation}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00076}00076\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structanimation}{animation}}\ \mbox{\hyperlink{animations_8c_af67814c18ed1bd54a537567c6cb29fe2}{secret\_animation}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{animations_8h_source_l00079}00079\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_ANIMATIONS\_PROJ\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

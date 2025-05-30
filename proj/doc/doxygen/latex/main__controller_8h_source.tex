@@ -1,0 +1,50 @@
+\doxysection{main\+\_\+controller.\+h}
+\hypertarget{main__controller_8h_source}{}\label{main__controller_8h_source}\index{controller/main\_controller.h@{controller/main\_controller.h}}
+\mbox{\hyperlink{main__controller_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ \_MAIN\_CONTROLLER\_PROJ\_H\_}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00009}00009\ \textcolor{preprocessor}{\#define\ \_MAIN\_CONTROLLER\_PROJ\_H\_}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu_8h}{../model/menu.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{arena_8h}{../model/arena.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{events_8h}{../events/events.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scancodes_8h}{../macros/scancodes.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{viewer_2static__images_8h}{../viewer/static\_images.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{main__viewer_8h}{../viewer/main\_viewer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{enemy__controller_8h}{enemy\_controller.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{arena__controller_8h}{arena\_controller.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00026}\mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{00026}}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\_state}}\ \{}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00027}\mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2a76bdc8adfd6c6463ab269ff4c06be9b4}{00027}}\ \ \ \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2a76bdc8adfd6c6463ab269ff4c06be9b4}{QUIT}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00028}\mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2ac22743f1fc74de09544ecc9bab74a17b}{00028}}\ \ \ \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2ac22743f1fc74de09544ecc9bab74a17b}{MAIN\_MENU}},\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00029}\mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2ad50cf309d7568040619ed26ee6835a84}{00029}}\ \ \ \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2ad50cf309d7568040619ed26ee6835a84}{GAME}},\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00030}\mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2a0a628d092b27cb6604eac209b5495ce2}{00030}}\ \ \ \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2a0a628d092b27cb6604eac209b5495ce2}{GAME\_OVER\_MENU}}\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00031}00031\ \};}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00042}00042\ int\ (\mbox{\hyperlink{main__controller_8c_a6e0f3787555b26fcb56fa7f7da849780}{process\_frame}})();}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00051}00051\ int\ (\mbox{\hyperlink{main__controller_8c_ad2fd63f388cc234a37264c40409f5016}{load\_highscore}})();}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00060}00060\ int\ (\mbox{\hyperlink{main__controller_8c_aefa5d38da887f05a677260355218ab86}{save\_highscore}})();}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00067}00067\ uint32\_t\ (\mbox{\hyperlink{main__controller_8c_a69ae5238712eef3b6d7a5aa88e52c124}{get\_high\_score}})();}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00076}00076\ void\ (\mbox{\hyperlink{main__controller_8c_a67855b6f996a31ed54e2d8b5cc1c5b24}{update\_high\_score}})(uint32\_t\ new\_time);}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00083}00083\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\_state}}\ (\mbox{\hyperlink{main__controller_8c_aeed66d76fc5a6f3fdf449c1d9af6d864}{get\_game\_state}})();}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00090}00090\ void\ (\mbox{\hyperlink{main__controller_8c_a16074cead64739f51a64c2618848b537}{set\_game\_state}})(\textcolor{keyword}{enum}\ \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\_state}}\ state);}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00097}00097\ \textcolor{keywordtype}{unsigned}\ long\ (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\_current\_frame}})();}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00107}00107\ int\ (\mbox{\hyperlink{main__controller_8c_a3111dee1b7eba98e02de5d77e3d9f056}{setup\_game}})();}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00117}00117\ int\ (\mbox{\hyperlink{main__controller_8c_a92a2f28091bb858097abd29fe906badd}{clean\_game}})();}
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{main__controller_8h_source_l00119}00119\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\_MAIN\_CONTROLLER\_PROJ\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

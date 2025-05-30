@@ -1,0 +1,52 @@
+\doxysection{graphics.\+h}
+\hypertarget{graphics_8h_source}{}\label{graphics_8h_source}\index{drivers/graphics/graphics.h@{drivers/graphics/graphics.h}}
+\mbox{\hyperlink{graphics_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00009}00009\ \textcolor{preprocessor}{\#ifndef\ \_GRAPHICS\_H\_}}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00010}00010\ \textcolor{preprocessor}{\#define\ \_GRAPHICS\_H\_}}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{vbe_8h}{vbe.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{colors_8h}{../../macros/colors.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00025}00025\ int\ (\mbox{\hyperlink{graphics_8c_a037327fc6c4a94f1a9d2f0ea127616f4}{vg\_set\_VBE\_mode}})(uint16\_t\ mode);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00035}00035\ int\ (\mbox{\hyperlink{graphics_8c_a753099f01951b1f0f00ab0524e43fe2c}{vg\_graphics\_init}})(uint16\_t\ mode);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00046}00046\ int\ (\mbox{\hyperlink{graphics_8c_a2fd3995002ae2c7ca6994ec92df6bd29}{vg\_map\_video\_memory}})(uint16\_t\ mode);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00053}00053\ \textcolor{keywordtype}{void}*\ (\mbox{\hyperlink{graphics_8c_a70759d4cf5d82b17b534aadb7962408d}{vg\_get\_video\_mem}})();}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00060}00060\ vbe\_mode\_info\_t\ (\mbox{\hyperlink{graphics_8c_a10539afab671110c5e3e31ec73b8ec2a}{vg\_get\_current\_mode\_info}})();}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00067}00067\ \textcolor{keywordtype}{unsigned}\ int\ (\mbox{\hyperlink{graphics_8c_aa4a211ebfc5c87a0072eaf9bd03e3a56}{vg\_get\_hres}})();}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00074}00074\ \textcolor{keywordtype}{unsigned}\ int\ (\mbox{\hyperlink{graphics_8c_a4633499e0f197ac855f56473fc9fb291}{vg\_get\_vres}})();}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00081}00081\ \textcolor{keywordtype}{unsigned}\ int\ (\mbox{\hyperlink{graphics_8c_abf8596bd7f05ddc026293ede927299e4}{vg\_get\_bits\_per\_pixel}})();}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00088}00088\ bool\ (\mbox{\hyperlink{graphics_8c_ada5b96e84bb6293464f44bd084f75d3a}{vg\_is\_direct\_color\_model}})();}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00098}00098\ uint32\_t\ (\mbox{\hyperlink{graphics_8c_aabe4f772ac01ca518bb60019c6a45b7a}{vg\_get\_red\_color\_field}})(\textcolor{keyword}{const}\ uint32\_t\ color);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00108}00108\ uint32\_t\ (\mbox{\hyperlink{graphics_8c_a3da424b290a093206410ebdee057bdf7}{vg\_get\_green\_color\_field}})(\textcolor{keyword}{const}\ uint32\_t\ color);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00118}00118\ uint32\_t\ (\mbox{\hyperlink{graphics_8c_a2a789c96a107bb15e3461ba3b3614cf5}{vg\_get\_blue\_color\_field}})(\textcolor{keyword}{const}\ uint32\_t\ color);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00128}00128\ int\ (\mbox{\hyperlink{graphics_8c_a6f895de9725f9f231f9a7f74b6087f60}{vg\_draw\_pixel}})(uint16\_t\ x,\ uint16\_t\ y,\ uint32\_t\ color);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00140}00140\ int\ (\mbox{\hyperlink{graphics_8c_a230d881a4d6cb3aea470ce89777ff13e}{vg\_draw\_rectangle32}})(int32\_t\ x,\ int32\_t\ y,\ uint16\_t\ width,\ uint16\_t\ height,\ uint32\_t\ color);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00150}00150\ int\ (\mbox{\hyperlink{graphics_8c_a75992379c4d2d7db98670d5fd3cee7aa}{vg\_draw\_image32}})(int32\_t\ x,\ int32\_t\ y,\ xpm\_image\_t*\ img\_info);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00164}00164\ int\ (\mbox{\hyperlink{graphics_8c_a348a68eba0696f535bad8d8cf3ea5219}{vg\_draw\_image\_section32}})(int32\_t\ x,\ int32\_t\ y,\ xpm\_image\_t*\ img\_info,\ uint16\_t\ x\_section,\ \ uint16\_t\ y\_section,\ uint16\_t\ width,\ uint16\_t\ height);}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00171}00171\ int\ (\mbox{\hyperlink{graphics_8c_adec0f8a8b5a66e038a1d3906d4bc4280}{vg\_show\_frame}})();}
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{graphics_8h_source_l00173}00173\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\_GRAPHICS\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

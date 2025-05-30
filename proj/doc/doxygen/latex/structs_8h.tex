@@ -1,0 +1,114 @@
+\doxysection{model/structs.h File Reference}
+\hypertarget{structs_8h}{}\label{structs_8h}\index{model/structs.h@{model/structs.h}}
+
+
+Declares all the structs used in this project.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structinput__event}{input\+\_\+event}}
+\begin{DoxyCompactList}\small\item\em Represents a mouse or keyboard event with all the required information. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct__input__event__node}{\+\_\+input\+\_\+event\+\_\+node}}
+\item 
+struct \mbox{\hyperlink{structanimation}{animation}}
+\begin{DoxyCompactList}\small\item\em Represents an animation with an array of sprites and the number of them. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structentity}{entity}}
+\begin{DoxyCompactList}\small\item\em Represents an entity on the game. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct__entity__node}{\+\_\+entity\+\_\+node}}
+\item 
+struct \mbox{\hyperlink{structattack}{attack}}
+\begin{DoxyCompactList}\small\item\em Represents an attack on the game. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct__attack__node}{\+\_\+attack\+\_\+node}}
+\item 
+struct \mbox{\hyperlink{structarena}{arena}}
+\begin{DoxyCompactList}\small\item\em Represents an arena on the game. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structmenu}{menu}}
+\begin{DoxyCompactList}\small\item\em Represents a menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{struct__input__event__node}{\+\_\+input\+\_\+event\+\_\+node}} \mbox{\hyperlink{structs_8h_abb8e254efacd2630737c2c3b87568576}{input\+\_\+event\+\_\+node}}
+\item 
+typedef struct \mbox{\hyperlink{struct__entity__node}{\+\_\+entity\+\_\+node}} \mbox{\hyperlink{structs_8h_a4863d308a8f366aa950fb3ed4b80939a}{entity\+\_\+node}}
+\item 
+typedef struct \mbox{\hyperlink{struct__attack__node}{\+\_\+attack\+\_\+node}} \mbox{\hyperlink{structs_8h_acc03a5e414580acceb4181d326bc9849}{attack\+\_\+node}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{structs_8h_a430b444c74dd3fd1472a31714ec5f1ce}{event\+\_\+type}} \{ \mbox{\hyperlink{structs_8h_a430b444c74dd3fd1472a31714ec5f1cea3cf923d175a341bbb622032a7c54a3de}{MOUSE\+\_\+\+EVENT}}
+, \mbox{\hyperlink{structs_8h_a430b444c74dd3fd1472a31714ec5f1cea1065dd91a6b7875936b6ec92c9dc6073}{KEYBOARD\+\_\+\+EVENT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Represents the type of event on an \doxylink{structinput__event}{input\+\_\+event} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares all the structs used in this project. 
+
+
+
+Definition in file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{structs_8h_acc03a5e414580acceb4181d326bc9849}\index{structs.h@{structs.h}!attack\_node@{attack\_node}}
+\index{attack\_node@{attack\_node}!structs.h@{structs.h}}
+\doxysubsubsection{\texorpdfstring{attack\_node}{attack\_node}}
+{\footnotesize\ttfamily \label{structs_8h_acc03a5e414580acceb4181d326bc9849} 
+typedef struct \mbox{\hyperlink{struct__attack__node}{\+\_\+attack\+\_\+node}} attack\+\_\+node}
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00100}{100}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structs_8h_a4863d308a8f366aa950fb3ed4b80939a}\index{structs.h@{structs.h}!entity\_node@{entity\_node}}
+\index{entity\_node@{entity\_node}!structs.h@{structs.h}}
+\doxysubsubsection{\texorpdfstring{entity\_node}{entity\_node}}
+{\footnotesize\ttfamily \label{structs_8h_a4863d308a8f366aa950fb3ed4b80939a} 
+typedef struct \mbox{\hyperlink{struct__entity__node}{\+\_\+entity\+\_\+node}} entity\+\_\+node}
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00076}{76}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structs_8h_abb8e254efacd2630737c2c3b87568576}\index{structs.h@{structs.h}!input\_event\_node@{input\_event\_node}}
+\index{input\_event\_node@{input\_event\_node}!structs.h@{structs.h}}
+\doxysubsubsection{\texorpdfstring{input\_event\_node}{input\_event\_node}}
+{\footnotesize\ttfamily \label{structs_8h_abb8e254efacd2630737c2c3b87568576} 
+typedef struct \mbox{\hyperlink{struct__input__event__node}{\+\_\+input\+\_\+event\+\_\+node}} input\+\_\+event\+\_\+node}
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00042}{42}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{structs_8h_a430b444c74dd3fd1472a31714ec5f1ce}\index{structs.h@{structs.h}!event\_type@{event\_type}}
+\index{event\_type@{event\_type}!structs.h@{structs.h}}
+\doxysubsubsection{\texorpdfstring{event\_type}{event\_type}}
+{\footnotesize\ttfamily \label{structs_8h_a430b444c74dd3fd1472a31714ec5f1ce} 
+enum \mbox{\hyperlink{structs_8h_a430b444c74dd3fd1472a31714ec5f1ce}{event\+\_\+type}}}
+
+
+
+Represents the type of event on an \doxylink{structinput__event}{input\+\_\+event} struct. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOUSE\_EVENT@{MOUSE\_EVENT}!structs.h@{structs.h}}\index{structs.h@{structs.h}!MOUSE\_EVENT@{MOUSE\_EVENT}}}\Hypertarget{structs_8h_a430b444c74dd3fd1472a31714ec5f1cea3cf923d175a341bbb622032a7c54a3de}\label{structs_8h_a430b444c74dd3fd1472a31714ec5f1cea3cf923d175a341bbb622032a7c54a3de} 
+MOUSE\+\_\+\+EVENT&An event from the mouse. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KEYBOARD\_EVENT@{KEYBOARD\_EVENT}!structs.h@{structs.h}}\index{structs.h@{structs.h}!KEYBOARD\_EVENT@{KEYBOARD\_EVENT}}}\Hypertarget{structs_8h_a430b444c74dd3fd1472a31714ec5f1cea1065dd91a6b7875936b6ec92c9dc6073}\label{structs_8h_a430b444c74dd3fd1472a31714ec5f1cea1065dd91a6b7875936b6ec92c9dc6073} 
+KEYBOARD\+\_\+\+EVENT&An event from the keyboard. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00017}{17}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+

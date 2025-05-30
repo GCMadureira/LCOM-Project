@@ -1,0 +1,159 @@
+\doxysection{arena Struct Reference}
+\hypertarget{structarena}{}\label{structarena}\index{arena@{arena}}
+
+
+Represents an arena on the game.  
+
+
+
+
+{\ttfamily \#include $<$structs.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}
+\begin{DoxyCompactList}\small\item\em A pointer to the player entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structarena_ab92e02356cd036a7927f70cf5f79261c}{mouse}}
+\begin{DoxyCompactList}\small\item\em A pointer to the mouse entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct__entity__node}{entity\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structarena_adb8106abeff3aa4425d8044b5cfab5ce}{enemies}}
+\begin{DoxyCompactList}\small\item\em A pointer to the active enemies list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct__attack__node}{attack\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\+\_\+attacks}}
+\begin{DoxyCompactList}\small\item\em A pointer to the active attacks list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct__entity__node}{entity\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structarena_a3a65af53fd8ed22c0c0f410d278a7698}{hearts}}
+\begin{DoxyCompactList}\small\item\em A pointer to the active hearts list. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\+\_\+x}}
+\begin{DoxyCompactList}\small\item\em The x coordinate of the arena. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\+\_\+y}}
+\begin{DoxyCompactList}\small\item\em The y coordinate of the arena. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\+\_\+image}}
+\begin{DoxyCompactList}\small\item\em A pointer to the game background image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an arena on the game. 
+
+The stored entities have a position relative to the arena, while the mouse has a position relative to the screen 
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00112}{112}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structarena_a76f2cb533432223bcf4343888b95ace9}\index{arena@{arena}!background\_image@{background\_image}}
+\index{background\_image@{background\_image}!arena@{arena}}
+\doxysubsubsection{\texorpdfstring{background\_image}{background\_image}}
+{\footnotesize\ttfamily \label{structarena_a76f2cb533432223bcf4343888b95ace9} 
+xpm\+\_\+image\+\_\+t\texorpdfstring{$\ast$}{*} background\+\_\+image}
+
+
+
+A pointer to the game background image. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00120}{120}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structarena_adb8106abeff3aa4425d8044b5cfab5ce}\index{arena@{arena}!enemies@{enemies}}
+\index{enemies@{enemies}!arena@{arena}}
+\doxysubsubsection{\texorpdfstring{enemies}{enemies}}
+{\footnotesize\ttfamily \label{structarena_adb8106abeff3aa4425d8044b5cfab5ce} 
+\mbox{\hyperlink{struct__entity__node}{entity\+\_\+node}}\texorpdfstring{$\ast$}{*} enemies}
+
+
+
+A pointer to the active enemies list. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00115}{115}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structarena_a3a65af53fd8ed22c0c0f410d278a7698}\index{arena@{arena}!hearts@{hearts}}
+\index{hearts@{hearts}!arena@{arena}}
+\doxysubsubsection{\texorpdfstring{hearts}{hearts}}
+{\footnotesize\ttfamily \label{structarena_a3a65af53fd8ed22c0c0f410d278a7698} 
+\mbox{\hyperlink{struct__entity__node}{entity\+\_\+node}}\texorpdfstring{$\ast$}{*} hearts}
+
+
+
+A pointer to the active hearts list. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00117}{117}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structarena_ab92e02356cd036a7927f70cf5f79261c}\index{arena@{arena}!mouse@{mouse}}
+\index{mouse@{mouse}!arena@{arena}}
+\doxysubsubsection{\texorpdfstring{mouse}{mouse}}
+{\footnotesize\ttfamily \label{structarena_ab92e02356cd036a7927f70cf5f79261c} 
+\mbox{\hyperlink{structentity}{entity}}\texorpdfstring{$\ast$}{*} mouse}
+
+
+
+A pointer to the mouse entity. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00114}{114}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structarena_ae6ddf0232f587e3d173c340f73d35d76}\index{arena@{arena}!player@{player}}
+\index{player@{player}!arena@{arena}}
+\doxysubsubsection{\texorpdfstring{player}{player}}
+{\footnotesize\ttfamily \label{structarena_ae6ddf0232f587e3d173c340f73d35d76} 
+\mbox{\hyperlink{structentity}{entity}}\texorpdfstring{$\ast$}{*} player}
+
+
+
+A pointer to the player entity. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00113}{113}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structarena_a7b9192833509ce7b56005e2cf3eb65d5}\index{arena@{arena}!player\_attacks@{player\_attacks}}
+\index{player\_attacks@{player\_attacks}!arena@{arena}}
+\doxysubsubsection{\texorpdfstring{player\_attacks}{player\_attacks}}
+{\footnotesize\ttfamily \label{structarena_a7b9192833509ce7b56005e2cf3eb65d5} 
+\mbox{\hyperlink{struct__attack__node}{attack\+\_\+node}}\texorpdfstring{$\ast$}{*} player\+\_\+attacks}
+
+
+
+A pointer to the active attacks list. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00116}{116}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structarena_a71b5aa321c1ab05450cb75adcc73b7be}\index{arena@{arena}!pos\_x@{pos\_x}}
+\index{pos\_x@{pos\_x}!arena@{arena}}
+\doxysubsubsection{\texorpdfstring{pos\_x}{pos\_x}}
+{\footnotesize\ttfamily \label{structarena_a71b5aa321c1ab05450cb75adcc73b7be} 
+double pos\+\_\+x}
+
+
+
+The x coordinate of the arena. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00118}{118}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structarena_afe0f418f8b2cee466b080bca771aa483}\index{arena@{arena}!pos\_y@{pos\_y}}
+\index{pos\_y@{pos\_y}!arena@{arena}}
+\doxysubsubsection{\texorpdfstring{pos\_y}{pos\_y}}
+{\footnotesize\ttfamily \label{structarena_afe0f418f8b2cee466b080bca771aa483} 
+double pos\+\_\+y}
+
+
+
+The y coordinate of the arena. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00119}{119}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+model/\mbox{\hyperlink{structs_8h}{structs.\+h}}\end{DoxyCompactItemize}

@@ -1,3 +1,9 @@
+/** 
+ * @file pharaoh_walk_left.h
+ * @brief Includes all the xpm files for the pharaoh walk_left animation
+ */
+
+
 #ifndef _PHARAOH_WALK_LEFT_PROJ_H_
 #define _PHARAOH_WALK_LEFT_PROJ_H_
 

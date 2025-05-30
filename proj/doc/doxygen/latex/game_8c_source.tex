@@ -1,0 +1,103 @@
+\doxysection{game.\+c}
+\hypertarget{game_8c_source}{}\label{game_8c_source}\mbox{\hyperlink{game_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{drivers_8h}{drivers/drivers.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{scancodes_8h}{macros/scancodes.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{main__controller_8h}{controller/main\_controller.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00023}\mbox{\hyperlink{game_8c_a47d86c55c1bc9d2a93df0b9476c4d630}{00023}}\ int\ (\mbox{\hyperlink{game_8c_a47d86c55c1bc9d2a93df0b9476c4d630}{game\_init}})()\ \{}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00024}00024\ \ \ uint8\_t\ timer\_int\_no\ =\ 0,\ keyboard\_int\_no\ =\ 1,\ mouse\_int\_no\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00025}00025\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ frame\_rate\ =\ 60;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00027}00027\ \ \ \textcolor{keywordflow}{if}(timer\_set\_frequency(\mbox{\hyperlink{group__i8254_gacc9ff9df4a9674a1ce9ba08fc4a4679e}{TIMER\_0}},\ frame\_rate))\ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ set\ the\ frame\ rate\ on\ timer\ 0}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00028}00028\ \ \ \textcolor{keywordflow}{if}(timer\_subscribe\_int(\&timer\_int\_no))\ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ subscribe\ the\ timer\ 0\ interruptions}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00029}00029\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{keyboard_8c_aad41bc56418fe6ef55da17d70e94d428}{keyboard\_subscribe\_int\_exclusive}}(\&keyboard\_int\_no))\ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ subscribe\ keyboard\ ints}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00030}00030\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{mouse_8c_a1d4aed47c8a0bb5de25d1810fe6e2601}{mouse\_stream\_enable\_data\_reporting}}())\ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ enable\ reporting\ on\ the\ mouse}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00031}00031\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{mouse_8c_adec491fd9d71aebd7dbc1e15181d63c7}{mouse\_subscribe\_int\_exclusive}}(\&mouse\_int\_no))\ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ subscribe\ the\ interruptions\ reported}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00032}00032\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{graphics_8c_a753099f01951b1f0f00ab0524e43fe2c}{vg\_graphics\_init}}(0x14C))\ \textcolor{keywordflow}{return}\ 1;\ \textcolor{comment}{//\ set\ the\ graphics\ mode\ as\ 0x14C\ and\ map\ the\ vmem}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00034}00034\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{main__controller_8c_a3111dee1b7eba98e02de5d77e3d9f056}{setup\_game}}())\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00036}00036\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00037}00037\ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00047}\mbox{\hyperlink{game_8c_abc1fb57f21dfdfe8414ed5ff0c744a10}{00047}}\ int\ (\mbox{\hyperlink{game_8c_abc1fb57f21dfdfe8414ed5ff0c744a10}{game\_exit}})()\ \{}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00048}00048\ \ \ \textcolor{keywordflow}{return}\ timer\_unsubscribe\_int()\ |}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00049}00049\ \ \ \mbox{\hyperlink{keyboard_8c_ac95aea27a5e91b363b876fed881f368f}{keyboard\_unsubscribe\_int}}()\ |}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00050}00050\ \ \ \mbox{\hyperlink{mouse_8c_a685ad2706aca36d9869a30a19b9f446a}{mouse\_unsubscribe\_int}}()\ |}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00051}00051\ \ \ \mbox{\hyperlink{mouse_8c_a3673a74741a69e481703d59d8e026dfa}{mouse\_stream\_disable\_data\_reporting}}()\ |}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00052}00052\ \ \ vg\_exit()\ |\ timer\_set\_frequency(\mbox{\hyperlink{group__i8254_gacc9ff9df4a9674a1ce9ba08fc4a4679e}{TIMER\_0}},\ 60)\ |\ \mbox{\hyperlink{main__controller_8c_a92a2f28091bb858097abd29fe906badd}{clean\_game}}();}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00064}\mbox{\hyperlink{game_8c_a977ea2c8b233ea8698f2077628e1bb48}{00064}}\ int\ (\mbox{\hyperlink{game_8c_a977ea2c8b233ea8698f2077628e1bb48}{proj\_main\_loop}})()\ \{}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00065}00065\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{game_8c_a47d86c55c1bc9d2a93df0b9476c4d630}{game\_init}}())\ \{}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00066}00066\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error:\ could\ not\ initialize\ the\ game\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{game_8c_abc1fb57f21dfdfe8414ed5ff0c744a10}{game\_exit}}())\ printf(\textcolor{stringliteral}{"{}Warning:\ something\ went\ wrong\ while\ cleaning\ up\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00069}00069\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00071}00071\ \ \ \textcolor{keywordtype}{int}\ ipc\_status,\ r;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00072}00072\ \ \ message\ msg;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00074}00074\ \ \ \textcolor{comment}{//\ main\ loop}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00075}00075\ \ \ \textcolor{keywordflow}{while}(\mbox{\hyperlink{keyboard_8c_ae2d68748456de81a7ba9bc75bf7a9755}{keyboard\_get\_scancode}}()\ !=\ \mbox{\hyperlink{i8042_8h_a882aecbb57ed79398b9af6ff2289031c}{ESC\_KEY\_BREAKCODE}}\ \&\&\ \mbox{\hyperlink{main__controller_8c_aeed66d76fc5a6f3fdf449c1d9af6d864}{get\_game\_state}}()\ !=\ \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2a76bdc8adfd6c6463ab269ff4c06be9b4}{QUIT}})\ \{}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (\ (r\ =\ driver\_receive(ANY,\ \&msg,\ \&ipc\_status))\ !=\ 0\ )\ \{\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00077}00077\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}driver\_receive\ failed\ with:\ \%d"{}},\ r);}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00078}00078\ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_ipc\_notify(ipc\_status))\ \{}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00081}00081\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_ENDPOINT\_P(msg.m\_source))\ \{}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HARDWARE:\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ BIT(0))\ \{\ \textcolor{comment}{//\ timer,\ execute\ one\ frame}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main__controller_8c_a6e0f3787555b26fcb56fa7f7da849780}{process\_frame}}();}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ BIT(1))\ \{\ \textcolor{comment}{//\ keyboard}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{events_8c_a1c2871d60f7bf52fb9b0a8542a0554fe}{event\_handle\_keyboard}}();}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ BIT(2))\ \{\ \textcolor{comment}{//\ mouse}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{events_8c_aa4d7e9e466bc99df5b926d29adf960f3}{event\_handle\_mouse}}();}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00093}00093\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00095}00095\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00097}00097\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{game_8c_abc1fb57f21dfdfe8414ed5ff0c744a10}{game\_exit}}())\ \{}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00098}00098\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Warning:\ something\ went\ wrong\ while\ cleaning\ up\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00100}00100\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00101}00101\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00104}00104\ \textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00105}00105\ \ \ \textcolor{comment}{//\ sets\ the\ language\ of\ LCF\ messages\ (can\ be\ either\ EN-\/US\ or\ PT-\/PT)}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00106}00106\ \ \ lcf\_set\_language(\textcolor{stringliteral}{"{}EN-\/US"{}});}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00108}00108\ \ \ \textcolor{comment}{//\ enables\ to\ log\ function\ invocations\ that\ are\ being\ "{}wrapped"{}\ by\ LCF}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00109}00109\ \ \ \textcolor{comment}{//\ [comment\ this\ out\ if\ you\ don't\ want/need\ it]}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00110}00110\ \ \ \textcolor{comment}{//lcf\_trace\_calls("{}/home/lcom/labs/lab5/trace.txt"{});}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00112}00112\ \ \ \textcolor{comment}{//\ enables\ to\ save\ the\ output\ of\ printf\ function\ calls\ on\ a\ file}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00113}00113\ \ \ \textcolor{comment}{//\ [comment\ this\ out\ if\ you\ don't\ want/need\ it]}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00114}00114\ \ \ \textcolor{comment}{//lcf\_log\_output("{}/home/lcom/labs/lab5/output.txt"{});}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00116}00116\ \ \ \textcolor{comment}{//\ handles\ control\ over\ to\ LCF}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00117}00117\ \ \ \textcolor{comment}{//\ [LCF\ handles\ command\ line\ arguments\ and\ invokes\ the\ right\ function]}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00118}00118\ \ \ \textcolor{keywordflow}{if}\ (lcf\_start(argc,\ argv))}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00121}00121\ \ \ \textcolor{comment}{//\ LCF\ clean\ up\ tasks}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00122}00122\ \ \ \textcolor{comment}{//\ [must\ be\ the\ last\ statement\ before\ return]}}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00123}00123\ \ \ lcf\_cleanup();}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00125}00125\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{game_8c_source_l00126}00126\ \}}
+
+\end{DoxyCode}

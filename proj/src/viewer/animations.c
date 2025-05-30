@@ -1,3 +1,9 @@
+/** 
+ * @file animations.c
+ * @brief Source code file for all the logic related to the animations, including the loading and destroying
+ */
+
+
 #include "animations.h"
 
 animation* pharaoh_animations;
@@ -20,17 +26,23 @@ enum animation_direction (entity_get_direction)(entity* entity) {
 
 
 int (animations_clean)() {
-  for(int i = 0; i < 3; ++i) {
+  for(int i = 0; i < 2; ++i) {
     animation_destroy(pharaoh_animations[i]);
     animation_destroy(enemy1_animations[i]);
+    animation_destroy(enemy2_animations[i]);
+    animation_destroy(mummy_animations[i]);
   }
-
+    
   animation_destroy(khopesh_attack_right_animation);
   animation_destroy(khopesh_attack_left_animation);
   animation_destroy(lightning_attack_animation);
+  animation_destroy(heart_animation);
+  animation_destroy(secret_animation);
 
   free(pharaoh_animations);
   free(enemy1_animations);
+  free(enemy2_animations);
+  free(mummy_animations);
 
   return 0;
 }
@@ -45,7 +57,6 @@ int (animation_destroy)(animation animation) {
 }
 
 static int (load_pharaoh_animations)() {
-  //#include "../resources/Pharaoh Idle Up/pharaoh_idle_up.h"
   #include "../resources/Pharaoh Idle Down/pharaoh_idle_down.h"
   #include "../resources/Pharaoh Walk Left/pharaoh_walk_left.h"
   #include "../resources/Pharaoh Walk Right/pharaoh_walk_right.h"
@@ -54,26 +65,6 @@ static int (load_pharaoh_animations)() {
   xpm_image_t* current_image;
 
   pharaoh_animations = (animation*)malloc(sizeof(animation) * 3); //one for each direction
-  //pharaoh idle up
-  /*
-  sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 8);
-  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
-  if(xpm_load(pharaoh_idle_up_0, XPM_8_8_8_8, current_image) == NULL) return 1;
-  sprites[0] = current_image;
-  sprites[1] = current_image;
-  sprites[2] = current_image;
-  sprites[3] = current_image;
-
-  current_image = (xpm_image_t*)malloc(sizeof(xpm_image_t));
-  if(xpm_load(pharaoh_idle_up_1, XPM_8_8_8_8, current_image) == NULL) return 1;
-  sprites[4] = current_image;
-  sprites[5] = current_image;
-  sprites[6] = current_image;
-  sprites[7] = current_image;
-
-  pharaoh_animations[UP] = (animation){8, sprites};
-  */
-
   
   //pharaoh idle down
   sprites = (xpm_image_t**)malloc(sizeof(xpm_image_t*) * 16);
@@ -238,7 +229,7 @@ static int (load_enemy1_animations)() {
   sprites[7] = current_image;
 
   enemy1_animations[RIGHT] = (animation){8, sprites};
-  enemy1_animations[IDLE_] = enemy1_animations[RIGHT];
+  enemy1_animations[IDLE_] = (animation){8, sprites};
 
   return 0;
 }
@@ -309,7 +300,7 @@ static int (load_enemy2_animations)() {
   sprites[7] = current_image;
 
   enemy2_animations[RIGHT] = (animation){8, sprites};
-  enemy2_animations[IDLE_] = enemy2_animations[RIGHT];
+  enemy2_animations[IDLE_] = (animation){8, sprites};
 
   return 0;
 }
@@ -380,7 +371,7 @@ static int (load_mummy_animations)() {
   sprites[7] = current_image;
 
   mummy_animations[RIGHT] = (animation){8, sprites};
-  mummy_animations[IDLE_] = mummy_animations[RIGHT];
+  mummy_animations[IDLE_] = (animation){8, sprites};
 
   return 0;
 }

@@ -1,0 +1,135 @@
+\doxysection{drivers/kbc/kbc.c File Reference}
+\hypertarget{kbc_8c}{}\label{kbc_8c}\index{drivers/kbc/kbc.c@{drivers/kbc/kbc.c}}
+
+
+Source code file for all the logic related to the kbc.  
+
+
+{\ttfamily \#include "{}kbc.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kbc_8c_ae0769899190f0f67aef0422252b10e4f}{kbc\+\_\+read\+\_\+command}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em Reads a command from the kbc. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8c_a8c467e640bc33719fe3ed7bcb73f2121}{kbc\+\_\+write\+\_\+command}} (uint8\+\_\+t command)
+\begin{DoxyCompactList}\small\item\em Writes a command to the kbc. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kbc_8c_a24f1a4d1bcb60a73ebd6cee462191a52}{kbc\+\_\+write\+\_\+command\+\_\+arg}} (uint8\+\_\+t arg)
+\begin{DoxyCompactList}\small\item\em Writes a command argument to the kbc. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{kbc_8c_a31472594060413201755219e49c96a40}{kbc\+\_\+valid\+\_\+output}} (bool aux)
+\begin{DoxyCompactList}\small\item\em Validates the data on the kbc\textquotesingle{}s output buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{kbc_8c_a6f846e80fd490ad32226a4efc0b04bc4}{kbc\+\_\+discard\+\_\+output}} ()
+\begin{DoxyCompactList}\small\item\em Discards the data on the kbc\textquotesingle{}s output buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code file for all the logic related to the kbc. 
+
+
+
+Definition in file \mbox{\hyperlink{kbc_8c_source}{kbc.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kbc_8c_a6f846e80fd490ad32226a4efc0b04bc4}\index{kbc.c@{kbc.c}!kbc\_discard\_output@{kbc\_discard\_output}}
+\index{kbc\_discard\_output@{kbc\_discard\_output}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_discard\_output()}{kbc\_discard\_output()}}
+{\footnotesize\ttfamily \label{kbc_8c_a6f846e80fd490ad32226a4efc0b04bc4} 
+void kbc\+\_\+discard\+\_\+output (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Discards the data on the kbc\textquotesingle{}s output buffer. 
+
+Calls util\+\_\+sys\+\_\+inb() and does nothing with the data obtained. 
+
+Definition at line \mbox{\hyperlink{kbc_8c_source_l00033}{33}} of file \mbox{\hyperlink{kbc_8c_source}{kbc.\+c}}.
+
+\Hypertarget{kbc_8c_ae0769899190f0f67aef0422252b10e4f}\index{kbc.c@{kbc.c}!kbc\_read\_command@{kbc\_read\_command}}
+\index{kbc\_read\_command@{kbc\_read\_command}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_read\_command()}{kbc\_read\_command()}}
+{\footnotesize\ttfamily \label{kbc_8c_ae0769899190f0f67aef0422252b10e4f} 
+int kbc\+\_\+read\+\_\+command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{command}{}\end{DoxyParamCaption})}
+
+
+
+Reads a command from the kbc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & The pointer where the read command will be stored \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{kbc_8c_source_l00010}{10}} of file \mbox{\hyperlink{kbc_8c_source}{kbc.\+c}}.
+
+\Hypertarget{kbc_8c_a31472594060413201755219e49c96a40}\index{kbc.c@{kbc.c}!kbc\_valid\_output@{kbc\_valid\_output}}
+\index{kbc\_valid\_output@{kbc\_valid\_output}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_valid\_output()}{kbc\_valid\_output()}}
+{\footnotesize\ttfamily \label{kbc_8c_a31472594060413201755219e49c96a40} 
+bool kbc\+\_\+valid\+\_\+output (\begin{DoxyParamCaption}\item[{bool}]{aux}{}\end{DoxyParamCaption})}
+
+
+
+Validates the data on the kbc\textquotesingle{}s output buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em aux} & True if the data needs to be mouse data, false is keyboard data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if valid, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{kbc_8c_source_l00023}{23}} of file \mbox{\hyperlink{kbc_8c_source}{kbc.\+c}}.
+
+\Hypertarget{kbc_8c_a8c467e640bc33719fe3ed7bcb73f2121}\index{kbc.c@{kbc.c}!kbc\_write\_command@{kbc\_write\_command}}
+\index{kbc\_write\_command@{kbc\_write\_command}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_write\_command()}{kbc\_write\_command()}}
+{\footnotesize\ttfamily \label{kbc_8c_a8c467e640bc33719fe3ed7bcb73f2121} 
+int kbc\+\_\+write\+\_\+command (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command}{}\end{DoxyParamCaption})}
+
+
+
+Writes a command to the kbc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & The command to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{kbc_8c_source_l00015}{15}} of file \mbox{\hyperlink{kbc_8c_source}{kbc.\+c}}.
+
+\Hypertarget{kbc_8c_a24f1a4d1bcb60a73ebd6cee462191a52}\index{kbc.c@{kbc.c}!kbc\_write\_command\_arg@{kbc\_write\_command\_arg}}
+\index{kbc\_write\_command\_arg@{kbc\_write\_command\_arg}!kbc.c@{kbc.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_write\_command\_arg()}{kbc\_write\_command\_arg()}}
+{\footnotesize\ttfamily \label{kbc_8c_a24f1a4d1bcb60a73ebd6cee462191a52} 
+int kbc\+\_\+write\+\_\+command\+\_\+arg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{arg}{}\end{DoxyParamCaption})}
+
+
+
+Writes a command argument to the kbc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arg} & The argument to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{kbc_8c_source_l00019}{19}} of file \mbox{\hyperlink{kbc_8c_source}{kbc.\+c}}.
+

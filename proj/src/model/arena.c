@@ -1,3 +1,11 @@
+/** 
+ * @file arena.c
+ * @brief Source code file for all the logic related to the arena struct
+ * 
+ * This file implements all the functions for the arena struct.
+ */
+
+
 #include "arena.h"
 
 
@@ -6,7 +14,6 @@ arena* (arena_create)() {
 
   new_arena->pos_x = 1264 - 576;
   new_arena->pos_y = 1264 - 432;
-  // Initial pos_x, pos_y, speed_x, speed_y, speed_multiplier, initial health, n_sprites, animations
   new_arena->player = entity_create_full(1264 - 43, 1264 - 64, 0, 0, 3, 4, pharaoh_animations);
   new_arena->mouse = entity_create(NULL);
   new_arena->mouse->pos_x = vg_get_hres()/2;
@@ -22,6 +29,8 @@ arena* (arena_create)() {
 int (arena_destroy)(arena* arena) {
   entity_destroy(arena->player);
   entity_list_destroy(arena->enemies);
+  attack_list_destroy(arena->player_attacks);
+  entity_list_destroy(arena->hearts);
   free(arena);
   return 0;
 }

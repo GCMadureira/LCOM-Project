@@ -1,0 +1,184 @@
+\doxysection{events/events.c File Reference}
+\hypertarget{events_8c}{}\label{events_8c}\index{events/events.c@{events/events.c}}
+
+
+Source code file for all input event related logic.  
+
+
+{\ttfamily \#include "{}events.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{events_8c_aa4d7e9e466bc99df5b926d29adf960f3}{event\+\_\+handle\+\_\+mouse}} ()
+\begin{DoxyCompactList}\small\item\em Handles a mouse event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{events_8c_a1c2871d60f7bf52fb9b0a8542a0554fe}{event\+\_\+handle\+\_\+keyboard}} ()
+\begin{DoxyCompactList}\small\item\em Handles a keyboard event. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{events_8c_ad127ece1445ea898d0b0d344498cc360}{events\+\_\+get\+\_\+next}} (\mbox{\hyperlink{structinput__event}{input\+\_\+event}} \texorpdfstring{$\ast$}{*}next\+\_\+event)
+\begin{DoxyCompactList}\small\item\em Gets the next event on the \doxylink{events_8c_a3a07f301b04c1fd79540559d957c8c15}{input\+\_\+event\+\_\+list}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{events_8c_a9123d2d728fc1232dac62ccf602638af}{events\+\_\+clear}} ()
+\begin{DoxyCompactList}\small\item\em Removes all the events from the \doxylink{events_8c_a3a07f301b04c1fd79540559d957c8c15}{input\+\_\+event\+\_\+list}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structinput__event__node}{input\+\_\+event\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{events_8c_a3a07f301b04c1fd79540559d957c8c15}{input\+\_\+event\+\_\+list}} = NULL
+\begin{DoxyCompactList}\small\item\em A pointer to the start of the linked list. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structinput__event__node}{input\+\_\+event\+\_\+node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{events_8c_a76a8918aebe8f5f0bdaec1e216811b30}{input\+\_\+event\+\_\+list\+\_\+tail}} = NULL
+\begin{DoxyCompactList}\small\item\em A pointer to the tail of the linked list. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{events_8c_a4ad28028911e79d524cca5ac55a53965}{packet\+\_\+bytes}} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em The mouse packet vector. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{events_8c_a89f234133d3efe315836311cbf21c64b}{state}} = 0
+\item 
+static bool \mbox{\hyperlink{events_8c_a1deaa2799a791d789981eedc44f878de}{extended\+\_\+flag}} = false
+\begin{DoxyCompactList}\small\item\em The flag to identify multiple byte scancodes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code file for all input event related logic. 
+
+This file implements all the functions for the input events\textquotesingle{} logic. 
+
+Definition in file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{events_8c_a1c2871d60f7bf52fb9b0a8542a0554fe}\index{events.c@{events.c}!event\_handle\_keyboard@{event\_handle\_keyboard}}
+\index{event\_handle\_keyboard@{event\_handle\_keyboard}!events.c@{events.c}}
+\doxysubsubsection{\texorpdfstring{event\_handle\_keyboard()}{event\_handle\_keyboard()}}
+{\footnotesize\ttfamily \label{events_8c_a1c2871d60f7bf52fb9b0a8542a0554fe} 
+void event\+\_\+handle\+\_\+keyboard (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Handles a keyboard event. 
+
+Starts by validating and handling an interruption from the kbc, and then adds the keyboard event to the \doxylink{events_8c_a3a07f301b04c1fd79540559d957c8c15}{input\+\_\+event\+\_\+list} when all the scancodes are received. 
+
+Definition at line \mbox{\hyperlink{events_8c_source_l00055}{55}} of file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+
+\Hypertarget{events_8c_aa4d7e9e466bc99df5b926d29adf960f3}\index{events.c@{events.c}!event\_handle\_mouse@{event\_handle\_mouse}}
+\index{event\_handle\_mouse@{event\_handle\_mouse}!events.c@{events.c}}
+\doxysubsubsection{\texorpdfstring{event\_handle\_mouse()}{event\_handle\_mouse()}}
+{\footnotesize\ttfamily \label{events_8c_aa4d7e9e466bc99df5b926d29adf960f3} 
+void event\+\_\+handle\+\_\+mouse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Handles a mouse event. 
+
+Starts by validating and handling an interruption from the kbc, and then adds the mouse event to the \doxylink{events_8c_a3a07f301b04c1fd79540559d957c8c15}{input\+\_\+event\+\_\+list} when all three packet bytes are received. 
+
+Definition at line \mbox{\hyperlink{events_8c_source_l00017}{17}} of file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+
+\Hypertarget{events_8c_a9123d2d728fc1232dac62ccf602638af}\index{events.c@{events.c}!events\_clear@{events\_clear}}
+\index{events\_clear@{events\_clear}!events.c@{events.c}}
+\doxysubsubsection{\texorpdfstring{events\_clear()}{events\_clear()}}
+{\footnotesize\ttfamily \label{events_8c_a9123d2d728fc1232dac62ccf602638af} 
+int events\+\_\+clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Removes all the events from the \doxylink{events_8c_a3a07f301b04c1fd79540559d957c8c15}{input\+\_\+event\+\_\+list}. 
+
+Iterates through all the events on the \doxylink{events_8c_a3a07f301b04c1fd79540559d957c8c15}{input\+\_\+event\+\_\+list} and releases the allocated memory of each one.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{events_8c_source_l00111}{111}} of file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+
+\Hypertarget{events_8c_ad127ece1445ea898d0b0d344498cc360}\index{events.c@{events.c}!events\_get\_next@{events\_get\_next}}
+\index{events\_get\_next@{events\_get\_next}!events.c@{events.c}}
+\doxysubsubsection{\texorpdfstring{events\_get\_next()}{events\_get\_next()}}
+{\footnotesize\ttfamily \label{events_8c_ad127ece1445ea898d0b0d344498cc360} 
+int events\+\_\+get\+\_\+next (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structinput__event}{input\+\_\+event}} \texorpdfstring{$\ast$}{*}}]{next\+\_\+event}{}\end{DoxyParamCaption})}
+
+
+
+Gets the next event on the \doxylink{events_8c_a3a07f301b04c1fd79540559d957c8c15}{input\+\_\+event\+\_\+list}. 
+
+Loads the next event into the next\+\_\+event parameter passed
+
+
+\begin{DoxyParams}{Parameters}
+{\em next\+\_\+event} & Pointer to the \doxylink{structinput__event}{input\+\_\+event} variable that will be loaded \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if an event was loaded, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{events_8c_source_l00100}{100}} of file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{events_8c_a1deaa2799a791d789981eedc44f878de}\index{events.c@{events.c}!extended\_flag@{extended\_flag}}
+\index{extended\_flag@{extended\_flag}!events.c@{events.c}}
+\doxysubsubsection{\texorpdfstring{extended\_flag}{extended\_flag}}
+{\footnotesize\ttfamily \label{events_8c_a1deaa2799a791d789981eedc44f878de} 
+bool extended\+\_\+flag = false\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The flag to identify multiple byte scancodes. 
+
+
+
+Definition at line \mbox{\hyperlink{events_8c_source_l00054}{54}} of file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+
+\Hypertarget{events_8c_a3a07f301b04c1fd79540559d957c8c15}\index{events.c@{events.c}!input\_event\_list@{input\_event\_list}}
+\index{input\_event\_list@{input\_event\_list}!events.c@{events.c}}
+\doxysubsubsection{\texorpdfstring{input\_event\_list}{input\_event\_list}}
+{\footnotesize\ttfamily \label{events_8c_a3a07f301b04c1fd79540559d957c8c15} 
+\mbox{\hyperlink{structinput__event__node}{input\+\_\+event\+\_\+node}}\texorpdfstring{$\ast$}{*} input\+\_\+event\+\_\+list = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A pointer to the start of the linked list. 
+
+
+
+Definition at line \mbox{\hyperlink{events_8c_source_l00011}{11}} of file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+
+\Hypertarget{events_8c_a76a8918aebe8f5f0bdaec1e216811b30}\index{events.c@{events.c}!input\_event\_list\_tail@{input\_event\_list\_tail}}
+\index{input\_event\_list\_tail@{input\_event\_list\_tail}!events.c@{events.c}}
+\doxysubsubsection{\texorpdfstring{input\_event\_list\_tail}{input\_event\_list\_tail}}
+{\footnotesize\ttfamily \label{events_8c_a76a8918aebe8f5f0bdaec1e216811b30} 
+\mbox{\hyperlink{structinput__event__node}{input\+\_\+event\+\_\+node}}\texorpdfstring{$\ast$}{*} input\+\_\+event\+\_\+list\+\_\+tail = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+A pointer to the tail of the linked list. 
+
+
+
+Definition at line \mbox{\hyperlink{events_8c_source_l00012}{12}} of file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+
+\Hypertarget{events_8c_a4ad28028911e79d524cca5ac55a53965}\index{events.c@{events.c}!packet\_bytes@{packet\_bytes}}
+\index{packet\_bytes@{packet\_bytes}!events.c@{events.c}}
+\doxysubsubsection{\texorpdfstring{packet\_bytes}{packet\_bytes}}
+{\footnotesize\ttfamily \label{events_8c_a4ad28028911e79d524cca5ac55a53965} 
+uint8\+\_\+t packet\+\_\+bytes\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The mouse packet vector. 
+
+
+
+Definition at line \mbox{\hyperlink{events_8c_source_l00015}{15}} of file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+
+\Hypertarget{events_8c_a89f234133d3efe315836311cbf21c64b}\index{events.c@{events.c}!state@{state}}
+\index{state@{state}!events.c@{events.c}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{events_8c_a89f234133d3efe315836311cbf21c64b} 
+int state = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{events_8c_source_l00016}{16}} of file \mbox{\hyperlink{events_8c_source}{events.\+c}}.
+

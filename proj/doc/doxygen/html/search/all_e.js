@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['packet_5fbytes_0',['packet_bytes',['../events_8c.html#a4ad28028911e79d524cca5ac55a53965',1,'events.c']]],
+  ['pharaoh_5fanimations_1',['pharaoh_animations',['../animations_8c.html#affae80d1f9f9146ba5d4d1923642e8df',1,'pharaoh_animations:&#160;animations.c'],['../animations_8h.html#affae80d1f9f9146ba5d4d1923642e8df',1,'pharaoh_animations:&#160;animations.c']]],
+  ['pharaoh_5fidle_5fdown_2eh_2',['pharaoh_idle_down.h',['../pharaoh__idle__down_8h.html',1,'']]],
+  ['pharaoh_5fidle_5fup_2eh_3',['pharaoh_idle_up.h',['../pharaoh__idle__up_8h.html',1,'']]],
+  ['pharaoh_5fwalk_5fleft_2eh_4',['pharaoh_walk_left.h',['../pharaoh__walk__left_8h.html',1,'']]],
+  ['pharaoh_5fwalk_5fright_2eh_5',['pharaoh_walk_right.h',['../pharaoh__walk__right_8h.html',1,'']]],
+  ['play_5fagain_5fselected_5fimg_6',['play_again_selected_img',['../static__images_8c.html#aeda44bbb9b73952ac08b1a27498f881c',1,'play_again_selected_img:&#160;static_images.c'],['../viewer_2static__images_8h.html#aeda44bbb9b73952ac08b1a27498f881c',1,'play_again_selected_img:&#160;static_images.c']]],
+  ['player_7',['player',['../structarena.html#ae6ddf0232f587e3d173c340f73d35d76',1,'arena']]],
+  ['player_5fattacks_8',['player_attacks',['../structarena.html#a7b9192833509ce7b56005e2cf3eb65d5',1,'arena']]],
+  ['pos_5fx_9',['pos_x',['../structentity.html#a71b5aa321c1ab05450cb75adcc73b7be',1,'entity::pos_x'],['../structattack.html#a71b5aa321c1ab05450cb75adcc73b7be',1,'attack::pos_x'],['../structarena.html#a71b5aa321c1ab05450cb75adcc73b7be',1,'arena::pos_x']]],
+  ['pos_5fy_10',['pos_y',['../structentity.html#afe0f418f8b2cee466b080bca771aa483',1,'entity::pos_y'],['../structattack.html#afe0f418f8b2cee466b080bca771aa483',1,'attack::pos_y'],['../structarena.html#afe0f418f8b2cee466b080bca771aa483',1,'arena::pos_y']]],
+  ['pr_5fimg_11',['pr_img',['../static__images_8c.html#a63597462638a3efd34eea95ca248f734',1,'pr_img:&#160;static_images.c'],['../viewer_2static__images_8h.html#a63597462638a3efd34eea95ca248f734',1,'pr_img:&#160;static_images.c']]],
+  ['process_5fframe_12',['process_frame',['../main__controller_8c.html#a6e0f3787555b26fcb56fa7f7da849780',1,'process_frame():&#160;main_controller.c'],['../main__controller_8h.html#a6e0f3787555b26fcb56fa7f7da849780',1,'process_frame():&#160;main_controller.c']]],
+  ['process_5fgame_13',['process_game',['../main__controller_8c.html#a1170a3b608ab76cdac488fa72441f336',1,'main_controller.c']]],
+  ['process_5fmenu_14',['process_menu',['../main__controller_8c.html#a4e5bacdd482f0b9d7b8e82303261e1ab',1,'main_controller.c']]],
+  ['proj_5fmain_5floop_15',['proj_main_loop',['../game_8c.html#a977ea2c8b233ea8698f2077628e1bb48',1,'game.c']]]
+];

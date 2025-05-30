@@ -1,0 +1,39 @@
+\doxysection{kbc.\+c}
+\hypertarget{kbc_8c_source}{}\label{kbc_8c_source}\index{drivers/kbc/kbc.c@{drivers/kbc/kbc.c}}
+\mbox{\hyperlink{kbc_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kbc_8h}{kbc.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00010}\mbox{\hyperlink{kbc_8c_ae0769899190f0f67aef0422252b10e4f}{00010}}\ int\ (\mbox{\hyperlink{kbc_8c_ae0769899190f0f67aef0422252b10e4f}{kbc\_read\_command}})(uint8\_t*\ command)\{}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00011}00011\ \ \ \textcolor{keywordflow}{if}(sys\_outb(\mbox{\hyperlink{i8042_8h_a6d57c7927a10f638c83046b52c8caac9}{KBC\_CMD\_REG}},\ \mbox{\hyperlink{i8042_8h_ab82996fcd177742a38d5123747e233f6}{RD\_CMD\_BYTE}}))\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00012}00012\ \ \ \textcolor{keywordflow}{return}\ util\_sys\_inb(\mbox{\hyperlink{i8042_8h_aa848ce3f74697985d49a5a8d10bbf01f}{KBC\_OUT\_REG}},\ command);}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00013}00013\ \}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00015}\mbox{\hyperlink{kbc_8c_a8c467e640bc33719fe3ed7bcb73f2121}{00015}}\ int\ (\mbox{\hyperlink{kbc_8c_a8c467e640bc33719fe3ed7bcb73f2121}{kbc\_write\_command}})(uint8\_t\ command)\{}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00016}00016\ \ \ \textcolor{keywordflow}{return}\ sys\_outb(\mbox{\hyperlink{i8042_8h_a6d57c7927a10f638c83046b52c8caac9}{KBC\_CMD\_REG}},\ command);}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00017}00017\ \}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00019}\mbox{\hyperlink{kbc_8c_a24f1a4d1bcb60a73ebd6cee462191a52}{00019}}\ int\ (\mbox{\hyperlink{kbc_8c_a24f1a4d1bcb60a73ebd6cee462191a52}{kbc\_write\_command\_arg}})(uint8\_t\ arg)\{}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00020}00020\ \ \ \textcolor{keywordflow}{return}\ sys\_outb(\mbox{\hyperlink{i8042_8h_adc53833990e12dc1b427a17fdbbcf210}{KBC\_CMDARG\_REG}},\ arg);}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00021}00021\ \}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00023}\mbox{\hyperlink{kbc_8c_a31472594060413201755219e49c96a40}{00023}}\ bool\ (\mbox{\hyperlink{kbc_8c_a31472594060413201755219e49c96a40}{kbc\_valid\_output}})(\textcolor{keywordtype}{bool}\ aux)\{}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00024}00024\ \ \ uint8\_t\ status;}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00025}00025\ \ \ \textcolor{keywordflow}{if}(util\_sys\_inb(\mbox{\hyperlink{i8042_8h_a34b14687d83496940a236351fbbb1aea}{KBC\_STAT\_REG}},\ \&status))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//error\ reading\ status\ register}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00026}00026\ \ \ \textcolor{keywordflow}{if}(status\ \&\ (\mbox{\hyperlink{i8042_8h_aea2ef6dda1aabebf291eeee29b66c04a}{KBC\_PAR\_ERR}}\ |\ \mbox{\hyperlink{i8042_8h_ae31c3653f5881b02cbfdd4ccbb7ccf50}{KBC\_TO\_ERR}}))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//parity\ error\ or\ timeout\ error}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00027}00027\ \ \ \textcolor{keywordflow}{if}(!(status\ \&\ \mbox{\hyperlink{i8042_8h_a38010ed603a29beee559b2c20de50dcd}{KBC\_ST\_OBF}}))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//output\ buffer\ empty}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00029}00029\ \ \ \textcolor{keywordflow}{if}(aux)\ \textcolor{keywordflow}{return}\ status\ \&\ \mbox{\hyperlink{i8042_8h_a5a01c98e394aedacd058f4dc3b953bb0}{KBC\_ST\_AUX}};\ \textcolor{comment}{//mouse\ data}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00030}00030\ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ !(status\ \&\ \mbox{\hyperlink{i8042_8h_a5a01c98e394aedacd058f4dc3b953bb0}{KBC\_ST\_AUX}});\ \textcolor{comment}{//keyboard\ data}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00033}\mbox{\hyperlink{kbc_8c_a6f846e80fd490ad32226a4efc0b04bc4}{00033}}\ void\ (\mbox{\hyperlink{kbc_8c_a6f846e80fd490ad32226a4efc0b04bc4}{kbc\_discard\_output}})()\{}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00034}00034\ \ \ uint8\_t\ discard;}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00035}00035\ \ \ util\_sys\_inb(\mbox{\hyperlink{i8042_8h_aa848ce3f74697985d49a5a8d10bbf01f}{KBC\_OUT\_REG}},\ \&discard);}
+\DoxyCodeLine{\Hypertarget{kbc_8c_source_l00036}00036\ \}}
+
+\end{DoxyCode}

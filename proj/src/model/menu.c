@@ -1,14 +1,20 @@
+/** 
+ * @file menu.c
+ * @brief Source code file for all the logic related to the menu struct
+ * 
+ * This file implements all the functions for the menu struct.
+ */
+
+
 #include "menu.h"
 
 
-int (menu_select_option_up)(menu* menu){
+void (menu_select_option_up)(menu* menu){
   menu->menu_status = (menu->menu_status - 1) >= 0 ? menu->menu_status - 1 : menu->num_options - 1;
-  return 0;
 }
 
-int (menu_select_option_down)(menu* menu){
+void (menu_select_option_down)(menu* menu){
   menu->menu_status = (menu->menu_status + 1)%menu->num_options;
-  return 0;
 }
 
 menu* (menu_create_main)() {

@@ -1,0 +1,51 @@
+\doxysection{menu.\+c}
+\hypertarget{menu_8c_source}{}\label{menu_8c_source}\index{model/menu.c@{model/menu.c}}
+\mbox{\hyperlink{menu_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{menu_8h}{menu.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00012}\mbox{\hyperlink{menu_8c_a72831a7da07d6716200fd469accd9eef}{00012}}\ void\ (\mbox{\hyperlink{menu_8c_a72831a7da07d6716200fd469accd9eef}{menu\_select\_option\_up}})(\mbox{\hyperlink{structmenu}{menu}}*\ \mbox{\hyperlink{structmenu}{menu}})\{}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00013}00013\ \ \ \mbox{\hyperlink{structmenu}{menu}}-\/>\mbox{\hyperlink{structmenu_a9c5d43a090538d45b4a9d93a21684d76}{menu\_status}}\ =\ (\mbox{\hyperlink{structmenu}{menu}}-\/>\mbox{\hyperlink{structmenu_a9c5d43a090538d45b4a9d93a21684d76}{menu\_status}}\ -\/\ 1)\ >=\ 0\ ?\ \mbox{\hyperlink{structmenu}{menu}}-\/>\mbox{\hyperlink{structmenu_a9c5d43a090538d45b4a9d93a21684d76}{menu\_status}}\ -\/\ 1\ :\ \mbox{\hyperlink{structmenu}{menu}}-\/>\mbox{\hyperlink{structmenu_a593108c2cc4b7dd3edecefd724edfd51}{num\_options}}\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00016}\mbox{\hyperlink{menu_8c_afdcedff748a428ef264d3e76848a5a47}{00016}}\ void\ (\mbox{\hyperlink{menu_8c_afdcedff748a428ef264d3e76848a5a47}{menu\_select\_option\_down}})(\mbox{\hyperlink{structmenu}{menu}}*\ \mbox{\hyperlink{structmenu}{menu}})\{}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00017}00017\ \ \ \mbox{\hyperlink{structmenu}{menu}}-\/>\mbox{\hyperlink{structmenu_a9c5d43a090538d45b4a9d93a21684d76}{menu\_status}}\ =\ (\mbox{\hyperlink{structmenu}{menu}}-\/>\mbox{\hyperlink{structmenu_a9c5d43a090538d45b4a9d93a21684d76}{menu\_status}}\ +\ 1)\%\mbox{\hyperlink{structmenu}{menu}}-\/>\mbox{\hyperlink{structmenu_a593108c2cc4b7dd3edecefd724edfd51}{num\_options}};}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00020}\mbox{\hyperlink{menu_8c_a039ff9c0e9c27e791023bfb50c7f03af}{00020}}\ \mbox{\hyperlink{structmenu}{menu}}*\ (\mbox{\hyperlink{menu_8c_a039ff9c0e9c27e791023bfb50c7f03af}{menu\_create\_main}})()\ \{}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00021}00021\ \ \ \mbox{\hyperlink{structmenu}{menu}}*\ main\_menu\ =\ (\mbox{\hyperlink{structmenu}{menu}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structmenu}{menu}}));}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00023}00023\ \ \ main\_menu-\/>\mbox{\hyperlink{structmenu_a9c5d43a090538d45b4a9d93a21684d76}{menu\_status}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00024}00024\ \ \ main\_menu-\/>\mbox{\hyperlink{structmenu_a593108c2cc4b7dd3edecefd724edfd51}{num\_options}}\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00025}00025\ \ \ main\_menu-\/>\mbox{\hyperlink{structmenu_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}\ =\ (xpm\_image\_t**)malloc(\textcolor{keyword}{sizeof}(xpm\_image\_t*)\ *\ 2);}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00026}00026\ \ \ main\_menu-\/>\mbox{\hyperlink{structmenu_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]\ =\ \&\mbox{\hyperlink{static__images_8c_ac42da083f20abd2c95762cc5cdebba7d}{start\_selected\_img}};}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00027}00027\ \ \ main\_menu-\/>\mbox{\hyperlink{structmenu_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[1]\ =\ \&\mbox{\hyperlink{static__images_8c_a20909f399cb5ba5d9af26153274b1c0b}{quit\_selected\_img}};}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00028}00028\ \ \ main\_menu-\/>\mbox{\hyperlink{structmenu_a76f2cb533432223bcf4343888b95ace9}{background\_image}}\ =\ \&\mbox{\hyperlink{static__images_8c_aec04f7bedb48a68d82c619e0990466ab}{start\_background\_img}};}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00030}00030\ \ \ \textcolor{keywordflow}{return}\ main\_menu;}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00031}00031\ \}}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00033}\mbox{\hyperlink{menu_8c_ad6a0add18efc7b14357f1be833910932}{00033}}\ \mbox{\hyperlink{structmenu}{menu}}*\ (\mbox{\hyperlink{menu_8c_ad6a0add18efc7b14357f1be833910932}{menu\_create\_game\_over}})()\ \{}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00034}00034\ \ \ \mbox{\hyperlink{structmenu}{menu}}*\ game\_over\_menu\ =\ (\mbox{\hyperlink{structmenu}{menu}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structmenu}{menu}}));}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00036}00036\ \ \ game\_over\_menu-\/>\mbox{\hyperlink{structmenu_a9c5d43a090538d45b4a9d93a21684d76}{menu\_status}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00037}00037\ \ \ game\_over\_menu-\/>\mbox{\hyperlink{structmenu_a593108c2cc4b7dd3edecefd724edfd51}{num\_options}}\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00038}00038\ \ \ game\_over\_menu-\/>\mbox{\hyperlink{structmenu_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}\ =\ (xpm\_image\_t**)malloc(\textcolor{keyword}{sizeof}(xpm\_image\_t*)\ *\ 2);}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00039}00039\ \ \ game\_over\_menu-\/>\mbox{\hyperlink{structmenu_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[0]\ =\ \&\mbox{\hyperlink{static__images_8c_aeda44bbb9b73952ac08b1a27498f881c}{play\_again\_selected\_img}};}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00040}00040\ \ \ game\_over\_menu-\/>\mbox{\hyperlink{structmenu_a502f1077adb8d0ca4a8023ff2377f797}{sprites}}[1]\ =\ \&\mbox{\hyperlink{static__images_8c_a9ce9e0d478ef949e70216576ba5dd05c}{back\_to\_menu\_selected\_img}};}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00041}00041\ \ \ game\_over\_menu-\/>\mbox{\hyperlink{structmenu_a76f2cb533432223bcf4343888b95ace9}{background\_image}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00043}00043\ \ \ \textcolor{keywordflow}{return}\ game\_over\_menu;}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00044}00044\ \}}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00046}\mbox{\hyperlink{menu_8c_a4ba57a9daa533d15bfe79eb9a70493bc}{00046}}\ int\ (\mbox{\hyperlink{menu_8c_a4ba57a9daa533d15bfe79eb9a70493bc}{menu\_destroy}})(\mbox{\hyperlink{structmenu}{menu}}*\ \mbox{\hyperlink{structmenu}{menu}})\{}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00047}00047\ \ \ free(\mbox{\hyperlink{structmenu}{menu}}-\/>\mbox{\hyperlink{structmenu_a502f1077adb8d0ca4a8023ff2377f797}{sprites}});}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00048}00048\ \ \ free(\mbox{\hyperlink{structmenu}{menu}});}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00049}00049\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{menu_8c_source_l00050}00050\ \}}
+
+\end{DoxyCode}

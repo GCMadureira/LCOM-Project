@@ -1,0 +1,10 @@
+var searchData=
+[
+  ['save_5fhighscore_0',['save_highscore',['../main__controller_8c.html#aefa5d38da887f05a677260355218ab86',1,'save_highscore():&#160;main_controller.c'],['../main__controller_8h.html#aefa5d38da887f05a677260355218ab86',1,'save_highscore():&#160;main_controller.c']]],
+  ['set_5fgame_5fstate_1',['set_game_state',['../main__controller_8c.html#a16074cead64739f51a64c2618848b537',1,'set_game_state(enum game_state state):&#160;main_controller.c'],['../main__controller_8h.html#a16074cead64739f51a64c2618848b537',1,'set_game_state(enum game_state state):&#160;main_controller.c']]],
+  ['setup_5farena_5fcontroller_2',['setup_arena_controller',['../arena__controller_8c.html#a9189679ee0e5aadead4c613784f76164',1,'setup_arena_controller():&#160;arena_controller.c'],['../arena__controller_8h.html#a9189679ee0e5aadead4c613784f76164',1,'setup_arena_controller():&#160;arena_controller.c']]],
+  ['setup_5fenemy_5fcontroller_3',['setup_enemy_controller',['../enemy__controller_8c.html#afb7a852c25e37e522fcf4059ca07e039',1,'setup_enemy_controller():&#160;enemy_controller.c'],['../enemy__controller_8h.html#afb7a852c25e37e522fcf4059ca07e039',1,'setup_enemy_controller():&#160;enemy_controller.c']]],
+  ['setup_5fgame_4',['setup_game',['../main__controller_8c.html#a3111dee1b7eba98e02de5d77e3d9f056',1,'setup_game():&#160;main_controller.c'],['../main__controller_8h.html#a3111dee1b7eba98e02de5d77e3d9f056',1,'setup_game():&#160;main_controller.c']]],
+  ['spawn_5fenemy_5',['spawn_enemy',['../enemy__controller_8c.html#a3c40e2518b4200552b89f80c1cc8d11d',1,'spawn_enemy(arena *arena, double speed_multiplier, uint32_t health, animation *animations):&#160;enemy_controller.c'],['../enemy__controller_8h.html#a3c40e2518b4200552b89f80c1cc8d11d',1,'spawn_enemy(arena *arena, double speed_multiplier, uint32_t health, animation *animations):&#160;enemy_controller.c']]],
+  ['static_5fimages_5fload_6',['static_images_load',['../viewer_2static__images_8h.html#aab8850c1909f40895f325da0a1cc5cc2',1,'static_images.h']]]
+];

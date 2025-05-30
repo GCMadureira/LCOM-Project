@@ -1,10 +1,26 @@
-#include "main_viewer.h"
-#include <stdio.h>
+/** 
+ * @file main_viewer.c
+ * @brief Source code file for all the logic related to the viewer
+ * 
+ * This file has all the functions to draw and show all the game sprites to the screen
+ */
 
+#include "main_viewer.h"
+
+
+/**
+ * @def MENU_SCROLL_SPEED
+ * @brief The speed of the scroll of the menu background image
+ */
 #define MENU_SCROLL_SPEED 1
+
+/**
+ * @def ANIMATION_SPEED
+ * @brief The number of game frames per animation frame
+ */
 #define ANIMATION_SPEED 8
 
-static int menu_scroll_offset = 0;
+static int menu_scroll_offset = 0; ///< The current scrolling offset of the menu background image
 
 int (draw_arena)(arena* arena) {
   //draw the visible section of the arena
@@ -137,22 +153,22 @@ int (draw_menu)(menu* menu){
   int seconds = high_score % 60;
   
   // Calculate total width of the PR display
-  int total_width = pr.width + number_sprites[0].width * 4 + two_points.width;
+  int total_width = pr_img.width + number_sprites[0].width * 4 + two_points.width;
   int start_x = vg_get_hres() - total_width + 15; // 10 pixels padding from right edge
   
   // Draw "PR-" text
-  vg_draw_image32(start_x, 10, &pr);
+  vg_draw_image32(start_x, 10, &pr_img);
   
   // Draw minutes
-  vg_draw_image32(start_x + pr.width, 10, &number_sprites[minutes / 10]);
-  vg_draw_image32(start_x + pr.width + number_sprites[0].width - 10, 10, &number_sprites[minutes % 10]);
+  vg_draw_image32(start_x + pr_img.width, 10, &number_sprites[minutes / 10]);
+  vg_draw_image32(start_x + pr_img.width + number_sprites[0].width - 10, 10, &number_sprites[minutes % 10]);
   
   // Draw the ":"
-  vg_draw_image32(start_x + pr.width + number_sprites[0].width * 2 - 13, 10, &two_points);
+  vg_draw_image32(start_x + pr_img.width + number_sprites[0].width * 2 - 13, 10, &two_points);
   
   // Draw seconds
-  vg_draw_image32(start_x + pr.width + number_sprites[0].width * 3 - 28, 10, &number_sprites[seconds / 10]);
-  vg_draw_image32(start_x + pr.width + number_sprites[0].width * 4 - 38, 10, &number_sprites[seconds % 10]);
+  vg_draw_image32(start_x + pr_img.width + number_sprites[0].width * 3 - 28, 10, &number_sprites[seconds / 10]);
+  vg_draw_image32(start_x + pr_img.width + number_sprites[0].width * 4 - 38, 10, &number_sprites[seconds % 10]);
 
   return 0;
 }

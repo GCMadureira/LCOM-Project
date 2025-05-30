@@ -1,0 +1,134 @@
+\doxysection{drivers/kbc/keyboard.h File Reference}
+\hypertarget{keyboard_8h}{}\label{keyboard_8h}\index{drivers/kbc/keyboard.h@{drivers/kbc/keyboard.h}}
+
+
+Header file for \doxylink{keyboard_8c}{keyboard.\+c}.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/utils.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/timer.\+h$>$}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+{\ttfamily \#include "{}kbc.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{keyboard_8h_aad41bc56418fe6ef55da17d70e94d428}{keyboard\+\_\+subscribe\+\_\+int\+\_\+exclusive}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes the keyboard interruptions with the payload on bit bit\+\_\+no. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{keyboard_8h_ac95aea27a5e91b363b876fed881f368f}{keyboard\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes the keyboard interruptions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{keyboard_8h_a5bb8b15df304556ad4124c73579f6c15}{keyboard\+\_\+is\+\_\+breakcode}} (uint8\+\_\+t \mbox{\hyperlink{keyboard_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}})
+\begin{DoxyCompactList}\small\item\em Checks if the provided scancode is a breakcode. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{keyboard_8h_a7f253db86f85d1a41dbbafa69b943f5f}{keyboard\+\_\+get\+\_\+scancode}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{keyboard_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode} static variable. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{keyboard_8h_ae9ddd281a2f76fba3bd46afa183d7223}{keyboard\+\_\+reenable\+\_\+interrupts}} ()
+\begin{DoxyCompactList}\small\item\em Reenable the keyboard interrupts if they were disabled. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{keyboard_8c}{keyboard.\+c}. 
+
+This file declares all the functions to interact with the kbc\textquotesingle{}s keyboard. 
+
+Definition in file \mbox{\hyperlink{keyboard_8h_source}{keyboard.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{keyboard_8h_a7f253db86f85d1a41dbbafa69b943f5f}\index{keyboard.h@{keyboard.h}!keyboard\_get\_scancode@{keyboard\_get\_scancode}}
+\index{keyboard\_get\_scancode@{keyboard\_get\_scancode}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{keyboard\_get\_scancode()}{keyboard\_get\_scancode()}}
+{\footnotesize\ttfamily \label{keyboard_8h_a7f253db86f85d1a41dbbafa69b943f5f} 
+uint8\+\_\+t keyboard\+\_\+get\+\_\+scancode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the \doxylink{keyboard_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode} static variable. 
+
+\begin{DoxyReturn}{Returns}
+The latest scancode read 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{keyboard_8c_source_l00013}{13}} of file \mbox{\hyperlink{keyboard_8c_source}{keyboard.\+c}}.
+
+\Hypertarget{keyboard_8h_a5bb8b15df304556ad4124c73579f6c15}\index{keyboard.h@{keyboard.h}!keyboard\_is\_breakcode@{keyboard\_is\_breakcode}}
+\index{keyboard\_is\_breakcode@{keyboard\_is\_breakcode}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{keyboard\_is\_breakcode()}{keyboard\_is\_breakcode()}}
+{\footnotesize\ttfamily \label{keyboard_8h_a5bb8b15df304556ad4124c73579f6c15} 
+bool keyboard\+\_\+is\+\_\+breakcode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{scancode}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the provided scancode is a breakcode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scancode} & The scancode to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the scancode is a breakcode, false if it is a makecode 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{keyboard_8c_source_l00026}{26}} of file \mbox{\hyperlink{keyboard_8c_source}{keyboard.\+c}}.
+
+\Hypertarget{keyboard_8h_ae9ddd281a2f76fba3bd46afa183d7223}\index{keyboard.h@{keyboard.h}!keyboard\_reenable\_interrupts@{keyboard\_reenable\_interrupts}}
+\index{keyboard\_reenable\_interrupts@{keyboard\_reenable\_interrupts}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{keyboard\_reenable\_interrupts()}{keyboard\_reenable\_interrupts()}}
+{\footnotesize\ttfamily \label{keyboard_8h_ae9ddd281a2f76fba3bd46afa183d7223} 
+int keyboard\+\_\+reenable\+\_\+interrupts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Reenable the keyboard interrupts if they were disabled. 
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{keyboard_8c_source_l00036}{36}} of file \mbox{\hyperlink{keyboard_8c_source}{keyboard.\+c}}.
+
+\Hypertarget{keyboard_8h_aad41bc56418fe6ef55da17d70e94d428}\index{keyboard.h@{keyboard.h}!keyboard\_subscribe\_int\_exclusive@{keyboard\_subscribe\_int\_exclusive}}
+\index{keyboard\_subscribe\_int\_exclusive@{keyboard\_subscribe\_int\_exclusive}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{keyboard\_subscribe\_int\_exclusive()}{keyboard\_subscribe\_int\_exclusive()}}
+{\footnotesize\ttfamily \label{keyboard_8h_aad41bc56418fe6ef55da17d70e94d428} 
+int keyboard\+\_\+subscribe\+\_\+int\+\_\+exclusive (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no}{}\end{DoxyParamCaption})}
+
+
+
+Subscribes the keyboard interruptions with the payload on bit bit\+\_\+no. 
+
+Uses the IRQ\+\_\+\+EXCLUSIVE tag so MINIX does not steal the interrupts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & The bit position to set the payload \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{keyboard_8c_source_l00017}{17}} of file \mbox{\hyperlink{keyboard_8c_source}{keyboard.\+c}}.
+
+\Hypertarget{keyboard_8h_ac95aea27a5e91b363b876fed881f368f}\index{keyboard.h@{keyboard.h}!keyboard\_unsubscribe\_int@{keyboard\_unsubscribe\_int}}
+\index{keyboard\_unsubscribe\_int@{keyboard\_unsubscribe\_int}!keyboard.h@{keyboard.h}}
+\doxysubsubsection{\texorpdfstring{keyboard\_unsubscribe\_int()}{keyboard\_unsubscribe\_int()}}
+{\footnotesize\ttfamily \label{keyboard_8h_ac95aea27a5e91b363b876fed881f368f} 
+int keyboard\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Unsubscribes the keyboard interruptions. 
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{keyboard_8c_source_l00022}{22}} of file \mbox{\hyperlink{keyboard_8c_source}{keyboard.\+c}}.
+

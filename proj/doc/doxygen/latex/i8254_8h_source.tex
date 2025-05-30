@@ -1,0 +1,60 @@
+\doxysection{i8254.\+h}
+\hypertarget{i8254_8h_source}{}\label{i8254_8h_source}\index{drivers/timer/i8254.h@{drivers/timer/i8254.h}}
+\mbox{\hyperlink{i8254_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_LCOM\_I8254\_H\_}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_LCOM\_I8254\_H\_}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00018}\mbox{\hyperlink{group__i8254_gacf926951944b6cf370b7229ebd50dd8b}{00018}}\ \textcolor{preprocessor}{\#define\ TIMER\_FREQ\ 1193182\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00019}\mbox{\hyperlink{group__i8254_ga30bf84c312af248cb81bb224e09f9ba8}{00019}}\ \textcolor{preprocessor}{\#define\ TIMER0\_IRQ\ 0\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00021}00021\ \textcolor{comment}{/*\ I/O\ port\ addresses\ */}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00023}\mbox{\hyperlink{group__i8254_gacc9ff9df4a9674a1ce9ba08fc4a4679e}{00023}}\ \textcolor{preprocessor}{\#define\ TIMER\_0\ \ \ \ 0x40\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00024}\mbox{\hyperlink{group__i8254_gac62c99c2a9289891c1b83052242cca49}{00024}}\ \textcolor{preprocessor}{\#define\ TIMER\_1\ \ \ \ 0x41\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00025}\mbox{\hyperlink{group__i8254_ga1f34f18ad0ab8cace46b615773b48735}{00025}}\ \textcolor{preprocessor}{\#define\ TIMER\_2\ \ \ \ 0x42\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00026}\mbox{\hyperlink{group__i8254_ga282832448fb0281ef53d243c1cd48491}{00026}}\ \textcolor{preprocessor}{\#define\ TIMER\_CTRL\ 0x43\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00028}\mbox{\hyperlink{group__i8254_ga51b3a5e3d4811ca063fe25e35560ab40}{00028}}\ \textcolor{preprocessor}{\#define\ SPEAKER\_CTRL\ 0x61\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00030}00030\ \textcolor{comment}{/*\ Timer\ control\ */}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00032}00032\ \textcolor{comment}{/*\ Timer\ selection:\ bits\ 7\ and\ 6\ */}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00034}\mbox{\hyperlink{group__i8254_ga6a4822642d40c248435692324a818010}{00034}}\ \textcolor{preprocessor}{\#define\ TIMER\_SEL0\ \ \ 0x00\ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00035}\mbox{\hyperlink{group__i8254_ga8349623fd8d99f9cc5d8ae29d78594fc}{00035}}\ \textcolor{preprocessor}{\#define\ TIMER\_SEL1\ \ \ BIT(6)\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00036}\mbox{\hyperlink{group__i8254_ga142a255de0dbc48aeabd45fc10c33672}{00036}}\ \textcolor{preprocessor}{\#define\ TIMER\_SEL2\ \ \ BIT(7)\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00037}\mbox{\hyperlink{group__i8254_ga4c2eecbfb96744a9c2af71dba75ecb18}{00037}}\ \textcolor{preprocessor}{\#define\ TIMER\_RB\_CMD\ (BIT(7)\ |\ BIT(6))\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00039}00039\ \textcolor{comment}{/*\ Register\ selection:\ bits\ 5\ and\ 4\ */}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00041}\mbox{\hyperlink{group__i8254_gac18cb814ebd0d67235392c330e0e3504}{00041}}\ \textcolor{preprocessor}{\#define\ TIMER\_LSB\ \ \ \ \ BIT(4)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00042}\mbox{\hyperlink{group__i8254_ga2a8a6d363c612d756cd8d78480f7cd04}{00042}}\ \textcolor{preprocessor}{\#define\ TIMER\_MSB\ \ \ \ \ BIT(5)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00043}\mbox{\hyperlink{group__i8254_ga8c0f1933323274c765e23837e4fbc8c7}{00043}}\ \textcolor{preprocessor}{\#define\ TIMER\_LSB\_MSB\ (TIMER\_LSB\ |\ TIMER\_MSB)\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00045}00045\ \textcolor{comment}{/*\ Operating\ mode:\ bits\ 3,\ 2\ and\ 1\ */}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00047}\mbox{\hyperlink{group__i8254_ga4745cbf21da3d3fea5dbb080b2b73bac}{00047}}\ \textcolor{preprocessor}{\#define\ TIMER\_SQR\_WAVE\ (BIT(2)\ |\ BIT(1))\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00048}\mbox{\hyperlink{group__i8254_ga5d4449e0fa1cf4a4d107a48a04a1265f}{00048}}\ \textcolor{preprocessor}{\#define\ TIMER\_RATE\_GEN\ BIT(2)\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00050}00050\ \textcolor{comment}{/*\ Counting\ mode:\ bit\ 0\ */}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00052}\mbox{\hyperlink{group__i8254_ga325b992a371d5d981c4eceff42fa5956}{00052}}\ \textcolor{preprocessor}{\#define\ TIMER\_BCD\ 0x01\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00053}\mbox{\hyperlink{group__i8254_gad2913dcf2f91453317bd035589ac0a7d}{00053}}\ \textcolor{preprocessor}{\#define\ TIMER\_BIN\ 0x00\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00055}00055\ \textcolor{comment}{/*\ READ-\/BACK\ COMMAND\ FORMAT\ */}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00057}00057\ \textcolor{preprocessor}{\#define\ TIMER\_RB\_COUNT\_\ \ BIT(5)}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00058}00058\ \textcolor{preprocessor}{\#define\ TIMER\_RB\_STATUS\_\ BIT(4)}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00059}00059\ \textcolor{preprocessor}{\#define\ TIMER\_RB\_SEL(n)\ \ BIT((n)\ +\ 1)}}
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{i8254_8h_source_l00063}00063\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_LCOM\_I8254\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

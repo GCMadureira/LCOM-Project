@@ -1,3 +1,9 @@
+/** 
+ * @file lightning.h
+ * @brief Includes all the xpm files for the lightning animation
+ */
+
+
 #ifndef _LIGHTNING_ATTACK_H_
 #define _LIGHTNING_ATTACK_H_
 

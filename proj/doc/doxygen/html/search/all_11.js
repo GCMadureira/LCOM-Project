@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['save_5fhighscore_0',['save_highscore',['../main__controller_8c.html#aefa5d38da887f05a677260355218ab86',1,'save_highscore():&#160;main_controller.c'],['../main__controller_8h.html#aefa5d38da887f05a677260355218ab86',1,'save_highscore():&#160;main_controller.c']]],
+  ['scancode_1',['scancode',['../keyboard_8c.html#aa1de7a5557e9d96b83cf03f73c92163f',1,'keyboard.c']]],
+  ['scancode_5fbyte1_2',['scancode_byte1',['../structinput__event.html#a45a5ce95d27856f2e5a4d3f88ed6530b',1,'input_event']]],
+  ['scancode_5fbyte2_3',['scancode_byte2',['../structinput__event.html#a39c923b06f795aeb27cd6eea555692b9',1,'input_event']]],
+  ['scancode_5fnbytes_4',['scancode_nbytes',['../structinput__event.html#a354070f2ab0287a88f8a5e983c56272e',1,'input_event']]],
+  ['scancodes_2eh_5',['scancodes.h',['../scancodes_8h.html',1,'']]],
+  ['secret_5fanimation_6',['secret_animation',['../animations_8c.html#af67814c18ed1bd54a537567c6cb29fe2',1,'secret_animation:&#160;animations.c'],['../animations_8h.html#af67814c18ed1bd54a537567c6cb29fe2',1,'secret_animation:&#160;animations.c']]],
+  ['secret_5fspawned_7',['secret_spawned',['../arena__controller_8c.html#a07cff7d1896b2f4e13332f49d06e83e6',1,'arena_controller.c']]],
+  ['set_5fgame_5fstate_8',['set_game_state',['../main__controller_8c.html#a16074cead64739f51a64c2618848b537',1,'set_game_state(enum game_state state):&#160;main_controller.c'],['../main__controller_8h.html#a16074cead64739f51a64c2618848b537',1,'set_game_state(enum game_state state):&#160;main_controller.c']]],
+  ['setup_5farena_5fcontroller_9',['setup_arena_controller',['../arena__controller_8c.html#a9189679ee0e5aadead4c613784f76164',1,'setup_arena_controller():&#160;arena_controller.c'],['../arena__controller_8h.html#a9189679ee0e5aadead4c613784f76164',1,'setup_arena_controller():&#160;arena_controller.c']]],
+  ['setup_5fenemy_5fcontroller_10',['setup_enemy_controller',['../enemy__controller_8c.html#afb7a852c25e37e522fcf4059ca07e039',1,'setup_enemy_controller():&#160;enemy_controller.c'],['../enemy__controller_8h.html#afb7a852c25e37e522fcf4059ca07e039',1,'setup_enemy_controller():&#160;enemy_controller.c']]],
+  ['setup_5fgame_11',['setup_game',['../main__controller_8c.html#a3111dee1b7eba98e02de5d77e3d9f056',1,'setup_game():&#160;main_controller.c'],['../main__controller_8h.html#a3111dee1b7eba98e02de5d77e3d9f056',1,'setup_game():&#160;main_controller.c']]],
+  ['spawn_5fenemy_12',['spawn_enemy',['../enemy__controller_8c.html#a3c40e2518b4200552b89f80c1cc8d11d',1,'spawn_enemy(arena *arena, double speed_multiplier, uint32_t health, animation *animations):&#160;enemy_controller.c'],['../enemy__controller_8h.html#a3c40e2518b4200552b89f80c1cc8d11d',1,'spawn_enemy(arena *arena, double speed_multiplier, uint32_t health, animation *animations):&#160;enemy_controller.c']]],
+  ['speaker_5fctrl_13',['SPEAKER_CTRL',['../group__i8254.html#ga51b3a5e3d4811ca063fe25e35560ab40',1,'i8254.h']]],
+  ['speed_5fmultiplier_14',['speed_multiplier',['../structentity.html#a6576980916d27ecc57054d490c7260ef',1,'entity']]],
+  ['speed_5fx_15',['speed_x',['../structentity.html#aebb2c694aa0ece3f9bb10e4f0261cadc',1,'entity::speed_x'],['../structattack.html#aebb2c694aa0ece3f9bb10e4f0261cadc',1,'attack::speed_x']]],
+  ['speed_5fy_16',['speed_y',['../structentity.html#a6710926b8c4035973f5dae24886ff9e5',1,'entity::speed_y'],['../structattack.html#a6710926b8c4035973f5dae24886ff9e5',1,'attack::speed_y']]],
+  ['sprites_17',['sprites',['../structanimation.html#a502f1077adb8d0ca4a8023ff2377f797',1,'animation::sprites'],['../structmenu.html#a502f1077adb8d0ca4a8023ff2377f797',1,'menu::sprites']]],
+  ['start_5fbackground_5fimg_18',['start_background_img',['../static__images_8c.html#aec04f7bedb48a68d82c619e0990466ab',1,'start_background_img:&#160;static_images.c'],['../viewer_2static__images_8h.html#aec04f7bedb48a68d82c619e0990466ab',1,'start_background_img:&#160;static_images.c']]],
+  ['start_5fselected_5fimg_19',['start_selected_img',['../static__images_8c.html#ac42da083f20abd2c95762cc5cdebba7d',1,'start_selected_img:&#160;static_images.c'],['../viewer_2static__images_8h.html#ac42da083f20abd2c95762cc5cdebba7d',1,'start_selected_img:&#160;static_images.c']]],
+  ['static_5fimages_2ec_20',['static_images.c',['../static__images_8c.html',1,'']]],
+  ['static_5fimages_2eh_21',['static_images.h',['../viewer_2static__images_8h.html',1,'']]],
+  ['static_5fimages_5fload_22',['static_images_load',['../viewer_2static__images_8h.html#aab8850c1909f40895f325da0a1cc5cc2',1,'static_images.h']]],
+  ['structs_2eh_23',['structs.h',['../structs_8h.html',1,'']]]
+];

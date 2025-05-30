@@ -1,0 +1,159 @@
+\doxysection{viewer/main\+\_\+viewer.h File Reference}
+\hypertarget{main__viewer_8h}{}\label{main__viewer_8h}\index{viewer/main\_viewer.h@{viewer/main\_viewer.h}}
+
+
+Header file for \doxylink{main__viewer_8c}{main\+\_\+viewer.\+c}.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}animations.\+h"{}}\newline
+{\ttfamily \#include "{}../controller/main\+\_\+controller.\+h"{}}\newline
+{\ttfamily \#include "{}../model/structs.\+h"{}}\newline
+{\ttfamily \#include "{}static\+\_\+images.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main__viewer_8h_a8fb9de233d418280db226d85267843d7}{draw\+\_\+arena}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Draws the arena and all it includes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main__viewer_8h_ae29a8a282b383470a1ec0477b2770b10}{draw\+\_\+menu}} (\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structmenu}{menu}})
+\begin{DoxyCompactList}\small\item\em Draws the menu and all it includes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main__viewer_8h_ab9224b41675f9b0d9087a328239cf392}{draw\+\_\+enemies}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Draw all the active enemies in the arena. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main__viewer_8h_ae2bdbd08eebca29ff9cb8876f0216da7}{draw\+\_\+attacks}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Draw all the active attacks in the arena. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main__viewer_8h_a7aee3dbe4695d85b1944bae28d0dd97d}{draw\+\_\+hearts}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Draw all the active hearts in the arena. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{main__viewer_8c}{main\+\_\+viewer.\+c}. 
+
+This file declares all the functions to be used for drawing the sprites of the game 
+
+Definition in file \mbox{\hyperlink{main__viewer_8h_source}{main\+\_\+viewer.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main__viewer_8h_a8fb9de233d418280db226d85267843d7}\index{main\_viewer.h@{main\_viewer.h}!draw\_arena@{draw\_arena}}
+\index{draw\_arena@{draw\_arena}!main\_viewer.h@{main\_viewer.h}}
+\doxysubsubsection{\texorpdfstring{draw\_arena()}{draw\_arena()}}
+{\footnotesize\ttfamily \label{main__viewer_8h_a8fb9de233d418280db226d85267843d7} 
+int draw\+\_\+arena (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Draws the arena and all it includes. 
+
+Starts by drawing the visible section of the arena by calling \doxylink{graphics_8c_a348a68eba0696f535bad8d8cf3ea5219}{vg\+\_\+draw\+\_\+image\+\_\+section32()}. It then draws all the enemies by calling \doxylink{main__viewer_8h_ab9224b41675f9b0d9087a328239cf392}{draw\+\_\+enemies()} and the player with \doxylink{graphics_8c_a75992379c4d2d7db98670d5fd3cee7aa}{vg\+\_\+draw\+\_\+image32()}. Then draws the hearts, the health status, the mouse and the timer, in this order. ~\newline
+ All the entities inside the arena have relative positions, which means the screen position in which they are drawn is their relative position minus the arena position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & The pointer to the arena to draw \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__viewer_8c_source_l00025}{25}} of file \mbox{\hyperlink{main__viewer_8c_source}{main\+\_\+viewer.\+c}}.
+
+\Hypertarget{main__viewer_8h_ae2bdbd08eebca29ff9cb8876f0216da7}\index{main\_viewer.h@{main\_viewer.h}!draw\_attacks@{draw\_attacks}}
+\index{draw\_attacks@{draw\_attacks}!main\_viewer.h@{main\_viewer.h}}
+\doxysubsubsection{\texorpdfstring{draw\_attacks()}{draw\_attacks()}}
+{\footnotesize\ttfamily \label{main__viewer_8h_ae2bdbd08eebca29ff9cb8876f0216da7} 
+int draw\+\_\+attacks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Draw all the active attacks in the arena. 
+
+Iterates through the list of active attacks and calls \doxylink{graphics_8c_a75992379c4d2d7db98670d5fd3cee7aa}{vg\+\_\+draw\+\_\+image32()} to draw each one, converting their relative position to an absolute position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & The pointer to the arena to draw on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__viewer_8c_source_l00097}{97}} of file \mbox{\hyperlink{main__viewer_8c_source}{main\+\_\+viewer.\+c}}.
+
+\Hypertarget{main__viewer_8h_ab9224b41675f9b0d9087a328239cf392}\index{main\_viewer.h@{main\_viewer.h}!draw\_enemies@{draw\_enemies}}
+\index{draw\_enemies@{draw\_enemies}!main\_viewer.h@{main\_viewer.h}}
+\doxysubsubsection{\texorpdfstring{draw\_enemies()}{draw\_enemies()}}
+{\footnotesize\ttfamily \label{main__viewer_8h_ab9224b41675f9b0d9087a328239cf392} 
+int draw\+\_\+enemies (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Draw all the active enemies in the arena. 
+
+Iterates through the list of active enemies and calls \doxylink{graphics_8c_a75992379c4d2d7db98670d5fd3cee7aa}{vg\+\_\+draw\+\_\+image32()} to draw each one, converting their relative position to an absolute position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & The pointer to the arena to draw on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__viewer_8c_source_l00077}{77}} of file \mbox{\hyperlink{main__viewer_8c_source}{main\+\_\+viewer.\+c}}.
+
+\Hypertarget{main__viewer_8h_a7aee3dbe4695d85b1944bae28d0dd97d}\index{main\_viewer.h@{main\_viewer.h}!draw\_hearts@{draw\_hearts}}
+\index{draw\_hearts@{draw\_hearts}!main\_viewer.h@{main\_viewer.h}}
+\doxysubsubsection{\texorpdfstring{draw\_hearts()}{draw\_hearts()}}
+{\footnotesize\ttfamily \label{main__viewer_8h_a7aee3dbe4695d85b1944bae28d0dd97d} 
+int draw\+\_\+hearts (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Draw all the active hearts in the arena. 
+
+Iterates through the list of active hearts and calls \doxylink{graphics_8c_a75992379c4d2d7db98670d5fd3cee7aa}{vg\+\_\+draw\+\_\+image32()} to draw each one, converting their relative position to an absolute position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & The pointer to the arena to draw on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__viewer_8c_source_l00114}{114}} of file \mbox{\hyperlink{main__viewer_8c_source}{main\+\_\+viewer.\+c}}.
+
+\Hypertarget{main__viewer_8h_ae29a8a282b383470a1ec0477b2770b10}\index{main\_viewer.h@{main\_viewer.h}!draw\_menu@{draw\_menu}}
+\index{draw\_menu@{draw\_menu}!main\_viewer.h@{main\_viewer.h}}
+\doxysubsubsection{\texorpdfstring{draw\_menu()}{draw\_menu()}}
+{\footnotesize\ttfamily \label{main__viewer_8h_ae29a8a282b383470a1ec0477b2770b10} 
+int draw\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*}}]{menu}{}\end{DoxyParamCaption})}
+
+
+
+Draws the menu and all it includes. 
+
+Draws the background images of the menu if it exists and then the options.
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu} & The pointer to the menu to draw \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__viewer_8c_source_l00131}{131}} of file \mbox{\hyperlink{main__viewer_8c_source}{main\+\_\+viewer.\+c}}.
+

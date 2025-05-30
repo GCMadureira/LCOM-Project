@@ -1,0 +1,119 @@
+\doxysection{input\+\_\+event Struct Reference}
+\hypertarget{structinput__event}{}\label{structinput__event}\index{input\_event@{input\_event}}
+
+
+Represents a mouse or keyboard event with all the required information.  
+
+
+
+
+{\ttfamily \#include $<$structs.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{structs_8h_a430b444c74dd3fd1472a31714ec5f1ce}{event\+\_\+type}} \mbox{\hyperlink{structinput__event_a0eed7045c4e1a2360a1308288633d4ce}{event\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The valid event type on the union. \end{DoxyCompactList}\item 
+\Hypertarget{structinput__event_aef6cab4118dd8d6332792b3ad69dc6f2}\label{structinput__event_aef6cab4118dd8d6332792b3ad69dc6f2} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\Hypertarget{unioninput__event_1_1_0d106063176053000003060201224040016371116024023026_a0bd747235afabd890e6598b2f888df83}\label{unioninput__event_1_1_0d106063176053000003060201224040016371116024023026_a0bd747235afabd890e6598b2f888df83} 
+\>struct \{\\
+\>\>uint8\_t \mbox{\hyperlink{structinput__event_a354070f2ab0287a88f8a5e983c56272e}{scancode\_nbytes}}\\
+\>\>\>{\em The number of used bytes for the scancode. }\\
+\>\>uint8\_t \mbox{\hyperlink{structinput__event_a45a5ce95d27856f2e5a4d3f88ed6530b}{scancode\_byte1}}\\
+\>\>\>{\em The first byte of the scancode. }\\
+\>\>uint8\_t \mbox{\hyperlink{structinput__event_a39c923b06f795aeb27cd6eea555692b9}{scancode\_byte2}}\\
+\>\>\>{\em The second byte of the scancode. }\\
+\>\} \\
+\>struct packet \mbox{\hyperlink{structinput__event_a3b2e64ffb96c650d6525c99be01c7331}{mouse\_packet}}\\
+\>\>\>{\em The mouse packet information. }\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a mouse or keyboard event with all the required information. 
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00026}{26}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structinput__event_a0eed7045c4e1a2360a1308288633d4ce}\index{input\_event@{input\_event}!event\_type@{event\_type}}
+\index{event\_type@{event\_type}!input\_event@{input\_event}}
+\doxysubsubsection{\texorpdfstring{event\_type}{event\_type}}
+{\footnotesize\ttfamily \label{structinput__event_a0eed7045c4e1a2360a1308288633d4ce} 
+enum \mbox{\hyperlink{structs_8h_a430b444c74dd3fd1472a31714ec5f1ce}{event\+\_\+type}} \mbox{\hyperlink{structs_8h_a430b444c74dd3fd1472a31714ec5f1ce}{event\+\_\+type}}}
+
+
+
+The valid event type on the union. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00027}{27}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structinput__event_a3b2e64ffb96c650d6525c99be01c7331}\index{input\_event@{input\_event}!mouse\_packet@{mouse\_packet}}
+\index{mouse\_packet@{mouse\_packet}!input\_event@{input\_event}}
+\doxysubsubsection{\texorpdfstring{mouse\_packet}{mouse\_packet}}
+{\footnotesize\ttfamily \label{structinput__event_a3b2e64ffb96c650d6525c99be01c7331} 
+struct packet mouse\+\_\+packet}
+
+
+
+The mouse packet information. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00034}{34}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structinput__event_a45a5ce95d27856f2e5a4d3f88ed6530b}\index{input\_event@{input\_event}!scancode\_byte1@{scancode\_byte1}}
+\index{scancode\_byte1@{scancode\_byte1}!input\_event@{input\_event}}
+\doxysubsubsection{\texorpdfstring{scancode\_byte1}{scancode\_byte1}}
+{\footnotesize\ttfamily \label{structinput__event_a45a5ce95d27856f2e5a4d3f88ed6530b} 
+uint8\+\_\+t scancode\+\_\+byte1}
+
+
+
+The first byte of the scancode. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00031}{31}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structinput__event_a39c923b06f795aeb27cd6eea555692b9}\index{input\_event@{input\_event}!scancode\_byte2@{scancode\_byte2}}
+\index{scancode\_byte2@{scancode\_byte2}!input\_event@{input\_event}}
+\doxysubsubsection{\texorpdfstring{scancode\_byte2}{scancode\_byte2}}
+{\footnotesize\ttfamily \label{structinput__event_a39c923b06f795aeb27cd6eea555692b9} 
+uint8\+\_\+t scancode\+\_\+byte2}
+
+
+
+The second byte of the scancode. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00032}{32}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+\Hypertarget{structinput__event_a354070f2ab0287a88f8a5e983c56272e}\index{input\_event@{input\_event}!scancode\_nbytes@{scancode\_nbytes}}
+\index{scancode\_nbytes@{scancode\_nbytes}!input\_event@{input\_event}}
+\doxysubsubsection{\texorpdfstring{scancode\_nbytes}{scancode\_nbytes}}
+{\footnotesize\ttfamily \label{structinput__event_a354070f2ab0287a88f8a5e983c56272e} 
+uint8\+\_\+t scancode\+\_\+nbytes}
+
+
+
+The number of used bytes for the scancode. 
+
+
+
+Definition at line \mbox{\hyperlink{structs_8h_source_l00030}{30}} of file \mbox{\hyperlink{structs_8h_source}{structs.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+model/\mbox{\hyperlink{structs_8h}{structs.\+h}}\end{DoxyCompactItemize}

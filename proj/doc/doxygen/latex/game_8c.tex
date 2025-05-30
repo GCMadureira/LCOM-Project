@@ -1,0 +1,107 @@
+\doxysection{game.\+c File Reference}
+\hypertarget{game_8c}{}\label{game_8c}\index{game.c@{game.c}}
+
+
+Source code file for the entry point of the program, as well as the main setup and clean functions.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}drivers/drivers.\+h"{}}\newline
+{\ttfamily \#include "{}macros/scancodes.\+h"{}}\newline
+{\ttfamily \#include "{}controller/main\+\_\+controller.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{game_8c_a47d86c55c1bc9d2a93df0b9476c4d630}{game\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the game by setting up what is necessary. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_abc1fb57f21dfdfe8414ed5ff0c744a10}{game\+\_\+exit}} ()
+\begin{DoxyCompactList}\small\item\em Cleans up the game by reverting to the starting state. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_a977ea2c8b233ea8698f2077628e1bb48}{proj\+\_\+main\+\_\+loop}} ()
+\begin{DoxyCompactList}\small\item\em The main loop of the game. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{game_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code file for the entry point of the program, as well as the main setup and clean functions. 
+
+
+
+Definition in file \mbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8c_abc1fb57f21dfdfe8414ed5ff0c744a10}\index{game.c@{game.c}!game\_exit@{game\_exit}}
+\index{game\_exit@{game\_exit}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{game\_exit()}{game\_exit()}}
+{\footnotesize\ttfamily \label{game_8c_abc1fb57f21dfdfe8414ed5ff0c744a10} 
+int game\+\_\+exit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Cleans up the game by reverting to the starting state. 
+
+Sets the timer 0\textquotesingle{}s frequency back to 60hz, unsubscribes the timer, keyboard and mouse interruptions, disables the mouse data reporting and then calls vg\+\_\+exit(). ~\newline
+ After reverting the drivers\textquotesingle{} state, it calls \doxylink{main__controller_8c_a92a2f28091bb858097abd29fe906badd}{clean\+\_\+game()}.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{game_8c_source_l00047}{47}} of file \mbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+\Hypertarget{game_8c_a47d86c55c1bc9d2a93df0b9476c4d630}\index{game.c@{game.c}!game\_init@{game\_init}}
+\index{game\_init@{game\_init}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{game\_init()}{game\_init()}}
+{\footnotesize\ttfamily \label{game_8c_a47d86c55c1bc9d2a93df0b9476c4d630} 
+int game\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the game by setting up what is necessary. 
+
+Sets the timer 0\textquotesingle{}s frequency to 60hz to serve as the frame rate, subscribes the timer, keyboard and mouse interruptions (the last one after enabling data reporting) and then initizalies the graphics mode and vram mapping. ~\newline
+ After setting up the drivers it calls \doxylink{main__controller_8c_a3111dee1b7eba98e02de5d77e3d9f056}{setup\+\_\+game()} to initialize the program logic.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{game_8c_source_l00023}{23}} of file \mbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+\Hypertarget{game_8c_a0ddf1224851353fc92bfbff6f499fa97}\index{game.c@{game.c}!main@{main}}
+\index{main@{main}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{game_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\mbox{[}$\,$\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{game_8c_source_l00104}{104}} of file \mbox{\hyperlink{game_8c_source}{game.\+c}}.
+
+\Hypertarget{game_8c_a977ea2c8b233ea8698f2077628e1bb48}\index{game.c@{game.c}!proj\_main\_loop@{proj\_main\_loop}}
+\index{proj\_main\_loop@{proj\_main\_loop}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{proj\_main\_loop()}{proj\_main\_loop()}}
+{\footnotesize\ttfamily \label{game_8c_a977ea2c8b233ea8698f2077628e1bb48} 
+int proj\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The main loop of the game. 
+
+Sets up the game by calling the \doxylink{game_8c_a47d86c55c1bc9d2a93df0b9476c4d630}{game\+\_\+init()} function at the beginning. ~\newline
+ Catches the interrupts and, for the keyboard and mouse, calls \doxylink{events_8c_a1c2871d60f7bf52fb9b0a8542a0554fe}{event\+\_\+handle\+\_\+keyboard()} or \doxylink{events_8c_aa4d7e9e466bc99df5b926d29adf960f3}{event\+\_\+handle\+\_\+mouse()}. For the timer interruptions, each one causes a frame to be processed. ~\newline
+ Finally, it calls \doxylink{game_8c_abc1fb57f21dfdfe8414ed5ff0c744a10}{game\+\_\+exit()} before returning.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{game_8c_source_l00064}{64}} of file \mbox{\hyperlink{game_8c_source}{game.\+c}}.
+

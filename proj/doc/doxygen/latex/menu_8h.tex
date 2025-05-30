@@ -1,0 +1,140 @@
+\doxysection{model/menu.h File Reference}
+\hypertarget{menu_8h}{}\label{menu_8h}\index{model/menu.h@{model/menu.h}}
+
+
+Header file for \doxylink{menu_8c}{menu.\+c}.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}../drivers/drivers.\+h"{}}\newline
+{\ttfamily \#include "{}../viewer/static\+\_\+images.\+h"{}}\newline
+{\ttfamily \#include "{}structs.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{menu_8h_a72831a7da07d6716200fd469accd9eef}{menu\+\_\+select\+\_\+option\+\_\+up}} (\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structmenu}{menu}})
+\begin{DoxyCompactList}\small\item\em Moves the selected option of the menu up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{menu_8h_afdcedff748a428ef264d3e76848a5a47}{menu\+\_\+select\+\_\+option\+\_\+down}} (\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structmenu}{menu}})
+\begin{DoxyCompactList}\small\item\em Moves the selected option of the menu down. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{menu_8h_a039ff9c0e9c27e791023bfb50c7f03af}{menu\+\_\+create\+\_\+main}} ()
+\begin{DoxyCompactList}\small\item\em Creates a main menu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{menu_8h_ad6a0add18efc7b14357f1be833910932}{menu\+\_\+create\+\_\+game\+\_\+over}} ()
+\begin{DoxyCompactList}\small\item\em Creates a game over menu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{menu_8h_a4ba57a9daa533d15bfe79eb9a70493bc}{menu\+\_\+destroy}} (\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structmenu}{menu}})
+\begin{DoxyCompactList}\small\item\em Destroys a menu by freeing its memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{menu_8c}{menu.\+c}. 
+
+This file declares all the functions to be used for the menu struct. 
+
+Definition in file \mbox{\hyperlink{menu_8h_source}{menu.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{menu_8h_ad6a0add18efc7b14357f1be833910932}\index{menu.h@{menu.h}!menu\_create\_game\_over@{menu\_create\_game\_over}}
+\index{menu\_create\_game\_over@{menu\_create\_game\_over}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{menu\_create\_game\_over()}{menu\_create\_game\_over()}}
+{\footnotesize\ttfamily \label{menu_8h_ad6a0add18efc7b14357f1be833910932} 
+\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*} menu\+\_\+create\+\_\+game\+\_\+over (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Creates a game over menu. 
+
+Dynamically allocates memory for the menu and sets its initial state.
+
+\begin{DoxyReturn}{Returns}
+The pointer to the new menu 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{menu_8c_source_l00033}{33}} of file \mbox{\hyperlink{menu_8c_source}{menu.\+c}}.
+
+\Hypertarget{menu_8h_a039ff9c0e9c27e791023bfb50c7f03af}\index{menu.h@{menu.h}!menu\_create\_main@{menu\_create\_main}}
+\index{menu\_create\_main@{menu\_create\_main}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{menu\_create\_main()}{menu\_create\_main()}}
+{\footnotesize\ttfamily \label{menu_8h_a039ff9c0e9c27e791023bfb50c7f03af} 
+\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*} menu\+\_\+create\+\_\+main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Creates a main menu. 
+
+Dynamically allocates memory for the menu and sets its initial state.
+
+\begin{DoxyReturn}{Returns}
+The pointer to the new menu 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{menu_8c_source_l00020}{20}} of file \mbox{\hyperlink{menu_8c_source}{menu.\+c}}.
+
+\Hypertarget{menu_8h_a4ba57a9daa533d15bfe79eb9a70493bc}\index{menu.h@{menu.h}!menu\_destroy@{menu\_destroy}}
+\index{menu\_destroy@{menu\_destroy}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{menu\_destroy()}{menu\_destroy()}}
+{\footnotesize\ttfamily \label{menu_8h_a4ba57a9daa533d15bfe79eb9a70493bc} 
+int menu\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*}}]{menu}{}\end{DoxyParamCaption})}
+
+
+
+Destroys a menu by freeing its memory. 
+
+Frees the memory of the sprite array and then the menu itself.
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu} & The pointer to the menu to be destroyed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{menu_8c_source_l00046}{46}} of file \mbox{\hyperlink{menu_8c_source}{menu.\+c}}.
+
+\Hypertarget{menu_8h_afdcedff748a428ef264d3e76848a5a47}\index{menu.h@{menu.h}!menu\_select\_option\_down@{menu\_select\_option\_down}}
+\index{menu\_select\_option\_down@{menu\_select\_option\_down}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{menu\_select\_option\_down()}{menu\_select\_option\_down()}}
+{\footnotesize\ttfamily \label{menu_8h_afdcedff748a428ef264d3e76848a5a47} 
+void menu\+\_\+select\+\_\+option\+\_\+down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*}}]{menu}{}\end{DoxyParamCaption})}
+
+
+
+Moves the selected option of the menu down. 
+
+If the option is out of bounds, it circles back to the other end.
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu} & The pointer to the menu to change \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{menu_8c_source_l00016}{16}} of file \mbox{\hyperlink{menu_8c_source}{menu.\+c}}.
+
+\Hypertarget{menu_8h_a72831a7da07d6716200fd469accd9eef}\index{menu.h@{menu.h}!menu\_select\_option\_up@{menu\_select\_option\_up}}
+\index{menu\_select\_option\_up@{menu\_select\_option\_up}!menu.h@{menu.h}}
+\doxysubsubsection{\texorpdfstring{menu\_select\_option\_up()}{menu\_select\_option\_up()}}
+{\footnotesize\ttfamily \label{menu_8h_a72831a7da07d6716200fd469accd9eef} 
+void menu\+\_\+select\+\_\+option\+\_\+up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*}}]{menu}{}\end{DoxyParamCaption})}
+
+
+
+Moves the selected option of the menu up. 
+
+If the option is out of bounds, it circles back to the other end.
+
+
+\begin{DoxyParams}{Parameters}
+{\em menu} & The pointer to the menu to change \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{menu_8c_source_l00012}{12}} of file \mbox{\hyperlink{menu_8c_source}{menu.\+c}}.
+

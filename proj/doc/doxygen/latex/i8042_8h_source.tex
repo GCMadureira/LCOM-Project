@@ -1,0 +1,62 @@
+\doxysection{i8042.\+h}
+\hypertarget{i8042_8h_source}{}\label{i8042_8h_source}\index{drivers/kbc/i8042.h@{drivers/kbc/i8042.h}}
+\mbox{\hyperlink{i8042_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00007}00007\ \textcolor{preprocessor}{\#ifndef\ \_I8042\_H\_}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00008}00008\ \textcolor{preprocessor}{\#define\ \_I8042\_H\_}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00012}\mbox{\hyperlink{i8042_8h_a2d17911b50c0aeebb2e3325c5b36d4f2}{00012}}\ \textcolor{preprocessor}{\#define\ KEYBOARD\_IRQ\ 1\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00013}\mbox{\hyperlink{i8042_8h_a85964cb90343bb1a029b1d1b4229f910}{00013}}\ \textcolor{preprocessor}{\#define\ MOUSE\_IRQ\ 12\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00015}00015\ \textcolor{comment}{/*\ KBC\ registers\ */}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00016}\mbox{\hyperlink{i8042_8h_a34b14687d83496940a236351fbbb1aea}{00016}}\ \textcolor{preprocessor}{\#define\ KBC\_STAT\_REG\ 0x64\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00017}\mbox{\hyperlink{i8042_8h_a6d57c7927a10f638c83046b52c8caac9}{00017}}\ \textcolor{preprocessor}{\#define\ KBC\_CMD\_REG\ 0x64\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00018}\mbox{\hyperlink{i8042_8h_aa848ce3f74697985d49a5a8d10bbf01f}{00018}}\ \textcolor{preprocessor}{\#define\ KBC\_OUT\_REG\ 0x60\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00019}\mbox{\hyperlink{i8042_8h_adc53833990e12dc1b427a17fdbbcf210}{00019}}\ \textcolor{preprocessor}{\#define\ KBC\_CMDARG\_REG\ 0x60\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00021}00021\ \textcolor{comment}{/*\ KBC\ status\ byte\ */}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00022}\mbox{\hyperlink{i8042_8h_aea2ef6dda1aabebf291eeee29b66c04a}{00022}}\ \textcolor{preprocessor}{\#define\ KBC\_PAR\_ERR\ BIT(7)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00023}\mbox{\hyperlink{i8042_8h_ae31c3653f5881b02cbfdd4ccbb7ccf50}{00023}}\ \textcolor{preprocessor}{\#define\ KBC\_TO\_ERR\ BIT(6)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00024}\mbox{\hyperlink{i8042_8h_a5a01c98e394aedacd058f4dc3b953bb0}{00024}}\ \textcolor{preprocessor}{\#define\ KBC\_ST\_AUX\ BIT(5)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00025}\mbox{\hyperlink{i8042_8h_a141ccbc1ab10dfcdd1d450414dba13d4}{00025}}\ \textcolor{preprocessor}{\#define\ KBC\_ST\_IBF\ BIT(1)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00026}\mbox{\hyperlink{i8042_8h_a38010ed603a29beee559b2c20de50dcd}{00026}}\ \textcolor{preprocessor}{\#define\ KBC\_ST\_OBF\ BIT(0)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00028}00028\ \textcolor{comment}{/*KBC\ commands\ */}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00029}\mbox{\hyperlink{i8042_8h_ab82996fcd177742a38d5123747e233f6}{00029}}\ \textcolor{preprocessor}{\#define\ RD\_CMD\_BYTE\ 0x20\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00030}\mbox{\hyperlink{i8042_8h_adb6f94786815aed6ef5e167dd49eee5f}{00030}}\ \textcolor{preprocessor}{\#define\ WR\_CMD\_BYTE\ 0x60\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00031}\mbox{\hyperlink{i8042_8h_aaf2a34f36d4c1337f4105c705cacc7c5}{00031}}\ \textcolor{preprocessor}{\#define\ WR\_MOUSE\_BYTE\ 0xD4\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00033}00033\ \textcolor{comment}{/*\ KBC\ command\ byte\ */}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00034}\mbox{\hyperlink{i8042_8h_acf07f310afe5dc074dacd55c708b0c4c}{00034}}\ \textcolor{preprocessor}{\#define\ KBD\_ENABLE\_INT\ BIT(1)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00035}\mbox{\hyperlink{i8042_8h_aa2f61ec70925c501a76819a337a1de33}{00035}}\ \textcolor{preprocessor}{\#define\ MOUSE\_ENABLE\_INT\ BIT(2)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00037}00037\ \textcolor{comment}{/*\ Keyboard\ scancodes\ */}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00038}\mbox{\hyperlink{i8042_8h_a882aecbb57ed79398b9af6ff2289031c}{00038}}\ \textcolor{preprocessor}{\#define\ ESC\_KEY\_BREAKCODE\ 0x81\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00039}\mbox{\hyperlink{i8042_8h_a8d8bd9d41130b5e8b65ad1c4c2e1b5ff}{00039}}\ \textcolor{preprocessor}{\#define\ EXTENDED\_SCANCODE\ 0xE0\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00040}\mbox{\hyperlink{i8042_8h_ad6ff09b5058171ce69f6485dbef6bfaa}{00040}}\ \textcolor{preprocessor}{\#define\ BREAKCODE\ BIT(7)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00042}00042\ \textcolor{comment}{/*\ Mouse\ byte\ commands\ */}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00043}\mbox{\hyperlink{i8042_8h_a8e51dfaa390f8cfb4b1b286fb3b22aff}{00043}}\ \textcolor{preprocessor}{\#define\ DISABLE\_DATA\_REPORTING\ 0xF5\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00044}\mbox{\hyperlink{i8042_8h_a9c64a38cca5c7aabe0ab2d8c5e21e723}{00044}}\ \textcolor{preprocessor}{\#define\ ENABLE\_DATA\_REPORTING\ 0xF4\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00045}\mbox{\hyperlink{i8042_8h_a8f4d5b24d9f4d14ed5f184fc1bfceec9}{00045}}\ \textcolor{preprocessor}{\#define\ MOUSE\_BYTE\_ACK\ 0xFA\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00046}\mbox{\hyperlink{i8042_8h_aafe9a5517c6d76b8ca74c5a5f0ff1560}{00046}}\ \textcolor{preprocessor}{\#define\ MOUSE\_BYTE\_NACK\ 0xFE\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00047}\mbox{\hyperlink{i8042_8h_aac749771e826a28b5720c2b3ba89f6cc}{00047}}\ \textcolor{preprocessor}{\#define\ MOUSE\_BYTE\_ERROR\ 0xFC\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00049}00049\ \textcolor{comment}{/*\ Mouse\ data\ packet\ */}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00050}\mbox{\hyperlink{i8042_8h_a7d5b0d5dc0d3196a3c1ba6b0f741f99c}{00050}}\ \textcolor{preprocessor}{\#define\ LEFT\_BUTTON\_PRESSED\ BIT(0)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00051}\mbox{\hyperlink{i8042_8h_ae25c0456db9d86be940cfc21ea03dc07}{00051}}\ \textcolor{preprocessor}{\#define\ RIGHT\_BUTTON\_PRESSED\ BIT(1)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00052}\mbox{\hyperlink{i8042_8h_a3f65f2f4909af3d848c42423d50d64b5}{00052}}\ \textcolor{preprocessor}{\#define\ MIDDLE\_BUTTON\_PRESSD\ BIT(2)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00053}\mbox{\hyperlink{i8042_8h_ab3682a7593eea6b3a98269c3105714b1}{00053}}\ \textcolor{preprocessor}{\#define\ MSB\_X\_DELTA\ BIT(4)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00054}\mbox{\hyperlink{i8042_8h_a73e7f39e782c9d57707ff7a518d031a6}{00054}}\ \textcolor{preprocessor}{\#define\ MSB\_Y\_DELTA\ BIT(5)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00055}\mbox{\hyperlink{i8042_8h_a82dc3ac9577dabd19733ada75d2822d0}{00055}}\ \textcolor{preprocessor}{\#define\ X\_OVERFLOW\ BIT(6)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00056}\mbox{\hyperlink{i8042_8h_acd54c5569c84fd2d1710cccd190e138a}{00056}}\ \textcolor{preprocessor}{\#define\ Y\_OVERFLOW\ BIT(7)\ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00059}00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\_I8042\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,167 @@
+\doxysection{drivers/graphics/vbe.h File Reference}
+\hypertarget{vbe_8h}{}\label{vbe_8h}\index{drivers/graphics/vbe.h@{drivers/graphics/vbe.h}}
+
+
+This file defines several useful macros to use with the vbe.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{vbe_8h_a788384f9e790e0d341f6bc2205048e9f}{VIDEO\+\_\+\+INT\+\_\+\+INSTRUCTION}}~0x10
+\begin{DoxyCompactList}\small\item\em Software interrupt instruction for the video services. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{vbe_8h_aa0300eb67763c7b0e038f6486a31df07}{VBE\+\_\+\+FUNCTION}}~0x4F
+\begin{DoxyCompactList}\small\item\em Value to be set on register AH when calling a VBE function. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{vbe_8h_ab3ae6cab04af0d37663adf157287f987}{VBE\+\_\+\+CONTROLLER\+\_\+\+INFO}}~0x00
+\begin{DoxyCompactList}\small\item\em VBE function to get the controller information, set on AL. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{vbe_8h_a2ecbf8f92f9322fedec91461747c4843}{VBE\+\_\+\+MODE\+\_\+\+INFO}}~0x01
+\begin{DoxyCompactList}\small\item\em VBE function to get the mode information, set on AL. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{vbe_8h_a02477c4996ff058aee590b54f2146eb5}{VBE\+\_\+\+SET\+\_\+\+MODE}}~0x02
+\begin{DoxyCompactList}\small\item\em VBE function to set the mode, set on AL. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{vbe_8h_aba209728590d097395cf004cb397e160}{VBE\+\_\+\+GET\+\_\+\+MODE}}~0x03
+\begin{DoxyCompactList}\small\item\em VBE function to get the current mode, set on AL. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{vbe_8h_a4aba3d39cac7f9bc65f8b97a8daa88c6}{VBE\+\_\+\+FUNCTION\+\_\+\+SUPPORTED}}~0x4F
+\begin{DoxyCompactList}\small\item\em Output on register AL. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{vbe_8h_a8f091bb0d8cfa4a06da04951dc15abb8}{LINEAR\+\_\+\+FRAME\+\_\+\+BUFFER}}~BIT(14)
+\begin{DoxyCompactList}\small\item\em Sets the VRAM as a sucession of lines in memory. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{vbe_8h_aa1736cd349cf2b4f9dbe368c2a13e5be}{DIRECT\+\_\+\+COLOR}}~0x06
+\begin{DoxyCompactList}\small\item\em Colors are represented as R\+:G\+:B, size varies. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file defines several useful macros to use with the vbe. 
+
+
+
+Definition in file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{vbe_8h_aa1736cd349cf2b4f9dbe368c2a13e5be}\index{vbe.h@{vbe.h}!DIRECT\_COLOR@{DIRECT\_COLOR}}
+\index{DIRECT\_COLOR@{DIRECT\_COLOR}!vbe.h@{vbe.h}}
+\doxysubsubsection{\texorpdfstring{DIRECT\_COLOR}{DIRECT\_COLOR}}
+{\footnotesize\ttfamily \label{vbe_8h_aa1736cd349cf2b4f9dbe368c2a13e5be} 
+\#define DIRECT\+\_\+\+COLOR~0x06}
+
+
+
+Colors are represented as R\+:G\+:B, size varies. 
+
+
+
+Definition at line \mbox{\hyperlink{vbe_8h_source_l00026}{26}} of file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+
+\Hypertarget{vbe_8h_a8f091bb0d8cfa4a06da04951dc15abb8}\index{vbe.h@{vbe.h}!LINEAR\_FRAME\_BUFFER@{LINEAR\_FRAME\_BUFFER}}
+\index{LINEAR\_FRAME\_BUFFER@{LINEAR\_FRAME\_BUFFER}!vbe.h@{vbe.h}}
+\doxysubsubsection{\texorpdfstring{LINEAR\_FRAME\_BUFFER}{LINEAR\_FRAME\_BUFFER}}
+{\footnotesize\ttfamily \label{vbe_8h_a8f091bb0d8cfa4a06da04951dc15abb8} 
+\#define LINEAR\+\_\+\+FRAME\+\_\+\+BUFFER~BIT(14)}
+
+
+
+Sets the VRAM as a sucession of lines in memory. 
+
+
+
+Definition at line \mbox{\hyperlink{vbe_8h_source_l00023}{23}} of file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+
+\Hypertarget{vbe_8h_ab3ae6cab04af0d37663adf157287f987}\index{vbe.h@{vbe.h}!VBE\_CONTROLLER\_INFO@{VBE\_CONTROLLER\_INFO}}
+\index{VBE\_CONTROLLER\_INFO@{VBE\_CONTROLLER\_INFO}!vbe.h@{vbe.h}}
+\doxysubsubsection{\texorpdfstring{VBE\_CONTROLLER\_INFO}{VBE\_CONTROLLER\_INFO}}
+{\footnotesize\ttfamily \label{vbe_8h_ab3ae6cab04af0d37663adf157287f987} 
+\#define VBE\+\_\+\+CONTROLLER\+\_\+\+INFO~0x00}
+
+
+
+VBE function to get the controller information, set on AL. 
+
+
+
+Definition at line \mbox{\hyperlink{vbe_8h_source_l00016}{16}} of file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+
+\Hypertarget{vbe_8h_aa0300eb67763c7b0e038f6486a31df07}\index{vbe.h@{vbe.h}!VBE\_FUNCTION@{VBE\_FUNCTION}}
+\index{VBE\_FUNCTION@{VBE\_FUNCTION}!vbe.h@{vbe.h}}
+\doxysubsubsection{\texorpdfstring{VBE\_FUNCTION}{VBE\_FUNCTION}}
+{\footnotesize\ttfamily \label{vbe_8h_aa0300eb67763c7b0e038f6486a31df07} 
+\#define VBE\+\_\+\+FUNCTION~0x4F}
+
+
+
+Value to be set on register AH when calling a VBE function. 
+
+
+
+Definition at line \mbox{\hyperlink{vbe_8h_source_l00015}{15}} of file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+
+\Hypertarget{vbe_8h_a4aba3d39cac7f9bc65f8b97a8daa88c6}\index{vbe.h@{vbe.h}!VBE\_FUNCTION\_SUPPORTED@{VBE\_FUNCTION\_SUPPORTED}}
+\index{VBE\_FUNCTION\_SUPPORTED@{VBE\_FUNCTION\_SUPPORTED}!vbe.h@{vbe.h}}
+\doxysubsubsection{\texorpdfstring{VBE\_FUNCTION\_SUPPORTED}{VBE\_FUNCTION\_SUPPORTED}}
+{\footnotesize\ttfamily \label{vbe_8h_a4aba3d39cac7f9bc65f8b97a8daa88c6} 
+\#define VBE\+\_\+\+FUNCTION\+\_\+\+SUPPORTED~0x4F}
+
+
+
+Output on register AL. 
+
+
+
+Definition at line \mbox{\hyperlink{vbe_8h_source_l00020}{20}} of file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+
+\Hypertarget{vbe_8h_aba209728590d097395cf004cb397e160}\index{vbe.h@{vbe.h}!VBE\_GET\_MODE@{VBE\_GET\_MODE}}
+\index{VBE\_GET\_MODE@{VBE\_GET\_MODE}!vbe.h@{vbe.h}}
+\doxysubsubsection{\texorpdfstring{VBE\_GET\_MODE}{VBE\_GET\_MODE}}
+{\footnotesize\ttfamily \label{vbe_8h_aba209728590d097395cf004cb397e160} 
+\#define VBE\+\_\+\+GET\+\_\+\+MODE~0x03}
+
+
+
+VBE function to get the current mode, set on AL. 
+
+
+
+Definition at line \mbox{\hyperlink{vbe_8h_source_l00019}{19}} of file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+
+\Hypertarget{vbe_8h_a2ecbf8f92f9322fedec91461747c4843}\index{vbe.h@{vbe.h}!VBE\_MODE\_INFO@{VBE\_MODE\_INFO}}
+\index{VBE\_MODE\_INFO@{VBE\_MODE\_INFO}!vbe.h@{vbe.h}}
+\doxysubsubsection{\texorpdfstring{VBE\_MODE\_INFO}{VBE\_MODE\_INFO}}
+{\footnotesize\ttfamily \label{vbe_8h_a2ecbf8f92f9322fedec91461747c4843} 
+\#define VBE\+\_\+\+MODE\+\_\+\+INFO~0x01}
+
+
+
+VBE function to get the mode information, set on AL. 
+
+
+
+Definition at line \mbox{\hyperlink{vbe_8h_source_l00017}{17}} of file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+
+\Hypertarget{vbe_8h_a02477c4996ff058aee590b54f2146eb5}\index{vbe.h@{vbe.h}!VBE\_SET\_MODE@{VBE\_SET\_MODE}}
+\index{VBE\_SET\_MODE@{VBE\_SET\_MODE}!vbe.h@{vbe.h}}
+\doxysubsubsection{\texorpdfstring{VBE\_SET\_MODE}{VBE\_SET\_MODE}}
+{\footnotesize\ttfamily \label{vbe_8h_a02477c4996ff058aee590b54f2146eb5} 
+\#define VBE\+\_\+\+SET\+\_\+\+MODE~0x02}
+
+
+
+VBE function to set the mode, set on AL. 
+
+
+
+Definition at line \mbox{\hyperlink{vbe_8h_source_l00018}{18}} of file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+
+\Hypertarget{vbe_8h_a788384f9e790e0d341f6bc2205048e9f}\index{vbe.h@{vbe.h}!VIDEO\_INT\_INSTRUCTION@{VIDEO\_INT\_INSTRUCTION}}
+\index{VIDEO\_INT\_INSTRUCTION@{VIDEO\_INT\_INSTRUCTION}!vbe.h@{vbe.h}}
+\doxysubsubsection{\texorpdfstring{VIDEO\_INT\_INSTRUCTION}{VIDEO\_INT\_INSTRUCTION}}
+{\footnotesize\ttfamily \label{vbe_8h_a788384f9e790e0d341f6bc2205048e9f} 
+\#define VIDEO\+\_\+\+INT\+\_\+\+INSTRUCTION~0x10}
+
+
+
+Software interrupt instruction for the video services. 
+
+
+
+Definition at line \mbox{\hyperlink{vbe_8h_source_l00012}{12}} of file \mbox{\hyperlink{vbe_8h_source}{vbe.\+h}}.
+

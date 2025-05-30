@@ -1,0 +1,238 @@
+\doxysection{viewer/static\+\_\+images.h File Reference}
+\hypertarget{viewer_2static__images_8h}{}\label{viewer_2static__images_8h}\index{viewer/static\_images.h@{viewer/static\_images.h}}
+
+
+Header file for \doxylink{static__images_8c}{static\+\_\+images.\+c}.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{viewer_2static__images_8h_aab8850c1909f40895f325da0a1cc5cc2}{static\+\_\+images\+\_\+load}} ()
+\begin{DoxyCompactList}\small\item\em Loads all the static image xpms to the gloabl variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_aec04f7bedb48a68d82c619e0990466ab}{start\+\_\+background\+\_\+img}}
+\begin{DoxyCompactList}\small\item\em The starting menu background image. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_a174cae25c733d45db94019d45ded3f44}{game\+\_\+background\+\_\+img}}
+\begin{DoxyCompactList}\small\item\em The arena background image. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_aee6ae4209fbc87b5afd86bd1da86cfed}{game\+\_\+over\+\_\+background\+\_\+img}}
+\begin{DoxyCompactList}\small\item\em The sgame over menu background image. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_ac42da083f20abd2c95762cc5cdebba7d}{start\+\_\+selected\+\_\+img}}
+\begin{DoxyCompactList}\small\item\em The start option selected image. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_a20909f399cb5ba5d9af26153274b1c0b}{quit\+\_\+selected\+\_\+img}}
+\begin{DoxyCompactList}\small\item\em The quit option selected image. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_aeda44bbb9b73952ac08b1a27498f881c}{play\+\_\+again\+\_\+selected\+\_\+img}}
+\begin{DoxyCompactList}\small\item\em The play again option selected image. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_a9ce9e0d478ef949e70216576ba5dd05c}{back\+\_\+to\+\_\+menu\+\_\+selected\+\_\+img}}
+\begin{DoxyCompactList}\small\item\em The back to menu option selected image. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_a8f0dd96f5b3c20e5c5fa90664a76af15}{cursor\+\_\+img}}
+\begin{DoxyCompactList}\small\item\em The image for the cursor. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_a454cfb57acef7dde28523b93924db041}{health\+\_\+bars}} \mbox{[}5\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array for the health bar images. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_a4f1167c1447e51cbbeb74999c2d2deb2}{number\+\_\+sprites}} \mbox{[}10\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array for number sprites 0-\/9. \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_ae6e4bac9d2ef5599afcb5371a5413a01}{two\+\_\+points}}
+\begin{DoxyCompactList}\small\item\em The image for the character \+: \end{DoxyCompactList}\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{viewer_2static__images_8h_a63597462638a3efd34eea95ca248f734}{pr\+\_\+img}}
+\begin{DoxyCompactList}\small\item\em The letters shown in the personal record. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{static__images_8c}{static\+\_\+images.\+c}. 
+
+This file declares all the functions to be used for the static images, as well as the static image global variables themselves 
+
+Definition in file \mbox{\hyperlink{viewer_2static__images_8h_source}{static\+\_\+images.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{viewer_2static__images_8h_aab8850c1909f40895f325da0a1cc5cc2}\index{static\_images.h@{static\_images.h}!static\_images\_load@{static\_images\_load}}
+\index{static\_images\_load@{static\_images\_load}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{static\_images\_load()}{static\_images\_load()}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_aab8850c1909f40895f325da0a1cc5cc2} 
+int static\+\_\+images\+\_\+load (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Loads all the static image xpms to the gloabl variables. 
+
+Also sets up the global arrays of images.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{viewer_2static__images_8h_a9ce9e0d478ef949e70216576ba5dd05c}\index{static\_images.h@{static\_images.h}!back\_to\_menu\_selected\_img@{back\_to\_menu\_selected\_img}}
+\index{back\_to\_menu\_selected\_img@{back\_to\_menu\_selected\_img}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{back\_to\_menu\_selected\_img}{back\_to\_menu\_selected\_img}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_a9ce9e0d478ef949e70216576ba5dd05c} 
+xpm\+\_\+image\+\_\+t back\+\_\+to\+\_\+menu\+\_\+selected\+\_\+img\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The back to menu option selected image. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00015}{15}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_a8f0dd96f5b3c20e5c5fa90664a76af15}\index{static\_images.h@{static\_images.h}!cursor\_img@{cursor\_img}}
+\index{cursor\_img@{cursor\_img}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{cursor\_img}{cursor\_img}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_a8f0dd96f5b3c20e5c5fa90664a76af15} 
+xpm\+\_\+image\+\_\+t cursor\+\_\+img\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The image for the cursor. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00016}{16}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_a174cae25c733d45db94019d45ded3f44}\index{static\_images.h@{static\_images.h}!game\_background\_img@{game\_background\_img}}
+\index{game\_background\_img@{game\_background\_img}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{game\_background\_img}{game\_background\_img}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_a174cae25c733d45db94019d45ded3f44} 
+xpm\+\_\+image\+\_\+t game\+\_\+background\+\_\+img\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The arena background image. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00010}{10}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_aee6ae4209fbc87b5afd86bd1da86cfed}\index{static\_images.h@{static\_images.h}!game\_over\_background\_img@{game\_over\_background\_img}}
+\index{game\_over\_background\_img@{game\_over\_background\_img}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{game\_over\_background\_img}{game\_over\_background\_img}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_aee6ae4209fbc87b5afd86bd1da86cfed} 
+xpm\+\_\+image\+\_\+t game\+\_\+over\+\_\+background\+\_\+img\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The sgame over menu background image. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00011}{11}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_a454cfb57acef7dde28523b93924db041}\index{static\_images.h@{static\_images.h}!health\_bars@{health\_bars}}
+\index{health\_bars@{health\_bars}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{health\_bars}{health\_bars}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_a454cfb57acef7dde28523b93924db041} 
+xpm\+\_\+image\+\_\+t health\+\_\+bars\mbox{[}5\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Array for the health bar images. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00017}{17}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_a4f1167c1447e51cbbeb74999c2d2deb2}\index{static\_images.h@{static\_images.h}!number\_sprites@{number\_sprites}}
+\index{number\_sprites@{number\_sprites}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{number\_sprites}{number\_sprites}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_a4f1167c1447e51cbbeb74999c2d2deb2} 
+xpm\+\_\+image\+\_\+t number\+\_\+sprites\mbox{[}10\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Array for number sprites 0-\/9. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00018}{18}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_aeda44bbb9b73952ac08b1a27498f881c}\index{static\_images.h@{static\_images.h}!play\_again\_selected\_img@{play\_again\_selected\_img}}
+\index{play\_again\_selected\_img@{play\_again\_selected\_img}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{play\_again\_selected\_img}{play\_again\_selected\_img}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_aeda44bbb9b73952ac08b1a27498f881c} 
+xpm\+\_\+image\+\_\+t play\+\_\+again\+\_\+selected\+\_\+img\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The play again option selected image. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00014}{14}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_a63597462638a3efd34eea95ca248f734}\index{static\_images.h@{static\_images.h}!pr\_img@{pr\_img}}
+\index{pr\_img@{pr\_img}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{pr\_img}{pr\_img}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_a63597462638a3efd34eea95ca248f734} 
+xpm\+\_\+image\+\_\+t pr\+\_\+img\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The letters shown in the personal record. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00020}{20}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_a20909f399cb5ba5d9af26153274b1c0b}\index{static\_images.h@{static\_images.h}!quit\_selected\_img@{quit\_selected\_img}}
+\index{quit\_selected\_img@{quit\_selected\_img}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{quit\_selected\_img}{quit\_selected\_img}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_a20909f399cb5ba5d9af26153274b1c0b} 
+xpm\+\_\+image\+\_\+t quit\+\_\+selected\+\_\+img\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The quit option selected image. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00013}{13}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_aec04f7bedb48a68d82c619e0990466ab}\index{static\_images.h@{static\_images.h}!start\_background\_img@{start\_background\_img}}
+\index{start\_background\_img@{start\_background\_img}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{start\_background\_img}{start\_background\_img}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_aec04f7bedb48a68d82c619e0990466ab} 
+xpm\+\_\+image\+\_\+t start\+\_\+background\+\_\+img\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The starting menu background image. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00009}{9}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_ac42da083f20abd2c95762cc5cdebba7d}\index{static\_images.h@{static\_images.h}!start\_selected\_img@{start\_selected\_img}}
+\index{start\_selected\_img@{start\_selected\_img}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{start\_selected\_img}{start\_selected\_img}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_ac42da083f20abd2c95762cc5cdebba7d} 
+xpm\+\_\+image\+\_\+t start\+\_\+selected\+\_\+img\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The start option selected image. 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00012}{12}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+
+\Hypertarget{viewer_2static__images_8h_ae6e4bac9d2ef5599afcb5371a5413a01}\index{static\_images.h@{static\_images.h}!two\_points@{two\_points}}
+\index{two\_points@{two\_points}!static\_images.h@{static\_images.h}}
+\doxysubsubsection{\texorpdfstring{two\_points}{two\_points}}
+{\footnotesize\ttfamily \label{viewer_2static__images_8h_ae6e4bac9d2ef5599afcb5371a5413a01} 
+xpm\+\_\+image\+\_\+t two\+\_\+points\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The image for the character \+: 
+
+
+
+Definition at line \mbox{\hyperlink{static__images_8c_source_l00019}{19}} of file \mbox{\hyperlink{static__images_8c_source}{static\+\_\+images.\+c}}.
+

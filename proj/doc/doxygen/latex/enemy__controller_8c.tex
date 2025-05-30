@@ -1,0 +1,305 @@
+\doxysection{controller/enemy\+\_\+controller.c File Reference}
+\hypertarget{enemy__controller_8c}{}\label{enemy__controller_8c}\index{controller/enemy\_controller.c@{controller/enemy\_controller.c}}
+
+
+Source code to control the enemies.  
+
+
+{\ttfamily \#include "{}enemy\+\_\+controller.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{enemy__controller_8c_a544651f3405cff79c40d898a8e54f507}{MAX\+\_\+\+ENEMIES}}~50 + (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\+\_\+current\+\_\+frame}}() -\/ \mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\+\_\+arena\+\_\+starting\+\_\+frame}}())/120
+\begin{DoxyCompactList}\small\item\em Maximum number of enemies that can exist at once. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{enemy__controller_8c_a347c3c3d5f903c63cb3b3da65fe02f4f}{NORMAL\+\_\+\+SPAWN\+\_\+\+RATE}}~120 -\/ MIN((\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\+\_\+current\+\_\+frame}}() -\/ \mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\+\_\+arena\+\_\+starting\+\_\+frame}}())/120, 110)
+\begin{DoxyCompactList}\small\item\em Base enemy spawn rate, starts at 2 per second and increases over time. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{enemy__controller_8c_ad8cc4a8e54d8127989da5ddbdea50727}{MUMMY\+\_\+\+SPAWN\+\_\+\+RATE}}~((\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\+\_\+current\+\_\+frame}}() -\/ \mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\+\_\+arena\+\_\+starting\+\_\+frame}}()) $<$ 7200 ? INFINITY \+: 120 -\/ MIN((\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\+\_\+current\+\_\+frame}}() -\/ \mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\+\_\+arena\+\_\+starting\+\_\+frame}}() -\/ 7200)/60, 110))
+\begin{DoxyCompactList}\small\item\em Mummy enemies spawn rate. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{enemy__controller_8c_afb7a852c25e37e522fcf4059ca07e039}{setup\+\_\+enemy\+\_\+controller}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the enemy controller for a new game by resetting all the static variables. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enemy__controller_8c_a60b46083beb9a9caca98687b50a23847}{handle\+\_\+enemy\+\_\+spawning}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Spawns enemies on the arena with cooldown. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enemy__controller_8c_a3c40e2518b4200552b89f80c1cc8d11d}{spawn\+\_\+enemy}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}}, double speed\+\_\+multiplier, uint32\+\_\+t health, \mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*}animations)
+\begin{DoxyCompactList}\small\item\em Spawns an enemy offscreen. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{enemy__controller_8c_a9c91dd4ab57fb7674dd08b25f0ddaf35}{check\+\_\+player\+\_\+collision}} (\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}enemy, \mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}player)
+\begin{DoxyCompactList}\small\item\em Checks if the player is colliding with the enemy. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{enemy__controller_8c_abed479c30c62900d890c8ec4d48f99bc}{check\+\_\+attack\+\_\+collision}} (\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}enemy, \mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structattack}{attack}})
+\begin{DoxyCompactList}\small\item\em Checks if the enemy is colliding with the attack. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{enemy__controller_8c_a3b595a26d7d21fae057f774ec77b3e0c}{handle\+\_\+enemy\+\_\+collisions}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Checks the collisions of the active enemies with the player and with attacks. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{enemy__controller_8c_a0eacbbffc80e6ed032e27eef7bd25c55}{enemies\+\_\+move}} (\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structarena}{arena}})
+\begin{DoxyCompactList}\small\item\em Moves all the enemies one frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{enemy__controller_8c_acb5efdf8b3fa07d4a331bd70305c1c46}{enemy\+\_\+count}} = 0
+\begin{DoxyCompactList}\small\item\em Track the active enemy count. \end{DoxyCompactList}\item 
+static unsigned long \mbox{\hyperlink{enemy__controller_8c_a7d95c7d9eba30d8e1bad230466e60c5a}{last\+\_\+normal\+\_\+enemy\+\_\+spawn}} = 0
+\begin{DoxyCompactList}\small\item\em Track when we last spawned a normal enemy. \end{DoxyCompactList}\item 
+static unsigned long \mbox{\hyperlink{enemy__controller_8c_ae94841645854ed32efc1ba102867d91c}{last\+\_\+mummy\+\_\+spawn}} = 0
+\begin{DoxyCompactList}\small\item\em Track when we last spawned a mummy enenmy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code to control the enemies. 
+
+This file handles the logic for the enemies, including the their spawn mechanics and collisions. 
+
+Definition in file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{enemy__controller_8c_a544651f3405cff79c40d898a8e54f507}\index{enemy\_controller.c@{enemy\_controller.c}!MAX\_ENEMIES@{MAX\_ENEMIES}}
+\index{MAX\_ENEMIES@{MAX\_ENEMIES}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_ENEMIES}{MAX\_ENEMIES}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_a544651f3405cff79c40d898a8e54f507} 
+\#define MAX\+\_\+\+ENEMIES~50 + (\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\+\_\+current\+\_\+frame}}() -\/ \mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\+\_\+arena\+\_\+starting\+\_\+frame}}())/120}
+
+
+
+Maximum number of enemies that can exist at once. 
+
+Increases by 1 every two seconds (every 120 frames). 
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00016}{16}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_ad8cc4a8e54d8127989da5ddbdea50727}\index{enemy\_controller.c@{enemy\_controller.c}!MUMMY\_SPAWN\_RATE@{MUMMY\_SPAWN\_RATE}}
+\index{MUMMY\_SPAWN\_RATE@{MUMMY\_SPAWN\_RATE}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{MUMMY\_SPAWN\_RATE}{MUMMY\_SPAWN\_RATE}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_ad8cc4a8e54d8127989da5ddbdea50727} 
+\#define MUMMY\+\_\+\+SPAWN\+\_\+\+RATE~((\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\+\_\+current\+\_\+frame}}() -\/ \mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\+\_\+arena\+\_\+starting\+\_\+frame}}()) $<$ 7200 ? INFINITY \+: 120 -\/ MIN((\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\+\_\+current\+\_\+frame}}() -\/ \mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\+\_\+arena\+\_\+starting\+\_\+frame}}() -\/ 7200)/60, 110))}
+
+
+
+Mummy enemies spawn rate. 
+
+No mummy spawns for the first 2 minutes (7200 frames). After that, spawn rate follows the normal spawn rate formula with a 2-\/minute delay. 
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00032}{32}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_a347c3c3d5f903c63cb3b3da65fe02f4f}\index{enemy\_controller.c@{enemy\_controller.c}!NORMAL\_SPAWN\_RATE@{NORMAL\_SPAWN\_RATE}}
+\index{NORMAL\_SPAWN\_RATE@{NORMAL\_SPAWN\_RATE}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{NORMAL\_SPAWN\_RATE}{NORMAL\_SPAWN\_RATE}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_a347c3c3d5f903c63cb3b3da65fe02f4f} 
+\#define NORMAL\+\_\+\+SPAWN\+\_\+\+RATE~120 -\/ MIN((\mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\+\_\+current\+\_\+frame}}() -\/ \mbox{\hyperlink{arena__controller_8c_a1fbac95d897cdd6d73418d49d79f43eb}{get\+\_\+arena\+\_\+starting\+\_\+frame}}())/120, 110)}
+
+
+
+Base enemy spawn rate, starts at 2 per second and increases over time. 
+
+Starts at 120 frames per enemy (2/sec), down to 10 frames per enemy (6/sec) as time progresses. 
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00024}{24}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{enemy__controller_8c_abed479c30c62900d890c8ec4d48f99bc}\index{enemy\_controller.c@{enemy\_controller.c}!check\_attack\_collision@{check\_attack\_collision}}
+\index{check\_attack\_collision@{check\_attack\_collision}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{check\_attack\_collision()}{check\_attack\_collision()}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_abed479c30c62900d890c8ec4d48f99bc} 
+bool check\+\_\+attack\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}}]{enemy}{, }\item[{\mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*}}]{attack}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the enemy is colliding with the attack. 
+
+Uses a simple box collision detection utilizing the image sizes of the sprites. Inflates the hitboxes by a small ammount to make the collisions easier to achieve.
+
+
+\begin{DoxyParams}{Parameters}
+{\em enemy} & A pointer to the enemy entity to check \\
+\hline
+{\em player} & A pointer to the player entity to check\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the entities are colliding, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00110}{110}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_a9c91dd4ab57fb7674dd08b25f0ddaf35}\index{enemy\_controller.c@{enemy\_controller.c}!check\_player\_collision@{check\_player\_collision}}
+\index{check\_player\_collision@{check\_player\_collision}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{check\_player\_collision()}{check\_player\_collision()}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_a9c91dd4ab57fb7674dd08b25f0ddaf35} 
+bool check\+\_\+player\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}}]{enemy}{, }\item[{\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the player is colliding with the enemy. 
+
+Uses a simple box collision detection utilizing the image sizes of the sprites. Deflates the hitboxes by a small ammount to make the collisions more accurate.
+
+
+\begin{DoxyParams}{Parameters}
+{\em enemy} & A pointer to the enemy entity to check \\
+\hline
+{\em player} & A pointer to the player entity to check\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the entities are colliding, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00094}{94}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_a0eacbbffc80e6ed032e27eef7bd25c55}\index{enemy\_controller.c@{enemy\_controller.c}!enemies\_move@{enemies\_move}}
+\index{enemies\_move@{enemies\_move}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{enemies\_move()}{enemies\_move()}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_a0eacbbffc80e6ed032e27eef7bd25c55} 
+void enemies\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Moves all the enemies one frame. 
+
+Iterates through the list of active enemies and calculates the direction they need to move (towards the player).
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the arena whose enemies will be moved \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00165}{165}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_a3b595a26d7d21fae057f774ec77b3e0c}\index{enemy\_controller.c@{enemy\_controller.c}!handle\_enemy\_collisions@{handle\_enemy\_collisions}}
+\index{handle\_enemy\_collisions@{handle\_enemy\_collisions}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{handle\_enemy\_collisions()}{handle\_enemy\_collisions()}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_a3b595a26d7d21fae057f774ec77b3e0c} 
+bool handle\+\_\+enemy\+\_\+collisions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Checks the collisions of the active enemies with the player and with attacks. 
+
+Iterates through the list of active enemies and decreases their health if hit by an attack, using check\+\_\+attack\+\_\+collison() to check, removing them from the arena if the health reaches 0. ~\newline
+ If the enemy was not removed, calls \doxylink{enemy__controller_8h_a9c91dd4ab57fb7674dd08b25f0ddaf35}{check\+\_\+player\+\_\+collision()} to check if the it collided with the player.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the arena where the collisions will be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if an enemy collided with the player, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00123}{123}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_a60b46083beb9a9caca98687b50a23847}\index{enemy\_controller.c@{enemy\_controller.c}!handle\_enemy\_spawning@{handle\_enemy\_spawning}}
+\index{handle\_enemy\_spawning@{handle\_enemy\_spawning}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{handle\_enemy\_spawning()}{handle\_enemy\_spawning()}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_a60b46083beb9a9caca98687b50a23847} 
+void handle\+\_\+enemy\+\_\+spawning (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{}\end{DoxyParamCaption})}
+
+
+
+Spawns enemies on the arena with cooldown. 
+
+Spawns different types of enemies with different spawn rates on the arena, limited by the \doxylink{enemy__controller_8c_a544651f3405cff79c40d898a8e54f507}{MAX\+\_\+\+ENEMIES} count.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the arena where the enemies will spawn \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00044}{44}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_afb7a852c25e37e522fcf4059ca07e039}\index{enemy\_controller.c@{enemy\_controller.c}!setup\_enemy\_controller@{setup\_enemy\_controller}}
+\index{setup\_enemy\_controller@{setup\_enemy\_controller}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{setup\_enemy\_controller()}{setup\_enemy\_controller()}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_afb7a852c25e37e522fcf4059ca07e039} 
+void setup\+\_\+enemy\+\_\+controller (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sets up the enemy controller for a new game by resetting all the static variables. 
+
+Resets \doxylink{enemy__controller_8c_a7d95c7d9eba30d8e1bad230466e60c5a}{last\+\_\+normal\+\_\+enemy\+\_\+spawn}, \doxylink{enemy__controller_8c_ae94841645854ed32efc1ba102867d91c}{last\+\_\+mummy\+\_\+spawn} and \doxylink{enemy__controller_8c_acb5efdf8b3fa07d4a331bd70305c1c46}{enemy\+\_\+count}. 
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00038}{38}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_a3c40e2518b4200552b89f80c1cc8d11d}\index{enemy\_controller.c@{enemy\_controller.c}!spawn\_enemy@{spawn\_enemy}}
+\index{spawn\_enemy@{spawn\_enemy}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{spawn\_enemy()}{spawn\_enemy()}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_a3c40e2518b4200552b89f80c1cc8d11d} 
+void spawn\+\_\+enemy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*}}]{arena}{, }\item[{double}]{speed\+\_\+multiplier}{, }\item[{uint32\+\_\+t}]{health}{, }\item[{\mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*}}]{animations}{}\end{DoxyParamCaption})}
+
+
+
+Spawns an enemy offscreen. 
+
+Picks a random position 10 pixels away from the map limit and spawns an enemy on the resulting random position, adding it to the arena\textquotesingle{}s list of active enemies.
+
+
+\begin{DoxyParams}{Parameters}
+{\em arena} & A pointer to the arena where the enemy will be spawned \\
+\hline
+{\em speed\+\_\+multiplier} & The speed multiplier of the new enemy \\
+\hline
+{\em health} & The health of the new enemy \\
+\hline
+{\em animations} & A pointer to the animations the new enemy will use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00058}{58}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{enemy__controller_8c_acb5efdf8b3fa07d4a331bd70305c1c46}\index{enemy\_controller.c@{enemy\_controller.c}!enemy\_count@{enemy\_count}}
+\index{enemy\_count@{enemy\_count}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{enemy\_count}{enemy\_count}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_acb5efdf8b3fa07d4a331bd70305c1c46} 
+uint32\+\_\+t enemy\+\_\+count = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Track the active enemy count. 
+
+
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00034}{34}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_ae94841645854ed32efc1ba102867d91c}\index{enemy\_controller.c@{enemy\_controller.c}!last\_mummy\_spawn@{last\_mummy\_spawn}}
+\index{last\_mummy\_spawn@{last\_mummy\_spawn}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{last\_mummy\_spawn}{last\_mummy\_spawn}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_ae94841645854ed32efc1ba102867d91c} 
+unsigned long last\+\_\+mummy\+\_\+spawn = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Track when we last spawned a mummy enenmy. 
+
+
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00036}{36}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+
+\Hypertarget{enemy__controller_8c_a7d95c7d9eba30d8e1bad230466e60c5a}\index{enemy\_controller.c@{enemy\_controller.c}!last\_normal\_enemy\_spawn@{last\_normal\_enemy\_spawn}}
+\index{last\_normal\_enemy\_spawn@{last\_normal\_enemy\_spawn}!enemy\_controller.c@{enemy\_controller.c}}
+\doxysubsubsection{\texorpdfstring{last\_normal\_enemy\_spawn}{last\_normal\_enemy\_spawn}}
+{\footnotesize\ttfamily \label{enemy__controller_8c_a7d95c7d9eba30d8e1bad230466e60c5a} 
+unsigned long last\+\_\+normal\+\_\+enemy\+\_\+spawn = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Track when we last spawned a normal enemy. 
+
+
+
+Definition at line \mbox{\hyperlink{enemy__controller_8c_source_l00035}{35}} of file \mbox{\hyperlink{enemy__controller_8c_source}{enemy\+\_\+controller.\+c}}.
+

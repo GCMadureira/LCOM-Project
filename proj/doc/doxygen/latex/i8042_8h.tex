@@ -1,0 +1,519 @@
+\doxysection{drivers/kbc/i8042.h File Reference}
+\hypertarget{i8042_8h}{}\label{i8042_8h}\index{drivers/kbc/i8042.h@{drivers/kbc/i8042.h}}
+
+
+This file defines several useful macros to use with the kbc.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{i8042_8h_a2d17911b50c0aeebb2e3325c5b36d4f2}{KEYBOARD\+\_\+\+IRQ}}~1
+\begin{DoxyCompactList}\small\item\em keyboard IRQ line \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a85964cb90343bb1a029b1d1b4229f910}{MOUSE\+\_\+\+IRQ}}~12
+\begin{DoxyCompactList}\small\item\em mouse IRQ line \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a34b14687d83496940a236351fbbb1aea}{KBC\+\_\+\+STAT\+\_\+\+REG}}~0x64
+\begin{DoxyCompactList}\small\item\em KBC status register (for reading) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a6d57c7927a10f638c83046b52c8caac9}{KBC\+\_\+\+CMD\+\_\+\+REG}}~0x64
+\begin{DoxyCompactList}\small\item\em KBC command register (for writing) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_aa848ce3f74697985d49a5a8d10bbf01f}{KBC\+\_\+\+OUT\+\_\+\+REG}}~0x60
+\begin{DoxyCompactList}\small\item\em KBC output register (for reading) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_adc53833990e12dc1b427a17fdbbcf210}{KBC\+\_\+\+CMDARG\+\_\+\+REG}}~0x60
+\begin{DoxyCompactList}\small\item\em KBC command argument register (for writing) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_aea2ef6dda1aabebf291eeee29b66c04a}{KBC\+\_\+\+PAR\+\_\+\+ERR}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em KBC status byte parity error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_ae31c3653f5881b02cbfdd4ccbb7ccf50}{KBC\+\_\+\+TO\+\_\+\+ERR}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em KBC status byte timeout error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a5a01c98e394aedacd058f4dc3b953bb0}{KBC\+\_\+\+ST\+\_\+\+AUX}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em KBC status byte aux bit (1 if mouse data, 0 if keyboard data) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a141ccbc1ab10dfcdd1d450414dba13d4}{KBC\+\_\+\+ST\+\_\+\+IBF}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em KBC status byte input buffer full. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a38010ed603a29beee559b2c20de50dcd}{KBC\+\_\+\+ST\+\_\+\+OBF}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em KBC status byte output buffer full. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_ab82996fcd177742a38d5123747e233f6}{RD\+\_\+\+CMD\+\_\+\+BYTE}}~0x20
+\begin{DoxyCompactList}\small\item\em KBC command to read command byte. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_adb6f94786815aed6ef5e167dd49eee5f}{WR\+\_\+\+CMD\+\_\+\+BYTE}}~0x60
+\begin{DoxyCompactList}\small\item\em KBC command to write command byte. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_aaf2a34f36d4c1337f4105c705cacc7c5}{WR\+\_\+\+MOUSE\+\_\+\+BYTE}}~0x\+D4
+\begin{DoxyCompactList}\small\item\em KBC command to write a byte directly to the mouse. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_acf07f310afe5dc074dacd55c708b0c4c}{KBD\+\_\+\+ENABLE\+\_\+\+INT}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em KBC command byte, bit to enable keyboard interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_aa2f61ec70925c501a76819a337a1de33}{MOUSE\+\_\+\+ENABLE\+\_\+\+INT}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em KBC command byte, bit to enable mouse interrupts. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a882aecbb57ed79398b9af6ff2289031c}{ESC\+\_\+\+KEY\+\_\+\+BREAKCODE}}~0x81
+\begin{DoxyCompactList}\small\item\em ESC key scancode\textquotesingle{}s breakcode. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a8d8bd9d41130b5e8b65ad1c4c2e1b5ff}{EXTENDED\+\_\+\+SCANCODE}}~0x\+E0
+\begin{DoxyCompactList}\small\item\em First of two bytes scancode. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_ad6ff09b5058171ce69f6485dbef6bfaa}{BREAKCODE}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Breakcode bit. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a8e51dfaa390f8cfb4b1b286fb3b22aff}{DISABLE\+\_\+\+DATA\+\_\+\+REPORTING}}~0x\+F5
+\begin{DoxyCompactList}\small\item\em Mouse command to disable data reporting in stream mode. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a9c64a38cca5c7aabe0ab2d8c5e21e723}{ENABLE\+\_\+\+DATA\+\_\+\+REPORTING}}~0x\+F4
+\begin{DoxyCompactList}\small\item\em Mouse command to enable data reporting in stream mode. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a8f4d5b24d9f4d14ed5f184fc1bfceec9}{MOUSE\+\_\+\+BYTE\+\_\+\+ACK}}~0x\+FA
+\begin{DoxyCompactList}\small\item\em Acknowledgement value if the mouse byte sent is valid. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_aafe9a5517c6d76b8ca74c5a5f0ff1560}{MOUSE\+\_\+\+BYTE\+\_\+\+NACK}}~0x\+FE
+\begin{DoxyCompactList}\small\item\em Acknowledgement value if the mouse byte sent is invalid, resend. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_aac749771e826a28b5720c2b3ba89f6cc}{MOUSE\+\_\+\+BYTE\+\_\+\+ERROR}}~0x\+FC
+\begin{DoxyCompactList}\small\item\em Acknowledgement value if the mouse byte sent generated and error. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a7d5b0d5dc0d3196a3c1ba6b0f741f99c}{LEFT\+\_\+\+BUTTON\+\_\+\+PRESSED}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em This bit is set if the left mouse button is pressed. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_ae25c0456db9d86be940cfc21ea03dc07}{RIGHT\+\_\+\+BUTTON\+\_\+\+PRESSED}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em This bit is set if the right mouse button is pressed. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a3f65f2f4909af3d848c42423d50d64b5}{MIDDLE\+\_\+\+BUTTON\+\_\+\+PRESSD}}~BIT(2)
+\begin{DoxyCompactList}\small\item\em This bit is set if the middle mouse button is pressed. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_ab3682a7593eea6b3a98269c3105714b1}{MSB\+\_\+\+X\+\_\+\+DELTA}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em This bit represents the sign of the x movement. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a73e7f39e782c9d57707ff7a518d031a6}{MSB\+\_\+\+Y\+\_\+\+DELTA}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em This bit represents the sign of the y movement. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_a82dc3ac9577dabd19733ada75d2822d0}{X\+\_\+\+OVERFLOW}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em This bit is set if the 8 bit x movement overflowed. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{i8042_8h_acd54c5569c84fd2d1710cccd190e138a}{Y\+\_\+\+OVERFLOW}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em This bit is set if the 8 bit y movement overflowed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file defines several useful macros to use with the kbc. 
+
+
+
+Definition in file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{i8042_8h_ad6ff09b5058171ce69f6485dbef6bfaa}\index{i8042.h@{i8042.h}!BREAKCODE@{BREAKCODE}}
+\index{BREAKCODE@{BREAKCODE}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{BREAKCODE}{BREAKCODE}}
+{\footnotesize\ttfamily \label{i8042_8h_ad6ff09b5058171ce69f6485dbef6bfaa} 
+\#define BREAKCODE~BIT(7)}
+
+
+
+Breakcode bit. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00040}{40}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a8e51dfaa390f8cfb4b1b286fb3b22aff}\index{i8042.h@{i8042.h}!DISABLE\_DATA\_REPORTING@{DISABLE\_DATA\_REPORTING}}
+\index{DISABLE\_DATA\_REPORTING@{DISABLE\_DATA\_REPORTING}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{DISABLE\_DATA\_REPORTING}{DISABLE\_DATA\_REPORTING}}
+{\footnotesize\ttfamily \label{i8042_8h_a8e51dfaa390f8cfb4b1b286fb3b22aff} 
+\#define DISABLE\+\_\+\+DATA\+\_\+\+REPORTING~0x\+F5}
+
+
+
+Mouse command to disable data reporting in stream mode. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00043}{43}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a9c64a38cca5c7aabe0ab2d8c5e21e723}\index{i8042.h@{i8042.h}!ENABLE\_DATA\_REPORTING@{ENABLE\_DATA\_REPORTING}}
+\index{ENABLE\_DATA\_REPORTING@{ENABLE\_DATA\_REPORTING}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_DATA\_REPORTING}{ENABLE\_DATA\_REPORTING}}
+{\footnotesize\ttfamily \label{i8042_8h_a9c64a38cca5c7aabe0ab2d8c5e21e723} 
+\#define ENABLE\+\_\+\+DATA\+\_\+\+REPORTING~0x\+F4}
+
+
+
+Mouse command to enable data reporting in stream mode. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00044}{44}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a882aecbb57ed79398b9af6ff2289031c}\index{i8042.h@{i8042.h}!ESC\_KEY\_BREAKCODE@{ESC\_KEY\_BREAKCODE}}
+\index{ESC\_KEY\_BREAKCODE@{ESC\_KEY\_BREAKCODE}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{ESC\_KEY\_BREAKCODE}{ESC\_KEY\_BREAKCODE}}
+{\footnotesize\ttfamily \label{i8042_8h_a882aecbb57ed79398b9af6ff2289031c} 
+\#define ESC\+\_\+\+KEY\+\_\+\+BREAKCODE~0x81}
+
+
+
+ESC key scancode\textquotesingle{}s breakcode. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00038}{38}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a8d8bd9d41130b5e8b65ad1c4c2e1b5ff}\index{i8042.h@{i8042.h}!EXTENDED\_SCANCODE@{EXTENDED\_SCANCODE}}
+\index{EXTENDED\_SCANCODE@{EXTENDED\_SCANCODE}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{EXTENDED\_SCANCODE}{EXTENDED\_SCANCODE}}
+{\footnotesize\ttfamily \label{i8042_8h_a8d8bd9d41130b5e8b65ad1c4c2e1b5ff} 
+\#define EXTENDED\+\_\+\+SCANCODE~0x\+E0}
+
+
+
+First of two bytes scancode. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00039}{39}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a6d57c7927a10f638c83046b52c8caac9}\index{i8042.h@{i8042.h}!KBC\_CMD\_REG@{KBC\_CMD\_REG}}
+\index{KBC\_CMD\_REG@{KBC\_CMD\_REG}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_CMD\_REG}{KBC\_CMD\_REG}}
+{\footnotesize\ttfamily \label{i8042_8h_a6d57c7927a10f638c83046b52c8caac9} 
+\#define KBC\+\_\+\+CMD\+\_\+\+REG~0x64}
+
+
+
+KBC command register (for writing) 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00017}{17}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_adc53833990e12dc1b427a17fdbbcf210}\index{i8042.h@{i8042.h}!KBC\_CMDARG\_REG@{KBC\_CMDARG\_REG}}
+\index{KBC\_CMDARG\_REG@{KBC\_CMDARG\_REG}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_CMDARG\_REG}{KBC\_CMDARG\_REG}}
+{\footnotesize\ttfamily \label{i8042_8h_adc53833990e12dc1b427a17fdbbcf210} 
+\#define KBC\+\_\+\+CMDARG\+\_\+\+REG~0x60}
+
+
+
+KBC command argument register (for writing) 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00019}{19}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_aa848ce3f74697985d49a5a8d10bbf01f}\index{i8042.h@{i8042.h}!KBC\_OUT\_REG@{KBC\_OUT\_REG}}
+\index{KBC\_OUT\_REG@{KBC\_OUT\_REG}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_OUT\_REG}{KBC\_OUT\_REG}}
+{\footnotesize\ttfamily \label{i8042_8h_aa848ce3f74697985d49a5a8d10bbf01f} 
+\#define KBC\+\_\+\+OUT\+\_\+\+REG~0x60}
+
+
+
+KBC output register (for reading) 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00018}{18}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_aea2ef6dda1aabebf291eeee29b66c04a}\index{i8042.h@{i8042.h}!KBC\_PAR\_ERR@{KBC\_PAR\_ERR}}
+\index{KBC\_PAR\_ERR@{KBC\_PAR\_ERR}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_PAR\_ERR}{KBC\_PAR\_ERR}}
+{\footnotesize\ttfamily \label{i8042_8h_aea2ef6dda1aabebf291eeee29b66c04a} 
+\#define KBC\+\_\+\+PAR\+\_\+\+ERR~BIT(7)}
+
+
+
+KBC status byte parity error. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00022}{22}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a5a01c98e394aedacd058f4dc3b953bb0}\index{i8042.h@{i8042.h}!KBC\_ST\_AUX@{KBC\_ST\_AUX}}
+\index{KBC\_ST\_AUX@{KBC\_ST\_AUX}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_ST\_AUX}{KBC\_ST\_AUX}}
+{\footnotesize\ttfamily \label{i8042_8h_a5a01c98e394aedacd058f4dc3b953bb0} 
+\#define KBC\+\_\+\+ST\+\_\+\+AUX~BIT(5)}
+
+
+
+KBC status byte aux bit (1 if mouse data, 0 if keyboard data) 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00024}{24}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a141ccbc1ab10dfcdd1d450414dba13d4}\index{i8042.h@{i8042.h}!KBC\_ST\_IBF@{KBC\_ST\_IBF}}
+\index{KBC\_ST\_IBF@{KBC\_ST\_IBF}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_ST\_IBF}{KBC\_ST\_IBF}}
+{\footnotesize\ttfamily \label{i8042_8h_a141ccbc1ab10dfcdd1d450414dba13d4} 
+\#define KBC\+\_\+\+ST\+\_\+\+IBF~BIT(1)}
+
+
+
+KBC status byte input buffer full. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00025}{25}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a38010ed603a29beee559b2c20de50dcd}\index{i8042.h@{i8042.h}!KBC\_ST\_OBF@{KBC\_ST\_OBF}}
+\index{KBC\_ST\_OBF@{KBC\_ST\_OBF}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_ST\_OBF}{KBC\_ST\_OBF}}
+{\footnotesize\ttfamily \label{i8042_8h_a38010ed603a29beee559b2c20de50dcd} 
+\#define KBC\+\_\+\+ST\+\_\+\+OBF~BIT(0)}
+
+
+
+KBC status byte output buffer full. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00026}{26}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a34b14687d83496940a236351fbbb1aea}\index{i8042.h@{i8042.h}!KBC\_STAT\_REG@{KBC\_STAT\_REG}}
+\index{KBC\_STAT\_REG@{KBC\_STAT\_REG}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_STAT\_REG}{KBC\_STAT\_REG}}
+{\footnotesize\ttfamily \label{i8042_8h_a34b14687d83496940a236351fbbb1aea} 
+\#define KBC\+\_\+\+STAT\+\_\+\+REG~0x64}
+
+
+
+KBC status register (for reading) 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00016}{16}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_ae31c3653f5881b02cbfdd4ccbb7ccf50}\index{i8042.h@{i8042.h}!KBC\_TO\_ERR@{KBC\_TO\_ERR}}
+\index{KBC\_TO\_ERR@{KBC\_TO\_ERR}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBC\_TO\_ERR}{KBC\_TO\_ERR}}
+{\footnotesize\ttfamily \label{i8042_8h_ae31c3653f5881b02cbfdd4ccbb7ccf50} 
+\#define KBC\+\_\+\+TO\+\_\+\+ERR~BIT(6)}
+
+
+
+KBC status byte timeout error. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00023}{23}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_acf07f310afe5dc074dacd55c708b0c4c}\index{i8042.h@{i8042.h}!KBD\_ENABLE\_INT@{KBD\_ENABLE\_INT}}
+\index{KBD\_ENABLE\_INT@{KBD\_ENABLE\_INT}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KBD\_ENABLE\_INT}{KBD\_ENABLE\_INT}}
+{\footnotesize\ttfamily \label{i8042_8h_acf07f310afe5dc074dacd55c708b0c4c} 
+\#define KBD\+\_\+\+ENABLE\+\_\+\+INT~BIT(1)}
+
+
+
+KBC command byte, bit to enable keyboard interrupts. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00034}{34}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a2d17911b50c0aeebb2e3325c5b36d4f2}\index{i8042.h@{i8042.h}!KEYBOARD\_IRQ@{KEYBOARD\_IRQ}}
+\index{KEYBOARD\_IRQ@{KEYBOARD\_IRQ}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{KEYBOARD\_IRQ}{KEYBOARD\_IRQ}}
+{\footnotesize\ttfamily \label{i8042_8h_a2d17911b50c0aeebb2e3325c5b36d4f2} 
+\#define KEYBOARD\+\_\+\+IRQ~1}
+
+
+
+keyboard IRQ line 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00012}{12}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a7d5b0d5dc0d3196a3c1ba6b0f741f99c}\index{i8042.h@{i8042.h}!LEFT\_BUTTON\_PRESSED@{LEFT\_BUTTON\_PRESSED}}
+\index{LEFT\_BUTTON\_PRESSED@{LEFT\_BUTTON\_PRESSED}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{LEFT\_BUTTON\_PRESSED}{LEFT\_BUTTON\_PRESSED}}
+{\footnotesize\ttfamily \label{i8042_8h_a7d5b0d5dc0d3196a3c1ba6b0f741f99c} 
+\#define LEFT\+\_\+\+BUTTON\+\_\+\+PRESSED~BIT(0)}
+
+
+
+This bit is set if the left mouse button is pressed. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00050}{50}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a3f65f2f4909af3d848c42423d50d64b5}\index{i8042.h@{i8042.h}!MIDDLE\_BUTTON\_PRESSD@{MIDDLE\_BUTTON\_PRESSD}}
+\index{MIDDLE\_BUTTON\_PRESSD@{MIDDLE\_BUTTON\_PRESSD}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{MIDDLE\_BUTTON\_PRESSD}{MIDDLE\_BUTTON\_PRESSD}}
+{\footnotesize\ttfamily \label{i8042_8h_a3f65f2f4909af3d848c42423d50d64b5} 
+\#define MIDDLE\+\_\+\+BUTTON\+\_\+\+PRESSD~BIT(2)}
+
+
+
+This bit is set if the middle mouse button is pressed. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00052}{52}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a8f4d5b24d9f4d14ed5f184fc1bfceec9}\index{i8042.h@{i8042.h}!MOUSE\_BYTE\_ACK@{MOUSE\_BYTE\_ACK}}
+\index{MOUSE\_BYTE\_ACK@{MOUSE\_BYTE\_ACK}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_BYTE\_ACK}{MOUSE\_BYTE\_ACK}}
+{\footnotesize\ttfamily \label{i8042_8h_a8f4d5b24d9f4d14ed5f184fc1bfceec9} 
+\#define MOUSE\+\_\+\+BYTE\+\_\+\+ACK~0x\+FA}
+
+
+
+Acknowledgement value if the mouse byte sent is valid. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00045}{45}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_aac749771e826a28b5720c2b3ba89f6cc}\index{i8042.h@{i8042.h}!MOUSE\_BYTE\_ERROR@{MOUSE\_BYTE\_ERROR}}
+\index{MOUSE\_BYTE\_ERROR@{MOUSE\_BYTE\_ERROR}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_BYTE\_ERROR}{MOUSE\_BYTE\_ERROR}}
+{\footnotesize\ttfamily \label{i8042_8h_aac749771e826a28b5720c2b3ba89f6cc} 
+\#define MOUSE\+\_\+\+BYTE\+\_\+\+ERROR~0x\+FC}
+
+
+
+Acknowledgement value if the mouse byte sent generated and error. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00047}{47}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_aafe9a5517c6d76b8ca74c5a5f0ff1560}\index{i8042.h@{i8042.h}!MOUSE\_BYTE\_NACK@{MOUSE\_BYTE\_NACK}}
+\index{MOUSE\_BYTE\_NACK@{MOUSE\_BYTE\_NACK}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_BYTE\_NACK}{MOUSE\_BYTE\_NACK}}
+{\footnotesize\ttfamily \label{i8042_8h_aafe9a5517c6d76b8ca74c5a5f0ff1560} 
+\#define MOUSE\+\_\+\+BYTE\+\_\+\+NACK~0x\+FE}
+
+
+
+Acknowledgement value if the mouse byte sent is invalid, resend. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00046}{46}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_aa2f61ec70925c501a76819a337a1de33}\index{i8042.h@{i8042.h}!MOUSE\_ENABLE\_INT@{MOUSE\_ENABLE\_INT}}
+\index{MOUSE\_ENABLE\_INT@{MOUSE\_ENABLE\_INT}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_ENABLE\_INT}{MOUSE\_ENABLE\_INT}}
+{\footnotesize\ttfamily \label{i8042_8h_aa2f61ec70925c501a76819a337a1de33} 
+\#define MOUSE\+\_\+\+ENABLE\+\_\+\+INT~BIT(2)}
+
+
+
+KBC command byte, bit to enable mouse interrupts. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00035}{35}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a85964cb90343bb1a029b1d1b4229f910}\index{i8042.h@{i8042.h}!MOUSE\_IRQ@{MOUSE\_IRQ}}
+\index{MOUSE\_IRQ@{MOUSE\_IRQ}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{MOUSE\_IRQ}{MOUSE\_IRQ}}
+{\footnotesize\ttfamily \label{i8042_8h_a85964cb90343bb1a029b1d1b4229f910} 
+\#define MOUSE\+\_\+\+IRQ~12}
+
+
+
+mouse IRQ line 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00013}{13}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_ab3682a7593eea6b3a98269c3105714b1}\index{i8042.h@{i8042.h}!MSB\_X\_DELTA@{MSB\_X\_DELTA}}
+\index{MSB\_X\_DELTA@{MSB\_X\_DELTA}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{MSB\_X\_DELTA}{MSB\_X\_DELTA}}
+{\footnotesize\ttfamily \label{i8042_8h_ab3682a7593eea6b3a98269c3105714b1} 
+\#define MSB\+\_\+\+X\+\_\+\+DELTA~BIT(4)}
+
+
+
+This bit represents the sign of the x movement. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00053}{53}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a73e7f39e782c9d57707ff7a518d031a6}\index{i8042.h@{i8042.h}!MSB\_Y\_DELTA@{MSB\_Y\_DELTA}}
+\index{MSB\_Y\_DELTA@{MSB\_Y\_DELTA}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{MSB\_Y\_DELTA}{MSB\_Y\_DELTA}}
+{\footnotesize\ttfamily \label{i8042_8h_a73e7f39e782c9d57707ff7a518d031a6} 
+\#define MSB\+\_\+\+Y\+\_\+\+DELTA~BIT(5)}
+
+
+
+This bit represents the sign of the y movement. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00054}{54}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_ab82996fcd177742a38d5123747e233f6}\index{i8042.h@{i8042.h}!RD\_CMD\_BYTE@{RD\_CMD\_BYTE}}
+\index{RD\_CMD\_BYTE@{RD\_CMD\_BYTE}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{RD\_CMD\_BYTE}{RD\_CMD\_BYTE}}
+{\footnotesize\ttfamily \label{i8042_8h_ab82996fcd177742a38d5123747e233f6} 
+\#define RD\+\_\+\+CMD\+\_\+\+BYTE~0x20}
+
+
+
+KBC command to read command byte. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00029}{29}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_ae25c0456db9d86be940cfc21ea03dc07}\index{i8042.h@{i8042.h}!RIGHT\_BUTTON\_PRESSED@{RIGHT\_BUTTON\_PRESSED}}
+\index{RIGHT\_BUTTON\_PRESSED@{RIGHT\_BUTTON\_PRESSED}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{RIGHT\_BUTTON\_PRESSED}{RIGHT\_BUTTON\_PRESSED}}
+{\footnotesize\ttfamily \label{i8042_8h_ae25c0456db9d86be940cfc21ea03dc07} 
+\#define RIGHT\+\_\+\+BUTTON\+\_\+\+PRESSED~BIT(1)}
+
+
+
+This bit is set if the right mouse button is pressed. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00051}{51}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_adb6f94786815aed6ef5e167dd49eee5f}\index{i8042.h@{i8042.h}!WR\_CMD\_BYTE@{WR\_CMD\_BYTE}}
+\index{WR\_CMD\_BYTE@{WR\_CMD\_BYTE}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{WR\_CMD\_BYTE}{WR\_CMD\_BYTE}}
+{\footnotesize\ttfamily \label{i8042_8h_adb6f94786815aed6ef5e167dd49eee5f} 
+\#define WR\+\_\+\+CMD\+\_\+\+BYTE~0x60}
+
+
+
+KBC command to write command byte. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00030}{30}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_aaf2a34f36d4c1337f4105c705cacc7c5}\index{i8042.h@{i8042.h}!WR\_MOUSE\_BYTE@{WR\_MOUSE\_BYTE}}
+\index{WR\_MOUSE\_BYTE@{WR\_MOUSE\_BYTE}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{WR\_MOUSE\_BYTE}{WR\_MOUSE\_BYTE}}
+{\footnotesize\ttfamily \label{i8042_8h_aaf2a34f36d4c1337f4105c705cacc7c5} 
+\#define WR\+\_\+\+MOUSE\+\_\+\+BYTE~0x\+D4}
+
+
+
+KBC command to write a byte directly to the mouse. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00031}{31}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_a82dc3ac9577dabd19733ada75d2822d0}\index{i8042.h@{i8042.h}!X\_OVERFLOW@{X\_OVERFLOW}}
+\index{X\_OVERFLOW@{X\_OVERFLOW}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{X\_OVERFLOW}{X\_OVERFLOW}}
+{\footnotesize\ttfamily \label{i8042_8h_a82dc3ac9577dabd19733ada75d2822d0} 
+\#define X\+\_\+\+OVERFLOW~BIT(6)}
+
+
+
+This bit is set if the 8 bit x movement overflowed. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00055}{55}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{i8042_8h_acd54c5569c84fd2d1710cccd190e138a}\index{i8042.h@{i8042.h}!Y\_OVERFLOW@{Y\_OVERFLOW}}
+\index{Y\_OVERFLOW@{Y\_OVERFLOW}!i8042.h@{i8042.h}}
+\doxysubsubsection{\texorpdfstring{Y\_OVERFLOW}{Y\_OVERFLOW}}
+{\footnotesize\ttfamily \label{i8042_8h_acd54c5569c84fd2d1710cccd190e138a} 
+\#define Y\+\_\+\+OVERFLOW~BIT(7)}
+
+
+
+This bit is set if the 8 bit y movement overflowed. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00056}{56}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+

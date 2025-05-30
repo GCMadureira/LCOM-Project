@@ -1,3 +1,9 @@
+/** 
+ * @file game.c
+ * @brief Source code file for the entry point of the program, as well as the main setup and clean functions.
+ */
+
+
 #include <lcom/lcf.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -6,7 +12,14 @@
 #include "macros/scancodes.h"
 #include "controller/main_controller.h"
 
-
+/**
+ * @brief Initializes the game by setting up what is necessary 
+ * 
+ * Sets the timer 0's frequency to 60hz to serve as the frame rate, subscribes the timer, keyboard and mouse interruptions (the last one after enabling data reporting) and then initizalies the graphics mode and vram mapping. <br>
+ * After setting up the drivers it calls setup_game() to initialize the program logic.
+ * 
+ * @return 0 in case of success, 1 otherwise
+ */
 int (game_init)() {
   uint8_t timer_int_no = 0, keyboard_int_no = 1, mouse_int_no = 2;
   const int frame_rate = 60;
@@ -23,14 +36,31 @@ int (game_init)() {
   return 0;
 }
 
+/**
+ * @brief Cleans up the game by reverting to the starting state
+ * 
+ * Sets the timer 0's frequency back to 60hz, unsubscribes the timer, keyboard and mouse interruptions, disables the mouse data reporting and then calls vg_exit(). <br>
+ * After reverting the drivers' state, it calls clean_game().
+ * 
+ * @return 0 in case of success, 1 otherwise
+ */
 int (game_exit)() {
   return timer_unsubscribe_int() |
   keyboard_unsubscribe_int() |
   mouse_unsubscribe_int() |
   mouse_stream_disable_data_reporting() |
-  vg_exit() | timer_set_frequency(TIMER_0, 60);
+  vg_exit() | timer_set_frequency(TIMER_0, 60) | clean_game();
 }
 
+/**
+ * @brief The main loop of the game
+ * 
+ * Sets up the game by calling the game_init() function at the beginning. <br>
+ * Catches the interrupts and, for the keyboard and mouse, calls event_handle_keyboard() or event_handle_mouse(). For the timer interruptions, each one causes a frame to be processed. <br>
+ * Finally, it calls game_exit() before returning.
+ * 
+ * @return 0 in case of success, 1 otherwise
+ */
 int (proj_main_loop)() {
   if(game_init()) {
     printf("Error: could not initialize the game\n");
@@ -63,8 +93,6 @@ int (proj_main_loop)() {
       }
     }
   }
-
-  clean_game();
 
   if(game_exit()) {
     printf("Warning: something went wrong while cleaning up\n");

@@ -1,0 +1,37 @@
+\doxysection{arena.\+c}
+\hypertarget{arena_8c_source}{}\label{arena_8c_source}\index{model/arena.c@{model/arena.c}}
+\mbox{\hyperlink{arena_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{arena_8h}{arena.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00012}\mbox{\hyperlink{arena_8c_af16ece5e6b2f3c56a70dbb0617a6ce79}{00012}}\ \mbox{\hyperlink{structarena}{arena}}*\ (\mbox{\hyperlink{arena_8c_af16ece5e6b2f3c56a70dbb0617a6ce79}{arena\_create}})()\ \{}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00013}00013\ \ \ \mbox{\hyperlink{structarena}{arena}}*\ new\_arena\ =\ (\mbox{\hyperlink{structarena}{arena}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structarena}{arena}}));}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00015}00015\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ =\ 1264\ -\/\ 576;}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00016}00016\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ =\ 1264\ -\/\ 432;}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00017}00017\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}}\ =\ \mbox{\hyperlink{entity_8c_ad0018de7fcd73cfc668b5f96f0b08377}{entity\_create\_full}}(1264\ -\/\ 43,\ 1264\ -\/\ 64,\ 0,\ 0,\ 3,\ 4,\ \mbox{\hyperlink{animations_8c_affae80d1f9f9146ba5d4d1923642e8df}{pharaoh\_animations}});}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00018}00018\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_ab92e02356cd036a7927f70cf5f79261c}{mouse}}\ =\ \mbox{\hyperlink{entity_8c_a5c6b1cd6c7d2528b17da55d07a955e97}{entity\_create}}(NULL);}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00019}00019\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_ab92e02356cd036a7927f70cf5f79261c}{mouse}}-\/>\mbox{\hyperlink{structentity_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ =\ \mbox{\hyperlink{graphics_8c_aa4a211ebfc5c87a0072eaf9bd03e3a56}{vg\_get\_hres}}()/2;}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00020}00020\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_ab92e02356cd036a7927f70cf5f79261c}{mouse}}-\/>\mbox{\hyperlink{structentity_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ =\ \mbox{\hyperlink{graphics_8c_a4633499e0f197ac855f56473fc9fb291}{vg\_get\_vres}}()/2;}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00021}00021\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_adb8106abeff3aa4425d8044b5cfab5ce}{enemies}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00022}00022\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00023}00023\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_a3a65af53fd8ed22c0c0f410d278a7698}{hearts}}\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00024}00024\ \ \ new\_arena-\/>\mbox{\hyperlink{structarena_a76f2cb533432223bcf4343888b95ace9}{background\_image}}\ =\ \&\mbox{\hyperlink{static__images_8c_a174cae25c733d45db94019d45ded3f44}{game\_background\_img}};}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00026}00026\ \ \ \textcolor{keywordflow}{return}\ new\_arena;}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00027}00027\ \}}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00029}\mbox{\hyperlink{arena_8c_a6dd09035730833e7d30641acf5368070}{00029}}\ int\ (\mbox{\hyperlink{arena_8c_a6dd09035730833e7d30641acf5368070}{arena\_destroy}})(\mbox{\hyperlink{structarena}{arena}}*\ \mbox{\hyperlink{structarena}{arena}})\ \{}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00030}00030\ \ \ \mbox{\hyperlink{entity_8c_ac1c698b3de75178c6e6a8b4d196cbe09}{entity\_destroy}}(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_ae6ddf0232f587e3d173c340f73d35d76}{player}});}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00031}00031\ \ \ \mbox{\hyperlink{entity_8c_a4036b56b3d9bd1ce723cdb731a95040d}{entity\_list\_destroy}}(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_adb8106abeff3aa4425d8044b5cfab5ce}{enemies}});}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00032}00032\ \ \ \mbox{\hyperlink{attack_8c_ab52289798e5fb60109559c3a4ff129b5}{attack\_list\_destroy}}(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a7b9192833509ce7b56005e2cf3eb65d5}{player\_attacks}});}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00033}00033\ \ \ \mbox{\hyperlink{entity_8c_a4036b56b3d9bd1ce723cdb731a95040d}{entity\_list\_destroy}}(\mbox{\hyperlink{structarena}{arena}}-\/>\mbox{\hyperlink{structarena_a3a65af53fd8ed22c0c0f410d278a7698}{hearts}});}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00034}00034\ \ \ free(\mbox{\hyperlink{structarena}{arena}});}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00035}00035\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{arena_8c_source_l00036}00036\ \}}
+
+\end{DoxyCode}

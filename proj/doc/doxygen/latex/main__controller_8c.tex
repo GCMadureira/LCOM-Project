@@ -1,0 +1,360 @@
+\doxysection{controller/main\+\_\+controller.c File Reference}
+\hypertarget{main__controller_8c}{}\label{main__controller_8c}\index{controller/main\_controller.c@{controller/main\_controller.c}}
+
+
+Source code to control the program.  
+
+
+{\ttfamily \#include "{}main\+\_\+controller.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{main__controller_8c_a4e5bacdd482f0b9d7b8e82303261e1ab}{process\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Processes the inputs events for the \doxylink{main__controller_8c_a558b668a40448703552e337205852e85}{active\+\_\+menu}. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{main__controller_8c_a1170a3b608ab76cdac488fa72441f336}{process\+\_\+game}} ()
+\begin{DoxyCompactList}\small\item\em Processes the inputs events for the \doxylink{main__controller_8c_a261920befc6ee7c34450d0ba94925887}{active\+\_\+arena}. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state}} \mbox{\hyperlink{main__controller_8c_aeed66d76fc5a6f3fdf449c1d9af6d864}{get\+\_\+game\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state} static variable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main__controller_8c_a16074cead64739f51a64c2618848b537}{set\+\_\+game\+\_\+state}} (enum \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state}} state)
+\begin{DoxyCompactList}\small\item\em Setter for the \doxylink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state} static variable. \end{DoxyCompactList}\item 
+unsigned long \mbox{\hyperlink{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}{get\+\_\+current\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{main__controller_8c_ad4e6b806fda09c8946d72825103664ef}{frame} static variable. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main__controller_8c_ad2fd63f388cc234a37264c40409f5016}{load\+\_\+highscore}} ()
+\begin{DoxyCompactList}\small\item\em Loads the highscore from a stored file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main__controller_8c_aefa5d38da887f05a677260355218ab86}{save\+\_\+highscore}} ()
+\begin{DoxyCompactList}\small\item\em Saves the highscore in a stored file. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{main__controller_8c_a69ae5238712eef3b6d7a5aa88e52c124}{get\+\_\+high\+\_\+score}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the static variable \doxylink{main__controller_8c_a65f8af65b9bf570e74231a8c59806628}{high\+\_\+score}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main__controller_8c_a67855b6f996a31ed54e2d8b5cc1c5b24}{update\+\_\+high\+\_\+score}} (uint32\+\_\+t new\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Updates the current highscore. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main__controller_8c_a6e0f3787555b26fcb56fa7f7da849780}{process\+\_\+frame}} ()
+\begin{DoxyCompactList}\small\item\em Processes a game frame. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main__controller_8c_a3111dee1b7eba98e02de5d77e3d9f056}{setup\+\_\+game}} ()
+\begin{DoxyCompactList}\small\item\em Sets up the program. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main__controller_8c_a92a2f28091bb858097abd29fe906badd}{clean\+\_\+game}} ()
+\begin{DoxyCompactList}\small\item\em Cleans up the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structmenu}{menu}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{main__controller_8c_a558b668a40448703552e337205852e85}{active\+\_\+menu}} = NULL
+\begin{DoxyCompactList}\small\item\em The pointer to the active arena, if one exists. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{structarena}{arena}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{main__controller_8c_a261920befc6ee7c34450d0ba94925887}{active\+\_\+arena}} = NULL
+\begin{DoxyCompactList}\small\item\em The pointer to the active menu, if one exists. \end{DoxyCompactList}\item 
+static enum \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state}} \mbox{\hyperlink{main__controller_8c_a38caf7c28534bcd60ff95faf7fcae2d7}{game\+\_\+state}} = \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2ac22743f1fc74de09544ecc9bab74a17b}{MAIN\+\_\+\+MENU}}
+\begin{DoxyCompactList}\small\item\em The state of the program. \end{DoxyCompactList}\item 
+static unsigned long \mbox{\hyperlink{main__controller_8c_ad4e6b806fda09c8946d72825103664ef}{frame}} = 0
+\begin{DoxyCompactList}\small\item\em The frame count of the program. \end{DoxyCompactList}\item 
+static uint32\+\_\+t \mbox{\hyperlink{main__controller_8c_a65f8af65b9bf570e74231a8c59806628}{high\+\_\+score}} = 0
+\begin{DoxyCompactList}\small\item\em Track the highest achieved time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code to control the program. 
+
+This file handles the logic for the whole program, controlling the menus and the arena by calling the functions in \doxylink{arena__controller_8c}{arena\+\_\+controller.\+c}. It also calls the drawing functions. 
+
+Definition in file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main__controller_8c_a92a2f28091bb858097abd29fe906badd}\index{main\_controller.c@{main\_controller.c}!clean\_game@{clean\_game}}
+\index{clean\_game@{clean\_game}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{clean\_game()}{clean\_game()}}
+{\footnotesize\ttfamily \label{main__controller_8c_a92a2f28091bb858097abd29fe906badd} 
+int clean\+\_\+game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Cleans up the program. 
+
+Calls \doxylink{events_8c_a9123d2d728fc1232dac62ccf602638af}{events\+\_\+clear()} and \doxylink{animations_8c_a2d1e8bdd17409181b1f34a25eedd46ff}{animations\+\_\+clean()} to release the dynamically allocated memory. It then destroys the \doxylink{main__controller_8c_a558b668a40448703552e337205852e85}{active\+\_\+menu} and \doxylink{main__controller_8c_a261920befc6ee7c34450d0ba94925887}{active\+\_\+arena}.
+
+\begin{DoxyReturn}{Returns}
+0 in case of succes, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00229}{229}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768}\index{main\_controller.c@{main\_controller.c}!get\_current\_frame@{get\_current\_frame}}
+\index{get\_current\_frame@{get\_current\_frame}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{get\_current\_frame()}{get\_current\_frame()}}
+{\footnotesize\ttfamily \label{main__controller_8c_acba08ec4cb0918b5418a0d44bfc37768} 
+unsigned long get\+\_\+current\+\_\+frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the \doxylink{main__controller_8c_ad4e6b806fda09c8946d72825103664ef}{frame} static variable. 
+
+\begin{DoxyReturn}{Returns}
+The current frame of the game 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00048}{48}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_aeed66d76fc5a6f3fdf449c1d9af6d864}\index{main\_controller.c@{main\_controller.c}!get\_game\_state@{get\_game\_state}}
+\index{get\_game\_state@{get\_game\_state}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{get\_game\_state()}{get\_game\_state()}}
+{\footnotesize\ttfamily \label{main__controller_8c_aeed66d76fc5a6f3fdf449c1d9af6d864} 
+enum \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state}} get\+\_\+game\+\_\+state (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the \doxylink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state} static variable. 
+
+\begin{DoxyReturn}{Returns}
+The \doxylink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state} of the program 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00037}{37}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a69ae5238712eef3b6d7a5aa88e52c124}\index{main\_controller.c@{main\_controller.c}!get\_high\_score@{get\_high\_score}}
+\index{get\_high\_score@{get\_high\_score}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{get\_high\_score()}{get\_high\_score()}}
+{\footnotesize\ttfamily \label{main__controller_8c_a69ae5238712eef3b6d7a5aa88e52c124} 
+uint32\+\_\+t get\+\_\+high\+\_\+score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the static variable \doxylink{main__controller_8c_a65f8af65b9bf570e74231a8c59806628}{high\+\_\+score}. 
+
+\begin{DoxyReturn}{Returns}
+Returns the current high\+\_\+score 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00072}{72}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_ad2fd63f388cc234a37264c40409f5016}\index{main\_controller.c@{main\_controller.c}!load\_highscore@{load\_highscore}}
+\index{load\_highscore@{load\_highscore}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{load\_highscore()}{load\_highscore()}}
+{\footnotesize\ttfamily \label{main__controller_8c_ad2fd63f388cc234a37264c40409f5016} 
+int load\+\_\+highscore (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Loads the highscore from a stored file. 
+
+If the file does not exist, no score is loaded and \doxylink{main__controller_8c_a65f8af65b9bf570e74231a8c59806628}{high\+\_\+score} is 0.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00052}{52}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a6e0f3787555b26fcb56fa7f7da849780}\index{main\_controller.c@{main\_controller.c}!process\_frame@{process\_frame}}
+\index{process\_frame@{process\_frame}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{process\_frame()}{process\_frame()}}
+{\footnotesize\ttfamily \label{main__controller_8c_a6e0f3787555b26fcb56fa7f7da849780} 
+int process\+\_\+frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Processes a game frame. 
+
+If the \doxylink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state} is on a menu, calls \doxylink{main__controller_8c_a4e5bacdd482f0b9d7b8e82303261e1ab}{process\+\_\+menu()}, else calls \doxylink{main__controller_8c_a1170a3b608ab76cdac488fa72441f336}{process\+\_\+game()}. ~\newline
+ After processing the input events, it calls \doxylink{arena__controller_8c_a65fc1548128ab4fb70d7e1aeddd65537}{arena\+\_\+process\+\_\+frame()} if the \doxylink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state} is on the arena and calls game\+\_\+over\+\_\+menu() if the player reaches 0 health. ~\newline
+ At the end, draws the menu or arena, depending on which is active.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00189}{189}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a1170a3b608ab76cdac488fa72441f336}\index{main\_controller.c@{main\_controller.c}!process\_game@{process\_game}}
+\index{process\_game@{process\_game}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{process\_game()}{process\_game()}}
+{\footnotesize\ttfamily \label{main__controller_8c_a1170a3b608ab76cdac488fa72441f336} 
+static int process\+\_\+game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Processes the inputs events for the \doxylink{main__controller_8c_a261920befc6ee7c34450d0ba94925887}{active\+\_\+arena}. 
+
+Sets the player speed based on the inputs, handles the ranged attack and controls the mouse movement.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00137}{137}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a4e5bacdd482f0b9d7b8e82303261e1ab}\index{main\_controller.c@{main\_controller.c}!process\_menu@{process\_menu}}
+\index{process\_menu@{process\_menu}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{process\_menu()}{process\_menu()}}
+{\footnotesize\ttfamily \label{main__controller_8c_a4e5bacdd482f0b9d7b8e82303261e1ab} 
+static int process\+\_\+menu (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Processes the inputs events for the \doxylink{main__controller_8c_a558b668a40448703552e337205852e85}{active\+\_\+menu}. 
+
+Moves the menu option and handles what happens when the user selects one of them. ~\newline
+ Changes the \doxylink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state} accordingly and sets up the new one.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00082}{82}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_aefa5d38da887f05a677260355218ab86}\index{main\_controller.c@{main\_controller.c}!save\_highscore@{save\_highscore}}
+\index{save\_highscore@{save\_highscore}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{save\_highscore()}{save\_highscore()}}
+{\footnotesize\ttfamily \label{main__controller_8c_aefa5d38da887f05a677260355218ab86} 
+int save\+\_\+highscore (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Saves the highscore in a stored file. 
+
+If the file does not exist, create it and store \doxylink{main__controller_8c_a65f8af65b9bf570e74231a8c59806628}{high\+\_\+score}.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00062}{62}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a16074cead64739f51a64c2618848b537}\index{main\_controller.c@{main\_controller.c}!set\_game\_state@{set\_game\_state}}
+\index{set\_game\_state@{set\_game\_state}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{set\_game\_state()}{set\_game\_state()}}
+{\footnotesize\ttfamily \label{main__controller_8c_a16074cead64739f51a64c2618848b537} 
+void set\+\_\+game\+\_\+state (\begin{DoxyParamCaption}\item[{enum \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state}}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Setter for the \doxylink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state} static variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The new state to be set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00044}{44}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a3111dee1b7eba98e02de5d77e3d9f056}\index{main\_controller.c@{main\_controller.c}!setup\_game@{setup\_game}}
+\index{setup\_game@{setup\_game}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{setup\_game()}{setup\_game()}}
+{\footnotesize\ttfamily \label{main__controller_8c_a3111dee1b7eba98e02de5d77e3d9f056} 
+int setup\+\_\+game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Sets up the program. 
+
+Calls \doxylink{viewer_2static__images_8h_aab8850c1909f40895f325da0a1cc5cc2}{static\+\_\+images\+\_\+load()} and \doxylink{animations_8c_adc95abfcdfad9d7893d1607e2bb2344c}{animations\+\_\+load()} to load the xpm assets. It then creates the main menu to start the game.
+
+\begin{DoxyReturn}{Returns}
+0 in case of succes, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00220}{220}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a67855b6f996a31ed54e2d8b5cc1c5b24}\index{main\_controller.c@{main\_controller.c}!update\_high\_score@{update\_high\_score}}
+\index{update\_high\_score@{update\_high\_score}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{update\_high\_score()}{update\_high\_score()}}
+{\footnotesize\ttfamily \label{main__controller_8c_a67855b6f996a31ed54e2d8b5cc1c5b24} 
+void update\+\_\+high\+\_\+score (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{new\+\_\+time}{}\end{DoxyParamCaption})}
+
+
+
+Updates the current highscore. 
+
+If the value new\+\_\+time is lower than the current highscore, nothing is done.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+time} & The potential new highscore \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00076}{76}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main__controller_8c_a261920befc6ee7c34450d0ba94925887}\index{main\_controller.c@{main\_controller.c}!active\_arena@{active\_arena}}
+\index{active\_arena@{active\_arena}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{active\_arena}{active\_arena}}
+{\footnotesize\ttfamily \label{main__controller_8c_a261920befc6ee7c34450d0ba94925887} 
+\mbox{\hyperlink{structarena}{arena}}\texorpdfstring{$\ast$}{*} active\+\_\+arena = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The pointer to the active menu, if one exists. 
+
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00032}{32}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a558b668a40448703552e337205852e85}\index{main\_controller.c@{main\_controller.c}!active\_menu@{active\_menu}}
+\index{active\_menu@{active\_menu}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{active\_menu}{active\_menu}}
+{\footnotesize\ttfamily \label{main__controller_8c_a558b668a40448703552e337205852e85} 
+\mbox{\hyperlink{structmenu}{menu}}\texorpdfstring{$\ast$}{*} active\+\_\+menu = NULL\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The pointer to the active arena, if one exists. 
+
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00031}{31}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_ad4e6b806fda09c8946d72825103664ef}\index{main\_controller.c@{main\_controller.c}!frame@{frame}}
+\index{frame@{frame}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{frame}{frame}}
+{\footnotesize\ttfamily \label{main__controller_8c_ad4e6b806fda09c8946d72825103664ef} 
+unsigned long frame = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The frame count of the program. 
+
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00035}{35}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a38caf7c28534bcd60ff95faf7fcae2d7}\index{main\_controller.c@{main\_controller.c}!game\_state@{game\_state}}
+\index{game\_state@{game\_state}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{game\_state}{game\_state}}
+{\footnotesize\ttfamily \label{main__controller_8c_a38caf7c28534bcd60ff95faf7fcae2d7} 
+enum \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state}} \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2}{game\+\_\+state}} = \mbox{\hyperlink{main__controller_8h_ad0ed1832dd134806ad335cdcc1a59ad2ac22743f1fc74de09544ecc9bab74a17b}{MAIN\+\_\+\+MENU}}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The state of the program. 
+
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00034}{34}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+
+\Hypertarget{main__controller_8c_a65f8af65b9bf570e74231a8c59806628}\index{main\_controller.c@{main\_controller.c}!high\_score@{high\_score}}
+\index{high\_score@{high\_score}!main\_controller.c@{main\_controller.c}}
+\doxysubsubsection{\texorpdfstring{high\_score}{high\_score}}
+{\footnotesize\ttfamily \label{main__controller_8c_a65f8af65b9bf570e74231a8c59806628} 
+uint32\+\_\+t high\+\_\+score = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Track the highest achieved time. 
+
+
+
+Definition at line \mbox{\hyperlink{main__controller_8c_source_l00037}{37}} of file \mbox{\hyperlink{main__controller_8c_source}{main\+\_\+controller.\+c}}.
+

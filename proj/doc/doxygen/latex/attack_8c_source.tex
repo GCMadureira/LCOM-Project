@@ -1,0 +1,56 @@
+\doxysection{attack.\+c}
+\hypertarget{attack_8c_source}{}\label{attack_8c_source}\index{model/attack.c@{model/attack.c}}
+\mbox{\hyperlink{attack_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{attack_8h}{attack.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00011}\mbox{\hyperlink{attack_8c_a99f72c038afa964f74c748b2f20c644b}{00011}}\ \mbox{\hyperlink{structattack}{attack}}*\ (\mbox{\hyperlink{attack_8c_a99f72c038afa964f74c748b2f20c644b}{attack\_create\_full}})(\textcolor{keywordtype}{double}\ pos\_x,\ \textcolor{keywordtype}{double}\ pos\_y,\ \textcolor{keywordtype}{double}\ speed\_x,\ \textcolor{keywordtype}{double}\ speed\_y,\ uint32\_t\ damage,\ uint32\_t\ frames,\ \mbox{\hyperlink{structanimation}{animation}}\ \mbox{\hyperlink{structanimation}{animation}})\ \{}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00012}00012\ \ \ \mbox{\hyperlink{structattack}{attack}}*\ new\_attack\ =\ (\mbox{\hyperlink{structattack}{attack}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structattack}{attack}}));}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00014}00014\ \ \ new\_attack-\/>\mbox{\hyperlink{structattack_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ =\ pos\_x;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00015}00015\ \ \ new\_attack-\/>\mbox{\hyperlink{structattack_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ =\ pos\_y;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00016}00016\ \ \ new\_attack-\/>\mbox{\hyperlink{structattack_aebb2c694aa0ece3f9bb10e4f0261cadc}{speed\_x}}\ =\ speed\_x;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00017}00017\ \ \ new\_attack-\/>\mbox{\hyperlink{structattack_a6710926b8c4035973f5dae24886ff9e5}{speed\_y}}\ =\ speed\_y;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00018}00018\ \ \ new\_attack-\/>\mbox{\hyperlink{structattack_ad690104957f9d98d1822ce7f82c59ffa}{damage}}\ =\ damage;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00019}00019\ \ \ new\_attack-\/>\mbox{\hyperlink{structattack_a40463b645a8340db77d51cbbacf2a9ee}{frames}}\ =\ frames;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00020}00020\ \ \ new\_attack-\/>\mbox{\hyperlink{structattack_acc46c4b2a2894560155e302098f62e3d}{animation}}\ =\ \mbox{\hyperlink{structanimation}{animation}};}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00022}00022\ \ \ \textcolor{keywordflow}{return}\ new\_attack;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00025}\mbox{\hyperlink{attack_8c_adc14eedec4d73b2bd4b5d988da5ba759}{00025}}\ int\ (\mbox{\hyperlink{attack_8c_adc14eedec4d73b2bd4b5d988da5ba759}{attack\_destroy}})(\mbox{\hyperlink{structattack}{attack}}*\ \mbox{\hyperlink{structattack}{attack}})\{}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00026}00026\ \ \ free(\mbox{\hyperlink{structattack}{attack}});}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00027}00027\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00028}00028\ \}}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00030}\mbox{\hyperlink{attack_8c_a2c5f8a0019ba4cbc5f0a3d10a948f62f}{00030}}\ void\ (\mbox{\hyperlink{attack_8c_a2c5f8a0019ba4cbc5f0a3d10a948f62f}{attack\_move}})(\mbox{\hyperlink{structattack}{attack}}*\ \mbox{\hyperlink{structattack}{attack}})\{}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00031}00031\ \ \ \mbox{\hyperlink{structattack}{attack}}-\/>\mbox{\hyperlink{structattack_a40463b645a8340db77d51cbbacf2a9ee}{frames}}-\/-\/;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00032}00032\ \ \ \mbox{\hyperlink{structattack}{attack}}-\/>\mbox{\hyperlink{structattack_a71b5aa321c1ab05450cb75adcc73b7be}{pos\_x}}\ -\/=\ \mbox{\hyperlink{structattack}{attack}}-\/>\mbox{\hyperlink{structattack_aebb2c694aa0ece3f9bb10e4f0261cadc}{speed\_x}};}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00033}00033\ \ \ \mbox{\hyperlink{structattack}{attack}}-\/>\mbox{\hyperlink{structattack_afe0f418f8b2cee466b080bca771aa483}{pos\_y}}\ -\/=\ \mbox{\hyperlink{structattack}{attack}}-\/>\mbox{\hyperlink{structattack_a6710926b8c4035973f5dae24886ff9e5}{speed\_y}};}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00036}\mbox{\hyperlink{attack_8c_a2fc649c5bcb73726bd31ed5a745dfe89}{00036}}\ void\ (\mbox{\hyperlink{attack_8c_a2fc649c5bcb73726bd31ed5a745dfe89}{attack\_list\_add}})(\mbox{\hyperlink{structattack__node}{attack\_node}}**\ list,\ \mbox{\hyperlink{structattack}{attack}}*\ \mbox{\hyperlink{structattack}{attack}})\ \{}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00037}00037\ \ \ \mbox{\hyperlink{structattack__node}{attack\_node}}*\ new\_node\ =\ (\mbox{\hyperlink{structattack__node}{attack\_node}}*)malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structattack__node}{attack\_node}}));}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00038}00038\ \ \ new\_node-\/>attack\ =\ \mbox{\hyperlink{structattack}{attack}};}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00039}00039\ \ \ new\_node-\/>next\_attack\ =\ *list;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00040}00040\ \ \ *list\ =\ new\_node;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00041}00041\ \}}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00043}\mbox{\hyperlink{attack_8c_a22a8560626b75fb93b2a5eb9efad0987}{00043}}\ void\ (\mbox{\hyperlink{attack_8c_a22a8560626b75fb93b2a5eb9efad0987}{attack\_node\_destroy}})(\mbox{\hyperlink{structattack__node}{attack\_node}}*\ node)\{}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00044}00044\ \ \ free(node-\/>attack);}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00045}00045\ \ \ free(node);}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00048}\mbox{\hyperlink{attack_8c_ab52289798e5fb60109559c3a4ff129b5}{00048}}\ void\ (\mbox{\hyperlink{attack_8c_ab52289798e5fb60109559c3a4ff129b5}{attack\_list\_destroy}})(\mbox{\hyperlink{structattack__node}{attack\_node}}*\ list)\ \{}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00049}00049\ \ \ \mbox{\hyperlink{structattack__node}{attack\_node}}*\ current\ =\ list;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00050}00050\ \ \ \textcolor{keywordflow}{while}(current\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{structattack__node}{attack\_node}}*\ victim\ =\ current;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00052}00052\ \ \ \ \ current\ =\ current-\/>next\_attack;}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00053}00053\ \ \ \ \ \mbox{\hyperlink{attack_8c_a22a8560626b75fb93b2a5eb9efad0987}{attack\_node\_destroy}}(victim);}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00054}00054\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{attack_8c_source_l00055}00055\ \}}
+
+\end{DoxyCode}

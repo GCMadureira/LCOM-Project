@@ -1,0 +1,238 @@
+\doxysection{model/entity.h File Reference}
+\hypertarget{entity_8h}{}\label{entity_8h}\index{model/entity.h@{model/entity.h}}
+
+
+Header file for \doxylink{entity_8c}{entity.\+c}.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include "{}../drivers/drivers.\+h"{}}\newline
+{\ttfamily \#include "{}../viewer/animations.\+h"{}}\newline
+{\ttfamily \#include "{}../viewer/static\+\_\+images.\+h"{}}\newline
+{\ttfamily \#include "{}structs.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{entity_8h_ab3fefddb77918bc69ea7aaa7b166b049}{entity\+\_\+is\+\_\+idle}} (\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structentity}{entity}})
+\begin{DoxyCompactList}\small\item\em Checks if an entity is idle. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{entity_8h_a5c6b1cd6c7d2528b17da55d07a955e97}{entity\+\_\+create}} (\mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*}animations)
+\begin{DoxyCompactList}\small\item\em Creates an entity with default parameters except for the animation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{entity_8h_ad0018de7fcd73cfc668b5f96f0b08377}{entity\+\_\+create\+\_\+full}} (double pos\+\_\+x, double pos\+\_\+y, double speed\+\_\+x, double speed\+\_\+y, double speed\+\_\+multiplier, uint32\+\_\+t health, \mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*}animations)
+\begin{DoxyCompactList}\small\item\em Creates an entity with all the parameters customized. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{entity_8h_ac1c698b3de75178c6e6a8b4d196cbe09}{entity\+\_\+destroy}} (\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structentity}{entity}})
+\begin{DoxyCompactList}\small\item\em Destroys an entity by freeing its memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entity_8h_a68ea0fd019b7a423d9bdead69705b4be}{entity\+\_\+move}} (\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structentity}{entity}})
+\begin{DoxyCompactList}\small\item\em Advances one frame to the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entity_8h_aa3644209480802c93bc4317e0b5e1061}{entity\+\_\+node\+\_\+destroy}} (\mbox{\hyperlink{structentity__node}{entity\+\_\+node}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Destroys an \doxylink{structentity__node}{entity\+\_\+node}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entity_8h_a91f6ff9b2f9c62e4c189651f46655436}{entity\+\_\+list\+\_\+add}} (\mbox{\hyperlink{structentity__node}{entity\+\_\+node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structentity}{entity}})
+\begin{DoxyCompactList}\small\item\em Adds the entity to the \doxylink{structentity__node}{entity\+\_\+node} list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entity_8h_a4036b56b3d9bd1ce723cdb731a95040d}{entity\+\_\+list\+\_\+destroy}} (\mbox{\hyperlink{structentity__node}{entity\+\_\+node}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Destroys an \doxylink{structentity__node}{entity\+\_\+node} list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{entity_8c}{entity.\+c}. 
+
+This file declares all the functions to be used for the entity and \doxylink{structentity__node}{entity\+\_\+node} structs. 
+
+Definition in file \mbox{\hyperlink{entity_8h_source}{entity.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{entity_8h_a5c6b1cd6c7d2528b17da55d07a955e97}\index{entity.h@{entity.h}!entity\_create@{entity\_create}}
+\index{entity\_create@{entity\_create}!entity.h@{entity.h}}
+\doxysubsubsection{\texorpdfstring{entity\_create()}{entity\_create()}}
+{\footnotesize\ttfamily \label{entity_8h_a5c6b1cd6c7d2528b17da55d07a955e97} 
+\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*} entity\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*}}]{animations}{}\end{DoxyParamCaption})}
+
+
+
+Creates an entity with default parameters except for the animation. 
+
+Creates an entity by dynamically allocating space for it and then setting its members equal to the one passed as argument.
+
+
+\begin{DoxyParams}{Parameters}
+{\em animations} & The pointer to the animations of the new entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the new entity 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{entity_8c_source_l00016}{16}} of file \mbox{\hyperlink{entity_8c_source}{entity.\+c}}.
+
+\Hypertarget{entity_8h_ad0018de7fcd73cfc668b5f96f0b08377}\index{entity.h@{entity.h}!entity\_create\_full@{entity\_create\_full}}
+\index{entity\_create\_full@{entity\_create\_full}!entity.h@{entity.h}}
+\doxysubsubsection{\texorpdfstring{entity\_create\_full()}{entity\_create\_full()}}
+{\footnotesize\ttfamily \label{entity_8h_ad0018de7fcd73cfc668b5f96f0b08377} 
+\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*} entity\+\_\+create\+\_\+full (\begin{DoxyParamCaption}\item[{double}]{pos\+\_\+x}{, }\item[{double}]{pos\+\_\+y}{, }\item[{double}]{speed\+\_\+x}{, }\item[{double}]{speed\+\_\+y}{, }\item[{double}]{speed\+\_\+multiplier}{, }\item[{uint32\+\_\+t}]{health}{, }\item[{\mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*}}]{animations}{}\end{DoxyParamCaption})}
+
+
+
+Creates an entity with all the parameters customized. 
+
+Creates an entity by dynamically allocating space for it and then setting its members equal to the ones passed as arguments.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+x} & The x coordinate of the new entity \\
+\hline
+{\em pos\+\_\+y} & The y coordinate of the new entity \\
+\hline
+{\em speed\+\_\+x} & The speed on the x axis of the new entity \\
+\hline
+{\em speed\+\_\+y} & The speed on the y axis of the new entity \\
+\hline
+{\em speed\+\_\+multiplier} & The speed multiplier of the new entity \\
+\hline
+{\em health} & The health of the new entity \\
+\hline
+{\em animations} & The pointer to the animations of the new entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the new entity 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{entity_8c_source_l00030}{30}} of file \mbox{\hyperlink{entity_8c_source}{entity.\+c}}.
+
+\Hypertarget{entity_8h_ac1c698b3de75178c6e6a8b4d196cbe09}\index{entity.h@{entity.h}!entity\_destroy@{entity\_destroy}}
+\index{entity\_destroy@{entity\_destroy}!entity.h@{entity.h}}
+\doxysubsubsection{\texorpdfstring{entity\_destroy()}{entity\_destroy()}}
+{\footnotesize\ttfamily \label{entity_8h_ac1c698b3de75178c6e6a8b4d196cbe09} 
+int entity\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an entity by freeing its memory. 
+
+Frees the memory of the entity itself.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The pointer to the entity to destroy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{entity_8c_source_l00045}{45}} of file \mbox{\hyperlink{entity_8c_source}{entity.\+c}}.
+
+\Hypertarget{entity_8h_ab3fefddb77918bc69ea7aaa7b166b049}\index{entity.h@{entity.h}!entity\_is\_idle@{entity\_is\_idle}}
+\index{entity\_is\_idle@{entity\_is\_idle}!entity.h@{entity.h}}
+\doxysubsubsection{\texorpdfstring{entity\_is\_idle()}{entity\_is\_idle()}}
+{\footnotesize\ttfamily \label{entity_8h_ab3fefddb77918bc69ea7aaa7b166b049} 
+bool entity\+\_\+is\+\_\+idle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Checks if an entity is idle. 
+
+An entity is considered idle if both speeds are 0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The pointer to the entity to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it is idle, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{entity_8c_source_l00012}{12}} of file \mbox{\hyperlink{entity_8c_source}{entity.\+c}}.
+
+\Hypertarget{entity_8h_a91f6ff9b2f9c62e4c189651f46655436}\index{entity.h@{entity.h}!entity\_list\_add@{entity\_list\_add}}
+\index{entity\_list\_add@{entity\_list\_add}!entity.h@{entity.h}}
+\doxysubsubsection{\texorpdfstring{entity\_list\_add()}{entity\_list\_add()}}
+{\footnotesize\ttfamily \label{entity_8h_a91f6ff9b2f9c62e4c189651f46655436} 
+void entity\+\_\+list\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentity__node}{entity\+\_\+node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{list}{, }\item[{\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Adds the entity to the \doxylink{structentity__node}{entity\+\_\+node} list. 
+
+Creates a new \doxylink{structentity__node}{entity\+\_\+node} to store the entity argument and then adds it to the end of the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The pointer to the list to be added on \\
+\hline
+{\em entity} & The pointer to the entity to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{entity_8c_source_l00069}{69}} of file \mbox{\hyperlink{entity_8c_source}{entity.\+c}}.
+
+\Hypertarget{entity_8h_a4036b56b3d9bd1ce723cdb731a95040d}\index{entity.h@{entity.h}!entity\_list\_destroy@{entity\_list\_destroy}}
+\index{entity\_list\_destroy@{entity\_list\_destroy}!entity.h@{entity.h}}
+\doxysubsubsection{\texorpdfstring{entity\_list\_destroy()}{entity\_list\_destroy()}}
+{\footnotesize\ttfamily \label{entity_8h_a4036b56b3d9bd1ce723cdb731a95040d} 
+void entity\+\_\+list\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentity__node}{entity\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an \doxylink{structentity__node}{entity\+\_\+node} list. 
+
+Iterates through the linked list and calls \doxylink{entity_8h_aa3644209480802c93bc4317e0b5e1061}{entity\+\_\+node\+\_\+destroy()} on each node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The pointer to the list to be destroyed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{entity_8c_source_l00076}{76}} of file \mbox{\hyperlink{entity_8c_source}{entity.\+c}}.
+
+\Hypertarget{entity_8h_a68ea0fd019b7a423d9bdead69705b4be}\index{entity.h@{entity.h}!entity\_move@{entity\_move}}
+\index{entity\_move@{entity\_move}!entity.h@{entity.h}}
+\doxysubsubsection{\texorpdfstring{entity\_move()}{entity\_move()}}
+{\footnotesize\ttfamily \label{entity_8h_a68ea0fd019b7a423d9bdead69705b4be} 
+void entity\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Advances one frame to the entity. 
+
+Normalizes the speed vector and then multiplies the result by the speed\+\_\+multiplier, adding it to the position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The pointer to the entity to move \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{entity_8c_source_l00050}{50}} of file \mbox{\hyperlink{entity_8c_source}{entity.\+c}}.
+
+\Hypertarget{entity_8h_aa3644209480802c93bc4317e0b5e1061}\index{entity.h@{entity.h}!entity\_node\_destroy@{entity\_node\_destroy}}
+\index{entity\_node\_destroy@{entity\_node\_destroy}!entity.h@{entity.h}}
+\doxysubsubsection{\texorpdfstring{entity\_node\_destroy()}{entity\_node\_destroy()}}
+{\footnotesize\ttfamily \label{entity_8h_aa3644209480802c93bc4317e0b5e1061} 
+void entity\+\_\+node\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentity__node}{entity\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an \doxylink{structentity__node}{entity\+\_\+node}. 
+
+Frees the memory of the entity member and then the \doxylink{structentity__node}{entity\+\_\+node} itself.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The pointer to the \doxylink{structentity__node}{entity\+\_\+node} to destroy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{entity_8c_source_l00064}{64}} of file \mbox{\hyperlink{entity_8c_source}{entity.\+c}}.
+

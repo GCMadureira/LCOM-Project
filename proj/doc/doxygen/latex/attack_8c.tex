@@ -1,0 +1,181 @@
+\doxysection{model/attack.c File Reference}
+\hypertarget{attack_8c}{}\label{attack_8c}\index{model/attack.c@{model/attack.c}}
+
+
+Source code file for all the logic related to the attack and \doxylink{structattack__node}{attack\+\_\+node} structs.  
+
+
+{\ttfamily \#include "{}attack.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{attack_8c_a99f72c038afa964f74c748b2f20c644b}{attack\+\_\+create\+\_\+full}} (double pos\+\_\+x, double pos\+\_\+y, double speed\+\_\+x, double speed\+\_\+y, uint32\+\_\+t damage, uint32\+\_\+t frames, \mbox{\hyperlink{structanimation}{animation}} \mbox{\hyperlink{structanimation}{animation}})
+\begin{DoxyCompactList}\small\item\em Creates an attack with all the parameters customized. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{attack_8c_adc14eedec4d73b2bd4b5d988da5ba759}{attack\+\_\+destroy}} (\mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structattack}{attack}})
+\begin{DoxyCompactList}\small\item\em Destroys an attack by freeing its memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{attack_8c_a2c5f8a0019ba4cbc5f0a3d10a948f62f}{attack\+\_\+move}} (\mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structattack}{attack}})
+\begin{DoxyCompactList}\small\item\em Advances one frame to the attack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{attack_8c_a2fc649c5bcb73726bd31ed5a745dfe89}{attack\+\_\+list\+\_\+add}} (\mbox{\hyperlink{structattack__node}{attack\+\_\+node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}list, \mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structattack}{attack}})
+\begin{DoxyCompactList}\small\item\em Adds the attack to the \doxylink{structattack__node}{attack\+\_\+node} list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{attack_8c_a22a8560626b75fb93b2a5eb9efad0987}{attack\+\_\+node\+\_\+destroy}} (\mbox{\hyperlink{structattack__node}{attack\+\_\+node}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Destroys an \doxylink{structattack__node}{attack\+\_\+node}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{attack_8c_ab52289798e5fb60109559c3a4ff129b5}{attack\+\_\+list\+\_\+destroy}} (\mbox{\hyperlink{structattack__node}{attack\+\_\+node}} \texorpdfstring{$\ast$}{*}list)
+\begin{DoxyCompactList}\small\item\em Destroys an \doxylink{structattack__node}{attack\+\_\+node} list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code file for all the logic related to the attack and \doxylink{structattack__node}{attack\+\_\+node} structs. 
+
+This file implements all the functions for the attack and \doxylink{structattack__node}{attack\+\_\+node} structs. 
+
+Definition in file \mbox{\hyperlink{attack_8c_source}{attack.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{attack_8c_a99f72c038afa964f74c748b2f20c644b}\index{attack.c@{attack.c}!attack\_create\_full@{attack\_create\_full}}
+\index{attack\_create\_full@{attack\_create\_full}!attack.c@{attack.c}}
+\doxysubsubsection{\texorpdfstring{attack\_create\_full()}{attack\_create\_full()}}
+{\footnotesize\ttfamily \label{attack_8c_a99f72c038afa964f74c748b2f20c644b} 
+\mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*} attack\+\_\+create\+\_\+full (\begin{DoxyParamCaption}\item[{double}]{pos\+\_\+x}{, }\item[{double}]{pos\+\_\+y}{, }\item[{double}]{speed\+\_\+x}{, }\item[{double}]{speed\+\_\+y}{, }\item[{uint32\+\_\+t}]{damage}{, }\item[{uint32\+\_\+t}]{frames}{, }\item[{\mbox{\hyperlink{structanimation}{animation}}}]{animation}{}\end{DoxyParamCaption})}
+
+
+
+Creates an attack with all the parameters customized. 
+
+Creates an attack by dynamically allocating space for it and then setting its members equal to the ones passed as arguments.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+x} & The x coordinate of the new attack \\
+\hline
+{\em pos\+\_\+y} & The y coordinate of the new attack \\
+\hline
+{\em speed\+\_\+x} & The speed on the x axis of the new attack \\
+\hline
+{\em speed\+\_\+y} & The speed on the y axis of the new attack \\
+\hline
+{\em damage} & The damage of the new attack \\
+\hline
+{\em frames} & The frames duration of the new attack \\
+\hline
+{\em animation} & The animation of the new attack \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the new attack 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{attack_8c_source_l00011}{11}} of file \mbox{\hyperlink{attack_8c_source}{attack.\+c}}.
+
+\Hypertarget{attack_8c_adc14eedec4d73b2bd4b5d988da5ba759}\index{attack.c@{attack.c}!attack\_destroy@{attack\_destroy}}
+\index{attack\_destroy@{attack\_destroy}!attack.c@{attack.c}}
+\doxysubsubsection{\texorpdfstring{attack\_destroy()}{attack\_destroy()}}
+{\footnotesize\ttfamily \label{attack_8c_adc14eedec4d73b2bd4b5d988da5ba759} 
+int attack\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*}}]{attack}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an attack by freeing its memory. 
+
+Frees the memory of the attack itself.
+
+
+\begin{DoxyParams}{Parameters}
+{\em attack} & The pointer to the attack to destroy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{attack_8c_source_l00025}{25}} of file \mbox{\hyperlink{attack_8c_source}{attack.\+c}}.
+
+\Hypertarget{attack_8c_a2fc649c5bcb73726bd31ed5a745dfe89}\index{attack.c@{attack.c}!attack\_list\_add@{attack\_list\_add}}
+\index{attack\_list\_add@{attack\_list\_add}!attack.c@{attack.c}}
+\doxysubsubsection{\texorpdfstring{attack\_list\_add()}{attack\_list\_add()}}
+{\footnotesize\ttfamily \label{attack_8c_a2fc649c5bcb73726bd31ed5a745dfe89} 
+void attack\+\_\+list\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structattack__node}{attack\+\_\+node}} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{list}{, }\item[{\mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*}}]{attack}{}\end{DoxyParamCaption})}
+
+
+
+Adds the attack to the \doxylink{structattack__node}{attack\+\_\+node} list. 
+
+Creates a new \doxylink{structattack__node}{attack\+\_\+node} to store the attack argument and then adds it to the end of the list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The pointer to the list to be added on \\
+\hline
+{\em attack} & The pointer to the attack to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{attack_8c_source_l00036}{36}} of file \mbox{\hyperlink{attack_8c_source}{attack.\+c}}.
+
+\Hypertarget{attack_8c_ab52289798e5fb60109559c3a4ff129b5}\index{attack.c@{attack.c}!attack\_list\_destroy@{attack\_list\_destroy}}
+\index{attack\_list\_destroy@{attack\_list\_destroy}!attack.c@{attack.c}}
+\doxysubsubsection{\texorpdfstring{attack\_list\_destroy()}{attack\_list\_destroy()}}
+{\footnotesize\ttfamily \label{attack_8c_ab52289798e5fb60109559c3a4ff129b5} 
+void attack\+\_\+list\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structattack__node}{attack\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{list}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an \doxylink{structattack__node}{attack\+\_\+node} list. 
+
+Iterates through the linked list and calls \doxylink{attack_8h_a22a8560626b75fb93b2a5eb9efad0987}{attack\+\_\+node\+\_\+destroy()} on each node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The pointer to the list to be destroyed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{attack_8c_source_l00048}{48}} of file \mbox{\hyperlink{attack_8c_source}{attack.\+c}}.
+
+\Hypertarget{attack_8c_a2c5f8a0019ba4cbc5f0a3d10a948f62f}\index{attack.c@{attack.c}!attack\_move@{attack\_move}}
+\index{attack\_move@{attack\_move}!attack.c@{attack.c}}
+\doxysubsubsection{\texorpdfstring{attack\_move()}{attack\_move()}}
+{\footnotesize\ttfamily \label{attack_8c_a2c5f8a0019ba4cbc5f0a3d10a948f62f} 
+void attack\+\_\+move (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structattack}{attack}} \texorpdfstring{$\ast$}{*}}]{attack}{}\end{DoxyParamCaption})}
+
+
+
+Advances one frame to the attack. 
+
+Adds the speed of the attack to its position.
+
+
+\begin{DoxyParams}{Parameters}
+{\em attack} & The pointer to the attack to move \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{attack_8c_source_l00030}{30}} of file \mbox{\hyperlink{attack_8c_source}{attack.\+c}}.
+
+\Hypertarget{attack_8c_a22a8560626b75fb93b2a5eb9efad0987}\index{attack.c@{attack.c}!attack\_node\_destroy@{attack\_node\_destroy}}
+\index{attack\_node\_destroy@{attack\_node\_destroy}!attack.c@{attack.c}}
+\doxysubsubsection{\texorpdfstring{attack\_node\_destroy()}{attack\_node\_destroy()}}
+{\footnotesize\ttfamily \label{attack_8c_a22a8560626b75fb93b2a5eb9efad0987} 
+void attack\+\_\+node\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structattack__node}{attack\+\_\+node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an \doxylink{structattack__node}{attack\+\_\+node}. 
+
+Frees the memory of the attack member and then the \doxylink{structattack__node}{attack\+\_\+node} itself.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The pointer to the \doxylink{structattack__node}{attack\+\_\+node} to destroy \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{attack_8c_source_l00043}{43}} of file \mbox{\hyperlink{attack_8c_source}{attack.\+c}}.
+

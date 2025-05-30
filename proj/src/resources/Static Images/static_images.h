@@ -1,3 +1,9 @@
+/** 
+ * @file resources/static_images.h
+ * @brief Includes all the xpm files for the static images
+ */
+
+
 #ifndef _STATIC_IMAGES_RESOURCES_PROJ_H_
 #define _STATIC_IMAGES_RESOURCES_PROJ_H_
 

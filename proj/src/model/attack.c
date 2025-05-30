@@ -1,3 +1,11 @@
+/** 
+ * @file attack.c
+ * @brief Source code file for all the logic related to the attack and attack_node structs
+ * 
+ * This file implements all the functions for the attack and attack_node structs.
+ */
+
+
 #include "attack.h"
 
 attack* (attack_create_full)(double pos_x, double pos_y, double speed_x, double speed_y, uint32_t damage, uint32_t frames, animation animation) {
@@ -42,7 +50,6 @@ void (attack_list_destroy)(attack_node* list) {
   while(current != NULL) {
     attack_node* victim = current;
     current = current->next_attack;
-    free(victim->attack);
-    free(victim);
+    attack_node_destroy(victim);
   }
 }

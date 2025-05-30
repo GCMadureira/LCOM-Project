@@ -1,0 +1,289 @@
+\doxysection{viewer/animations.h File Reference}
+\hypertarget{animations_8h}{}\label{animations_8h}\index{viewer/animations.h@{viewer/animations.h}}
+
+
+Header file for \doxylink{animations_8c}{animations.\+c}.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}../model/entity.\+h"{}}\newline
+{\ttfamily \#include "{}../model/structs.\+h"{}}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{animations_8h_af686669afb5a72abecc9c6a0959e0d06}{animation\+\_\+direction}} \{ {\bfseries LEFT}
+, {\bfseries RIGHT}
+, {\bfseries IDLE\+\_\+}
+ \}
+\begin{DoxyCompactList}\small\item\em Represents index of the animation to choose. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{animations_8h_af686669afb5a72abecc9c6a0959e0d06}{animation\+\_\+direction}} \mbox{\hyperlink{animations_8h_abaaf2b3c11b75d1f92a8133dbe74b5eb}{entity\+\_\+get\+\_\+direction}} (\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structentity}{entity}})
+\begin{DoxyCompactList}\small\item\em Gets the direction of the entity to choose which the animation. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animations_8h_adc95abfcdfad9d7893d1607e2bb2344c}{animations\+\_\+load}} ()
+\begin{DoxyCompactList}\small\item\em Loads all the animations to the gloabl variables. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animations_8h_a2d1e8bdd17409181b1f34a25eedd46ff}{animations\+\_\+clean}} ()
+\begin{DoxyCompactList}\small\item\em Frees all the dynamically allocated space of the animations. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{animations_8h_a2df03d38124b550a757aa384adcb1a6c}{animation\+\_\+destroy}} (\mbox{\hyperlink{structanimation}{animation}} \mbox{\hyperlink{structanimation}{animation}})
+\begin{DoxyCompactList}\small\item\em Destroys an animation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animations_8h_affae80d1f9f9146ba5d4d1923642e8df}{pharaoh\+\_\+animations}}
+\begin{DoxyCompactList}\small\item\em The animations for the pharaoh. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animations_8h_a07ac190d6bf439822263cf6f34ad64c0}{enemy1\+\_\+animations}}
+\begin{DoxyCompactList}\small\item\em The animations for the carequinha 1. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animations_8h_a21cf37ea16dbd6b297c2fdf7f25bedca}{enemy2\+\_\+animations}}
+\begin{DoxyCompactList}\small\item\em The animations for the carequinha 2. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structanimation}{animation}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{animations_8h_a5324051fe80fcceaee40e135ea1bc694}{mummy\+\_\+animations}}
+\begin{DoxyCompactList}\small\item\em The animations for the mummy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structanimation}{animation}} \mbox{\hyperlink{animations_8h_a3ea36af53f25b56741a364c3cd6021e6}{khopesh\+\_\+attack\+\_\+right\+\_\+animation}}
+\begin{DoxyCompactList}\small\item\em The animation for the auto attack right. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structanimation}{animation}} \mbox{\hyperlink{animations_8h_a3d71208df5925526b81e8e880995c17a}{khopesh\+\_\+attack\+\_\+left\+\_\+animation}}
+\begin{DoxyCompactList}\small\item\em The animation for the auto attack left. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structanimation}{animation}} \mbox{\hyperlink{animations_8h_aced52fc5ad13515f67bab9692acb6a2c}{lightning\+\_\+attack\+\_\+animation}}
+\begin{DoxyCompactList}\small\item\em The animation for the lightning attack. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structanimation}{animation}} \mbox{\hyperlink{animations_8h_a4b22c2d14f1e31a34c82e0bdfbaa13bf}{heart\+\_\+animation}}
+\begin{DoxyCompactList}\small\item\em The animation for the heart. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structanimation}{animation}} \mbox{\hyperlink{animations_8h_af67814c18ed1bd54a537567c6cb29fe2}{secret\+\_\+animation}}
+\begin{DoxyCompactList}\small\item\em It\textquotesingle{}s a secret shhhhhhh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for \doxylink{animations_8c}{animations.\+c}. 
+
+This file declares all the functions to be used for the animations, as well as the animation global variables themselves 
+
+Definition in file \mbox{\hyperlink{animations_8h_source}{animations.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{animations_8h_af686669afb5a72abecc9c6a0959e0d06}\index{animations.h@{animations.h}!animation\_direction@{animation\_direction}}
+\index{animation\_direction@{animation\_direction}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{animation\_direction}{animation\_direction}}
+{\footnotesize\ttfamily \label{animations_8h_af686669afb5a72abecc9c6a0959e0d06} 
+enum \mbox{\hyperlink{animations_8h_af686669afb5a72abecc9c6a0959e0d06}{animation\+\_\+direction}}}
+
+
+
+Represents index of the animation to choose. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8h_source_l00021}{21}} of file \mbox{\hyperlink{animations_8h_source}{animations.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{animations_8h_a2df03d38124b550a757aa384adcb1a6c}\index{animations.h@{animations.h}!animation\_destroy@{animation\_destroy}}
+\index{animation\_destroy@{animation\_destroy}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{animation\_destroy()}{animation\_destroy()}}
+{\footnotesize\ttfamily \label{animations_8h_a2df03d38124b550a757aa384adcb1a6c} 
+int animation\+\_\+destroy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structanimation}{animation}}}]{animation}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an animation. 
+
+Frees every sprite in the animation and then the animation itself.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00050}{50}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_a2d1e8bdd17409181b1f34a25eedd46ff}\index{animations.h@{animations.h}!animations\_clean@{animations\_clean}}
+\index{animations\_clean@{animations\_clean}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{animations\_clean()}{animations\_clean()}}
+{\footnotesize\ttfamily \label{animations_8h_a2d1e8bdd17409181b1f34a25eedd46ff} 
+int animations\+\_\+clean (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Frees all the dynamically allocated space of the animations. 
+
+Frees every animation on the animation arrays and then the animations themselves.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00028}{28}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_adc95abfcdfad9d7893d1607e2bb2344c}\index{animations.h@{animations.h}!animations\_load@{animations\_load}}
+\index{animations\_load@{animations\_load}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{animations\_load()}{animations\_load()}}
+{\footnotesize\ttfamily \label{animations_8h_adc95abfcdfad9d7893d1607e2bb2344c} 
+int animations\+\_\+load (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Loads all the animations to the gloabl variables. 
+
+Calls the functions to load the specific animations.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00489}{489}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_abaaf2b3c11b75d1f92a8133dbe74b5eb}\index{animations.h@{animations.h}!entity\_get\_direction@{entity\_get\_direction}}
+\index{entity\_get\_direction@{entity\_get\_direction}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{entity\_get\_direction()}{entity\_get\_direction()}}
+{\footnotesize\ttfamily \label{animations_8h_abaaf2b3c11b75d1f92a8133dbe74b5eb} 
+enum \mbox{\hyperlink{animations_8h_af686669afb5a72abecc9c6a0959e0d06}{animation\+\_\+direction}} entity\+\_\+get\+\_\+direction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structentity}{entity}} \texorpdfstring{$\ast$}{*}}]{entity}{}\end{DoxyParamCaption})}
+
+
+
+Gets the direction of the entity to choose which the animation. 
+
+The entity can be facing left, right or be idle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to get the direction from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{animations_8h_af686669afb5a72abecc9c6a0959e0d06}{animation\+\_\+direction} of the entity 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00018}{18}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{animations_8h_a07ac190d6bf439822263cf6f34ad64c0}\index{animations.h@{animations.h}!enemy1\_animations@{enemy1\_animations}}
+\index{enemy1\_animations@{enemy1\_animations}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{enemy1\_animations}{enemy1\_animations}}
+{\footnotesize\ttfamily \label{animations_8h_a07ac190d6bf439822263cf6f34ad64c0} 
+\mbox{\hyperlink{structanimation}{animation}}\texorpdfstring{$\ast$}{*} enemy1\+\_\+animations\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The animations for the carequinha 1. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00010}{10}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_a21cf37ea16dbd6b297c2fdf7f25bedca}\index{animations.h@{animations.h}!enemy2\_animations@{enemy2\_animations}}
+\index{enemy2\_animations@{enemy2\_animations}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{enemy2\_animations}{enemy2\_animations}}
+{\footnotesize\ttfamily \label{animations_8h_a21cf37ea16dbd6b297c2fdf7f25bedca} 
+\mbox{\hyperlink{structanimation}{animation}}\texorpdfstring{$\ast$}{*} enemy2\+\_\+animations\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The animations for the carequinha 2. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00011}{11}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_a4b22c2d14f1e31a34c82e0bdfbaa13bf}\index{animations.h@{animations.h}!heart\_animation@{heart\_animation}}
+\index{heart\_animation@{heart\_animation}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{heart\_animation}{heart\_animation}}
+{\footnotesize\ttfamily \label{animations_8h_a4b22c2d14f1e31a34c82e0bdfbaa13bf} 
+\mbox{\hyperlink{structanimation}{animation}} heart\+\_\+animation\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The animation for the heart. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00017}{17}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_a3d71208df5925526b81e8e880995c17a}\index{animations.h@{animations.h}!khopesh\_attack\_left\_animation@{khopesh\_attack\_left\_animation}}
+\index{khopesh\_attack\_left\_animation@{khopesh\_attack\_left\_animation}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{khopesh\_attack\_left\_animation}{khopesh\_attack\_left\_animation}}
+{\footnotesize\ttfamily \label{animations_8h_a3d71208df5925526b81e8e880995c17a} 
+\mbox{\hyperlink{structanimation}{animation}} khopesh\+\_\+attack\+\_\+left\+\_\+animation\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The animation for the auto attack left. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00015}{15}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_a3ea36af53f25b56741a364c3cd6021e6}\index{animations.h@{animations.h}!khopesh\_attack\_right\_animation@{khopesh\_attack\_right\_animation}}
+\index{khopesh\_attack\_right\_animation@{khopesh\_attack\_right\_animation}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{khopesh\_attack\_right\_animation}{khopesh\_attack\_right\_animation}}
+{\footnotesize\ttfamily \label{animations_8h_a3ea36af53f25b56741a364c3cd6021e6} 
+\mbox{\hyperlink{structanimation}{animation}} khopesh\+\_\+attack\+\_\+right\+\_\+animation\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The animation for the auto attack right. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00014}{14}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_aced52fc5ad13515f67bab9692acb6a2c}\index{animations.h@{animations.h}!lightning\_attack\_animation@{lightning\_attack\_animation}}
+\index{lightning\_attack\_animation@{lightning\_attack\_animation}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{lightning\_attack\_animation}{lightning\_attack\_animation}}
+{\footnotesize\ttfamily \label{animations_8h_aced52fc5ad13515f67bab9692acb6a2c} 
+\mbox{\hyperlink{structanimation}{animation}} lightning\+\_\+attack\+\_\+animation\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The animation for the lightning attack. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00016}{16}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_a5324051fe80fcceaee40e135ea1bc694}\index{animations.h@{animations.h}!mummy\_animations@{mummy\_animations}}
+\index{mummy\_animations@{mummy\_animations}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{mummy\_animations}{mummy\_animations}}
+{\footnotesize\ttfamily \label{animations_8h_a5324051fe80fcceaee40e135ea1bc694} 
+\mbox{\hyperlink{structanimation}{animation}}\texorpdfstring{$\ast$}{*} mummy\+\_\+animations\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The animations for the mummy. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00012}{12}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_affae80d1f9f9146ba5d4d1923642e8df}\index{animations.h@{animations.h}!pharaoh\_animations@{pharaoh\_animations}}
+\index{pharaoh\_animations@{pharaoh\_animations}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{pharaoh\_animations}{pharaoh\_animations}}
+{\footnotesize\ttfamily \label{animations_8h_affae80d1f9f9146ba5d4d1923642e8df} 
+\mbox{\hyperlink{structanimation}{animation}}\texorpdfstring{$\ast$}{*} pharaoh\+\_\+animations\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+The animations for the pharaoh. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00009}{9}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+
+\Hypertarget{animations_8h_af67814c18ed1bd54a537567c6cb29fe2}\index{animations.h@{animations.h}!secret\_animation@{secret\_animation}}
+\index{secret\_animation@{secret\_animation}!animations.h@{animations.h}}
+\doxysubsubsection{\texorpdfstring{secret\_animation}{secret\_animation}}
+{\footnotesize\ttfamily \label{animations_8h_af67814c18ed1bd54a537567c6cb29fe2} 
+\mbox{\hyperlink{structanimation}{animation}} secret\+\_\+animation\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+It\textquotesingle{}s a secret shhhhhhh. 
+
+
+
+Definition at line \mbox{\hyperlink{animations_8c_source_l00018}{18}} of file \mbox{\hyperlink{animations_8c_source}{animations.\+c}}.
+

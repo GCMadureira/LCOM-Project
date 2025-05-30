@@ -1,0 +1,203 @@
+\doxysection{drivers/kbc/mouse.c File Reference}
+\hypertarget{mouse_8c}{}\label{mouse_8c}\index{drivers/kbc/mouse.c@{drivers/kbc/mouse.c}}
+
+
+Source code file for all the logic to interact with the kbc\textquotesingle{}s mouse.  
+
+
+{\ttfamily \#include "{}mouse.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{mouse_8c_ab0cb05b5695d815fe7be978da0bc8832}{mouse\+\_\+get\+\_\+packet\+\_\+byte}} ()
+\begin{DoxyCompactList}\small\item\em Getter for the \doxylink{mouse_8c_ac662666fa5ada01df51a6ac4191ff4b0}{mouse\+\_\+packet\+\_\+byte} static variable. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_adec491fd9d71aebd7dbc1e15181d63c7}{mouse\+\_\+subscribe\+\_\+int\+\_\+exclusive}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}bit\+\_\+no)
+\begin{DoxyCompactList}\small\item\em Subscribes the mouse interruptions with the payload on bit bit\+\_\+no. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_a685ad2706aca36d9869a30a19b9f446a}{mouse\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes the mouse interruptions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mouse_8c_a834b6d7efe311484d6da234db333cb97}{mouse\+\_\+ih}} ()
+\item 
+int \mbox{\hyperlink{mouse_8c_a1d4aed47c8a0bb5de25d1810fe6e2601}{mouse\+\_\+stream\+\_\+enable\+\_\+data\+\_\+reporting}} ()
+\begin{DoxyCompactList}\small\item\em Enables the data reporting of the mouse\textquotesingle{} stream mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_a3673a74741a69e481703d59d8e026dfa}{mouse\+\_\+stream\+\_\+disable\+\_\+data\+\_\+reporting}} ()
+\begin{DoxyCompactList}\small\item\em Disables the data reporting of the mouse\textquotesingle{} stream mode. \end{DoxyCompactList}\item 
+struct packet \mbox{\hyperlink{mouse_8c_a521ec0b04ad90437ad8deb45357d4943}{mouse\+\_\+assemble\+\_\+packet}} (uint8\+\_\+t \mbox{\hyperlink{events_8c_a4ad28028911e79d524cca5ac55a53965}{packet\+\_\+bytes}}\mbox{[}3\mbox{]})
+\begin{DoxyCompactList}\small\item\em Assembles the packet bytes into a packet structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{mouse_8c_a37cad7cad93664f8a1ed1b0258fe958b}{mouse\+\_\+hook\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em The hook id to unsubscribe the mouse interruptions. \end{DoxyCompactList}\item 
+static uint8\+\_\+t \mbox{\hyperlink{mouse_8c_ac662666fa5ada01df51a6ac4191ff4b0}{mouse\+\_\+packet\+\_\+byte}}
+\begin{DoxyCompactList}\small\item\em The lastest packet byte read. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source code file for all the logic to interact with the kbc\textquotesingle{}s mouse. 
+
+
+
+Definition in file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mouse_8c_a521ec0b04ad90437ad8deb45357d4943}\index{mouse.c@{mouse.c}!mouse\_assemble\_packet@{mouse\_assemble\_packet}}
+\index{mouse\_assemble\_packet@{mouse\_assemble\_packet}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_assemble\_packet()}{mouse\_assemble\_packet()}}
+{\footnotesize\ttfamily \label{mouse_8c_a521ec0b04ad90437ad8deb45357d4943} 
+struct packet mouse\+\_\+assemble\+\_\+packet (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{packet\+\_\+bytes}{\mbox{[}3\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Assembles the packet bytes into a packet structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet\+\_\+bytes} & The array of the 3 packet bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The assembled packet 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00045}{45}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_ab0cb05b5695d815fe7be978da0bc8832}\index{mouse.c@{mouse.c}!mouse\_get\_packet\_byte@{mouse\_get\_packet\_byte}}
+\index{mouse\_get\_packet\_byte@{mouse\_get\_packet\_byte}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_get\_packet\_byte()}{mouse\_get\_packet\_byte()}}
+{\footnotesize\ttfamily \label{mouse_8c_ab0cb05b5695d815fe7be978da0bc8832} 
+uint8\+\_\+t mouse\+\_\+get\+\_\+packet\+\_\+byte (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Getter for the \doxylink{mouse_8c_ac662666fa5ada01df51a6ac4191ff4b0}{mouse\+\_\+packet\+\_\+byte} static variable. 
+
+\begin{DoxyReturn}{Returns}
+The latest mouse\+\_\+packet\+\_\+byte read 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00012}{12}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a834b6d7efe311484d6da234db333cb97}\index{mouse.c@{mouse.c}!mouse\_ih@{mouse\_ih}}
+\index{mouse\_ih@{mouse\_ih}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_ih()}{mouse\_ih()}}
+{\footnotesize\ttfamily \label{mouse_8c_a834b6d7efe311484d6da234db333cb97} 
+void mouse\+\_\+ih (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00025}{25}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a3673a74741a69e481703d59d8e026dfa}\index{mouse.c@{mouse.c}!mouse\_stream\_disable\_data\_reporting@{mouse\_stream\_disable\_data\_reporting}}
+\index{mouse\_stream\_disable\_data\_reporting@{mouse\_stream\_disable\_data\_reporting}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_stream\_disable\_data\_reporting()}{mouse\_stream\_disable\_data\_reporting()}}
+{\footnotesize\ttfamily \label{mouse_8c_a3673a74741a69e481703d59d8e026dfa} 
+int mouse\+\_\+stream\+\_\+disable\+\_\+data\+\_\+reporting (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Disables the data reporting of the mouse\textquotesingle{} stream mode. 
+
+Tries to write the necessary commands to the kbc and then waiting for 20ms for a response. Tries this 5 times.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00045}{45}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a1d4aed47c8a0bb5de25d1810fe6e2601}\index{mouse.c@{mouse.c}!mouse\_stream\_enable\_data\_reporting@{mouse\_stream\_enable\_data\_reporting}}
+\index{mouse\_stream\_enable\_data\_reporting@{mouse\_stream\_enable\_data\_reporting}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_stream\_enable\_data\_reporting()}{mouse\_stream\_enable\_data\_reporting()}}
+{\footnotesize\ttfamily \label{mouse_8c_a1d4aed47c8a0bb5de25d1810fe6e2601} 
+int mouse\+\_\+stream\+\_\+enable\+\_\+data\+\_\+reporting (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Enables the data reporting of the mouse\textquotesingle{} stream mode. 
+
+Tries to write the necessary commands to the kbc and then waiting for 20ms for a response. Tries this 5 times.
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00031}{31}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_adec491fd9d71aebd7dbc1e15181d63c7}\index{mouse.c@{mouse.c}!mouse\_subscribe\_int\_exclusive@{mouse\_subscribe\_int\_exclusive}}
+\index{mouse\_subscribe\_int\_exclusive@{mouse\_subscribe\_int\_exclusive}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_subscribe\_int\_exclusive()}{mouse\_subscribe\_int\_exclusive()}}
+{\footnotesize\ttfamily \label{mouse_8c_adec491fd9d71aebd7dbc1e15181d63c7} 
+int mouse\+\_\+subscribe\+\_\+int\+\_\+exclusive (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{bit\+\_\+no}{}\end{DoxyParamCaption})}
+
+
+
+Subscribes the mouse interruptions with the payload on bit bit\+\_\+no. 
+
+Uses the IRQ\+\_\+\+EXCLUSIVE tag so MINIX does not steal the interrupts.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\+\_\+no} & The bit position to set the payload \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00016}{16}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a685ad2706aca36d9869a30a19b9f446a}\index{mouse.c@{mouse.c}!mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}}
+\index{mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_unsubscribe\_int()}{mouse\_unsubscribe\_int()}}
+{\footnotesize\ttfamily \label{mouse_8c_a685ad2706aca36d9869a30a19b9f446a} 
+int mouse\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Unsubscribes the mouse interruptions. 
+
+\begin{DoxyReturn}{Returns}
+0 in case of success, 1 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00021}{21}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{mouse_8c_a37cad7cad93664f8a1ed1b0258fe958b}\index{mouse.c@{mouse.c}!mouse\_hook\_id@{mouse\_hook\_id}}
+\index{mouse\_hook\_id@{mouse\_hook\_id}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_hook\_id}{mouse\_hook\_id}}
+{\footnotesize\ttfamily \label{mouse_8c_a37cad7cad93664f8a1ed1b0258fe958b} 
+int mouse\+\_\+hook\+\_\+id\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The hook id to unsubscribe the mouse interruptions. 
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00009}{9}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_ac662666fa5ada01df51a6ac4191ff4b0}\index{mouse.c@{mouse.c}!mouse\_packet\_byte@{mouse\_packet\_byte}}
+\index{mouse\_packet\_byte@{mouse\_packet\_byte}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_packet\_byte}{mouse\_packet\_byte}}
+{\footnotesize\ttfamily \label{mouse_8c_ac662666fa5ada01df51a6ac4191ff4b0} 
+uint8\+\_\+t mouse\+\_\+packet\+\_\+byte\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The lastest packet byte read. 
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00010}{10}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
